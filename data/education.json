@@ -1,0 +1,54 @@
+{
+  "education": [
+    {
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "institution": "Maa Shakumbhari University",
+      "location": "Ghazipur",
+      "period": "2023 – Present",
+      "description": "Pursuing Bachelor of Computer Application (B.C.A) from Maa Shakumbhari University, Ghazipur."
+    },
+    {
+      "degree": "Higher Secondary Education (12th)",
+      "institution": "U.P. Board",
+      "location": "Uttar Pradesh",
+      "period": "2023",
+      "description": "12th passed with Science from U.P. Board in the year 2023."
+    },
+    {
+      "degree": "Secondary Education (10th)",
+      "institution": "U.P. Board",
+      "location": "Uttar Pradesh",
+      "period": "2021",
+      "description": "10th passed with Science from U.P. Board in the year 2021."
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Hackathon Participation",
+      "subtitle": "Team Project",
+      "description": "Participated in a 2-day hackathon and developed a QR-based Health Record System mobile app. The system allows doctors to scan a QR code from a patient's phone to instantly access their complete medical history and details.",
+      "tags": ["Hackathon", "Mobile App", "Healthcare", "QR Technology"],
+      "date": "Dec 2024",
+      "icon": "ach-trophy",
+      "iconClass": "fas fa-trophy"
+    },
+    {
+      "title": "Quiz Competition Winner",
+      "subtitle": "3rd Place",
+      "description": "Won third place in a technical quiz competition focused on programming and web development concepts, competing against 50+ participants.",
+      "tags": ["Web Development", "Programming", "Competition"],
+      "date": "Nov 2023",
+      "icon": "ach-medal",
+      "iconClass": "fas fa-medal"
+    },
+    {
+      "title": "Web Development Certifications",
+      "subtitle": "Multiple Courses",
+      "description": "Completed multiple certifications in web development, including HTML, CSS, JavaScript, and responsive design. Continuously expanding knowledge through online courses and practical projects.",
+      "tags": ["HTML/CSS", "JavaScript", "Responsive Design"],
+      "date": "2023 – 2025",
+      "icon": "ach-cert",
+      "iconClass": "fas fa-certificate"
+    }
+  ]
+}

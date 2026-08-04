@@ -707,11 +707,16 @@ SOFTWARE.`;
         }
     }
 
-    // Boot when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+    // Boot after data is loaded AND DOM is ready
+    function boot() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
     }
+
+    // dataLoader.js dispatches 'portfolioDataReady' after all JSON is fetched
+    document.addEventListener('portfolioDataReady', boot);
 
 }());

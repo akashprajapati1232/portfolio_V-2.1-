@@ -1,0 +1,387 @@
+/* =============================================================
+   explorer.css – Activity Bar, Sidebar, File Tree, Panel contents
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── Activity Bar ── */
+#activity-bar,
+#right-activity-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: var(--activity-bar-width);
+    background: var(--bg-activity-bar);
+    flex-shrink: 0;
+    overflow: hidden;
+    z-index: 50;
+}
+
+#activity-bar {
+    border-right: 1px solid var(--border-panel);
+}
+
+#right-activity-bar {
+    border-left: 1px solid var(--border-panel);
+}
+
+.activity-bar-top,
+.activity-bar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 0;
+}
+
+/* ── Activity bar buttons ── */
+.activity-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+    border-left: 2px solid transparent;
+    transition: color var(--transition-fast), background var(--transition-fast);
+    position: relative;
+    cursor: pointer;
+}
+
+.activity-btn:hover {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.activity-btn.active {
+    color: rgba(255, 255, 255, 0.9);
+    border-left-color: #fff;
+}
+
+/* ── Tooltip ── */
+.activity-btn::after {
+    content: attr(title);
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #252526;
+    color: var(--text-primary);
+    border: 1px solid var(--border-panel);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity var(--transition-fast);
+}
+
+.activity-btn:hover::after {
+    opacity: 1;
+}
+
+/* ── Profile avatar in activity bar ── */
+.profile-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ── Sidebar ── */
+#sidebar,
+#right-sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+    z-index: 40;
+    transition: width var(--transition-med);
+    position: relative;
+}
+
+#sidebar {
+    border-right: 1px solid var(--border-panel);
+}
+
+#right-sidebar {
+    border-left: 1px solid var(--border-panel);
+}
+
+#sidebar.collapsed,
+#right-sidebar.collapsed,
+#sidebar.hidden,
+#right-sidebar.hidden {
+    width: 0;
+    border-right: none;
+    border-left: none;
+}
+
+/* ── Panel content inside sidebar ── */
+.panel-content {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.panel-content.active {
+    display: flex;
+}
+
+/* ── Sidebar header ── */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px 6px;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* ── Sidebar action buttons ── */
+.sidebar-actions {
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.sidebar-header:hover .sidebar-actions {
+    opacity: 1;
+}
+
+.sidebar-action-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-radius: 3px;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.sidebar-action-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* ── File Tree ── */
+.file-tree {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 20px;
+}
+
+.workspace-root {
+    padding-top: 4px;
+}
+
+/* ── Tree items ── */
+.tree-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px 2px 12px;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+    font-size: 13px;
+    color: var(--text-primary);
+    transition: background var(--transition-fast);
+    min-height: 22px;
+    user-select: none;
+}
+
+.tree-item:hover {
+    background: var(--bg-hover);
+}
+
+.tree-item.active-file {
+    background: var(--bg-selected);
+    color: var(--text-active);
+}
+
+.tree-item.focused-file {
+    outline: 1px solid #007acc;
+    outline-offset: -1px;
+}
+
+/* ── Root item (workspace name) ── */
+.root-item {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    padding: 6px 8px;
+    cursor: default;
+}
+
+/* ── Indented children ── */
+.tree-children {
+    padding-left: 16px;
+}
+
+.folder-children {
+    display: block;
+}
+
+.folder-children.collapsed {
+    display: none;
+}
+
+/* ── Tree arrow ── */
+.tree-arrow {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+    color: var(--text-secondary);
+    transition: transform var(--transition-fast);
+}
+
+.tree-item.collapsed > .tree-arrow {
+    transform: rotate(-90deg);
+}
+
+/* ── Tree icon ── */
+.tree-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+}
+
+.folder-icon {
+    color: #dcb862 !important;
+}
+
+/* ── Tree label ── */
+.tree-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+/* ── File items don't have arrows ── */
+.file-item .tree-arrow {
+    visibility: hidden;
+}
+
+/* ── Static panel messages (Search, Git, etc.) ── */
+.static-panel-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 8px;
+    color: var(--text-muted);
+    padding: 20px;
+    text-align: center;
+}
+
+.static-panel-msg i {
+    font-size: 36px;
+    opacity: 0.3;
+}
+
+.static-panel-msg p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.static-panel-msg small {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* ── Extensions panel ── */
+.extensions-list {
+    padding: 8px 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.ext-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.ext-item:hover {
+    background: var(--bg-hover);
+}
+
+.ext-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.ext-blue   { background: rgba(0, 122, 204, 0.2);  color: #4fc1ff; }
+.ext-orange { background: rgba(229, 77, 21, 0.2);   color: #e8b67a; }
+.ext-green  { background: rgba(78, 201, 176, 0.2);  color: #4ec9b0; }
+.ext-purple { background: rgba(97, 175, 239, 0.2);  color: #61afef; }
+.ext-yellow { background: rgba(229, 192, 123, 0.2); color: #e5c07b; }
+.ext-red    { background: rgba(224, 108, 117, 0.2); color: #e06c75; }
+
+.ext-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.ext-name {
+    font-size: 12px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ext-publisher {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.ext-badge {
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.ext-badge.installed {
+    color: #4ec9b0;
+}

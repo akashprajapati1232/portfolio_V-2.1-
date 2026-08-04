@@ -1,0 +1,27 @@
+{
+  "programming": [
+    { "name": "JavaScript", "level": 85, "icon": "fab fa-js" },
+    { "name": "Python",     "level": 85, "icon": "fab fa-python" },
+    { "name": "C",          "level": 80, "icon": "fas fa-copyright" },
+    { "name": "C++",        "level": 75, "icon": "fas fa-code" },
+    { "name": "PHP",        "level": 65, "icon": "fab fa-php" }
+  ],
+  "web": [
+    { "name": "HTML5",     "level": 95, "icon": "fab fa-html5" },
+    { "name": "CSS3",      "level": 90, "icon": "fab fa-css3-alt" },
+    { "name": "React",     "level": 80, "icon": "fab fa-react" },
+    { "name": "Node.js",   "level": 75, "icon": "fab fa-node-js" },
+    { "name": "WordPress", "level": 85, "icon": "fab fa-wordpress" }
+  ],
+  "database": [
+    { "name": "MySQL",   "level": 85, "icon": "fas fa-database" },
+    { "name": "MongoDB", "level": 70, "icon": "fas fa-leaf" }
+  ],
+  "tools": [
+    { "name": "Git",       "level": 85, "icon": "fab fa-git-alt" },
+    { "name": "GitHub",    "level": 90, "icon": "fab fa-github" },
+    { "name": "Canva",     "level": 80, "icon": "fas fa-palette" },
+    { "name": "Photoshop", "level": 75, "icon": "fas fa-image" },
+    { "name": "VS Code",   "level": 95, "icon": "fas fa-code" }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Web Development Fundamentals",
+    "body": "Online Certification",
+    "icon": "fab fa-html5",
+    "desc": "HTML, CSS, and JavaScript basics"
+  },
+  {
+    "name": "JavaScript Programming",
+    "body": "Online Certification",
+    "icon": "fab fa-js",
+    "desc": "Advanced concepts and frameworks"
+  },
+  {
+    "name": "Python Programming",
+    "body": "Online Certification",
+    "icon": "fab fa-python",
+    "desc": "Core concepts and applications"
+  },
+  {
+    "name": "ADCA Certification",
+    "body": "Computer Institute",
+    "icon": "fas fa-laptop-code",
+    "desc": "Advanced Diploma in Computer Applications"
+  }
+]

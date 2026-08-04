@@ -1,74 +1,9 @@
 /* =============================================================
-   Personal Portfolio – style.css
-   Global tokens, reset, typography, layout shell
+   main.css – Global reset, typography, layout shell, status bar
+   Depends on: variables.css (must be loaded first)
    ============================================================= */
 
-/* ── 1. CSS Custom Properties (Personal dark theme colours) ── */
-:root {
-    /* Background layers */
-    --bg-editor:          #1e1e1e;
-    --bg-sidebar:         #252526;
-    --bg-activity-bar:    #333333;
-    --bg-title-bar:       #3c3c3c;
-    --bg-tab-active:      #1e1e1e;
-    --bg-tab-inactive:    #2d2d2d;
-    --bg-tab-hover:       #2a2d2e;
-    --bg-status-bar:      #007acc;
-    --bg-terminal:        #1e1e1e;
-    --bg-panel:           #252526;
-    --bg-hover:           #2a2d2e;
-    --bg-selected:        #094771;
-    --bg-highlight:       #0e639c;
-    --bg-input:           #3c3c3c;
-
-    /* Text colours */
-    --text-primary:       #d4d4d4;
-    --text-secondary:     #9d9d9d;
-    --text-muted:         #6d6d6d;
-    --text-active:        #ffffff;
-    --text-link:          #4ec9b0;
-    --text-accent:        #569cd6;
-    --text-warning:       #ce9178;
-    --text-success:       #6a9955;
-    --text-error:         #f44747;
-    --text-keyword:       #569cd6;
-    --text-string:        #ce9178;
-    --text-number:        #b5cea8;
-    --text-comment:       #6a9955;
-    --text-function:      #dcdcaa;
-    --text-variable:      #9cdcfe;
-    --text-type:          #4ec9b0;
-    --text-operator:      #d4d4d4;
-
-    /* Borders */
-    --border-panel:       #454545;
-    --border-tab:         #252526;
-    --border-input:       #6b6b6b;
-
-    /* Fonts */
-    --font-ui:            'Inter', 'Segoe UI', system-ui, sans-serif;
-    --font-code:          'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-
-    /* Sizes */
-    --activity-bar-width: 48px;
-    --sidebar-width:      260px;
-    --status-bar-height:  22px;
-    --title-bar-height:   30px;
-    --tab-bar-height:     35px;
-    --breadcrumb-height:  22px;
-    --terminal-height:    220px;
-
-    /* Transitions */
-    --transition-fast:    150ms ease;
-    --transition-med:     250ms ease;
-    --transition-slow:    400ms ease;
-
-    /* Scrollbar */
-    --scrollbar-thumb:    #424242;
-    --scrollbar-track:    transparent;
-}
-
-/* ── 2. Reset ── */
+/* ── 1. Reset ── */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -114,7 +49,7 @@ img {
     display: block;
 }
 
-/* ── 3. Scrollbars ── */
+/* ── 2. Scrollbars ── */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -133,7 +68,7 @@ img {
     background: #535353;
 }
 
-/* ── 4. Personal App Shell ── */
+/* ── 3. VS Code App Shell ── */
 #vscode-app {
     display: flex;
     flex-direction: column;
@@ -143,7 +78,7 @@ img {
     position: relative;
 }
 
-/* ── 5. Title Bar ── */
+/* ── 4. Title Bar ── */
 #title-bar {
     display: flex;
     align-items: center;
@@ -174,7 +109,7 @@ img {
     display: inline-block;
 }
 
-.wc-close   { background: #ff5f57; }
+.wc-close    { background: #ff5f57; }
 .wc-minimize { background: #febc2e; }
 .wc-maximize { background: #28c840; }
 
@@ -182,7 +117,7 @@ img {
     filter: brightness(1.2);
 }
 
-/* Menu Bar */
+/* ── Menu Bar ── */
 .menu-bar {
     display: flex;
     align-items: center;
@@ -208,7 +143,7 @@ img {
     background: rgba(255,255,255,0.1);
 }
 
-/* Title center */
+/* ── Title center ── */
 .title-bar-title {
     position: absolute;
     left: 50%;
@@ -230,7 +165,7 @@ img {
     color: var(--text-muted);
 }
 
-/* Title bar right */
+/* ── Title bar right controls ── */
 .title-bar-right {
     display: flex;
     align-items: center;
@@ -273,7 +208,7 @@ img {
     display: block;
 }
 
-/* ── 6. Main Layout ── */
+/* ── 5. Main Layout ── */
 #main-layout {
     display: flex;
     flex: 1;
@@ -281,7 +216,7 @@ img {
     position: relative;
 }
 
-/* ── 7. Status Bar ── */
+/* ── 6. Status Bar ── */
 #status-bar {
     display: flex;
     align-items: center;
@@ -337,7 +272,7 @@ img {
     text-decoration: underline;
 }
 
-/* ── 8. Utility Animations ── */
+/* ── 7. Utility Animations ── */
 @keyframes fadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -358,13 +293,13 @@ img {
     50%       { opacity: 0; }
 }
 
-/* ── 9. Focus Styles (Accessibility) ── */
+/* ── 8. Focus Styles (Accessibility) ── */
 :focus-visible {
     outline: 1px solid #007acc;
     outline-offset: -1px;
 }
 
-/* ── 10. Selection ── */
+/* ── 9. Selection ── */
 ::selection {
     background: rgba(0, 122, 204, 0.35);
     color: var(--text-active);

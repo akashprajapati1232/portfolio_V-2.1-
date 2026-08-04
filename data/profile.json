@@ -1,0 +1,27 @@
+{
+  "name": "Akash Prajapati",
+  "title": "BCA Student & Full-Stack Web Developer",
+  "location": "Ghazipur, Uttar Pradesh, India",
+  "email": "akashprajapati1232@gmail.com",
+  "phone": "+91 8115201583",
+  "github": "https://github.com/akashprajapati1232",
+  "linkedin": "https://www.linkedin.com/in/akash-prajapati1232/",
+  "website": "https://akashprajapati.rf.gd/",
+  "bio": [
+    "Aspiring web and software developer with a passion for creating innovative digital solutions. Currently pursuing a Bachelor's degree in Computer Applications, I aim to leverage my technical skills and creativity to develop user-friendly applications that solve real-world problems.",
+    "I specialize in frontend development with a growing expertise in backend technologies. My goal is to create seamless, responsive, and accessible web experiences that make a positive impact."
+  ],
+  "stats": {
+    "projects": "7+",
+    "certifications": "5+",
+    "experience": "2+ yrs"
+  },
+  "avatar": "assets/images/akash-prajapati.jpg",
+  "roles": [
+    "Web Developer",
+    "Software Developer",
+    "BCA Student",
+    "UI/UX Enthusiast",
+    "Open Source Contributor"
+  ]
+}

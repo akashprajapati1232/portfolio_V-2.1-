@@ -22,35 +22,31 @@
     <meta property="og:title" content="Akash Prajapati | Personal Portfolio">
     <meta property="og:description"
         content="Akash Prajapati's developer portfolio styled as a Personal IDE. BCA student and full-stack web developer.">
-    <meta property="og:image" content="images/akash-prajapati.jpg">
+    <meta property="og:image" content="assets/images/akash-prajapati.jpg">
     <meta property="og:site_name" content="Akash Prajapati Portfolio">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Akash Prajapati | Personal Portfolio">
     <meta name="twitter:description" content="Akash Prajapati's developer portfolio styled as a Personal IDE.">
-    <meta name="twitter:image" content="images/akash-prajapati.jpg">
+    <meta name="twitter:image" content="assets/images/akash-prajapati.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/profile.png">
+    <link rel="icon" type="image/png" href="assets/images/profile.png">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Local Fonts (Fira Code + Inter — no CDN) -->
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        crossorigin="anonymous">
+    <!-- Local Font Awesome (no CDN) -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome/all.min.css">
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/sidebar.css">
+    <!-- CSS Files — modular, load order matters -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/explorer.css">
     <link rel="stylesheet" href="css/editor.css">
-    <link rel="stylesheet" href="css/tabs.css">
     <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/ai.css">
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- JSON-LD Structured Data -->
@@ -60,7 +56,7 @@
       "@type": "Person",
       "name": "Akash Prajapati",
       "url": "https://akashprajapati.rf.gd/",
-      "image": "https://akashprajapati.rf.gd/images/akash-prajapati.jpg",
+      "image": "https://akashprajapati.rf.gd/assets/images/akash-prajapati.jpg",
       "jobTitle": "Web Developer & BCA Student",
       "description": "Passionate BCA student and full-stack web developer specializing in React, Node.js, Python, and modern web technologies.",
       "email": "akashprajapati1232@gmail.com",
@@ -175,7 +171,7 @@
                         <i class="fas fa-cog"></i>
                     </button>
                     <button class="activity-btn profile-btn" title="Akash Prajapati" aria-label="Account">
-                        <img src="images/profile.png" alt="Akash Prajapati" class="profile-avatar">
+                        <img src="assets/images/profile.png" alt="Akash Prajapati" class="profile-avatar">
                     </button>
                 </div>
             </aside>
@@ -201,7 +197,7 @@
                     <div class="file-tree" id="file-tree" role="tree" aria-label="File explorer">
                         <div class="workspace-root">
                             <div class="tree-item root-item expanded" data-type="folder" role="treeitem"
-                                aria-expanded="true" aria-label="portfolio-vscode folder">
+                                aria-expanded="true" aria-label="portfolio-akash folder">
                                 <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                 <i class="fas fa-folder-open tree-icon folder-icon"></i>
                                 <span class="tree-label">PORTFOLIO-AKASH</span>
@@ -548,7 +544,7 @@
                     <a href="https://github.com/akashprajapati1232" target="_blank" rel="noopener noreferrer"
                         aria-label="GitHub Profile">akashprajapati1232</a>
                 </div>
-                <div class="status-item" title="Portfolio Version" aria-label="Portfolio version">v2.0.0</div>
+                <div class="status-item" title="Portfolio Version" aria-label="Portfolio version">v2.1.0</div>
             </div>
         </footer>
 
@@ -562,8 +558,9 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <!-- JavaScript Files -->
-    <script src="js/data.js"></script>
+    <!-- JavaScript Files — load order matters -->
+    <!-- dataLoader first: fetches JSON and sets window.PORTFOLIO_DATA -->
+    <script src="js/dataLoader.js"></script>
     <script src="js/markdown.js"></script>
     <script src="js/router.js"></script>
     <script src="js/explorer.js"></script>

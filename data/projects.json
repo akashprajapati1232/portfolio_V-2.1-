@@ -1,0 +1,79 @@
+[
+  {
+    "id": "imgninja",
+    "title": "ImgNinja – All-in-One Image & File Handling Tool",
+    "description": "A web application – an all-in-one online tool designed to simplify image and file handling with a modern, fast, and user-friendly interface. Features include image compression, conversion, resizing, and more.",
+    "tech": ["HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/akashprajapati1232/ImgNinja",
+    "live": "https://imagecompressor.42web.io/",
+    "image": "assets/images/ImgNinja/project-ImgNinja-01.png",
+    "year": "2024",
+    "type": "web"
+  },
+  {
+    "id": "snake",
+    "title": "Snake Game",
+    "description": "A classic Snake game built with HTML5 Canvas, CSS, and vanilla JavaScript. Features a modern design, high score tracking, multiple speed levels, and smooth animations.",
+    "tech": ["HTML", "CSS", "JavaScript", "Canvas API"],
+    "github": "https://github.com/akashprajapati1232/snake-game",
+    "live": "https://snakegame.free.nf/",
+    "image": "assets/images/snake-game/04-new-version-snake-game.png",
+    "year": "2024",
+    "type": "game"
+  },
+  {
+    "id": "portfolio",
+    "title": "Personal Portfolio Website",
+    "description": "My personal portfolio website showcasing my skills, projects, and achievements. Built with modern web technologies and featuring a clean, responsive design with interactive animations.",
+    "tech": ["HTML", "CSS", "JavaScript", "Responsive"],
+    "github": "https://github.com/akashprajapati1232/my-portfolio",
+    "live": "https://akashprajapati.rf.gd/",
+    "image": "assets/images/portfolio/01-portfolio.png",
+    "year": "2024",
+    "type": "other"
+  },
+  {
+    "id": "advocate",
+    "title": "Advocate Atul Pal",
+    "description": "Professional website for Advocate Atul Pal, featuring legal services information, case studies, and client consultation booking system. Built with modern web technologies for a professional appearance.",
+    "tech": ["HTML", "CSS", "JavaScript", "Legal"],
+    "github": "https://github.com/akashprajapati1232/Atul-Advocate",
+    "live": "#",
+    "image": "assets/images/advocateatulpal/advocate-atul-pal-01.png",
+    "year": "2025",
+    "type": "web"
+  },
+  {
+    "id": "gptbca",
+    "title": "GPT for BCA",
+    "description": "An AI-powered chatbot specifically designed for BCA students. Provides assistance with programming concepts, coursework help, and academic guidance using advanced language models.",
+    "tech": ["HTML", "CSS", "JavaScript", "AI"],
+    "github": "https://github.com/akashprajapati1232/GPT-for-BCA",
+    "live": "#",
+    "image": "assets/images/gptforbca/gpt-for-bca-01.png",
+    "year": "2025",
+    "type": "web"
+  },
+  {
+    "id": "chatbot",
+    "title": "My College Chatbot | BITbot Assistant",
+    "description": "An intelligent chatbot assistant designed for college students. BITbot helps with college-related queries, course information, campus navigation, and provides instant support for students.",
+    "tech": ["HTML", "CSS", "JavaScript", "Chatbot"],
+    "github": "https://github.com/akashprajapati1232/My-Collage-Chatbot",
+    "live": "#",
+    "image": "assets/images/clgchatbot/clg-chat-bot-01.png",
+    "year": "2025",
+    "type": "web"
+  },
+  {
+    "id": "brandify",
+    "title": "Brandify Creator | Influencer Marketing Agency",
+    "description": "A modern influencer marketing agency platform connecting brands with content creators. Features include campaign management, analytics, and collaboration tools for effective brand partnerships.",
+    "tech": ["HTML", "CSS", "JavaScript", "Marketing"],
+    "github": "https://github.com/akashprajapati1232/brandify-creator",
+    "live": "https://brandifycreator.42web.io/",
+    "image": "assets/images/brandifycreator/brandify-creator-01.png",
+    "year": "2025",
+    "type": "web"
+  }
+]

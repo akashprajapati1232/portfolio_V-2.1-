@@ -1,479 +1,258 @@
-/*
-* Responsive Stylesheet for Akash Prajapati's Portfolio
-* Author: Akash Prajapati
-* Version: 1.0
-*/
+/* =============================================================
+   responsive.css – Responsive breakpoints and mobile layout
+   ============================================================= */
 
-/* ===== LARGE DEVICES (Desktops, less than 1200px) ===== */
-@media (max-width: 1199.98px) {
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-
-    .hero-content h2 {
-        font-size: 1.1rem;
-    }
-
-    .typed-text {
-        min-width: 15ch;
-    }
-
-    #jellyfish-container {
-        max-width: 550px;
-        height: 550px;
-    }
-
-    .section-header h2 {
-        font-size: 2.2rem;
-    }
+/* ── Mobile hamburger (hidden on desktop) ── */
+#mobile-hamburger {
+    display: none;
+    position: fixed;
+    bottom: 36px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    background: #007acc;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 16px;
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    transition: background var(--transition-fast), transform var(--transition-fast);
+    cursor: pointer;
+    border: none;
 }
 
-/* ===== MEDIUM DEVICES (Tablets, less than 992px) ===== */
-@media (max-width: 991.98px) {
-    .hero .container {
-        flex-direction: column;
-        text-align: center;
+#mobile-hamburger:hover {
+    background: #0086d8;
+    transform: scale(1.05);
+}
+
+/* Mobile overlay */
+#mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 150;
+    opacity: 0;
+    transition: opacity var(--transition-med);
+    pointer-events: none;
+}
+
+#mobile-overlay.visible {
+    pointer-events: all;
+    opacity: 1;
+}
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 220px;
     }
 
-    .hero-content {
-        margin-bottom: 50px;
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
 
-    .hero-content p {
-        margin: 0 auto 30px;
-    }
-
-    .cta-buttons {
-        justify-content: center;
-    }
-
-    #jellyfish-container {
-        max-width: 500px;
-        height: 500px;
-    }
-
-    .about-wrapper {
+    .contact-card {
         grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .profile-card {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .skill-item {
-        width: calc(50% - 10px);
-    }
-
-    .projects-content {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 }
 
-/* ===== SMALL DEVICES (Landscape phones, less than 768px) ===== */
-@media (max-width: 767.98px) {
-    .nav-container {
+/* ── Small Tablet / Large Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+    :root {
+        --activity-bar-width: 44px;
+        --sidebar-width: 240px;
+        --terminal-height: 180px;
+    }
+
+    /* Show hamburger */
+    #mobile-hamburger {
+        display: flex;
+    }
+
+    /* Sidebar: off-canvas on mobile */
+    #sidebar {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 80%;
+        left: var(--activity-bar-width);
         height: 100vh;
-        background: rgba(10, 15, 30, 0.98);
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-        z-index: 1000;
-        padding: 2rem;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        z-index: 200;
+        transform: translateX(calc(-100% - var(--activity-bar-width)));
+        transition: transform var(--transition-med);
+        width: var(--sidebar-width) !important;
     }
 
-    .nav-container.active {
-        right: 0;
+    #sidebar.mobile-open {
+        transform: translateX(0);
     }
 
-    .nav-links {
-        flex-direction: column;
-        width: 100%;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-
-    .nav-link {
-        width: 100%;
-        text-align: center;
-        padding: 1rem;
-        font-size: 1.1rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .about-tabs {
-        flex-direction: column;
-    }
-
-    .tab-btn {
-        padding: 12px;
-    }
-
-    .tab-content {
-        padding: 20px;
-    }
-
-    .cert-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Social nav styles removed */
-
-    .hamburger {
+    /* Overlay visible when sidebar open */
+    #mobile-overlay {
         display: block;
-        z-index: 1001;
     }
 
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content h2 {
-        font-size: 1rem;
-    }
-
-    .typed-text {
-        min-width: 12ch;
-        padding-right: 5px;
-    }
-
-    .section-header h2 {
-        font-size: 2rem;
-    }
-
-    /* Skills Section Responsive */
-    .skills-tabs {
-        gap: 8px;
-    }
-
-    .skill-tab {
-        padding: 8px 15px;
-        font-size: 0.8rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 20px;
-    }
-
-    .skill-card-inner {
-        padding: 20px 15px;
-    }
-
-    .skill-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-
-    /* Projects Section Responsive */
-    .projects-filter {
-        gap: 8px;
-    }
-
-    .filter-btn {
-        padding: 8px 15px;
-        font-size: 0.8rem;
-    }
-
-    .projects-showcase {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    /* Achievement styles moved to achievements.css */
-
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contact-item i {
-        margin-bottom: 10px;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-}
-
-/* ===== EXTRA SMALL DEVICES (Portrait phones, less than 576px) ===== */
-@media (max-width: 575.98px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .typed-text {
-        min-width: 10ch;
-        font-size: 0.9rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    #jellyfish-container {
-        max-width: 380px;
-        height: 380px;
-    }
-
-    .section-header h2 {
-        font-size: 1.8rem;
-    }
-
-    /* Skills Section Extra Small */
-    .skills-tabs {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .skill-tab {
-        width: 100%;
-        max-width: 200px;
-        text-align: center;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Projects Section Extra Small */
-    .projects-filter {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .projects-filter::before,
-    .projects-filter::after {
+    /* Menu bar: hide some items on small screens */
+    .menu-bar .menu-item:nth-child(n+5) {
         display: none;
     }
 
-    .filter-btn {
-        width: 100%;
-        max-width: 200px;
+    /* Title */
+    .title-bar-title {
+        display: none;
+    }
+
+    /* Editor tabs: allow horizontal scroll */
+    #tabs-list {
+        overflow-x: auto;
+    }
+
+    /* Readme hero: stack vertically */
+    .readme-hero {
+        flex-direction: column;
         text-align: center;
-        padding: 8px 15px;
-        font-size: 0.8rem;
+        padding: 20px;
+        gap: 16px;
     }
 
-    .projects-showcase {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .project-card {
-        max-width: 320px;
-        margin: 0 auto;
-        transform: none !important;
-    }
-
-    .project-card:hover {
-        transform: none !important;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .project-image {
-        height: 160px;
-    }
-
-    .project-img {
-        object-position: center top;
-    }
-
-    .project-content {
-        padding: 15px;
-    }
-
-    .project-tags {
+    .readme-info .location {
         justify-content: center;
-        gap: 6px;
-        margin-bottom: 10px;
     }
 
-    .project-tag {
-        padding: 4px 8px;
-        font-size: 0.7rem;
-    }
-
-    .project-title {
-        font-size: 1.1rem;
-        text-align: center;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 8px;
-    }
-
-    .project-title::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .project-description {
-        text-align: center;
-        font-size: 0.85rem;
-        margin-bottom: 15px;
-        line-height: 1.5;
-    }
-
-    .project-footer {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-        padding-top: 12px;
-    }
-
-    .project-date {
-        font-size: 0.8rem;
-    }
-
-    .project-details-btn {
-        width: 100%;
-        text-align: center;
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    }
-
-    .gallery-img {
-        height: 130px;
-    }
-
-    .project-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .project-links .btn {
-        width: 100%;
-    }
-
-    /* Achievement responsive styles moved to achievements.css */
-
-    .contact-content {
+    /* Projects grid: 1 column */
+    .projects-grid {
         grid-template-columns: 1fr;
     }
 
-    .form-group input,
-    .form-group textarea {
-        padding: 12px;
+    /* Skills list: 2 cols */
+    .skills-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Contact card: 1 column */
+    .contact-card {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stats row: wrap */
+    .stats-row {
+        gap: 8px;
+    }
+
+    .stat-chip {
+        padding: 10px 14px;
+    }
+
+    /* Terminal height smaller */
+    #terminal-panel.visible {
+        height: var(--terminal-height);
+    }
+
+    /* Editor font smaller */
+    #editor-content {
+        font-size: 12px;
+        padding: 14px 16px;
+    }
+
+    #line-numbers {
+        font-size: 11px;
+        min-width: 38px;
     }
 }
 
-/* ===== ANIMATIONS FOR RESPONSIVE ===== */
-@media (max-width: 767.98px) {
-    .card-inner {
-        height: 300px;
+/* ── Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+    :root {
+        --activity-bar-width: 40px;
+        --title-bar-height: 28px;
+        --tab-bar-height: 32px;
+        --status-bar-height: 20px;
     }
 
-    .profile-img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-placeholder {
-        font-size: 2.5rem;
-    }
-
-    .social-icons a {
+    .activity-btn {
         width: 40px;
         height: 40px;
-        font-size: 1rem;
+        font-size: 17px;
+    }
+
+    /* Hide activity bar tooltips on touch */
+    .activity-btn::after {
+        display: none;
+    }
+
+    .menu-item {
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+
+    /* Hide menu items 3+ */
+    .menu-bar .menu-item:nth-child(n+4) {
+        display: none;
+    }
+
+    .editor-tab {
+        min-width: 80px;
+        padding: 0 10px;
+    }
+
+    .tab-label {
+        font-size: 12px;
+    }
+
+    .skills-list {
+        grid-template-columns: 1fr;
+    }
+
+    .badges-row {
+        gap: 5px;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    /* Status bar: fewer items */
+    .status-right .status-item:not(.status-lang):not(.status-github) {
+        display: none;
     }
 }
 
-/* Small Mobile Devices (375px - 425px) */
-@media (min-width: 376px) and (max-width: 425px) {
-    .project-card {
-        max-width: 300px;
+/* ── Very small screens (≤ 360px) ── */
+@media (max-width: 360px) {
+    .menu-bar .menu-item:nth-child(n+3) {
+        display: none;
     }
 
-    .project-image {
-        height: 150px;
+    .readme-avatar {
+        width: 80px;
+        height: 80px;
     }
 
-    .project-img {
-        object-position: center top;
-        max-height: 150px;
-    }
-
-    .project-content {
-        padding: 15px;
+    .readme-info h1 {
+        font-size: 20px;
     }
 }
 
-/* Extra Small Devices (iPhone SE, etc.) */
-@media (max-width: 375px) {
-    .project-card {
-        max-width: 280px;
+/* ── Print styles ── */
+@media print {
+    #activity-bar,
+    #sidebar,
+    #tabs-bar,
+    #terminal-panel,
+    #status-bar,
+    #title-bar {
+        display: none !important;
     }
 
-    .project-image {
-        height: 140px;
+    #editor-content {
+        padding: 0;
+        font-size: 12pt;
     }
 
-    .project-img {
-        object-position: center top;
-        max-height: 140px;
-    }
-
-    .project-content {
-        padding: 12px;
-    }
-
-    .project-title {
-        font-size: 1rem;
-    }
-
-    .project-description {
-        font-size: 0.8rem;
-        margin-bottom: 12px;
-    }
-
-    .project-tag {
-        padding: 3px 6px;
-        font-size: 0.65rem;
-    }
-
-    .project-details-btn {
-        padding: 5px 10px;
-        font-size: 0.75rem;
-    }
-
-    .project-date {
-        font-size: 0.75rem;
-    }
-}
-
-/* ===== PREFERS-REDUCED-MOTION ===== */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+    #editor-wrap {
+        overflow: visible;
     }
 }

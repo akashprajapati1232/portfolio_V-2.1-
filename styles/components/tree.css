@@ -1,65 +1,76 @@
 /* =============================================================
-   tree.css – File tree components
+   tree.css – File tree component styles (VS Code authentic)
    Depends on: variables.css
    ============================================================= */
 
-/* ── File Tree ── */
+/* ── File Tree container ── */
 .file-tree {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-bottom: 20px;
-}
-
-.workspace-root {
-    padding-top: 4px;
-}
-
-/* ── Tree items ── */
-.tree-item {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 2px 8px 2px 12px;
-    cursor: pointer;
-    border-radius: 0;
-    position: relative;
-    font-size: 13px;
-    color: var(--text-primary);
-    transition: background var(--transition-fast);
-    min-height: 22px;
+    padding-bottom: 24px;
     user-select: none;
 }
 
+.workspace-root {
+    padding-top: 2px;
+}
+
+/* ── All tree rows (shared base) ── */
+.tree-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 0 1px 8px;
+    cursor: pointer;
+    position: relative;
+    font-size: 13px;
+    color: var(--text-primary);
+    transition: background-color var(--transition-fast);
+    min-height: 22px;
+    line-height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .tree-item:hover {
-    background: var(--bg-hover);
+    background-color: var(--bg-hover);
 }
 
 .tree-item.active-file {
-    background: var(--bg-selected);
+    background-color: var(--bg-selected);
     color: var(--text-active);
 }
 
-.tree-item.focused-file {
-    outline: 1px solid #007acc;
-    outline-offset: -1px;
+.tree-item.active-file::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #007acc;
 }
 
-/* ── Root item (workspace name) ── */
+/* ── Root workspace label (PORTFOLIO-AKASH) ── */
 .root-item {
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--text-primary);
+    letter-spacing: 0.8px;
+    color: var(--text-secondary);
     text-transform: uppercase;
-    padding: 6px 8px;
+    padding: 5px 8px 5px 12px;
     cursor: default;
+    gap: 4px;
+    min-height: 24px;
 }
 
-/* ── Indented children ── */
-.tree-children {
-    padding-left: 16px;
+.root-item:hover {
+    background-color: transparent;
 }
+
+/* ── Tree children container (indentation level) ── */
+/* No extra padding; indentation is set per-item via inline padding-left */
 
 .folder-children {
     display: block;
@@ -69,33 +80,47 @@
     display: none;
 }
 
-/* ── Tree arrow ── */
+/* ── Expand/collapse arrow ── */
 .tree-arrow {
     width: 16px;
-    height: 16px;
+    min-width: 16px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     font-size: 10px;
-    color: var(--text-secondary);
-    transition: transform var(--transition-fast);
+    color: var(--text-muted);
+    transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
+.tree-item:hover .tree-arrow {
+    color: var(--text-secondary);
+}
+
+/* Rotate arrow when folder is collapsed */
 .tree-item.collapsed > .tree-arrow {
     transform: rotate(-90deg);
 }
 
-/* ── Tree icon ── */
+/* File items have no arrow — keep space for alignment */
+.file-item .tree-arrow {
+    visibility: hidden;
+}
+
+/* ── Tree icon (file or folder) ── */
 .tree-icon {
     font-size: 14px;
     flex-shrink: 0;
     width: 16px;
+    min-width: 16px;
     text-align: center;
+    line-height: 1;
 }
 
+/* Folder icon gets VS Code golden yellow */
 .folder-icon {
-    color: #dcb862 !important;
+    color: #e8c764 !important;
 }
 
 /* ── Tree label ── */
@@ -105,9 +130,23 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 13px;
+    font-family: var(--font-ui);
+    margin-left: 2px;
 }
 
-/* ── File items don't have arrows ── */
-.file-item .tree-arrow {
-    visibility: hidden;
+/* Root item label is bold */
+.root-item .tree-label {
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+}
+
+/* Dimmed text when sidebar action buttons appear on hover */
+.file-tree .tree-item:hover .tree-label {
+    color: var(--text-primary);
+}
+
+/* Active file label bold */
+.tree-item.active-file .tree-label {
+    font-weight: 500;
 }

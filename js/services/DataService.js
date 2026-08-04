@@ -9,7 +9,7 @@ class DataService {
         this.data = null;
         this.fileRegistry = null;
         this.DATA_FILES = {
-            profile:          'data/profile.json',
+            profile:          'about/profile.json',
             projects:         'data/projects.json',
             skills:           'data/skills.json',
             education:        'data/education.json',
@@ -56,12 +56,12 @@ class DataService {
             };
 
             this.fileRegistry = {
-                'profile.json': { type: 'file', lang: 'json', icon: 'fas fa-file-code', iconColor: '#cbcb41', folder: 'about' },
-                'projects.md':  { lang: 'markdown', folder: 'projects',   icon: 'fas fa-file-alt',  iconColor: '#519aba' },
-                'skills.md':    { lang: 'markdown', folder: 'skills',     icon: 'fas fa-file-alt',  iconColor: '#519aba' },
-                'work.md':      { lang: 'markdown', folder: 'experience', icon: 'fas fa-file-alt',  iconColor: '#519aba' },
-                'socials.json': { lang: 'json',     folder: 'contact',    icon: 'fas fa-file-code', iconColor: '#cbcb41' },
-                'LICENSE.txt':  { lang: 'text',     folder: 'license',    icon: 'fas fa-file-alt',  iconColor: '#8a8a8a' }
+                'README.md':          { lang: 'markdown', folder: 'about',     icon: 'fas fa-file-alt',  iconColor: '#519aba' },
+                'profile.json':       { lang: 'json',     folder: 'about',     icon: 'fas fa-file-code', iconColor: '#cbcb41' },
+                'education.md':       { lang: 'markdown', folder: 'Education', icon: 'fas fa-file-alt',  iconColor: '#519aba' },
+                'certificates.json':  { lang: 'json',     folder: 'Education', icon: 'fas fa-file-code', iconColor: '#cbcb41' },
+                'skills.json':        { lang: 'json',     folder: 'Skills',    icon: 'fas fa-file-code', iconColor: '#cbcb41' },
+                'projects.md':        { lang: 'markdown', folder: 'OurWork',   icon: 'fas fa-file-alt',  iconColor: '#519aba' },
             };
 
             eventBus.emit('portfolioDataReady', this.data);

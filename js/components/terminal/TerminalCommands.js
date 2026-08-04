@@ -283,8 +283,7 @@ class TerminalCommands {
 
     cmdLs() {
         return [
-            { text: 'about/      projects/    skills/     experience/    contact/    license/', cls: 'term-info' },
-            { text: 'README.md   profile.json projects.md skills.md   work.md   socials.json', cls: '' },
+            { text: 'about/      Education/    Skills/     OurWork/', cls: 'term-info' }
         ];
     }
 

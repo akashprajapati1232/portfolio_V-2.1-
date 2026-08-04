@@ -6,6 +6,107 @@
 
 import { eventBus } from '../../core/EventBus.js';
 
+// ── File-type icon map ────────────────────────────────────────────────────────
+// Maps a file extension (or exact name) to its VS Code–style icon class + color.
+// Uses Material-style icon naming aligned with Font Awesome 6.
+const FILE_ICON_MAP = {
+    // Extension-based
+    'json':   { cls: 'fas fa-file-code',   color: '#cbcb41' },  // JSON: yellow
+    'md':     { cls: 'fas fa-file-alt',    color: '#519aba' },  // Markdown: blue
+    'txt':    { cls: 'fas fa-file-lines',  color: '#8a8a8a' },  // Text: gray
+    'js':     { cls: 'fas fa-file-code',   color: '#e5c07b' },  // JS: amber
+    'ts':     { cls: 'fas fa-file-code',   color: '#3178c6' },  // TS: blue
+    'tsx':    { cls: 'fas fa-file-code',   color: '#61afef' },  // TSX: cyan
+    'html':   { cls: 'fas fa-file-code',   color: '#e06c75' },  // HTML: red
+    'css':    { cls: 'fas fa-file-code',   color: '#61afef' },  // CSS: light-blue
+    'yaml':   { cls: 'fas fa-file-code',   color: '#6a9955' },  // YAML: green
+    'xml':    { cls: 'fas fa-file-code',   color: '#e8b67a' },  // XML: orange
+    'py':     { cls: 'fas fa-file-code',   color: '#4ec9b0' },  // Python: teal
+    // Fallback
+    'default': { cls: 'fas fa-file',       color: '#8a8a8a' }
+};
+
+function getFileIcon(fileName) {
+    const ext = (fileName.split('.').pop() || '').toLowerCase();
+    return FILE_ICON_MAP[ext] || FILE_ICON_MAP['default'];
+}
+
+// ── Tree structure definition ─────────────────────────────────────────────────
+// Defines the visual hierarchy rendered in the explorer panel.
+// 'key' is used as data-file to open the editor pane.
+const TREE = [
+    {
+        type: 'folder', name: 'about', id: 'about',
+        children: [
+            { type: 'file', name: 'README.md',     key: 'README.md'     },
+            { type: 'file', name: 'profile.json',  key: 'profile.json'  },
+        ]
+    },
+    {
+        type: 'folder', name: 'Education', id: 'education',
+        children: [
+            { type: 'file', name: 'education.md',       key: 'education.md'       },
+            { type: 'file', name: 'certificates.json',  key: 'certificates.json'  },
+        ]
+    },
+    {
+        type: 'folder', name: 'Skills', id: 'skills',
+        children: [
+            { type: 'file', name: 'skills.json', key: 'skills.json' },
+        ]
+    },
+    {
+        type: 'folder', name: 'OurWork', id: 'ourwork',
+        children: [
+            { type: 'file', name: 'projects.md', key: 'projects.md' },
+        ]
+    },
+];
+
+// ── HTML generators ────────────────────────────────────────────────────────────
+
+function renderFile(node, depth = 1) {
+    const icon = getFileIcon(node.name);
+    const indent = depth * 16;
+    return `
+        <div class="tree-item file-item" data-file="${node.key}"
+            role="treeitem" aria-label="${node.name}" tabindex="0"
+            style="padding-left:${indent + 8}px">
+            <span class="tree-arrow" aria-hidden="true"></span>
+            <i class="${icon.cls} tree-icon" style="color:${icon.color}; width:16px; text-align:center; flex-shrink:0; font-size:14px;"></i>
+            <span class="tree-label">${node.name}</span>
+        </div>`;
+}
+
+function renderFolder(node, depth = 1) {
+    const indent = depth * 16;
+    const childrenHtml = (node.children || [])
+        .map(child => child.type === 'folder'
+            ? renderFolder(child, depth + 1)
+            : renderFile(child, depth + 1))
+        .join('');
+
+    return `
+        <div class="tree-item folder-item expanded" data-type="folder" data-folder="${node.id}"
+            role="treeitem" aria-expanded="true" aria-label="${node.name} folder" tabindex="0"
+            style="padding-left:${indent}px">
+            <span class="tree-arrow"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
+            <i class="fas fa-folder-open tree-icon folder-icon" aria-hidden="true"></i>
+            <span class="tree-label">${node.name}</span>
+        </div>
+        <div class="tree-children folder-children" data-parent="${node.id}">
+            ${childrenHtml}
+        </div>`;
+}
+
+function renderTree() {
+    return TREE.map(node =>
+        node.type === 'folder' ? renderFolder(node, 1) : renderFile(node, 0)
+    ).join('\n');
+}
+
+// ── Explorer component ─────────────────────────────────────────────────────────
+
 class Explorer {
     constructor() {
         this.currentFile = null;
@@ -19,118 +120,37 @@ class Explorer {
                     <div class="sidebar-header">
                         <span class="sidebar-title">EXPLORER</span>
                         <div class="sidebar-actions">
-                            <button class="sidebar-action-btn" title="New File" aria-label="New File"><i
-                                    class="fas fa-file-plus"></i></button>
-                            <button class="sidebar-action-btn" title="New Folder" aria-label="New Folder"><i
-                                    class="fas fa-folder-plus"></i></button>
-                            <button class="sidebar-action-btn" title="Refresh" aria-label="Refresh"><i
-                                    class="fas fa-sync-alt"></i></button>
-                            <button class="sidebar-action-btn" title="Collapse All" id="collapse-all-btn"
-                                aria-label="Collapse All"><i class="fas fa-compress-alt"></i></button>
+                            <button class="sidebar-action-btn" title="New File" aria-label="New File">
+                                <i class="fas fa-file-medical" aria-hidden="true"></i>
+                            </button>
+                            <button class="sidebar-action-btn" title="New Folder" aria-label="New Folder">
+                                <i class="fas fa-folder-plus" aria-hidden="true"></i>
+                            </button>
+                            <button class="sidebar-action-btn" title="Refresh Explorer" aria-label="Refresh">
+                                <i class="fas fa-rotate-right" aria-hidden="true"></i>
+                            </button>
+                            <button class="sidebar-action-btn" id="collapse-all-btn" title="Collapse All" aria-label="Collapse All">
+                                <i class="fas fa-compress-alt" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
 
                     <!-- File Tree -->
                     <div class="file-tree" id="file-tree" role="tree" aria-label="File explorer">
                         <div class="workspace-root">
-                            <div class="tree-item root-item expanded" data-type="folder" role="treeitem"
-                                aria-expanded="true" aria-label="portfolio-akash folder">
-                                <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                <i class="fas fa-folder-open tree-icon folder-icon"></i>
+
+                            <!-- Root workspace label -->
+                            <div class="tree-item root-item" data-type="folder" role="treeitem"
+                                aria-label="portfolio-akash workspace">
+                                <span class="tree-arrow"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
                                 <span class="tree-label">PORTFOLIO-AKASH</span>
                             </div>
 
-                            <div class="tree-children">
-                                <!-- about/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="about"
-                                    role="treeitem" aria-expanded="true" aria-label="about folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">about</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="about">
-                                    <div class="tree-item file-item" data-file="profile.json" data-lang="json"
-                                        role="treeitem" aria-label="profile.json" tabindex="0">
-                                        <i class="fas fa-file-code tree-icon" style="color: #cbcb41;"></i>
-                                        <span class="tree-label">profile.json</span>
-                                    </div>
-                                </div>
-
-                                <!-- projects/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="projects"
-                                    role="treeitem" aria-expanded="true" aria-label="projects folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">projects</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="projects">
-                                    <div class="tree-item file-item" data-file="projects.md" data-lang="markdown"
-                                        role="treeitem" aria-label="projects.md" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
-                                        <span class="tree-label">projects.md</span>
-                                    </div>
-                                </div>
-
-                                <!-- skills/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="skills"
-                                    role="treeitem" aria-expanded="true" aria-label="skills folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">skills</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="skills">
-                                    <div class="tree-item file-item" data-file="skills.md" data-lang="markdown"
-                                        role="treeitem" aria-label="skills.md" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
-                                        <span class="tree-label">skills.md</span>
-                                    </div>
-                                </div>
-
-                                <!-- experience/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="experience"
-                                    role="treeitem" aria-expanded="true" aria-label="experience folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">experience</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="experience">
-                                    <div class="tree-item file-item" data-file="work.md" data-lang="markdown"
-                                        role="treeitem" aria-label="work.md" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
-                                        <span class="tree-label">work.md</span>
-                                    </div>
-                                </div>
-
-                                <!-- contact/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="contact"
-                                    role="treeitem" aria-expanded="true" aria-label="contact folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">contact</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="contact">
-                                    <div class="tree-item file-item" data-file="socials.json" data-lang="json"
-                                        role="treeitem" aria-label="socials.json" tabindex="0">
-                                        <i class="fas fa-file-code tree-icon" style="color: #cbcb41;"></i>
-                                        <span class="tree-label">socials.json</span>
-                                    </div>
-                                </div>
-
-                                <!-- license/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="license"
-                                    role="treeitem" aria-expanded="true" aria-label="license folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">license</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="license">
-                                    <div class="tree-item file-item" data-file="LICENSE.txt" data-lang="text"
-                                        role="treeitem" aria-label="LICENSE.txt" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #8a8a8a;"></i>
-                                        <span class="tree-label">LICENSE.txt</span>
-                                    </div>
-                                </div>
+                            <!-- Dynamic file tree -->
+                            <div class="tree-children" id="tree-root-children">
+                                ${renderTree()}
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -141,7 +161,7 @@ class Explorer {
                         <span class="sidebar-title">SEARCH</span>
                     </div>
                     <div class="static-panel-msg">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-search" aria-hidden="true"></i>
                         <p>Search functionality</p>
                         <small>Use Explorer to navigate files</small>
                     </div>
@@ -153,7 +173,7 @@ class Explorer {
                         <span class="sidebar-title">SOURCE CONTROL</span>
                     </div>
                     <div class="static-panel-msg">
-                        <i class="fas fa-code-branch"></i>
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
                         <p>No changes</p>
                         <small>main branch</small>
                     </div>
@@ -165,7 +185,7 @@ class Explorer {
                         <span class="sidebar-title">RUN AND DEBUG</span>
                     </div>
                     <div class="static-panel-msg">
-                        <i class="fas fa-play-circle"></i>
+                        <i class="fas fa-play-circle" aria-hidden="true"></i>
                         <p>Run and Debug</p>
                         <small>No configurations</small>
                     </div>
@@ -232,32 +252,35 @@ class Explorer {
     }
 
     init() {
-        const fileItems = document.querySelectorAll('.file-item');
-        fileItems.forEach(item => {
+        // Attach click / keyboard handlers to all rendered file items
+        document.querySelectorAll('.file-item').forEach(item => {
             item.addEventListener('click', this.handleFileClick.bind(this));
             item.addEventListener('keydown', this.handleFileKeydown.bind(this));
         });
 
-        const folderItems = document.querySelectorAll('.folder-item');
-        folderItems.forEach(item => {
+        // Attach expand/collapse to folder items
+        document.querySelectorAll('.folder-item').forEach(item => {
             item.addEventListener('click', this.handleFolderClick.bind(this));
             item.addEventListener('keydown', this.handleFolderKeydown.bind(this));
         });
 
+        // "Collapse All" toolbar button
         const collapseBtn = document.getElementById('collapse-all-btn');
         if (collapseBtn) {
             collapseBtn.addEventListener('click', this.collapseAll.bind(this));
         }
 
-        const activityBtns = document.querySelectorAll('.activity-btn[data-panel]');
-        activityBtns.forEach(btn => {
+        // Activity bar buttons switch sidebar panels
+        document.querySelectorAll('.activity-btn[data-panel]').forEach(btn => {
             btn.addEventListener('click', this.handleActivityClick.bind(this));
         });
 
-        // Listen for external file switches (e.g. from tab manager)
+        // Keep explorer highlight in sync with tab manager
         eventBus.on('file:switched', this.setActiveFile.bind(this));
         eventBus.on('file:closedAll', () => this.setActiveFile(null));
     }
+
+    // ── Event handlers ──────────────────────────────────────────────────────
 
     handleFileClick(e) {
         e.stopPropagation();
@@ -279,9 +302,7 @@ class Explorer {
         e.stopPropagation();
         const item = e.currentTarget;
         const folderName = item.getAttribute('data-folder');
-        const isExpanded = item.classList.contains('expanded');
-
-        if (isExpanded) {
+        if (item.classList.contains('expanded')) {
             this.collapseFolder(item, folderName);
         } else {
             this.expandFolder(item, folderName);
@@ -294,33 +315,29 @@ class Explorer {
             e.preventDefault();
             this.handleFolderClick(e);
         }
-        if (e.key === 'ArrowRight') {
-            if (!item.classList.contains('expanded')) {
-                this.handleFolderClick(e);
-            }
+        if (e.key === 'ArrowRight' && !item.classList.contains('expanded')) {
+            this.handleFolderClick(e);
         }
-        if (e.key === 'ArrowLeft') {
-            if (item.classList.contains('expanded')) {
-                this.handleFolderClick(e);
-            }
+        if (e.key === 'ArrowLeft' && item.classList.contains('expanded')) {
+            this.handleFolderClick(e);
         }
     }
+
+    // ── Expand / Collapse ───────────────────────────────────────────────────
 
     expandFolder(folderItem, folderName) {
         folderItem.classList.add('expanded');
         folderItem.classList.remove('collapsed');
         folderItem.setAttribute('aria-expanded', 'true');
 
-        const icon = folderItem.querySelector('.tree-icon');
+        const icon = folderItem.querySelector('.folder-icon');
         if (icon) {
             icon.classList.remove('fa-folder');
             icon.classList.add('fa-folder-open');
         }
 
         const children = document.querySelector(`.folder-children[data-parent="${folderName}"]`);
-        if (children) {
-            children.classList.remove('collapsed');
-        }
+        if (children) children.classList.remove('collapsed');
     }
 
     collapseFolder(folderItem, folderName) {
@@ -328,49 +345,43 @@ class Explorer {
         folderItem.classList.add('collapsed');
         folderItem.setAttribute('aria-expanded', 'false');
 
-        const icon = folderItem.querySelector('.tree-icon');
+        const icon = folderItem.querySelector('.folder-icon');
         if (icon) {
             icon.classList.remove('fa-folder-open');
             icon.classList.add('fa-folder');
         }
 
         const children = document.querySelector(`.folder-children[data-parent="${folderName}"]`);
-        if (children) {
-            children.classList.add('collapsed');
-        }
+        if (children) children.classList.add('collapsed');
     }
 
     collapseAll() {
-        const folderItems = document.querySelectorAll('.folder-item');
-        folderItems.forEach(item => {
+        document.querySelectorAll('.folder-item').forEach(item => {
             const folderName = item.getAttribute('data-folder');
-            if (folderName) {
-                this.collapseFolder(item, folderName);
-            }
+            if (folderName) this.collapseFolder(item, folderName);
         });
     }
 
-    setActiveFile(fileName) {
-        if (!fileName) {
-            this.currentFile = null;
-            document.querySelectorAll('.file-item').forEach(item => {
-                item.classList.remove('active-file');
-                item.removeAttribute('aria-selected');
-            });
-            return;
-        }
+    // ── Active file highlight ───────────────────────────────────────────────
 
-        this.currentFile = fileName;
+    setActiveFile(fileName) {
         document.querySelectorAll('.file-item').forEach(item => {
             item.classList.remove('active-file');
             item.removeAttribute('aria-selected');
         });
 
+        if (!fileName) {
+            this.currentFile = null;
+            return;
+        }
+
+        this.currentFile = fileName;
         const activeItem = document.querySelector(`.file-item[data-file="${fileName}"]`);
         if (activeItem) {
             activeItem.classList.add('active-file');
             activeItem.setAttribute('aria-selected', 'true');
 
+            // Auto-expand parent folder if collapsed
             const folderChildren = activeItem.closest('.folder-children');
             if (folderChildren) {
                 const folderName = folderChildren.getAttribute('data-parent');
@@ -382,10 +393,12 @@ class Explorer {
         }
     }
 
+    // ── Activity bar switching ──────────────────────────────────────────────
+
     handleActivityClick(e) {
         const btn = e.currentTarget;
         const panelId = btn.getAttribute('data-panel');
-        if (!panelId) return; // Ignore buttons without data-panel (e.g. Settings, Profile)
+        if (!panelId) return;
 
         const sidebar = document.getElementById('sidebar');
         const wasActive = btn.classList.contains('active');
@@ -395,7 +408,6 @@ class Explorer {
             b.setAttribute('aria-pressed', 'false');
         });
 
-        // Only remove active from panels inside the left sidebar, to avoid blanking Jarvis/right sidebar
         document.querySelectorAll('#sidebar .panel-content').forEach(panel => {
             panel.classList.remove('active');
         });
@@ -410,7 +422,6 @@ class Explorer {
             if (panel) {
                 panel.classList.add('active');
             } else {
-                // Fallback if panel is missing: re-activate explorer to avoid blank sidebar
                 const explorerPanel = document.getElementById('explorer-panel');
                 if (explorerPanel) explorerPanel.classList.add('active');
             }

@@ -20,14 +20,21 @@ import { statusBar } from './components/layout/StatusBar.js';
 class App {
     constructor() {
         this.CONTENT_BUILDERS = {
+            'README.md': this.buildReadme.bind(this),
             'profile.json': this.buildProfileJson.bind(this),
-            'projects.md':  this.buildProjects.bind(this),
-            'skills.md':    this.buildSkills.bind(this),
-            'work.md':      this.buildWork.bind(this),
-            'socials.json': this.buildSocialsJson.bind(this),
-            'LICENSE.txt':  this.buildLicense.bind(this)
+            'education.md': this.buildEducation.bind(this),
+            'certificates.json': this.buildCertificates.bind(this),
+            'skills.json': this.buildSkillsJson.bind(this),
+            'projects.md': this.buildProjects.bind(this),
         };
     }
+
+    // =========================================================================
+    // Initialization & Setup
+    // =========================================================================
+    // This section is responsible for rendering the initial UI structure,
+    // initializing all the child components, setting up event bus listeners,
+    // and opening the default set of files when the application boots up.
 
     init() {
         // Render the UI structure before components try to attach event listeners
@@ -72,7 +79,7 @@ class App {
         eventBus.on('file:switched', this.openFile.bind(this));
         eventBus.on('file:closedAll', this.showWelcome.bind(this));
 
-        const defaultFiles = ['profile.json', 'projects.md', 'skills.md', 'work.md', 'socials.json', 'LICENSE.txt'];
+        const defaultFiles = ['README.md', 'profile.json', 'education.md', 'certificates.json', 'skills.json', 'projects.md'];
         defaultFiles.forEach(file => eventBus.emit('file:open', file));
         eventBus.emit('file:open', 'profile.json');
 
@@ -83,6 +90,14 @@ class App {
             if (rightSidebar) rightSidebar.classList.remove('hidden');
         }, 50);
     }
+
+    // =========================================================================
+    // Editor UI State Management
+    // =========================================================================
+    // This section handles the state of the central editor area. It manages
+    // switching between different file panes, rendering the welcome screen,
+    // updating breadcrumbs based on the current file, and synchronizing the
+    // status bar indicators (like language mode and line/col numbers).
 
     openFile(fileName) {
         if (!fileName) {
@@ -129,7 +144,7 @@ class App {
         this.updateStatusPosition(1, 1);
 
         pane.onclick = () => this.updateStatusPosition(1, 1);
-        
+
         router.navigate(fileName);
     }
 
@@ -153,7 +168,7 @@ class App {
                             <div class="badges-row" style="justify-content:center;gap:8px;">
                                 <span class="badge badge-blue" onclick="window.openFile('README.md')" style="cursor:pointer;">📄 README.md</span>
                                 <span class="badge badge-yellow" onclick="window.openFile('projects.md')" style="cursor:pointer;">🚀 projects.md</span>
-                                <span class="badge badge-green" onclick="window.openFile('skills.md')" style="cursor:pointer;">🛠️ skills.md</span>
+                                <span class="badge badge-green" onclick="window.openFile('skills.json')" style="cursor:pointer;">🛠️ skills.json</span>
                             </div>
                         </div>
                     </div>`;
@@ -166,10 +181,10 @@ class App {
             welcomePane.style.height = '100%';
         }
         const bcFolder = document.querySelector('.bc-item.bc-folder');
-        const bcFile   = document.getElementById('bc-current');
+        const bcFile = document.getElementById('bc-current');
         const titleFile = document.getElementById('title-current-file');
         if (bcFolder) bcFolder.textContent = '';
-        if (bcFile)   bcFile.textContent   = 'No file open';
+        if (bcFile) bcFile.textContent = 'No file open';
         if (titleFile) titleFile.textContent = 'Welcome';
     }
 
@@ -178,11 +193,11 @@ class App {
         const fileInfo = reg[fileName] || {};
         const folder = fileInfo.folder || '';
         const bcFolder = document.querySelector('.bc-item.bc-folder');
-        const bcFile   = document.getElementById('bc-current');
+        const bcFile = document.getElementById('bc-current');
         const titleFile = document.getElementById('title-current-file');
 
         if (bcFolder) bcFolder.textContent = folder;
-        if (bcFile)   bcFile.textContent   = fileName;
+        if (bcFile) bcFile.textContent = fileName;
         if (titleFile) titleFile.textContent = fileName;
     }
 
@@ -191,7 +206,7 @@ class App {
         const fileInfo = reg[fileName] || {};
         const lang = fileInfo.lang || 'text';
         const MAP = { markdown: 'Markdown', json: 'JSON', text: 'Plain Text', js: 'JavaScript', html: 'HTML', css: 'CSS' };
-        
+
         const langEl = document.getElementById('status-lang');
         if (langEl) langEl.textContent = MAP[lang] || 'Plain Text';
     }
@@ -211,6 +226,45 @@ class App {
         if (posEl) posEl.textContent = `Ln ${ln}, Col ${col}`;
     }
 
+    // =========================================================================
+    // Content Builders
+    // =========================================================================
+    // This section contains builder methods that convert raw JSON data fetched
+    // from the DataService into HTML snippets representing formatted content
+    // files. These methods generate the visually rich representations of projects,
+    // skills, profile JSON, and other markdown/JSON files within the editor.
+
+    buildReadme() {
+        const data = dataService.getData();
+        const p = data.person || {};
+        const stats = p.stats || {};
+        return `<div class="md-content">
+            <h1 class="md-h1">👋 Hi, I'm ${p.name || 'Akash Prajapati'}</h1>
+            <p class="md-p">${p.title || ''} — ${p.location || ''}</p>
+            <div class="badges-row" style="margin: 12px 0;">
+                <span class="badge badge-blue">⚡ ${stats.projects || 0} Projects</span>
+                <span class="badge badge-green">📜 ${stats.certifications || 0} Certifications</span>
+                <span class="badge badge-yellow">🎓 ${stats.experience || '1+ year'} Experience</span>
+            </div>
+            ${(p.bio || []).map(b => `<p class="md-p">${b}</p>`).join('')}
+            <h2 class="md-h2">📬 Contact</h2>
+            <div class="contact-card">
+                <a href="mailto:${p.email}" class="contact-item" aria-label="Email">
+                    <div class="contact-icon ci-email"><i class="fas fa-envelope"></i></div>
+                    <div><div class="contact-label">Email</div><div class="contact-value">${p.email || ''}</div></div>
+                </a>
+                <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="GitHub">
+                    <div class="contact-icon ci-github"><i class="fab fa-github"></i></div>
+                    <div><div class="contact-label">GitHub</div><div class="contact-value">akashprajapati1232</div></div>
+                </a>
+                <a href="${p.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="LinkedIn">
+                    <div class="contact-icon ci-linkedin"><i class="fab fa-linkedin"></i></div>
+                    <div><div class="contact-label">LinkedIn</div><div class="contact-value">akash-prajapati1232</div></div>
+                </a>
+            </div>
+        </div>`;
+    }
+
     buildProfileJson() {
         const data = dataService.getData();
         const p = data.person;
@@ -226,11 +280,97 @@ class App {
             bio: p.bio,
             stats: p.stats,
             education: data.education.map(e => ({ degree: e.degree, institution: e.institution, period: e.period })),
-            skills: Object.fromEntries(Object.entries(data.skills).map(([cat, items]) => [ cat, items.map(s => s.name) ])),
+            skills: Object.fromEntries(Object.entries(data.skills).map(([cat, items]) => [cat, items.map(s => s.name)])),
             certifications: data.certifications.map(c => c.name)
         };
         const highlighted = markdownRenderer.highlightJSON(obj);
         return `<div class="json-viewer">${highlighted}</div>`;
+    }
+
+    buildEducation() {
+        const data = dataService.getData();
+        const eduHtml = data.education.map(edu => `
+            <div class="timeline-item">
+                <div class="timeline-title">${edu.degree}</div>
+                <div class="timeline-date">${edu.institution}, ${edu.location} · ${edu.period}</div>
+                <div class="timeline-desc">${edu.description}</div>
+            </div>`).join('');
+        const achHtml = data.achievements.map(ach => `
+            <div class="achievement-card">
+                <div class="achievement-icon ${ach.icon}"><i class="${ach.iconClass}"></i></div>
+                <div class="achievement-content">
+                    <div class="achievement-title-text">${ach.title}</div>
+                    <div class="achievement-subtitle">${ach.subtitle} &nbsp;·&nbsp; ${ach.date}</div>
+                    <div class="achievement-desc">${ach.description}</div>
+                    <div class="achievement-tags">${ach.tags.map(t => `<span class="ach-tag">${t}</span>`).join('')}</div>
+                </div>
+            </div>`).join('');
+        return `<div class="md-content">
+            <h1 class="md-h1">🎓 Education</h1>
+            <p class="md-p">Academic background and notable achievements throughout the journey.</p>
+            <div class="timeline">${eduHtml}</div>
+            <h2 class="md-h2">🏆 Achievements</h2>
+            ${achHtml}
+        </div>`;
+    }
+
+    buildCertificates() {
+        const data = dataService.getData();
+        const obj = {
+            total: data.certifications.length,
+            certifications: data.certifications.map(c => ({
+                name: c.name,
+                issuing_body: c.body,
+                description: c.desc,
+                icon: c.icon
+            }))
+        };
+        const certsHtml = data.certifications.map(cert => `
+            <div class="achievement-card">
+                <div class="achievement-icon ach-cert"><i class="${cert.icon}"></i></div>
+                <div class="achievement-content">
+                    <div class="achievement-title-text">${cert.name}</div>
+                    <div class="achievement-subtitle">${cert.body}</div>
+                    <div class="achievement-desc">${cert.desc}</div>
+                </div>
+            </div>`).join('');
+        const highlighted = markdownRenderer.highlightJSON(obj);
+        return `<div class="md-content">
+            <h1 class="md-h1">📜 Certificates</h1>
+            <p class="md-p">Professional certifications earned across various technology domains.</p>
+            ${certsHtml}
+            <h2 class="md-h2" style="margin-top: 20px;">certificates.json</h2>
+            <div class="json-viewer">${highlighted}</div>
+        </div>`;
+    }
+
+    buildSkillsJson() {
+        const data = dataService.getData();
+        function section(title, icon, items) {
+            const listHtml = items.map(skill => `
+                <div class="skill-item">
+                    <div class="skill-name"><i class="${skill.icon}" style="font-size:14px;color:#4fc1ff;width:16px;text-align:center;"></i>${skill.name}</div>
+                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width:${skill.level}%"></div></div>
+                    <span class="skill-percent">${skill.level}%</span>
+                </div>`).join('');
+            return `<div class="skills-section"><div class="skills-section-title"><i class="${icon}"></i>${title}</div><div class="skills-list">${listHtml}</div></div>`;
+        }
+        const obj = Object.fromEntries(
+            Object.entries(data.skills).map(([cat, items]) => [
+                cat, items.map(s => ({ name: s.name, level: s.level, icon: s.icon }))
+            ])
+        );
+        const highlighted = markdownRenderer.highlightJSON(obj);
+        return `<div class="md-content">
+            <h1 class="md-h1">🛠️ Technical Skills</h1>
+            <p class="md-p">I specialize in creating modern, responsive web applications with a focus on clean code and user experience.</p>
+            ${section('Programming Languages', 'fas fa-code', data.skills.programming)}
+            ${section('Web Development', 'fab fa-html5', data.skills.web)}
+            ${section('Databases', 'fas fa-database', data.skills.database)}
+            ${section('Tools & Platforms', 'fas fa-tools', data.skills.tools)}
+            <h2 class="md-h2" style="margin-top: 20px;">skills.json</h2>
+            <div class="json-viewer">${highlighted}</div>
+        </div>`;
     }
 
     buildProjects() {
@@ -257,115 +397,10 @@ class App {
                 </div>`;
         }).join('');
         return `<div class="md-content">
-            <h1 class="md-h1">My Projects</h1>
+            <h1 class="md-h1">🚀 My Projects</h1>
             <p class="md-p">Here are some of my recent projects that showcase my skills and passion for web development.</p>
             <div class="projects-grid">${cards}</div>
         </div>`;
-    }
-
-    buildSkills() {
-        const data = dataService.getData();
-        function section(title, icon, items) {
-            const listHtml = items.map(skill => `
-                <div class="skill-item">
-                    <div class="skill-name"><i class="${skill.icon}" style="font-size:14px;color:#4fc1ff;width:16px;text-align:center;"></i>${skill.name}</div>
-                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width:${skill.level}%"></div></div>
-                    <span class="skill-percent">${skill.level}%</span>
-                </div>`).join('');
-            return `<div class="skills-section"><div class="skills-section-title"><i class="${icon}"></i>${title}</div><div class="skills-list">${listHtml}</div></div>`;
-        }
-        return `<div class="md-content">
-            <h1 class="md-h1">Technical Skills</h1>
-            <p class="md-p">I specialize in creating modern, responsive web applications with a focus on clean code and user experience. Here's my technical toolkit:</p>
-            ${section('Programming Languages', 'fas fa-code', data.skills.programming)}
-            ${section('Web Development', 'fab fa-html5', data.skills.web)}
-            ${section('Databases', 'fas fa-database', data.skills.database)}
-            ${section('Tools & Platforms', 'fas fa-tools', data.skills.tools)}
-        </div>`;
-    }
-
-    buildWork() {
-        const data = dataService.getData();
-        const eduHtml = data.education.map(edu => `
-            <div class="timeline-item">
-                <div class="timeline-title">${edu.degree}</div>
-                <div class="timeline-date">${edu.institution}, ${edu.location} · ${edu.period}</div>
-                <div class="timeline-desc">${edu.description}</div>
-            </div>`).join('');
-        const certsHtml = data.certifications.map(cert => `
-            <div class="achievement-card">
-                <div class="achievement-icon ach-cert"><i class="${cert.icon}"></i></div>
-                <div class="achievement-content">
-                    <div class="achievement-title-text">${cert.name}</div>
-                    <div class="achievement-subtitle">${cert.body}</div>
-                    <div class="achievement-desc">${cert.desc}</div>
-                </div>
-            </div>`).join('');
-        return `<div class="md-content">
-            <h1 class="md-h1">Experience & Education</h1>
-            <h2 class="md-h2">🎓 Education</h2>
-            <div class="timeline">${eduHtml}</div>
-            <h2 class="md-h2">📜 Certifications</h2>
-            ${certsHtml}
-            <h2 class="md-h2">🏆 Achievements</h2>
-            ${data.achievements.map(ach => `
-            <div class="achievement-card">
-                <div class="achievement-icon ${ach.icon}"><i class="${ach.iconClass}"></i></div>
-                <div class="achievement-content">
-                    <div class="achievement-title-text">${ach.title}</div>
-                    <div class="achievement-subtitle">${ach.subtitle} &nbsp;·&nbsp; ${ach.date}</div>
-                    <div class="achievement-desc">${ach.description}</div>
-                    <div class="achievement-tags">${ach.tags.map(t => `<span class="ach-tag">${t}</span>`).join('')}</div>
-                </div>
-            </div>`).join('')}
-        </div>`;
-    }
-
-    buildSocialsJson() {
-        const data = dataService.getData();
-        const p = data.person;
-        const obj = {
-            contact: { email: p.email, phone: p.phone },
-            social: { github: p.github, linkedin: p.linkedin, website: p.website },
-            location: p.location,
-            available_for: ['Freelance Projects', 'Internships', 'Open Source Collaborations', 'Full-time Positions (Post-graduation)'],
-            preferred_contact: 'email',
-            response_time: 'Within 24 hours'
-        };
-        const contactLinksHtml = `
-            <div class="md-content" style="margin-top:16px;">
-                <div class="contact-card">
-                    <a href="mailto:${p.email}" class="contact-item" aria-label="Email">
-                        <div class="contact-icon ci-email"><i class="fas fa-envelope"></i></div>
-                        <div><div class="contact-label">Email</div><div class="contact-value">${p.email}</div></div>
-                    </a>
-                    <a href="tel:${p.phone.replace(/\s/g, '')}" class="contact-item" aria-label="Phone">
-                        <div class="contact-icon ci-phone"><i class="fas fa-phone"></i></div>
-                        <div><div class="contact-label">Phone</div><div class="contact-value">${p.phone}</div></div>
-                    </a>
-                    <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="GitHub">
-                        <div class="contact-icon ci-github"><i class="fab fa-github"></i></div>
-                        <div><div class="contact-label">GitHub</div><div class="contact-value">akashprajapati1232</div></div>
-                    </a>
-                    <a href="${p.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="LinkedIn">
-                        <div class="contact-icon ci-linkedin"><i class="fab fa-linkedin"></i></div>
-                        <div><div class="contact-label">LinkedIn</div><div class="contact-value">akash-prajapati1232</div></div>
-                    </a>
-                </div>
-            </div>`;
-        const highlighted = markdownRenderer.highlightJSON(obj);
-        return `<div class="md-content">
-            <h1 class="md-h1">Contact & Social Links</h1>
-            ${contactLinksHtml}
-            <h2 class="md-h2" style="margin-top:20px;">socials.json</h2>
-            <div class="json-viewer">${highlighted}</div>
-        </div>`;
-    }
-
-    buildLicense() {
-        const year = new Date().getFullYear();
-        const text = `MIT License\n\nCopyright (c) ${year} Akash Prajapati\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the "Software"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.`;
-        return `<pre class="plain-text">${text}</pre>`;
     }
 }
 

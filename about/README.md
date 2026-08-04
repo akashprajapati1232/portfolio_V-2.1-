@@ -66,36 +66,9 @@ This portfolio is designed to look and feel exactly like **Visual Studio Code**.
 portfolio-akash/
 │
 ├── assets/                    # All static media assets
-│   ├── images/                # Project screenshots
-│   │   ├── ImgNinja/
-│   │   ├── snake-game/
-│   │   ├── portfolio/
-│   │   ├── advocateatulpal/
-│   │   ├── gptforbca/
-│   │   ├── clgchatbot/
-│   │   ├── brandifycreator/
-│   │   ├── hackthone/
-│   │   └── certificate/
-│   ├── icons/                 # (Reserved for future SVG icons)
+│   ├── images/                # Project screenshots (ImgNinja, snake-game, etc.)
 │   ├── logos/                 # Profile photos and brand logos
-│   │   ├── akash-prajapati.jpg
-│   │   └── profile.png
-│   └── fonts/                 # Self-hosted fonts (no CDN)
-│       ├── fonts.css          # @font-face declarations
-│       ├── fira-code/         # Fira Code woff2 files
-│       ├── inter/             # Inter woff2 files
-│       └── fontawesome/       # Font Awesome 6 Free
-│           ├── all.min.css
-│           └── webfonts/
-│
-├── css/                       # Modular stylesheets
-│   ├── variables.css          # CSS custom properties (design tokens)
-│   ├── main.css               # Reset, body, title bar, status bar, layout
-│   ├── explorer.css           # Activity bar, sidebar, file tree, extensions
-│   ├── editor.css             # Tabs, editor area, markdown & JSON rendering
-│   ├── terminal.css           # Bottom terminal panel
-│   ├── ai.css                 # J.A.R.V.I.S chat panel + resize handles
-│   └── responsive.css         # Mobile breakpoints and print styles
+│   └── fonts/                 # Self-hosted fonts (Fira Code, Inter, FontAwesome)
 │
 ├── data/                      # Portfolio content as JSON
 │   ├── profile.json           # Personal info, bio, stats, roles
@@ -105,19 +78,28 @@ portfolio-akash/
 │   ├── certifications.json    # Certifications list
 │   └── socials.json           # Social media links
 │
-├── js/                        # JavaScript modules
-│   ├── dataLoader.js          # Async JSON data loader → window.PORTFOLIO_DATA
-│   ├── markdown.js            # Custom markdown renderer
-│   ├── router.js              # Hash-based URL router
-│   ├── explorer.js            # File explorer logic
-│   ├── tabs.js                # Tab manager
-│   ├── terminal.js            # Terminal emulator
-│   ├── ai.js                  # J.A.R.V.I.S AI assistant
-│   ├── app.js                 # Main controller & content builders
-│   └── resize.js              # Resizable panel handles
+├── styles/                    # Modular stylesheets (CSS)
+│   ├── base/                  # Variables, resets, typography, and responsive rules
+│   ├── components/            # Styles for individual UI components (cards, tabs, tree view)
+│   └── layout/                # Styles for major layout areas (sidebar, editor, terminal, chat)
 │
-├── index.html                 # App entry point
-└── README.md                  # This file
+├── js/                        # JavaScript modules and core logic
+│   ├── app.js                 # Main application orchestrator & content builders
+│   ├── core/                  # Core infrastructure
+│   │   ├── EventBus.js        # Global pub/sub event system for cross-component communication
+│   │   └── Router.js          # Hash-based URL routing for deep linking
+│   ├── services/              # Data services
+│   │   └── DataService.js     # Async fetcher and centralized store for JSON portfolio data
+│   └── components/            # Modular UI components
+│       ├── ai/                # J.A.R.V.I.S assistant logic (JarvisAI.js)
+│       ├── explorer/          # File explorer tree logic (Explorer.js)
+│       ├── layout/            # Layout controllers (TitleBar, ActivityBar, StatusBar, PanelResizer)
+│       ├── markdown/          # Custom Markdown/JSON renderer (MarkdownRenderer.js)
+│       ├── tabs/              # Editor tab management (TabManager.js)
+│       └── terminal/          # Terminal emulator and commands (Terminal.js, TerminalCommands.js)
+│
+├── index.html                 # App entry point (HTML structure)
+└── README.md                  # Project documentation
 ```
 
 ---
@@ -218,7 +200,7 @@ Skill levels are percentages (1–100) used to render the skill bar.
 
 ### Changing the Color Theme
 
-Edit `css/variables.css` — all colors are CSS custom properties:
+Edit `styles/base/variables.css` — all colors are CSS custom properties:
 
 ```css
 :root {
@@ -345,13 +327,10 @@ index.html loads → dataLoader.js (fetch JSON files in parallel)
 
 CSS files **must** be loaded in this order (each depends on variables from the previous):
 
-1. `variables.css` — design tokens
-2. `main.css` — reset + body + shell
-3. `explorer.css` — sidebar components
-4. `editor.css` — tabs + editor
-5. `terminal.css` — terminal panel
-6. `ai.css` — chat panel + resize handles
-7. `responsive.css` — overrides for breakpoints
+1. `base/variables.css`, `base/reset.css`, `base/typography.css`
+2. `components/*.css` — cards, tabs, tree view
+3. `layout/*.css` — sidebar, editor, terminal, chat, resize handles
+4. `base/responsive.css` — overrides for breakpoints
 
 ---
 

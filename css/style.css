@@ -1,9 +1,9 @@
 /* =============================================================
-   VS Code Portfolio – style.css
+   Personal Portfolio – style.css
    Global tokens, reset, typography, layout shell
    ============================================================= */
 
-/* ── 1. CSS Custom Properties (VS Code dark theme colours) ── */
+/* ── 1. CSS Custom Properties (Personal dark theme colours) ── */
 :root {
     /* Background layers */
     --bg-editor:          #1e1e1e;
@@ -133,7 +133,7 @@ img {
     background: #535353;
 }
 
-/* ── 4. VS Code App Shell ── */
+/* ── 4. Personal App Shell ── */
 #vscode-app {
     display: flex;
     flex-direction: column;
@@ -254,6 +254,23 @@ img {
 .tb-icon-btn:hover {
     background: rgba(255,255,255,0.1);
     color: var(--text-primary);
+}
+
+.layout-btn {
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.layout-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.layout-btn:not(.active) .fill-part {
+    display: none;
+}
+
+.layout-btn svg {
+    display: block;
 }
 
 /* ── 6. Main Layout ── */

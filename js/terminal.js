@@ -30,7 +30,7 @@ window.Terminal = (function () {
         { type: 'pause',  ms: 300 },
         { type: 'output', text: '# Akash Prajapati', cls: '' },
         { type: 'output', text: 'BCA Student & Full-Stack Web Developer', cls: 'term-info' },
-        { type: 'output', text: 'Saharanpur, UP, India', cls: '' },
+        { type: 'output', text: 'Ghazipur, UP, India', cls: '' },
         { type: 'pause',  ms: 400 },
         { type: 'cmd',    text: 'node --version' },
         { type: 'pause',  ms: 200 },

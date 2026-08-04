@@ -538,7 +538,7 @@ SOFTWARE.`;
         const titleFile = document.getElementById('title-current-file');
         if (bcFolder) bcFolder.textContent = '';
         if (bcFile)   bcFile.textContent   = 'No file open';
-        if (titleFile) titleFile.textContent = 'portfolio-vscode';
+        if (titleFile) titleFile.textContent = 'Welcome';
     }
 
     /* ─────────────────────────────────────────
@@ -572,6 +572,85 @@ SOFTWARE.`;
             hamburger.setAttribute('aria-expanded', 'false');
             hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         });
+    }
+
+
+    /* ─────────────────────────────────────────
+       LAYOUT CONTROLS
+    ───────────────────────────────────────── */
+    function initLayoutControls() {
+        const layoutLeft = document.getElementById('layout-left');
+        const layoutBottom = document.getElementById('layout-bottom');
+        const layoutRight = document.getElementById('layout-right');
+        const closeJarvis = document.getElementById('close-jarvis');
+        
+        const sidebar = document.getElementById('sidebar');
+        const terminalPanel = document.getElementById('terminal-panel');
+        const rightSidebar = document.getElementById('right-sidebar');
+
+        // Toggle Left Sidebar
+        if (layoutLeft && sidebar) {
+            layoutLeft.addEventListener('click', () => {
+                const isHidden = sidebar.classList.toggle('collapsed');
+                if (isHidden) {
+                    layoutLeft.classList.remove('active');
+                } else {
+                    layoutLeft.classList.add('active');
+                }
+            });
+        }
+
+        // Toggle Bottom Panel (Terminal)
+        if (layoutBottom && terminalPanel) {
+            layoutBottom.addEventListener('click', () => {
+                if (window.Terminal) {
+                    // Use existing Terminal toggle logic if available
+                    if (terminalPanel.classList.contains('hidden')) {
+                        window.Terminal.show();
+                        layoutBottom.classList.add('active');
+                    } else {
+                        window.Terminal.hide();
+                        layoutBottom.classList.remove('active');
+                    }
+                } else {
+                    const isHidden = terminalPanel.classList.toggle('hidden');
+                    if (isHidden) {
+                        layoutBottom.classList.remove('active');
+                    } else {
+                        layoutBottom.classList.add('active');
+                    }
+                }
+            });
+            
+            // Sync initial state
+            if (terminalPanel.classList.contains('hidden')) {
+                layoutBottom.classList.remove('active');
+            }
+        }
+
+        // Toggle Right Sidebar
+        function toggleRightSidebar() {
+            if (!rightSidebar || !layoutRight) return;
+            const isHidden = rightSidebar.classList.toggle('hidden');
+            if (isHidden) {
+                layoutRight.classList.remove('active');
+            } else {
+                layoutRight.classList.add('active');
+                // Focus the AI input when panel opens
+                if (window.JarvisAI) window.JarvisAI.focusInput();
+            }
+        }
+
+        if (layoutRight) {
+            layoutRight.addEventListener('click', toggleRightSidebar);
+        }
+        
+        if (closeJarvis) {
+            closeJarvis.addEventListener('click', () => {
+                rightSidebar.classList.add('hidden');
+                if (layoutRight) layoutRight.classList.remove('active');
+            });
+        }
     }
 
     /* ─────────────────────────────────────────
@@ -636,6 +715,13 @@ SOFTWARE.`;
 
         initMobileSidebar();
         initKeyboard();
+        initLayoutControls();
+
+        // Initialise the J.A.R.V.I.S AI module
+        if (window.JarvisAI) window.JarvisAI.init();
+
+        // Initialise resizable panels
+        if (window.PanelResizer) window.PanelResizer.init();
 
         // Open README.md by default if no hash
         const hash = window.location.hash;

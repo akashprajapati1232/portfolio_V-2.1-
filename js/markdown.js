@@ -1,6 +1,6 @@
 /**
  * markdown.js
- * A lightweight, custom Markdown renderer that produces VS Code–styled HTML.
+ * A lightweight, custom Markdown renderer that produces Personal–styled HTML.
  * Supports: headings, bold, italic, inline code, code blocks,
  *           lists (ordered + unordered), blockquotes, horizontal rules, links.
  *

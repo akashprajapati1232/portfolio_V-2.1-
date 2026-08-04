@@ -14,7 +14,7 @@ window.PORTFOLIO_DATA = {
     person: {
         name: 'Akash Prajapati',
         title: 'BCA Student & Full-Stack Web Developer',
-        location: 'Saharanpur, Uttar Pradesh, India',
+        location: 'Ghazipur, Uttar Pradesh, India',
         email: 'akashprajapati1232@gmail.com',
         phone: '+91 8115201583',
         github: 'https://github.com/akashprajapati1232',
@@ -38,9 +38,9 @@ window.PORTFOLIO_DATA = {
         {
             degree: 'Bachelor of Computer Applications (BCA)',
             institution: 'Maa Shakumbhari University',
-            location: 'Saharanpur',
+            location: 'Ghazipur',
             period: '2023 – Present',
-            description: 'Pursuing Bachelor of Computer Application (B.C.A) from Maa Shakumbhari University, Saharanpur.'
+            description: 'Pursuing Bachelor of Computer Application (B.C.A) from Maa Shakumbhari University, Ghazipur.'
         },
         {
             degree: 'Higher Secondary Education (12th)',
@@ -83,7 +83,7 @@ window.PORTFOLIO_DATA = {
             { name: 'GitHub', level: 90, icon: 'fab fa-github' },
             { name: 'Canva', level: 80, icon: 'fas fa-palette' },
             { name: 'Photoshop', level: 75, icon: 'fas fa-image' },
-            { name: 'VS Code', level: 95, icon: 'fas fa-code' }
+            { name: 'Personal', level: 95, icon: 'fas fa-code' }
         ]
     },
 
@@ -233,17 +233,25 @@ window.PORTFOLIO_DATA = {
         linkedin: 'https://www.linkedin.com/in/akash-prajapati1232/',
         email: 'akashprajapati1232@gmail.com',
         phone: '+91-8115201583',
-        website: 'https://akashprajapati.rf.gd/'
+        website: 'https://akashprajapati.rf.gd/',
+        instagram: 'https://www.instagram.com/akash.prajapati1232/'
+    },
+    jarvis: {
+        model: 'gpt-4o',
+        temperature: 0.7,
+        maxTokens: 2048,
+        presencePenalty: 0,
+        frequencyPenalty: 0
     }
 };
 
 /* ── File registry: maps filename → metadata ── */
 window.FILE_REGISTRY = {
-    'README.md':     { lang: 'markdown', folder: 'about',      icon: 'fas fa-file-alt',  iconColor: '#519aba' },
-    'profile.json':  { lang: 'json',     folder: 'about',      icon: 'fas fa-file-code', iconColor: '#cbcb41' },
-    'projects.md':   { lang: 'markdown', folder: 'projects',   icon: 'fas fa-file-alt',  iconColor: '#519aba' },
-    'skills.md':     { lang: 'markdown', folder: 'skills',     icon: 'fas fa-file-alt',  iconColor: '#519aba' },
-    'work.md':       { lang: 'markdown', folder: 'experience', icon: 'fas fa-file-alt',  iconColor: '#519aba' },
-    'socials.json':  { lang: 'json',     folder: 'contact',    icon: 'fas fa-file-code', iconColor: '#cbcb41' },
-    'LICENSE.txt':   { lang: 'text',     folder: 'license',    icon: 'fas fa-file-alt',  iconColor: '#8a8a8a' }
+    'README.md': { lang: 'markdown', folder: 'about', icon: 'fas fa-file-alt', iconColor: '#519aba' },
+    'profile.json': { lang: 'json', folder: 'about', icon: 'fas fa-file-code', iconColor: '#cbcb41' },
+    'projects.md': { lang: 'markdown', folder: 'projects', icon: 'fas fa-file-alt', iconColor: '#519aba' },
+    'skills.md': { lang: 'markdown', folder: 'skills', icon: 'fas fa-file-alt', iconColor: '#519aba' },
+    'work.md': { lang: 'markdown', folder: 'experience', icon: 'fas fa-file-alt', iconColor: '#519aba' },
+    'socials.json': { lang: 'json', folder: 'contact', icon: 'fas fa-file-code', iconColor: '#cbcb41' },
+    'LICENSE.txt': { lang: 'text', folder: 'license', icon: 'fas fa-file-alt', iconColor: '#8a8a8a' }
 };

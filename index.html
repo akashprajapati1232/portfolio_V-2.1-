@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Akash Prajapati | VS Code Portfolio</title>
-    <meta name="title" content="Akash Prajapati | VS Code Portfolio">
-    <meta name="description" content="Akash Prajapati's developer portfolio styled as a VS Code IDE. BCA student and full-stack web developer specializing in React, Node.js, Python and modern web technologies.">
-    <meta name="keywords" content="Akash Prajapati, web developer, BCA student, portfolio, VS Code, React, Node.js, Python, JavaScript, HTML, CSS, full-stack developer">
+    <title>Akash Prajapati | Personal Portfolio</title>
+    <meta name="title" content="Akash Prajapati | Personal Portfolio">
+    <meta name="description"
+        content="Akash Prajapati's developer portfolio styled as a Personal IDE. BCA student and full-stack web developer specializing in React, Node.js, Python and modern web technologies.">
+    <meta name="keywords"
+        content="Akash Prajapati, web developer, BCA student, portfolio, Personal, React, Node.js, Python, JavaScript, HTML, CSS, full-stack developer">
     <meta name="author" content="Akash Prajapati">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#1e1e1e">
@@ -17,15 +19,16 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://akashprajapati.rf.gd/vscode">
-    <meta property="og:title" content="Akash Prajapati | VS Code Portfolio">
-    <meta property="og:description" content="Akash Prajapati's developer portfolio styled as a VS Code IDE. BCA student and full-stack web developer.">
+    <meta property="og:title" content="Akash Prajapati | Personal Portfolio">
+    <meta property="og:description"
+        content="Akash Prajapati's developer portfolio styled as a Personal IDE. BCA student and full-stack web developer.">
     <meta property="og:image" content="images/akash-prajapati.jpg">
     <meta property="og:site_name" content="Akash Prajapati Portfolio">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Akash Prajapati | VS Code Portfolio">
-    <meta name="twitter:description" content="Akash Prajapati's developer portfolio styled as a VS Code IDE.">
+    <meta name="twitter:title" content="Akash Prajapati | Personal Portfolio">
+    <meta name="twitter:description" content="Akash Prajapati's developer portfolio styled as a Personal IDE.">
     <meta name="twitter:image" content="images/akash-prajapati.jpg">
 
     <!-- Favicon -->
@@ -34,10 +37,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
@@ -68,8 +74,8 @@
 </head>
 
 <body>
-    <!-- VS Code App Container -->
-    <div id="vscode-app" role="application" aria-label="VS Code Portfolio - Akash Prajapati">
+    <!-- Personal App Container -->
+    <div id="vscode-app" role="application" aria-label="Personal Portfolio - Akash Prajapati">
 
         <!-- Title Bar -->
         <div id="title-bar" role="banner" aria-label="Title bar">
@@ -82,7 +88,8 @@
 
             <!-- Menu Bar -->
             <nav class="menu-bar" role="menubar" aria-label="Menu bar">
-                <div class="menu-item" role="menuitem" tabindex="0" aria-haspopup="true" aria-label="File menu">File</div>
+                <div class="menu-item" role="menuitem" tabindex="0" aria-haspopup="true" aria-label="File menu">File
+                </div>
                 <div class="menu-item" role="menuitem" tabindex="0" aria-label="Edit menu">Edit</div>
                 <div class="menu-item" role="menuitem" tabindex="0" aria-label="Selection menu">Selection</div>
                 <div class="menu-item" role="menuitem" tabindex="0" aria-label="View menu">View</div>
@@ -94,19 +101,45 @@
 
             <!-- Title -->
             <div class="title-bar-title" aria-label="Window title">
-                <span class="title-file-name" id="title-current-file">README.md</span>
+                <span class="title-workspace">portfolio-akash</span>
                 <span class="title-separator">—</span>
-                <span class="title-workspace">portfolio-vscode</span>
+                <span class="title-file-name" id="title-current-file">README.md</span>
             </div>
 
             <!-- Right Controls -->
             <div class="title-bar-right" aria-label="Title bar right controls">
-                <button class="tb-icon-btn" aria-label="Search" title="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="tb-icon-btn" aria-label="Account" title="Account">
-                    <i class="fas fa-user-circle"></i>
-                </button>
+                <div class="layout-controls" style="display: flex; gap: 4px; margin-right: 10px;">
+                    <button class="tb-icon-btn layout-btn active" id="layout-left"
+                        title="Toggle Primary Side Bar (Ctrl+B)">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor"
+                                stroke-width="1.2" />
+                            <path class="fill-part" d="M1.5 4A1.5 1.5 0 0 1 3 2.5h2.5v11H3A1.5 1.5 0 0 1 1.5 12V4Z"
+                                fill="var(--button-primary-background, #007fd4)" />
+                            <path d="M5.5 2.5v11" stroke="currentColor" stroke-width="1.2" />
+                        </svg>
+                    </button>
+                    <button class="tb-icon-btn layout-btn active" id="layout-bottom" title="Toggle Panel (Ctrl+J)">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor"
+                                stroke-width="1.2" />
+                            <path class="fill-part"
+                                d="M1.5 9.5h13V12a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 1.5 12V9.5Z"
+                                fill="var(--button-primary-background, #007fd4)" />
+                            <path d="M1.5 9.5h13" stroke="currentColor" stroke-width="1.2" />
+                        </svg>
+                    </button>
+                    <button class="tb-icon-btn layout-btn" id="layout-right" title="Toggle Secondary Side Bar">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor"
+                                stroke-width="1.2" />
+                            <path class="fill-part"
+                                d="M10.5 2.5h2.5A1.5 1.5 0 0 1 14.5 4v8a1.5 1.5 0 0 1-1.5 1.5h-2.5V2.5Z"
+                                fill="var(--button-primary-background, #007fd4)" />
+                            <path d="M10.5 2.5v11" stroke="currentColor" stroke-width="1.2" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -116,19 +149,24 @@
             <!-- Activity Bar -->
             <aside id="activity-bar" role="navigation" aria-label="Activity bar">
                 <div class="activity-bar-top">
-                    <button class="activity-btn active" id="act-explorer" data-panel="explorer" title="Explorer (Ctrl+Shift+E)" aria-label="Explorer" aria-pressed="true">
+                    <button class="activity-btn active" id="act-explorer" data-panel="explorer"
+                        title="Explorer (Ctrl+Shift+E)" aria-label="Explorer" aria-pressed="true">
                         <i class="fas fa-copy"></i>
                     </button>
-                    <button class="activity-btn" id="act-search" data-panel="search" title="Search (Ctrl+Shift+F)" aria-label="Search" aria-pressed="false">
+                    <button class="activity-btn" id="act-search" data-panel="search" title="Search (Ctrl+Shift+F)"
+                        aria-label="Search" aria-pressed="false">
                         <i class="fas fa-search"></i>
                     </button>
-                    <button class="activity-btn" id="act-git" data-panel="git" title="Source Control (Ctrl+Shift+G)" aria-label="Source Control" aria-pressed="false">
+                    <button class="activity-btn" id="act-git" data-panel="git" title="Source Control (Ctrl+Shift+G)"
+                        aria-label="Source Control" aria-pressed="false">
                         <i class="fas fa-code-branch"></i>
                     </button>
-                    <button class="activity-btn" id="act-run" data-panel="run" title="Run and Debug (Ctrl+Shift+D)" aria-label="Run and Debug" aria-pressed="false">
+                    <button class="activity-btn" id="act-run" data-panel="run" title="Run and Debug (Ctrl+Shift+D)"
+                        aria-label="Run and Debug" aria-pressed="false">
                         <i class="fas fa-play"></i>
                     </button>
-                    <button class="activity-btn" id="act-extensions" data-panel="extensions" title="Extensions (Ctrl+Shift+X)" aria-label="Extensions" aria-pressed="false">
+                    <button class="activity-btn" id="act-extensions" data-panel="extensions"
+                        title="Extensions (Ctrl+Shift+X)" aria-label="Extensions" aria-pressed="false">
                         <i class="fas fa-th-large"></i>
                     </button>
                 </div>
@@ -148,100 +186,118 @@
                     <div class="sidebar-header">
                         <span class="sidebar-title">EXPLORER</span>
                         <div class="sidebar-actions">
-                            <button class="sidebar-action-btn" title="New File" aria-label="New File"><i class="fas fa-file-plus"></i></button>
-                            <button class="sidebar-action-btn" title="New Folder" aria-label="New Folder"><i class="fas fa-folder-plus"></i></button>
-                            <button class="sidebar-action-btn" title="Refresh" aria-label="Refresh"><i class="fas fa-sync-alt"></i></button>
-                            <button class="sidebar-action-btn" title="Collapse All" id="collapse-all-btn" aria-label="Collapse All"><i class="fas fa-compress-alt"></i></button>
+                            <button class="sidebar-action-btn" title="New File" aria-label="New File"><i
+                                    class="fas fa-file-plus"></i></button>
+                            <button class="sidebar-action-btn" title="New Folder" aria-label="New Folder"><i
+                                    class="fas fa-folder-plus"></i></button>
+                            <button class="sidebar-action-btn" title="Refresh" aria-label="Refresh"><i
+                                    class="fas fa-sync-alt"></i></button>
+                            <button class="sidebar-action-btn" title="Collapse All" id="collapse-all-btn"
+                                aria-label="Collapse All"><i class="fas fa-compress-alt"></i></button>
                         </div>
                     </div>
 
                     <!-- File Tree -->
                     <div class="file-tree" id="file-tree" role="tree" aria-label="File explorer">
                         <div class="workspace-root">
-                            <div class="tree-item root-item expanded" data-type="folder" role="treeitem" aria-expanded="true" aria-label="portfolio-vscode folder">
+                            <div class="tree-item root-item expanded" data-type="folder" role="treeitem"
+                                aria-expanded="true" aria-label="portfolio-vscode folder">
                                 <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                 <i class="fas fa-folder-open tree-icon folder-icon"></i>
-                                <span class="tree-label">PORTFOLIO-VSCODE</span>
+                                <span class="tree-label">PORTFOLIO-AKASH</span>
                             </div>
 
                             <div class="tree-children">
                                 <!-- about/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="about" role="treeitem" aria-expanded="true" aria-label="about folder" tabindex="0">
+                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="about"
+                                    role="treeitem" aria-expanded="true" aria-label="about folder" tabindex="0">
                                     <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
                                     <span class="tree-label">about</span>
                                 </div>
                                 <div class="tree-children folder-children" data-parent="about">
-                                    <div class="tree-item file-item" data-file="README.md" data-lang="markdown" role="treeitem" aria-label="README.md" tabindex="0">
+                                    <div class="tree-item file-item" data-file="README.md" data-lang="markdown"
+                                        role="treeitem" aria-label="README.md" tabindex="0">
                                         <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
                                         <span class="tree-label">README.md</span>
                                     </div>
-                                    <div class="tree-item file-item" data-file="profile.json" data-lang="json" role="treeitem" aria-label="profile.json" tabindex="0">
+                                    <div class="tree-item file-item" data-file="profile.json" data-lang="json"
+                                        role="treeitem" aria-label="profile.json" tabindex="0">
                                         <i class="fas fa-file-code tree-icon" style="color: #cbcb41;"></i>
                                         <span class="tree-label">profile.json</span>
                                     </div>
                                 </div>
 
                                 <!-- projects/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="projects" role="treeitem" aria-expanded="true" aria-label="projects folder" tabindex="0">
+                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="projects"
+                                    role="treeitem" aria-expanded="true" aria-label="projects folder" tabindex="0">
                                     <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
                                     <span class="tree-label">projects</span>
                                 </div>
                                 <div class="tree-children folder-children" data-parent="projects">
-                                    <div class="tree-item file-item" data-file="projects.md" data-lang="markdown" role="treeitem" aria-label="projects.md" tabindex="0">
+                                    <div class="tree-item file-item" data-file="projects.md" data-lang="markdown"
+                                        role="treeitem" aria-label="projects.md" tabindex="0">
                                         <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
                                         <span class="tree-label">projects.md</span>
                                     </div>
                                 </div>
 
                                 <!-- skills/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="skills" role="treeitem" aria-expanded="true" aria-label="skills folder" tabindex="0">
+                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="skills"
+                                    role="treeitem" aria-expanded="true" aria-label="skills folder" tabindex="0">
                                     <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
                                     <span class="tree-label">skills</span>
                                 </div>
                                 <div class="tree-children folder-children" data-parent="skills">
-                                    <div class="tree-item file-item" data-file="skills.md" data-lang="markdown" role="treeitem" aria-label="skills.md" tabindex="0">
+                                    <div class="tree-item file-item" data-file="skills.md" data-lang="markdown"
+                                        role="treeitem" aria-label="skills.md" tabindex="0">
                                         <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
                                         <span class="tree-label">skills.md</span>
                                     </div>
                                 </div>
 
                                 <!-- experience/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="experience" role="treeitem" aria-expanded="true" aria-label="experience folder" tabindex="0">
+                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="experience"
+                                    role="treeitem" aria-expanded="true" aria-label="experience folder" tabindex="0">
                                     <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
                                     <span class="tree-label">experience</span>
                                 </div>
                                 <div class="tree-children folder-children" data-parent="experience">
-                                    <div class="tree-item file-item" data-file="work.md" data-lang="markdown" role="treeitem" aria-label="work.md" tabindex="0">
+                                    <div class="tree-item file-item" data-file="work.md" data-lang="markdown"
+                                        role="treeitem" aria-label="work.md" tabindex="0">
                                         <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
                                         <span class="tree-label">work.md</span>
                                     </div>
                                 </div>
 
                                 <!-- contact/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="contact" role="treeitem" aria-expanded="true" aria-label="contact folder" tabindex="0">
+                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="contact"
+                                    role="treeitem" aria-expanded="true" aria-label="contact folder" tabindex="0">
                                     <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
                                     <span class="tree-label">contact</span>
                                 </div>
                                 <div class="tree-children folder-children" data-parent="contact">
-                                    <div class="tree-item file-item" data-file="socials.json" data-lang="json" role="treeitem" aria-label="socials.json" tabindex="0">
+                                    <div class="tree-item file-item" data-file="socials.json" data-lang="json"
+                                        role="treeitem" aria-label="socials.json" tabindex="0">
                                         <i class="fas fa-file-code tree-icon" style="color: #cbcb41;"></i>
                                         <span class="tree-label">socials.json</span>
                                     </div>
                                 </div>
 
                                 <!-- license/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="license" role="treeitem" aria-expanded="true" aria-label="license folder" tabindex="0">
+                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="license"
+                                    role="treeitem" aria-expanded="true" aria-label="license folder" tabindex="0">
                                     <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
                                     <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
                                     <span class="tree-label">license</span>
                                 </div>
                                 <div class="tree-children folder-children" data-parent="license">
-                                    <div class="tree-item file-item" data-file="LICENSE.txt" data-lang="text" role="treeitem" aria-label="LICENSE.txt" tabindex="0">
+                                    <div class="tree-item file-item" data-file="LICENSE.txt" data-lang="text"
+                                        role="treeitem" aria-label="LICENSE.txt" tabindex="0">
                                         <i class="fas fa-file-alt tree-icon" style="color: #8a8a8a;"></i>
                                         <span class="tree-label">LICENSE.txt</span>
                                     </div>
@@ -382,10 +438,12 @@
                             </div>
                         </div>
                         <div class="terminal-actions">
-                            <button class="term-action-btn" id="term-clear" title="Clear Terminal" aria-label="Clear Terminal">
+                            <button class="term-action-btn" id="term-clear" title="Clear Terminal"
+                                aria-label="Clear Terminal">
                                 <i class="fas fa-ban"></i>
                             </button>
-                            <button class="term-action-btn" id="term-close" title="Close Terminal" aria-label="Close Terminal">
+                            <button class="term-action-btn" id="term-close" title="Close Terminal"
+                                aria-label="Close Terminal">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
@@ -399,6 +457,36 @@
                     </div>
                 </div>
             </main>
+
+            <!-- Right Sidebar / JARVIS Panel -->
+            <aside id="right-sidebar" class="hidden" role="complementary" aria-label="J.A.R.V.I.S Assistant">
+                <div id="jarvis-panel" class="panel-content active">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">CHAT</span>
+                        <div class="sidebar-actions">
+                            <button class="sidebar-action-btn" title="Clear Chat" id="clear-jarvis"
+                                aria-label="Clear Chat">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="sidebar-action-btn" title="Close" id="close-jarvis"
+                                aria-label="Close J.A.R.V.I.S">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="jarvis-chat">
+                        <!-- Messages rendered by js/ai.js -->
+                        <div class="jarvis-messages" id="jarvis-messages"></div>
+                        <div class="jarvis-input-container">
+                            <div class="jarvis-input-wrapper">
+                                <textarea placeholder="Ask me anything..." id="jarvis-input" rows="1"></textarea>
+                                <button id="jarvis-send" title="Send (Enter)"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                            <div class="jarvis-disclaimer">Portfolio AI · Shift+Enter for new line</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
         </div>
 
         <!-- Status Bar -->
@@ -416,13 +504,16 @@
                 </div>
             </div>
             <div class="status-right">
-                <div class="status-item" title="Line and Column" id="status-position" aria-label="Cursor position">Ln 1, Col 1</div>
+                <div class="status-item" title="Line and Column" id="status-position" aria-label="Cursor position">Ln 1,
+                    Col 1</div>
                 <div class="status-item" title="File Encoding" aria-label="File encoding">UTF-8</div>
                 <div class="status-item" title="Line Ending" aria-label="Line ending">LF</div>
-                <div class="status-item" title="Language Mode" id="status-lang" aria-label="Language mode">Markdown</div>
+                <div class="status-item" title="Language Mode" id="status-lang" aria-label="Language mode">Markdown
+                </div>
                 <div class="status-item status-github" title="View on GitHub" aria-label="View on GitHub">
                     <i class="fab fa-github"></i>
-                    <a href="https://github.com/akashprajapati1232" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">akashprajapati1232</a>
+                    <a href="https://github.com/akashprajapati1232" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub Profile">akashprajapati1232</a>
                 </div>
                 <div class="status-item" title="Portfolio Version" aria-label="Portfolio version">v2.0.0</div>
             </div>
@@ -445,7 +536,9 @@
     <script src="js/explorer.js"></script>
     <script src="js/tabs.js"></script>
     <script src="js/terminal.js"></script>
+    <script src="js/ai.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/resize.js"></script>
 </body>
 
 </html>

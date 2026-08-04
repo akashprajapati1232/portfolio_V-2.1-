@@ -3,16 +3,24 @@
    ============================================================= */
 
 /* ── Activity Bar ── */
-#activity-bar {
+#activity-bar,
+#right-activity-bar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: var(--activity-bar-width);
     background: var(--bg-activity-bar);
-    border-right: 1px solid var(--border-panel);
     flex-shrink: 0;
     overflow: hidden;
     z-index: 50;
+}
+
+#activity-bar {
+    border-right: 1px solid var(--border-panel);
+}
+
+#right-activity-bar {
+    border-left: 1px solid var(--border-panel);
 }
 
 .activity-bar-top,
@@ -84,10 +92,10 @@
 }
 
 /* ── Sidebar ── */
-#sidebar {
+#sidebar,
+#right-sidebar {
     width: var(--sidebar-width);
     background: var(--bg-sidebar);
-    border-right: 1px solid var(--border-panel);
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -96,9 +104,21 @@
     transition: width var(--transition-med);
 }
 
-#sidebar.collapsed {
+#sidebar {
+    border-right: 1px solid var(--border-panel);
+}
+
+#right-sidebar {
+    border-left: 1px solid var(--border-panel);
+}
+
+#sidebar.collapsed,
+#right-sidebar.collapsed,
+#sidebar.hidden,
+#right-sidebar.hidden {
     width: 0;
     border-right: none;
+    border-left: none;
 }
 
 /* Panel content inside sidebar */
@@ -363,3 +383,470 @@
 .ext-badge.installed {
     color: #4ec9b0;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   J.A.R.V.I.S Chat Panel
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Typing dots animation ── */
+@keyframes jarvisTypingDot {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30%            { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Message fade-in slide-up ── */
+@keyframes jarvisMsgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Chat container ── */
+.jarvis-chat {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    background: var(--bg-sidebar);
+}
+
+/* ── Message list ── */
+.jarvis-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-behavior: smooth;
+}
+
+/* ── Individual message ── */
+.jarvis-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    animation: jarvisMsgIn 0.25s ease forwards;
+}
+
+.jarvis-msg-entering {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+/* ── Message header (avatar + name + time) ── */
+.jarvis-msg-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.jarvis-msg-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+}
+
+.jarvis-msg.bot .jarvis-msg-avatar {
+    background: #007acc;
+    color: #fff;
+}
+
+.jarvis-msg.user .jarvis-msg-avatar {
+    background: var(--bg-activity-bar);
+    color: var(--text-secondary);
+}
+
+.jarvis-msg-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.jarvis-msg-time {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
+/* ── Message content ── */
+.jarvis-msg-content {
+    padding-left: 28px;
+    color: var(--text-primary);
+    word-break: break-word;
+    user-select: text;
+}
+
+.jarvis-msg-content p {
+    margin-bottom: 8px;
+}
+.jarvis-msg-content p:last-child {
+    margin-bottom: 0;
+}
+.jarvis-msg-content ul {
+    margin-left: 18px;
+    margin-bottom: 8px;
+}
+.jarvis-msg-content ul li {
+    margin-bottom: 4px;
+}
+.jarvis-msg-content strong {
+    color: var(--text-active);
+    font-weight: 600;
+}
+.jarvis-msg-content a {
+    color: #4fc1ff;
+    text-decoration: none;
+}
+.jarvis-msg-content a:hover {
+    text-decoration: underline;
+}
+
+/* ── Typing indicator ── */
+.jarvis-typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 20px;
+}
+
+.jarvis-typing-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    display: block;
+    animation: jarvisTypingDot 1.2s infinite ease-in-out;
+}
+.jarvis-typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.jarvis-typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ── AI Knowledge-base components ── */
+
+/* Tags row */
+.ai-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 6px 0;
+}
+
+.ai-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+}
+
+.ai-tag-tech {
+    background: rgba(0, 122, 204, 0.15);
+    border-color: rgba(0, 122, 204, 0.3);
+    color: #4fc1ff;
+}
+
+.ai-tag-level {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+/* Education / achievement items */
+.ai-edu-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    border-left: 2px solid #007acc;
+}
+
+.ai-edu-degree {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-active);
+    margin-bottom: 3px;
+}
+
+.ai-edu-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.ai-edu-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Skill group */
+.ai-skill-group {
+    margin-bottom: 10px;
+}
+
+.ai-skill-group-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+/* Project item */
+.ai-project-item {
+    margin-bottom: 12px;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    transition: background var(--transition-fast);
+}
+.ai-project-item:hover {
+    background: rgba(255,255,255,0.06);
+}
+.ai-project-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-active);
+    margin-bottom: 4px;
+}
+.ai-project-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+.ai-project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.ai-project-links {
+    display: flex;
+    gap: 10px;
+}
+.ai-link {
+    font-size: 11px;
+    color: #4fc1ff;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+.ai-link:hover { color: #7dd5ff; text-decoration: underline; }
+
+/* Contact list */
+.ai-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0;
+}
+.ai-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 12px;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+}
+.ai-contact-item:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(0, 122, 204, 0.4);
+    text-decoration: none;
+}
+.ai-contact-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* Suggestion chips */
+.ai-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.ai-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: rgba(0, 122, 204, 0.12);
+    border: 1px solid rgba(0, 122, 204, 0.35);
+    border-radius: 12px;
+    font-size: 11px;
+    color: #4fc1ff;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    transition: all var(--transition-fast);
+    user-select: none;
+}
+.ai-chip:hover {
+    background: rgba(0, 122, 204, 0.25);
+    border-color: rgba(0, 122, 204, 0.6);
+    color: #7dd5ff;
+    transform: translateY(-1px);
+}
+.ai-chip:active {
+    transform: translateY(0);
+}
+
+/* ── Input container ── */
+.jarvis-input-container {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border-panel);
+    background: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.jarvis-input-wrapper {
+    display: flex;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-panel);
+    border-radius: 8px;
+    padding: 6px 8px;
+    position: relative;
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.jarvis-input-wrapper:focus-within {
+    border-color: #007acc;
+    background: rgba(0, 122, 204, 0.05);
+}
+
+#jarvis-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 4px 36px 4px 4px;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    outline: none;
+    resize: none;
+    max-height: 120px;
+    min-height: 22px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+#jarvis-input::placeholder {
+    color: var(--text-muted);
+}
+
+#jarvis-send {
+    position: absolute;
+    right: 8px;
+    bottom: 7px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 12px;
+}
+
+#jarvis-send:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+#jarvis-send.active {
+    background: #007acc;
+    color: #fff;
+}
+
+#jarvis-send:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.jarvis-disclaimer {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Resize Handles – VS Code style
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.resize-handle {
+    position: absolute;
+    z-index: 200;
+    background: transparent;
+    transition: background var(--transition-fast);
+}
+
+.resize-handle:hover,
+.resize-handle:active {
+    background: #007acc;
+}
+
+/* Left sidebar right edge */
+.resize-handle-right {
+    top: 0;
+    right: -2px;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+}
+
+/* Right sidebar left edge */
+.resize-handle-left {
+    top: 0;
+    left: -2px;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+}
+
+/* Bottom terminal top edge */
+.resize-handle-top {
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    cursor: row-resize;
+}
+
+/* Body classes applied during drag to prevent text selection */
+body.resizing-h * { cursor: col-resize !important; user-select: none !important; }
+body.resizing-v * { cursor: row-resize !important; user-select: none !important; }
+
+/* Sidebar must be position:relative for handle absolute positioning */
+#sidebar, #right-sidebar {
+    position: relative;
+}
+#terminal-panel {
+    position: relative;
+}
+
+

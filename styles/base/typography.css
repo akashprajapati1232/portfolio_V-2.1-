@@ -1,0 +1,173 @@
+/* =============================================================
+   typography.css – Markdown rendered content typography
+   Depends on: variables.css
+   ============================================================= */
+
+/* Markdown headings */
+.md-h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-active);
+    margin: 28px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-panel);
+    font-family: var(--font-ui);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.md-h1::before {
+    content: '# ';
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.md-h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-active);
+    margin: 22px 0 10px;
+    font-family: var(--font-ui);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.md-h2::before {
+    content: '## ';
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.md-h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #dcdcaa;
+    margin: 18px 0 8px;
+    font-family: var(--font-ui);
+}
+
+.md-h3::before {
+    content: '### ';
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* Markdown paragraphs */
+.md-p {
+    margin: 8px 0;
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+/* Markdown lists */
+.md-ul, .md-ol {
+    margin: 8px 0 8px 24px;
+}
+
+.md-li {
+    margin: 4px 0;
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+
+/* Markdown inline code */
+.md-code {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border-panel);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: var(--font-code);
+    font-size: 12px;
+    color: #ce9178;
+}
+
+/* Markdown code blocks */
+.md-pre {
+    background: #1a1a1a;
+    border: 1px solid var(--border-panel);
+    border-radius: 6px;
+    margin: 12px 0;
+    overflow-x: auto;
+    position: relative;
+}
+
+.md-pre-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 14px;
+    border-bottom: 1px solid var(--border-panel);
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.md-pre code {
+    display: block;
+    padding: 14px 18px;
+    font-family: var(--font-code);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    white-space: pre;
+}
+
+/* Markdown blockquote */
+.md-blockquote {
+    border-left: 4px solid #007acc;
+    margin: 12px 0;
+    padding: 10px 16px;
+    background: rgba(0, 122, 204, 0.06);
+    border-radius: 0 4px 4px 0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Markdown horizontal rule */
+.md-hr {
+    border: none;
+    border-top: 1px solid var(--border-panel);
+    margin: 20px 0;
+}
+
+/* Markdown bold / italic */
+.md-bold   { color: var(--text-active); font-weight: 700; }
+.md-italic { font-style: italic; color: var(--text-secondary); }
+
+/* Markdown link */
+.md-link {
+    color: var(--text-link);
+    text-decoration: none;
+}
+
+.md-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Utility Animations ── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-8px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(8px); opacity: 0; }
+    to   { transform: translateY(0);   opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}

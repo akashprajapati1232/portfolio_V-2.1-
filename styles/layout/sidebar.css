@@ -1,0 +1,190 @@
+/* =============================================================
+   sidebar.css – Left/right sidebar panels, file tree, panel content
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── Sidebar ── */
+#sidebar,
+#right-sidebar {
+    background: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+    z-index: 40;
+    transition: width var(--transition-med);
+    position: relative;
+}
+
+#sidebar {
+    width: var(--sidebar-width);
+    border-right: 1px solid var(--border-panel);
+}
+
+#right-sidebar {
+    width: var(--right-sidebar-width);
+    border-left: 1px solid var(--border-panel);
+}
+
+#sidebar.collapsed,
+#right-sidebar.collapsed,
+#sidebar.hidden,
+#right-sidebar.hidden {
+    width: 0;
+    border-right: none;
+    border-left: none;
+}
+
+/* ── Panel content inside sidebar ── */
+.panel-content {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.panel-content.active {
+    display: flex;
+}
+
+/* ── Sidebar header ── */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px 6px;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* ── Sidebar action buttons ── */
+.sidebar-actions {
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.sidebar-header:hover .sidebar-actions {
+    opacity: 1;
+}
+
+.sidebar-action-btn {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-radius: 3px;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.sidebar-action-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* ── Static panel messages (Search, Git, etc.) ── */
+.static-panel-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 8px;
+    color: var(--text-muted);
+    padding: 20px;
+    text-align: center;
+}
+
+.static-panel-msg i {
+    font-size: 36px;
+    opacity: 0.3;
+}
+
+.static-panel-msg p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.static-panel-msg small {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* ── Extensions panel ── */
+.extensions-list {
+    padding: 8px 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.ext-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.ext-item:hover {
+    background: var(--bg-hover);
+}
+
+.ext-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.ext-blue   { background: rgba(0, 122, 204, 0.2);  color: #4fc1ff; }
+.ext-orange { background: rgba(229, 77, 21, 0.2);   color: #e8b67a; }
+.ext-green  { background: rgba(78, 201, 176, 0.2);  color: #4ec9b0; }
+.ext-purple { background: rgba(97, 175, 239, 0.2);  color: #61afef; }
+.ext-yellow { background: rgba(229, 192, 123, 0.2); color: #e5c07b; }
+.ext-red    { background: rgba(224, 108, 117, 0.2); color: #e06c75; }
+
+.ext-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.ext-name {
+    font-size: 12px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ext-publisher {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.ext-badge {
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.ext-badge.installed {
+    color: #4ec9b0;
+}

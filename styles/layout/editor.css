@@ -1,0 +1,135 @@
+/* =============================================================
+   editor.css – Editor container, breadcrumb, editor pane, line numbers
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── Editor Container ── */
+#editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-editor);
+    position: relative;
+}
+
+/* ── Editor Area (content + breadcrumb) ── */
+#editor-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ── Breadcrumb ── */
+#breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 14px;
+    background: var(--bg-editor);
+    border-bottom: 1px solid var(--border-panel);
+    height: var(--breadcrumb-height);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.bc-item {
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.bc-item:hover {
+    color: var(--text-primary);
+}
+
+.bc-file {
+    color: var(--text-secondary);
+}
+
+.bc-separator {
+    font-size: 9px;
+    color: var(--text-muted);
+}
+
+/* ── Editor Wrap (line numbers + content) ── */
+#editor-wrap {
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Line Numbers */
+#line-numbers {
+    min-width: 50px;
+    padding: 18px 8px 18px 0;
+    text-align: right;
+    font-family: var(--font-code);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    background: var(--bg-editor);
+    border-right: 1px solid var(--border-panel);
+    flex-shrink: 0;
+    user-select: none;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Editor Content Container */
+#editor-content {
+    flex: 1;
+    padding: 18px 28px;
+    font-family: var(--font-code);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    overflow-x: auto;
+    user-select: text;
+    position: relative;
+}
+
+/* Individual Editor Pane */
+.editor-pane {
+    animation: fadeIn var(--transition-med);
+    display: none; /* hidden by default */
+}
+
+/* ── Markdown Rendered Content ── */
+.md-content {
+    max-width: 900px;
+}
+
+/* ── Welcome screen (no file open) ── */
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 16px;
+    color: var(--text-muted);
+}
+
+.welcome-screen .welcome-icon {
+    font-size: 64px;
+    opacity: 0.2;
+}
+
+.welcome-screen h2 {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+}
+
+.welcome-screen p {
+    font-size: 13px;
+    color: var(--text-muted);
+}

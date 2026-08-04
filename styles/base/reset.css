@@ -1,0 +1,62 @@
+/* =============================================================
+   reset.css – Global box-model reset, element defaults
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── 1. Box model reset ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 13px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-ui);
+    background-color: var(--bg-editor);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--text-link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    color: var(--text-primary);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ── 2. Focus Styles (Accessibility) ── */
+:focus-visible {
+    outline: 1px solid #007acc;
+    outline-offset: -1px;
+}
+
+/* ── 3. Selection ── */
+::selection {
+    background: rgba(0, 122, 204, 0.35);
+    color: var(--text-active);
+}

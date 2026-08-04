@@ -1,156 +1,151 @@
 /**
- * resize.js – VS Code-style resizable panel handles
- * Adds drag handles to: left sidebar, right sidebar, bottom terminal.
- * Public API via window.PanelResizer: init()
+ * PanelResizer.js
+ * Adds drag handles to resize panels (left sidebar, right sidebar, bottom terminal).
  */
 
-window.PanelResizer = (function () {
-    'use strict';
-
-    const LIMITS = {
-        leftSidebar:  { min: 150, max: 500 },
-        rightSidebar: { min: 220, max: 520 },
-        terminal:     { min: 80,  max: 420 }
-    };
-
-    const MOBILE_BREAKPOINT = 768;
-
-    function isMobile() {
-        return window.innerWidth <= MOBILE_BREAKPOINT;
+class PanelResizer {
+    constructor() {
+        this.LIMITS = {
+            leftSidebar:  { min: 150, max: 500 },
+            rightSidebar: { min: 220, max: 520 },
+            terminal:     { min: 80,  max: 420 }
+        };
+        this.MOBILE_BREAKPOINT = 768;
     }
 
-    /* ── Generic draggable resize handle creator ── */
-    function createHandle(cls) {
+    isMobile() {
+        return window.innerWidth <= this.MOBILE_BREAKPOINT;
+    }
+
+    createHandle(cls) {
         const handle = document.createElement('div');
         handle.className = `resize-handle ${cls}`;
         handle.setAttribute('aria-hidden', 'true');
         return handle;
     }
 
-    /* ── Left Sidebar (resize right edge) ── */
-    function initLeftSidebar() {
+    initLeftSidebar() {
         const sidebar = document.getElementById('sidebar');
         if (!sidebar) return;
 
-        const handle = createHandle('resize-handle-right');
+        const handle = this.createHandle('resize-handle-right');
         sidebar.appendChild(handle);
 
         let startX, startW;
 
         handle.addEventListener('mousedown', (e) => {
-            if (isMobile()) return;
+            if (this.isMobile()) return;
             e.preventDefault();
             startX = e.clientX;
             startW = sidebar.getBoundingClientRect().width;
             document.body.classList.add('resizing-h');
 
-            function onMove(e) {
+            const onMove = (e) => {
                 const delta = e.clientX - startX;
-                const newW = Math.min(LIMITS.leftSidebar.max,
-                    Math.max(LIMITS.leftSidebar.min, startW + delta));
+                const newW = Math.min(this.LIMITS.leftSidebar.max,
+                    Math.max(this.LIMITS.leftSidebar.min, startW + delta));
                 sidebar.style.width = newW + 'px';
                 document.documentElement.style.setProperty('--sidebar-width', newW + 'px');
-            }
+            };
 
-            function onUp() {
+            const onUp = () => {
                 document.body.classList.remove('resizing-h');
                 document.removeEventListener('mousemove', onMove);
                 document.removeEventListener('mouseup', onUp);
-            }
+            };
 
             document.addEventListener('mousemove', onMove);
             document.addEventListener('mouseup', onUp);
         });
     }
 
-    /* ── Right Sidebar (resize left edge) ── */
-    function initRightSidebar() {
+    initRightSidebar() {
         const sidebar = document.getElementById('right-sidebar');
         if (!sidebar) return;
 
-        const handle = createHandle('resize-handle-left');
+        const handle = this.createHandle('resize-handle-left');
         sidebar.appendChild(handle);
 
         let startX, startW;
 
         handle.addEventListener('mousedown', (e) => {
-            if (isMobile()) return;
+            if (this.isMobile()) return;
             e.preventDefault();
             startX = e.clientX;
             startW = sidebar.getBoundingClientRect().width;
             document.body.classList.add('resizing-h');
 
-            function onMove(e) {
+            const onMove = (e) => {
                 const delta = startX - e.clientX;
-                const newW = Math.min(LIMITS.rightSidebar.max,
-                    Math.max(LIMITS.rightSidebar.min, startW + delta));
+                const newW = Math.min(this.LIMITS.rightSidebar.max,
+                    Math.max(this.LIMITS.rightSidebar.min, startW + delta));
                 sidebar.style.width = newW + 'px';
-            }
+                document.documentElement.style.setProperty('--right-sidebar-width', newW + 'px');
+            };
 
-            function onUp() {
+            const onUp = () => {
                 document.body.classList.remove('resizing-h');
                 document.removeEventListener('mousemove', onMove);
                 document.removeEventListener('mouseup', onUp);
-            }
+            };
 
             document.addEventListener('mousemove', onMove);
             document.addEventListener('mouseup', onUp);
         });
     }
 
-    /* ── Bottom Terminal (resize top edge) ── */
-    function initTerminal() {
+    initTerminal() {
         const terminal = document.getElementById('terminal-panel');
         if (!terminal) return;
 
-        const handle = createHandle('resize-handle-top');
+        const handle = this.createHandle('resize-handle-top');
         terminal.insertBefore(handle, terminal.firstChild);
 
         let startY, startH;
 
         handle.addEventListener('mousedown', (e) => {
-            if (isMobile()) return;
+            if (this.isMobile()) return;
             e.preventDefault();
             startY = e.clientY;
             startH = terminal.getBoundingClientRect().height;
             document.body.classList.add('resizing-v');
 
-            function onMove(e) {
+            const onMove = (e) => {
                 const delta = startY - e.clientY;
-                const newH = Math.min(LIMITS.terminal.max,
-                    Math.max(LIMITS.terminal.min, startH + delta));
+                const newH = Math.min(this.LIMITS.terminal.max,
+                    Math.max(this.LIMITS.terminal.min, startH + delta));
                 terminal.style.height = newH + 'px';
                 document.documentElement.style.setProperty('--terminal-height', newH + 'px');
-            }
+            };
 
-            function onUp() {
+            const onUp = () => {
                 document.body.classList.remove('resizing-v');
                 document.removeEventListener('mousemove', onMove);
                 document.removeEventListener('mouseup', onUp);
-            }
+            };
 
             document.addEventListener('mousemove', onMove);
             document.addEventListener('mouseup', onUp);
         });
     }
 
-    /* ── Reset widths on mobile ── */
-    function handleWindowResize() {
-        if (isMobile()) {
+    handleWindowResize() {
+        if (this.isMobile()) {
             const left  = document.getElementById('sidebar');
             const right = document.getElementById('right-sidebar');
             if (left)  left.style.width  = '';
             if (right) right.style.width = '';
             document.documentElement.style.removeProperty('--sidebar-width');
+            document.documentElement.style.removeProperty('--right-sidebar-width');
         }
     }
 
-    function init() {
-        initLeftSidebar();
-        initRightSidebar();
-        initTerminal();
-        window.addEventListener('resize', handleWindowResize);
+    init() {
+        this.initLeftSidebar();
+        this.initRightSidebar();
+        this.initTerminal();
+        window.addEventListener('resize', this.handleWindowResize.bind(this));
     }
+}
 
-    return { init };
-}());
+export const panelResizer = new PanelResizer();

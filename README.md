@@ -66,9 +66,7 @@ This portfolio is designed to look and feel exactly like **Visual Studio Code**.
 portfolio-akash/
 │
 ├── assets/                    # All static media assets
-│   ├── images/                # Profile photos and project screenshots
-│   │   ├── akash-prajapati.jpg
-│   │   ├── profile.png
+│   ├── images/                # Project screenshots
 │   │   ├── ImgNinja/
 │   │   ├── snake-game/
 │   │   ├── portfolio/
@@ -79,7 +77,9 @@ portfolio-akash/
 │   │   ├── hackthone/
 │   │   └── certificate/
 │   ├── icons/                 # (Reserved for future SVG icons)
-│   ├── logos/                 # (Reserved for brand logos)
+│   ├── logos/                 # Profile photos and brand logos
+│   │   ├── akash-prajapati.jpg
+│   │   └── profile.png
 │   └── fonts/                 # Self-hosted fonts (no CDN)
 │       ├── fonts.css          # @font-face declarations
 │       ├── fira-code/         # Fira Code woff2 files
@@ -295,9 +295,10 @@ Open the terminal with `Ctrl+\`` or click the Terminal panel.
 Project screenshots go in `assets/images/<project-id>/`:
 
 ```
-assets/images/
+assets/logos/
 ├── akash-prajapati.jpg  ← Main profile photo (used in README.md hero)
 ├── profile.png          ← Small avatar (used in activity bar)
+assets/images/
 ├── ImgNinja/
 │   ├── project-ImgNinja-01.png  ← Used as card thumbnail
 │   └── project-ImgNinja-02.png  ← Additional screenshots

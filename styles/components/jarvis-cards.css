@@ -1,0 +1,196 @@
+/* =============================================================
+   jarvis-cards.css – Reusable cards inside Jarvis Chat
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── AI Knowledge-base components ── */
+
+/* Tags row */
+.ai-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 6px 0;
+}
+
+.ai-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+}
+
+.ai-tag-tech {
+    background: rgba(0, 122, 204, 0.15);
+    border-color: rgba(0, 122, 204, 0.3);
+    color: #4fc1ff;
+}
+
+.ai-tag-level {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+/* ── Education / achievement items ── */
+.ai-edu-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    border-left: 2px solid #007acc;
+}
+
+.ai-edu-degree {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-active);
+    margin-bottom: 3px;
+}
+
+.ai-edu-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.ai-edu-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ── Skill group ── */
+.ai-skill-group {
+    margin-bottom: 10px;
+}
+
+.ai-skill-group-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+/* ── Project item ── */
+.ai-project-item {
+    margin-bottom: 12px;
+    padding: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    transition: background var(--transition-fast);
+}
+.ai-project-item:hover       { background: rgba(255,255,255,0.06); }
+.ai-project-title            { font-size: 12px; font-weight: 600; color: var(--text-active); margin-bottom: 4px; }
+.ai-project-desc             { font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 6px; }
+.ai-project-meta             { display: flex; flex-direction: column; gap: 6px; }
+.ai-project-links            { display: flex; gap: 10px; }
+
+.ai-link {
+    font-size: 11px;
+    color: #4fc1ff;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+.ai-link:hover { color: #7dd5ff; text-decoration: underline; }
+
+/* ── Contact list ── */
+.ai-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0;
+}
+.ai-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 12px;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+}
+.ai-contact-item:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(0, 122, 204, 0.4);
+    text-decoration: none;
+}
+.ai-contact-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* ── Suggestion chips ── */
+.ai-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.ai-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: rgba(0, 122, 204, 0.12);
+    border: 1px solid rgba(0, 122, 204, 0.35);
+    border-radius: 12px;
+    font-size: 11px;
+    color: #4fc1ff;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    transition: all var(--transition-fast);
+    user-select: none;
+}
+.ai-chip:hover {
+    background: rgba(0, 122, 204, 0.25);
+    border-color: rgba(0, 122, 204, 0.6);
+    color: #7dd5ff;
+    transform: translateY(-1px);
+}
+.ai-chip:active {
+    transform: translateY(0);
+}
+
+/* Autocomplete Suggestion Popup */
+#term-autocomplete {
+    position: absolute;
+    bottom: 30px;
+    left: 140px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-panel);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    min-width: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.term-suggestion-item {
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.term-suggestion-item:hover,
+.term-suggestion-item.active {
+    background: var(--bg-hover);
+    color: #4fc1ff;
+}

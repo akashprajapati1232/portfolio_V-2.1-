@@ -1,0 +1,61 @@
+/* =============================================================
+   resize.css – Panel Resize Handles (VS Code style)
+   Depends on: variables.css
+   ============================================================= */
+
+.resize-handle {
+    position: absolute;
+    z-index: 200;
+    background: transparent;
+    transition: background var(--transition-fast);
+}
+
+.resize-handle:hover,
+.resize-handle:active {
+    background: #007acc;
+}
+
+/* Left sidebar right edge */
+.resize-handle-right {
+    top: 0;
+    right: -2px;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+}
+
+/* Right sidebar left edge */
+.resize-handle-left {
+    top: 0;
+    left: -2px;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+}
+
+/* Bottom terminal top edge */
+.resize-handle-top {
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    cursor: row-resize;
+}
+
+/* Body classes applied during drag to prevent text selection */
+body.resizing-h * { cursor: col-resize !important; user-select: none !important; }
+body.resizing-v * { cursor: row-resize !important; user-select: none !important; }
+
+/* Disable transitions while dragging for smooth 60fps layout updates */
+body.resizing-h #sidebar,
+body.resizing-h #right-sidebar {
+    transition: none !important;
+}
+body.resizing-v #terminal-panel {
+    transition: none !important;
+}
+
+/* Sidebar must be position:relative for handle absolute positioning */
+#terminal-panel {
+    position: relative;
+}

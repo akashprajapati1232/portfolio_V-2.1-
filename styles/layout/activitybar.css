@@ -1,0 +1,93 @@
+/* =============================================================
+   activitybar.css – Left and right activity bars
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── Activity Bar ── */
+#activity-bar,
+#right-activity-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: var(--activity-bar-width);
+    background: var(--bg-activity-bar);
+    flex-shrink: 0;
+    overflow: hidden;
+    z-index: 50;
+}
+
+#activity-bar {
+    border-right: 1px solid var(--border-panel);
+}
+
+#right-activity-bar {
+    border-left: 1px solid var(--border-panel);
+}
+
+.activity-bar-top,
+.activity-bar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 0;
+}
+
+/* ── Activity bar buttons ── */
+.activity-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+    border-left: 2px solid transparent;
+    transition: color var(--transition-fast), background var(--transition-fast);
+    position: relative;
+    cursor: pointer;
+}
+
+.activity-btn:hover {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.activity-btn.active {
+    color: rgba(255, 255, 255, 0.9);
+    border-left-color: #fff;
+}
+
+/* ── Tooltip ── */
+.activity-btn::after {
+    content: attr(title);
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #252526;
+    color: var(--text-primary);
+    border: 1px solid var(--border-panel);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity var(--transition-fast);
+}
+
+.activity-btn:hover::after {
+    opacity: 1;
+}
+
+/* ── Profile avatar in activity bar ── */
+.profile-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.2);
+}

@@ -22,17 +22,17 @@
     <meta property="og:title" content="Akash Prajapati | Personal Portfolio">
     <meta property="og:description"
         content="Akash Prajapati's developer portfolio styled as a Personal IDE. BCA student and full-stack web developer.">
-    <meta property="og:image" content="assets/images/akash-prajapati.jpg">
+    <meta property="og:image" content="assets/logos/akash-prajapati.jpg">
     <meta property="og:site_name" content="Akash Prajapati Portfolio">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Akash Prajapati | Personal Portfolio">
     <meta name="twitter:description" content="Akash Prajapati's developer portfolio styled as a Personal IDE.">
-    <meta name="twitter:image" content="assets/images/akash-prajapati.jpg">
+    <meta name="twitter:image" content="assets/logos/akash-prajapati.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/profile.png">
+    <link rel="icon" type="image/png" href="assets/logos/profile.png">
 
     <!-- Local Fonts (Fira Code + Inter — no CDN) -->
     <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -40,14 +40,33 @@
     <!-- Local Font Awesome (no CDN) -->
     <link rel="stylesheet" href="assets/fonts/fontawesome/all.min.css">
 
+    <!-- xterm.js terminal UI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.min.css">
+
     <!-- CSS Files — modular, load order matters -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/explorer.css">
-    <link rel="stylesheet" href="css/editor.css">
-    <link rel="stylesheet" href="css/terminal.css">
-    <link rel="stylesheet" href="css/ai.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+
+    <!-- Layout Styles -->
+    <link rel="stylesheet" href="styles/layout/titlebar.css">
+    <link rel="stylesheet" href="styles/layout/activitybar.css">
+    <link rel="stylesheet" href="styles/layout/sidebar.css">
+    <link rel="stylesheet" href="styles/layout/editor.css">
+    <link rel="stylesheet" href="styles/layout/terminal.css">
+    <link rel="stylesheet" href="styles/layout/chat.css">
+    <link rel="stylesheet" href="styles/layout/statusbar.css">
+    <link rel="stylesheet" href="styles/layout/resize.css">
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="styles/components/tabs.css">
+    <link rel="stylesheet" href="styles/components/tree.css">
+    <link rel="stylesheet" href="styles/components/cards.css">
+    <link rel="stylesheet" href="styles/components/jarvis-cards.css">
+
+    <!-- Responsive Settings -->
+    <link rel="stylesheet" href="styles/base/responsive.css">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -56,7 +75,7 @@
       "@type": "Person",
       "name": "Akash Prajapati",
       "url": "https://akashprajapati.rf.gd/",
-      "image": "https://akashprajapati.rf.gd/assets/images/akash-prajapati.jpg",
+      "image": "https://akashprajapati.rf.gd/assets/logos/akash-prajapati.jpg",
       "jobTitle": "Web Developer & BCA Student",
       "description": "Passionate BCA student and full-stack web developer specializing in React, Node.js, Python, and modern web technologies.",
       "email": "akashprajapati1232@gmail.com",
@@ -73,480 +92,7 @@
     <!-- Personal App Container -->
     <div id="vscode-app" role="application" aria-label="Personal Portfolio - Akash Prajapati">
 
-        <!-- Title Bar -->
-        <div id="title-bar" role="banner" aria-label="Title bar">
-            <!-- Window Controls (Mac style) -->
-            <div class="window-controls" aria-label="Window controls">
-                <span class="wc-btn wc-close" aria-label="Close"></span>
-                <span class="wc-btn wc-minimize" aria-label="Minimize"></span>
-                <span class="wc-btn wc-maximize" aria-label="Maximize"></span>
-            </div>
 
-            <!-- Menu Bar -->
-            <nav class="menu-bar" role="menubar" aria-label="Menu bar">
-                <div class="menu-item" role="menuitem" tabindex="0" aria-haspopup="true" aria-label="File menu">File
-                </div>
-                <div class="menu-item" role="menuitem" tabindex="0" aria-label="Edit menu">Edit</div>
-                <div class="menu-item" role="menuitem" tabindex="0" aria-label="Selection menu">Selection</div>
-                <div class="menu-item" role="menuitem" tabindex="0" aria-label="View menu">View</div>
-                <div class="menu-item" role="menuitem" tabindex="0" aria-label="Go menu">Go</div>
-                <div class="menu-item" role="menuitem" tabindex="0" aria-label="Run menu">Run</div>
-                <div class="menu-item" role="menuitem" tabindex="0" aria-label="Terminal menu">Terminal</div>
-                <div class="menu-item" role="menuitem" tabindex="0" aria-label="Help menu">Help</div>
-            </nav>
-
-            <!-- Title -->
-            <div class="title-bar-title" aria-label="Window title">
-                <span class="title-workspace">portfolio-akash</span>
-                <span class="title-separator">—</span>
-                <span class="title-file-name" id="title-current-file">README.md</span>
-            </div>
-
-            <!-- Right Controls -->
-            <div class="title-bar-right" aria-label="Title bar right controls">
-                <div class="layout-controls" style="display: flex; gap: 4px; margin-right: 10px;">
-                    <button class="tb-icon-btn layout-btn active" id="layout-left"
-                        title="Toggle Primary Side Bar (Ctrl+B)">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor"
-                                stroke-width="1.2" />
-                            <path class="fill-part" d="M1.5 4A1.5 1.5 0 0 1 3 2.5h2.5v11H3A1.5 1.5 0 0 1 1.5 12V4Z"
-                                fill="var(--button-primary-background, #007fd4)" />
-                            <path d="M5.5 2.5v11" stroke="currentColor" stroke-width="1.2" />
-                        </svg>
-                    </button>
-                    <button class="tb-icon-btn layout-btn active" id="layout-bottom" title="Toggle Panel (Ctrl+J)">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor"
-                                stroke-width="1.2" />
-                            <path class="fill-part"
-                                d="M1.5 9.5h13V12a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 1.5 12V9.5Z"
-                                fill="var(--button-primary-background, #007fd4)" />
-                            <path d="M1.5 9.5h13" stroke="currentColor" stroke-width="1.2" />
-                        </svg>
-                    </button>
-                    <button class="tb-icon-btn layout-btn" id="layout-right" title="Toggle Secondary Side Bar">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1.5" y="2.5" width="13" height="11" rx="1.5" stroke="currentColor"
-                                stroke-width="1.2" />
-                            <path class="fill-part"
-                                d="M10.5 2.5h2.5A1.5 1.5 0 0 1 14.5 4v8a1.5 1.5 0 0 1-1.5 1.5h-2.5V2.5Z"
-                                fill="var(--button-primary-background, #007fd4)" />
-                            <path d="M10.5 2.5v11" stroke="currentColor" stroke-width="1.2" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Layout -->
-        <div id="main-layout">
-
-            <!-- Activity Bar -->
-            <aside id="activity-bar" role="navigation" aria-label="Activity bar">
-                <div class="activity-bar-top">
-                    <button class="activity-btn active" id="act-explorer" data-panel="explorer"
-                        title="Explorer (Ctrl+Shift+E)" aria-label="Explorer" aria-pressed="true">
-                        <i class="fas fa-copy"></i>
-                    </button>
-                    <button class="activity-btn" id="act-search" data-panel="search" title="Search (Ctrl+Shift+F)"
-                        aria-label="Search" aria-pressed="false">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="activity-btn" id="act-git" data-panel="git" title="Source Control (Ctrl+Shift+G)"
-                        aria-label="Source Control" aria-pressed="false">
-                        <i class="fas fa-code-branch"></i>
-                    </button>
-                    <button class="activity-btn" id="act-run" data-panel="run" title="Run and Debug (Ctrl+Shift+D)"
-                        aria-label="Run and Debug" aria-pressed="false">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button class="activity-btn" id="act-extensions" data-panel="extensions"
-                        title="Extensions (Ctrl+Shift+X)" aria-label="Extensions" aria-pressed="false">
-                        <i class="fas fa-th-large"></i>
-                    </button>
-                </div>
-                <div class="activity-bar-bottom">
-                    <button class="activity-btn" title="Settings" aria-label="Settings">
-                        <i class="fas fa-cog"></i>
-                    </button>
-                    <button class="activity-btn profile-btn" title="Akash Prajapati" aria-label="Account">
-                        <img src="assets/images/profile.png" alt="Akash Prajapati" class="profile-avatar">
-                    </button>
-                </div>
-            </aside>
-
-            <!-- Sidebar / Explorer Panel -->
-            <aside id="sidebar" role="complementary" aria-label="Explorer sidebar">
-                <div id="explorer-panel" class="panel-content active">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">EXPLORER</span>
-                        <div class="sidebar-actions">
-                            <button class="sidebar-action-btn" title="New File" aria-label="New File"><i
-                                    class="fas fa-file-plus"></i></button>
-                            <button class="sidebar-action-btn" title="New Folder" aria-label="New Folder"><i
-                                    class="fas fa-folder-plus"></i></button>
-                            <button class="sidebar-action-btn" title="Refresh" aria-label="Refresh"><i
-                                    class="fas fa-sync-alt"></i></button>
-                            <button class="sidebar-action-btn" title="Collapse All" id="collapse-all-btn"
-                                aria-label="Collapse All"><i class="fas fa-compress-alt"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- File Tree -->
-                    <div class="file-tree" id="file-tree" role="tree" aria-label="File explorer">
-                        <div class="workspace-root">
-                            <div class="tree-item root-item expanded" data-type="folder" role="treeitem"
-                                aria-expanded="true" aria-label="portfolio-akash folder">
-                                <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                <i class="fas fa-folder-open tree-icon folder-icon"></i>
-                                <span class="tree-label">PORTFOLIO-AKASH</span>
-                            </div>
-
-                            <div class="tree-children">
-                                <!-- about/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="about"
-                                    role="treeitem" aria-expanded="true" aria-label="about folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">about</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="about">
-                                    <div class="tree-item file-item" data-file="README.md" data-lang="markdown"
-                                        role="treeitem" aria-label="README.md" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
-                                        <span class="tree-label">README.md</span>
-                                    </div>
-                                    <div class="tree-item file-item" data-file="profile.json" data-lang="json"
-                                        role="treeitem" aria-label="profile.json" tabindex="0">
-                                        <i class="fas fa-file-code tree-icon" style="color: #cbcb41;"></i>
-                                        <span class="tree-label">profile.json</span>
-                                    </div>
-                                </div>
-
-                                <!-- projects/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="projects"
-                                    role="treeitem" aria-expanded="true" aria-label="projects folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">projects</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="projects">
-                                    <div class="tree-item file-item" data-file="projects.md" data-lang="markdown"
-                                        role="treeitem" aria-label="projects.md" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
-                                        <span class="tree-label">projects.md</span>
-                                    </div>
-                                </div>
-
-                                <!-- skills/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="skills"
-                                    role="treeitem" aria-expanded="true" aria-label="skills folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">skills</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="skills">
-                                    <div class="tree-item file-item" data-file="skills.md" data-lang="markdown"
-                                        role="treeitem" aria-label="skills.md" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
-                                        <span class="tree-label">skills.md</span>
-                                    </div>
-                                </div>
-
-                                <!-- experience/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="experience"
-                                    role="treeitem" aria-expanded="true" aria-label="experience folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">experience</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="experience">
-                                    <div class="tree-item file-item" data-file="work.md" data-lang="markdown"
-                                        role="treeitem" aria-label="work.md" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #519aba;"></i>
-                                        <span class="tree-label">work.md</span>
-                                    </div>
-                                </div>
-
-                                <!-- contact/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="contact"
-                                    role="treeitem" aria-expanded="true" aria-label="contact folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">contact</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="contact">
-                                    <div class="tree-item file-item" data-file="socials.json" data-lang="json"
-                                        role="treeitem" aria-label="socials.json" tabindex="0">
-                                        <i class="fas fa-file-code tree-icon" style="color: #cbcb41;"></i>
-                                        <span class="tree-label">socials.json</span>
-                                    </div>
-                                </div>
-
-                                <!-- license/ folder -->
-                                <div class="tree-item folder-item expanded" data-type="folder" data-folder="license"
-                                    role="treeitem" aria-expanded="true" aria-label="license folder" tabindex="0">
-                                    <span class="tree-arrow"><i class="fas fa-chevron-down"></i></span>
-                                    <i class="fas fa-folder-open tree-icon folder-icon" style="color: #e8c764;"></i>
-                                    <span class="tree-label">license</span>
-                                </div>
-                                <div class="tree-children folder-children" data-parent="license">
-                                    <div class="tree-item file-item" data-file="LICENSE.txt" data-lang="text"
-                                        role="treeitem" aria-label="LICENSE.txt" tabindex="0">
-                                        <i class="fas fa-file-alt tree-icon" style="color: #8a8a8a;"></i>
-                                        <span class="tree-label">LICENSE.txt</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Search Panel (static) -->
-                <div id="search-panel" class="panel-content">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">SEARCH</span>
-                    </div>
-                    <div class="static-panel-msg">
-                        <i class="fas fa-search"></i>
-                        <p>Search functionality</p>
-                        <small>Use Explorer to navigate files</small>
-                    </div>
-                </div>
-
-                <!-- Git Panel (static) -->
-                <div id="git-panel" class="panel-content">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">SOURCE CONTROL</span>
-                    </div>
-                    <div class="static-panel-msg">
-                        <i class="fas fa-code-branch"></i>
-                        <p>No changes</p>
-                        <small>main branch</small>
-                    </div>
-                </div>
-
-                <!-- Run Panel (static) -->
-                <div id="run-panel" class="panel-content">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">RUN AND DEBUG</span>
-                    </div>
-                    <div class="static-panel-msg">
-                        <i class="fas fa-play-circle"></i>
-                        <p>Run and Debug</p>
-                        <small>No configurations</small>
-                    </div>
-                </div>
-
-                <!-- Extensions Panel (static) -->
-                <div id="extensions-panel" class="panel-content">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">EXTENSIONS</span>
-                    </div>
-                    <div class="extensions-list">
-                        <div class="ext-item">
-                            <div class="ext-icon ext-blue"><i class="fab fa-js"></i></div>
-                            <div class="ext-info">
-                                <span class="ext-name">JavaScript</span>
-                                <span class="ext-publisher">Microsoft</span>
-                            </div>
-                            <span class="ext-badge installed">✓</span>
-                        </div>
-                        <div class="ext-item">
-                            <div class="ext-icon ext-orange"><i class="fab fa-html5"></i></div>
-                            <div class="ext-info">
-                                <span class="ext-name">HTML5</span>
-                                <span class="ext-publisher">Microsoft</span>
-                            </div>
-                            <span class="ext-badge installed">✓</span>
-                        </div>
-                        <div class="ext-item">
-                            <div class="ext-icon ext-green"><i class="fab fa-python"></i></div>
-                            <div class="ext-info">
-                                <span class="ext-name">Python</span>
-                                <span class="ext-publisher">Microsoft</span>
-                            </div>
-                            <span class="ext-badge installed">✓</span>
-                        </div>
-                        <div class="ext-item">
-                            <div class="ext-icon ext-purple"><i class="fab fa-react"></i></div>
-                            <div class="ext-info">
-                                <span class="ext-name">React Snippets</span>
-                                <span class="ext-publisher">dsznajder</span>
-                            </div>
-                            <span class="ext-badge installed">✓</span>
-                        </div>
-                        <div class="ext-item">
-                            <div class="ext-icon ext-yellow"><i class="fas fa-palette"></i></div>
-                            <div class="ext-info">
-                                <span class="ext-name">Prettier</span>
-                                <span class="ext-publisher">Prettier</span>
-                            </div>
-                            <span class="ext-badge installed">✓</span>
-                        </div>
-                        <div class="ext-item">
-                            <div class="ext-icon ext-red"><i class="fas fa-code"></i></div>
-                            <div class="ext-info">
-                                <span class="ext-name">GitLens</span>
-                                <span class="ext-publisher">GitKraken</span>
-                            </div>
-                            <span class="ext-badge installed">✓</span>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            <!-- Editor Container -->
-            <main id="editor-container" role="main" aria-label="Editor area">
-
-                <!-- Tabs Bar -->
-                <div id="tabs-bar" role="tablist" aria-label="Open editor tabs">
-                    <div id="tabs-list"></div>
-                    <div class="tabs-overflow-btn" aria-label="More tabs">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </div>
-                </div>
-
-                <!-- Editor Content Area -->
-                <div id="editor-area" role="tabpanel" aria-label="Editor content">
-                    <!-- Breadcrumb -->
-                    <div id="breadcrumb" aria-label="Breadcrumb navigation">
-                        <span class="bc-item bc-folder">about</span>
-                        <span class="bc-separator"><i class="fas fa-chevron-right"></i></span>
-                        <span class="bc-item bc-file" id="bc-current">README.md</span>
-                    </div>
-
-                    <!-- Line numbers + Editor -->
-                    <div id="editor-wrap">
-                        <div id="line-numbers" aria-hidden="true"></div>
-                        <div id="editor-content" role="document" aria-label="File content"></div>
-                    </div>
-                </div>
-
-                <!-- Terminal Panel -->
-                <div id="terminal-panel" role="complementary" aria-label="Terminal panel">
-                    <div id="terminal-header">
-                        <div class="terminal-tabs">
-                            <div class="terminal-tab" id="term-tab-problems" title="Problems">
-                                <span>PROBLEMS</span>
-                            </div>
-                            <div class="terminal-tab" id="term-tab-output" title="Output">
-                                <span>OUTPUT</span>
-                            </div>
-                            <div class="terminal-tab" id="term-tab-debug" title="Debug Console">
-                                <span>DEBUG CONSOLE</span>
-                            </div>
-                            <div class="terminal-tab active" id="term-tab" title="Terminal">
-                                <span>TERMINAL</span>
-                                <span class="term-tab-badge">1</span>
-                            </div>
-                            <div class="terminal-tab" id="term-tab-ports" title="Ports">
-                                <span>PORTS</span>
-                            </div>
-                        </div>
-                        <div class="terminal-actions">
-                            <button class="term-action-btn" id="term-new" title="New Terminal"
-                                aria-label="New Terminal">
-                                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                                    <path
-                                        d="M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z" />
-                                </svg>
-                            </button>
-                            <button class="term-action-btn" id="term-split" title="Split Terminal"
-                                aria-label="Split Terminal">
-                                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                                    <rect x="1" y="2" width="6" height="12" rx="1" />
-                                    <rect x="9" y="2" width="6" height="12" rx="1" />
-                                </svg>
-                            </button>
-                            <div class="term-actions-divider"></div>
-                            <button class="term-action-btn" id="term-maximize" title="Maximize Panel"
-                                aria-label="Maximize Panel">
-                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                                    stroke-width="1.3">
-                                    <rect x="1.5" y="1.5" width="13" height="13" rx="1" />
-                                    <line x1="5.5" y1="1.5" x2="5.5" y2="14.5" />
-                                    <line x1="10.5" y1="1.5" x2="10.5" y2="14.5" />
-                                </svg>
-                            </button>
-                            <button class="term-action-btn" id="term-close" title="Close Panel"
-                                aria-label="Close Terminal">
-                                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                                    <path
-                                        d="M4.28 3.22a.75.75 0 0 0-1.06 1.06L6.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06L8 9.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L9.06 8l3.72-3.72a.75.75 0 0 0-1.06-1.06L8 6.94 4.28 3.22z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="terminal-body" aria-live="polite" aria-label="Terminal output">
-                        <div id="terminal-output"></div>
-                        <!-- Interactive input line injected by terminal.js -->
-                    </div>
-                </div>
-            </main>
-
-            <!-- Right Sidebar / JARVIS Panel -->
-            <aside id="right-sidebar" class="hidden" role="complementary" aria-label="J.A.R.V.I.S Assistant">
-                <div id="jarvis-panel" class="panel-content active">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">CHAT</span>
-                        <div class="sidebar-actions">
-                            <button class="sidebar-action-btn" title="Clear Chat" id="clear-jarvis"
-                                aria-label="Clear Chat">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                            <button class="sidebar-action-btn" title="Close" id="close-jarvis"
-                                aria-label="Close J.A.R.V.I.S">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="jarvis-chat">
-                        <!-- Messages rendered by js/ai.js -->
-                        <div class="jarvis-messages" id="jarvis-messages"></div>
-                        <div class="jarvis-input-container">
-                            <div class="jarvis-input-wrapper">
-                                <textarea placeholder="Ask me anything..." id="jarvis-input" rows="1"></textarea>
-                                <button id="jarvis-send" title="Send (Enter)"><i
-                                        class="fas fa-paper-plane"></i></button>
-                            </div>
-                            <div class="jarvis-disclaimer">Portfolio AI · Shift+Enter for new line</div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </div>
-
-        <!-- Status Bar -->
-        <footer id="status-bar" role="contentinfo" aria-label="Status bar">
-            <div class="status-left">
-                <div class="status-item status-branch" title="Git Branch" aria-label="Git branch: main">
-                    <i class="fas fa-code-branch"></i>
-                    <span>main</span>
-                </div>
-                <div class="status-item" title="No Problems" aria-label="No problems">
-                    <i class="fas fa-times-circle"></i>
-                    <span>0</span>
-                    <i class="fas fa-exclamation-triangle" style="margin-left:4px;"></i>
-                    <span>0</span>
-                </div>
-            </div>
-            <div class="status-right">
-                <div class="status-item" title="Line and Column" id="status-position" aria-label="Cursor position">Ln 1,
-                    Col 1</div>
-                <div class="status-item" title="File Encoding" aria-label="File encoding">UTF-8</div>
-                <div class="status-item" title="Line Ending" aria-label="Line ending">LF</div>
-                <div class="status-item" title="Language Mode" id="status-lang" aria-label="Language mode">Markdown
-                </div>
-                <div class="status-item status-github" title="View on GitHub" aria-label="View on GitHub">
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/akashprajapati1232" target="_blank" rel="noopener noreferrer"
-                        aria-label="GitHub Profile">akashprajapati1232</a>
-                </div>
-                <div class="status-item" title="Portfolio Version" aria-label="Portfolio version">v2.1.0</div>
-            </div>
-        </footer>
 
     </div>
 
@@ -558,17 +104,12 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <!-- JavaScript Files — load order matters -->
-    <!-- dataLoader first: fetches JSON and sets window.PORTFOLIO_DATA -->
-    <script src="js/dataLoader.js"></script>
-    <script src="js/markdown.js"></script>
-    <script src="js/router.js"></script>
-    <script src="js/explorer.js"></script>
-    <script src="js/tabs.js"></script>
-    <script src="js/terminal.js"></script>
-    <script src="js/ai.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/resize.js"></script>
+    <!-- xterm.js + FitAddon (must load before app.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.min.js"></script>
+
+    <!-- JavaScript Entry Point -->
+    <script type="module" src="js/app.js"></script>
 </body>
 
 </html>

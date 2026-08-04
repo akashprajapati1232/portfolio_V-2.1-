@@ -1,0 +1,113 @@
+/* =============================================================
+   tree.css – File tree components
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── File Tree ── */
+.file-tree {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 20px;
+}
+
+.workspace-root {
+    padding-top: 4px;
+}
+
+/* ── Tree items ── */
+.tree-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px 2px 12px;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+    font-size: 13px;
+    color: var(--text-primary);
+    transition: background var(--transition-fast);
+    min-height: 22px;
+    user-select: none;
+}
+
+.tree-item:hover {
+    background: var(--bg-hover);
+}
+
+.tree-item.active-file {
+    background: var(--bg-selected);
+    color: var(--text-active);
+}
+
+.tree-item.focused-file {
+    outline: 1px solid #007acc;
+    outline-offset: -1px;
+}
+
+/* ── Root item (workspace name) ── */
+.root-item {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    padding: 6px 8px;
+    cursor: default;
+}
+
+/* ── Indented children ── */
+.tree-children {
+    padding-left: 16px;
+}
+
+.folder-children {
+    display: block;
+}
+
+.folder-children.collapsed {
+    display: none;
+}
+
+/* ── Tree arrow ── */
+.tree-arrow {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+    color: var(--text-secondary);
+    transition: transform var(--transition-fast);
+}
+
+.tree-item.collapsed > .tree-arrow {
+    transform: rotate(-90deg);
+}
+
+/* ── Tree icon ── */
+.tree-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+}
+
+.folder-icon {
+    color: #dcb862 !important;
+}
+
+/* ── Tree label ── */
+.tree-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+/* ── File items don't have arrows ── */
+.file-item .tree-arrow {
+    visibility: hidden;
+}

@@ -1,0 +1,60 @@
+/* =============================================================
+   statusbar.css – Bottom status bar
+   Depends on: variables.css
+   ============================================================= */
+
+/* ── Status Bar ── */
+#status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-status-bar);
+    height: var(--status-bar-height);
+    padding: 0 10px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: rgba(255,255,255,0.9);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.status-left,
+.status-right {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 100%;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 8px;
+    height: 100%;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--transition-fast);
+}
+
+.status-item:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.status-item i {
+    font-size: 11px;
+}
+
+.status-branch {
+    background: rgba(0,0,0,0.2);
+    font-weight: 600;
+}
+
+.status-github a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+}
+
+.status-github a:hover {
+    text-decoration: underline;
+}

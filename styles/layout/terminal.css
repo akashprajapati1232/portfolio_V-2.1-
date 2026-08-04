@@ -1,5 +1,8 @@
 /* =============================================================
    terminal.css – Bottom terminal panel styles
+   xterm.js handles all text rendering; this file owns the panel
+   chrome (header, tabs, action buttons) and the mount container.
+   Depends on: variables.css
    ============================================================= */
 
 /* ── Terminal Panel ── */
@@ -11,6 +14,7 @@
     flex-direction: column;
     overflow: hidden;
     transition: height var(--transition-med);
+    position: relative;
 }
 
 /* Terminal initially hidden, revealed by JS */
@@ -130,99 +134,40 @@
     flex-shrink: 0;
 }
 
-/* ── Terminal Body ── */
+/* ── Terminal Body & xterm mount ── */
 #terminal-body {
     flex: 1;
-    overflow-y: auto;
-    padding: 10px 14px;
-    font-family: var(--font-code);
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--text-primary);
+    overflow: hidden;   /* xterm manages its own scroll */
     background: var(--bg-terminal);
-}
-
-/* Terminal output lines */
-#terminal-output {
     display: flex;
     flex-direction: column;
-    gap: 2px;
 }
 
-.term-line {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    min-height: 20px;
+/* xterm.js mounts its canvas here – must fill the body completely */
+#xterm-mount {
+    flex: 1;
+    min-height: 0;
+    padding: 6px 10px;
+    box-sizing: border-box;
 }
 
-.term-prompt-text {
-    color: #4ec9b0;
-    white-space: nowrap;
-    margin-right: 8px;
-    font-weight: 500;
-    flex-shrink: 0;
+/* Override xterm.js defaults to match VS Code look */
+.xterm {
+    height: 100%;
 }
 
-.term-cmd {
-    color: var(--text-primary);
+.xterm-viewport {
+    background-color: var(--bg-terminal) !important;
 }
 
-.term-output {
-    color: var(--text-secondary);
-    padding-left: 0;
-    white-space: pre;
+.xterm-screen {
+    background-color: var(--bg-terminal);
 }
 
-.term-output.term-success {
-    color: #6a9955;
-}
-
-.term-output.term-info {
-    color: #4fc1ff;
-}
-
-.term-output.term-loading {
-    color: #dcdcaa;
-}
-
-/* Blinking cursor */
-.terminal-input-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 4px;
-    min-height: 20px;
-}
-
-.term-prompt {
-    color: #4ec9b0;
-    font-weight: 500;
-    flex-shrink: 0;
-}
-
-.cursor {
-    display: inline-block;
-    font-size: 13px;
-    color: var(--text-primary);
-    animation: blink 1.1s step-end infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
-}
-
-/* Terminal slide-in animation */
+/* ── Terminal slide-in animation ── */
 @keyframes slideUpTerminal {
-    from {
-        height: 0;
-        opacity: 0;
-    }
-    to {
-        height: var(--terminal-height);
-        opacity: 1;
-    }
+    from { height: 0; opacity: 0; }
+    to   { height: var(--terminal-height); opacity: 1; }
 }
 
 #terminal-panel.animating {
@@ -233,33 +178,4 @@
     height: 85vh !important;
     max-height: calc(100vh - var(--activity-bar-height) - var(--status-bar-height)) !important;
     transition: height 0.3s ease;
-}
-
-/* Autocomplete Suggestion Popup */
-#term-autocomplete {
-    position: absolute;
-    bottom: 30px;
-    left: 140px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border-panel);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    min-width: 200px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 100;
-}
-
-.term-suggestion-item {
-    padding: 6px 12px;
-    font-size: 13px;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: background var(--transition-fast);
-}
-
-.term-suggestion-item:hover,
-.term-suggestion-item.active {
-    background: var(--bg-hover);
-    color: #4fc1ff;
 }

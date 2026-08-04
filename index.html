@@ -432,28 +432,60 @@
                 <div id="terminal-panel" role="complementary" aria-label="Terminal panel">
                     <div id="terminal-header">
                         <div class="terminal-tabs">
-                            <div class="terminal-tab active" id="term-tab">
-                                <i class="fas fa-terminal"></i>
+                            <div class="terminal-tab" id="term-tab-problems" title="Problems">
+                                <span>PROBLEMS</span>
+                            </div>
+                            <div class="terminal-tab" id="term-tab-output" title="Output">
+                                <span>OUTPUT</span>
+                            </div>
+                            <div class="terminal-tab" id="term-tab-debug" title="Debug Console">
+                                <span>DEBUG CONSOLE</span>
+                            </div>
+                            <div class="terminal-tab active" id="term-tab" title="Terminal">
                                 <span>TERMINAL</span>
+                                <span class="term-tab-badge">1</span>
+                            </div>
+                            <div class="terminal-tab" id="term-tab-ports" title="Ports">
+                                <span>PORTS</span>
                             </div>
                         </div>
                         <div class="terminal-actions">
-                            <button class="term-action-btn" id="term-clear" title="Clear Terminal"
-                                aria-label="Clear Terminal">
-                                <i class="fas fa-ban"></i>
+                            <button class="term-action-btn" id="term-new" title="New Terminal"
+                                aria-label="New Terminal">
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                                    <path
+                                        d="M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z" />
+                                </svg>
                             </button>
-                            <button class="term-action-btn" id="term-close" title="Close Terminal"
+                            <button class="term-action-btn" id="term-split" title="Split Terminal"
+                                aria-label="Split Terminal">
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                                    <rect x="1" y="2" width="6" height="12" rx="1" />
+                                    <rect x="9" y="2" width="6" height="12" rx="1" />
+                                </svg>
+                            </button>
+                            <div class="term-actions-divider"></div>
+                            <button class="term-action-btn" id="term-maximize" title="Maximize Panel"
+                                aria-label="Maximize Panel">
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                    stroke-width="1.3">
+                                    <rect x="1.5" y="1.5" width="13" height="13" rx="1" />
+                                    <line x1="5.5" y1="1.5" x2="5.5" y2="14.5" />
+                                    <line x1="10.5" y1="1.5" x2="10.5" y2="14.5" />
+                                </svg>
+                            </button>
+                            <button class="term-action-btn" id="term-close" title="Close Panel"
                                 aria-label="Close Terminal">
-                                <i class="fas fa-times"></i>
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                                    <path
+                                        d="M4.28 3.22a.75.75 0 0 0-1.06 1.06L6.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06L8 9.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L9.06 8l3.72-3.72a.75.75 0 0 0-1.06-1.06L8 6.94 4.28 3.22z" />
+                                </svg>
                             </button>
                         </div>
                     </div>
                     <div id="terminal-body" aria-live="polite" aria-label="Terminal output">
                         <div id="terminal-output"></div>
-                        <div class="terminal-input-line">
-                            <span class="term-prompt">akash@portfolio:~$</span>
-                            <span id="terminal-cursor" class="cursor" aria-hidden="true">█</span>
-                        </div>
+                        <!-- Interactive input line injected by terminal.js -->
                     </div>
                 </div>
             </main>
@@ -480,7 +512,8 @@
                         <div class="jarvis-input-container">
                             <div class="jarvis-input-wrapper">
                                 <textarea placeholder="Ask me anything..." id="jarvis-input" rows="1"></textarea>
-                                <button id="jarvis-send" title="Send (Enter)"><i class="fas fa-paper-plane"></i></button>
+                                <button id="jarvis-send" title="Send (Enter)"><i
+                                        class="fas fa-paper-plane"></i></button>
                             </div>
                             <div class="jarvis-disclaimer">Portfolio AI · Shift+Enter for new line</div>
                         </div>

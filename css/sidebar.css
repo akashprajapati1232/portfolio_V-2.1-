@@ -841,6 +841,15 @@
 body.resizing-h * { cursor: col-resize !important; user-select: none !important; }
 body.resizing-v * { cursor: row-resize !important; user-select: none !important; }
 
+/* Disable transitions while dragging for smooth 60fps layout updates */
+body.resizing-h #sidebar,
+body.resizing-h #right-sidebar {
+    transition: none !important;
+}
+body.resizing-v #terminal-panel {
+    transition: none !important;
+}
+
 /* Sidebar must be position:relative for handle absolute positioning */
 #sidebar, #right-sidebar {
     position: relative;
@@ -848,5 +857,6 @@ body.resizing-v * { cursor: row-resize !important; user-select: none !important;
 #terminal-panel {
     position: relative;
 }
+
 
 

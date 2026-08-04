@@ -604,28 +604,9 @@ SOFTWARE.`;
         if (layoutBottom && terminalPanel) {
             layoutBottom.addEventListener('click', () => {
                 if (window.Terminal) {
-                    // Use existing Terminal toggle logic if available
-                    if (terminalPanel.classList.contains('hidden')) {
-                        window.Terminal.show();
-                        layoutBottom.classList.add('active');
-                    } else {
-                        window.Terminal.hide();
-                        layoutBottom.classList.remove('active');
-                    }
-                } else {
-                    const isHidden = terminalPanel.classList.toggle('hidden');
-                    if (isHidden) {
-                        layoutBottom.classList.remove('active');
-                    } else {
-                        layoutBottom.classList.add('active');
-                    }
+                    window.Terminal.toggle();
                 }
             });
-            
-            // Sync initial state
-            if (terminalPanel.classList.contains('hidden')) {
-                layoutBottom.classList.remove('active');
-            }
         }
 
         // Toggle Right Sidebar
@@ -658,15 +639,10 @@ SOFTWARE.`;
     ───────────────────────────────────────── */
     function initKeyboard() {
         document.addEventListener('keydown', (e) => {
-            // Ctrl+` → focus terminal
+            // Ctrl+` → toggle terminal
             if (e.ctrlKey && e.key === '`') {
                 e.preventDefault();
-                const terminal = document.getElementById('terminal-panel');
-                if (terminal && terminal.classList.contains('hidden')) {
-                    window.Terminal.show();
-                } else {
-                    window.Terminal.hide();
-                }
+                if (window.Terminal) window.Terminal.toggle();
             }
             // Ctrl+B → toggle sidebar
             if (e.ctrlKey && e.key === 'b') {
@@ -710,7 +686,6 @@ SOFTWARE.`;
         );
 
         window.Router.init(openFile);
-
         window.Terminal.init();
 
         initMobileSidebar();
@@ -723,11 +698,12 @@ SOFTWARE.`;
         // Initialise resizable panels
         if (window.PanelResizer) window.PanelResizer.init();
 
-        // Open README.md by default if no hash
+        // No file is opened by default — user picks from the Explorer.
+        // Only route if the URL already has a hash (e.g. deep-link).
         const hash = window.location.hash;
-        if (!hash || hash === '#') {
+        if (hash && hash !== '#') {
             // Small delay to ensure DOM is settled
-            setTimeout(() => openFile('README.md'), 100);
+            setTimeout(() => openFile(decodeURIComponent(hash.slice(1))), 100);
         }
     }
 

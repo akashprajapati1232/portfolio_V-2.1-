@@ -26,31 +26,42 @@
 /* ── Terminal Header ── */
 #terminal-header {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     background: var(--bg-panel);
     border-bottom: 1px solid var(--border-panel);
-    height: 32px;
+    height: 35px;
     flex-shrink: 0;
-    padding: 0 8px 0 0;
+    padding-right: 4px;
+    user-select: none;
 }
 
+/* ── Tab strip ── */
 .terminal-tabs {
     display: flex;
     height: 100%;
     align-items: stretch;
+    gap: 0;
 }
 
 .terminal-tab {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 0 14px;
     font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     color: var(--text-muted);
     cursor: pointer;
     border-bottom: 2px solid transparent;
-    transition: color var(--transition-fast), border-color var(--transition-fast);
+    white-space: nowrap;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.terminal-tab:hover {
+    color: var(--text-secondary);
 }
 
 .terminal-tab.active {
@@ -58,14 +69,42 @@
     border-bottom-color: #007acc;
 }
 
-.terminal-tab i {
-    font-size: 12px;
+/* Numbered badge (e.g. "1" after TERMINAL) */
+.term-tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    line-height: 1;
 }
 
+.terminal-tab.active .term-tab-badge {
+    background: rgba(0, 122, 204, 0.25);
+    color: #4fc1ff;
+}
+
+/* ── Action button group ── */
 .terminal-actions {
     display: flex;
-    gap: 2px;
     align-items: center;
+    gap: 0;
+    padding: 4px 2px;
+}
+
+/* Vertical divider between groups */
+.term-actions-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--border-panel);
+    margin: 0 4px;
+    flex-shrink: 0;
 }
 
 .term-action-btn {
@@ -74,15 +113,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
     color: var(--text-muted);
-    border-radius: 3px;
+    border-radius: 4px;
+    cursor: pointer;
     transition: background var(--transition-fast), color var(--transition-fast);
+    flex-shrink: 0;
 }
 
 .term-action-btn:hover {
     background: var(--bg-hover);
     color: var(--text-primary);
+}
+
+.term-action-btn svg {
+    display: block;
+    flex-shrink: 0;
 }
 
 /* ── Terminal Body ── */
@@ -182,4 +227,39 @@
 
 #terminal-panel.animating {
     animation: slideUpTerminal 0.5s ease forwards;
+}
+
+#terminal-panel.term-maximized {
+    height: 85vh !important;
+    max-height: calc(100vh - var(--activity-bar-height) - var(--status-bar-height)) !important;
+    transition: height 0.3s ease;
+}
+
+/* Autocomplete Suggestion Popup */
+#term-autocomplete {
+    position: absolute;
+    bottom: 30px;
+    left: 140px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-panel);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    min-width: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.term-suggestion-item {
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.term-suggestion-item:hover,
+.term-suggestion-item.active {
+    background: var(--bg-hover);
+    color: #4fc1ff;
 }

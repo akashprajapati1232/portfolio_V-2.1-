@@ -1,0 +1,94 @@
+[
+  {
+    "id": "exp-fullstack-ai",
+    "role": "Full Stack Developer",
+    "projectType": "AI-Powered Learning Platform",
+    "duration": "Project Based",
+    "description": "Architected and built a complete student learning ecosystem integrating a locally-hosted Large Language Model (qwen3:8b) for personalized assistance.",
+    "technologies": [
+      "React 19",
+      "Node.js",
+      "Express",
+      "Ollama",
+      "Clerk Auth"
+    ],
+    "highlights": [
+      "Implemented seamless, route-independent popup authentication using Clerk without standalone login pages.",
+      "Engineered an efficient prompt context manager to pass conversation history without exceeding token limits.",
+      "Bridged a Vercel-hosted React frontend with a local Node.js backend executing AI inferences."
+    ]
+  },
+  {
+    "id": "exp-frontend-engineering",
+    "role": "Frontend Engineer",
+    "projectType": "Client-Side Image Processing Suite",
+    "duration": "Project Based",
+    "description": "Developed a zero-server-dependency web application capable of professional-grade image compression, resizing, and format conversion entirely within the browser.",
+    "technologies": [
+      "Vanilla JavaScript",
+      "HTML5 Canvas API",
+      "File API",
+      "Binary Search Algorithms"
+    ],
+    "highlights": [
+      "Engineered a custom binary search algorithm to accurately compress images to specific target file sizes.",
+      "Implemented memory-safe patterns to handle massive images (up to 50MB) without crashing the browser.",
+      "Built a modular, zero-dependency architecture prioritizing user privacy by keeping all processing client-side."
+    ]
+  },
+  {
+    "id": "exp-backend-architecture",
+    "role": "System Architect & PHP Developer",
+    "projectType": "Multi-Role Workforce Portal",
+    "duration": "Project Based",
+    "description": "Designed the complete technical architecture and frontend implementation for a bilingual hiring platform featuring distinct workflows for Workers, Businesses, and Partners.",
+    "technologies": [
+      "PHP 8",
+      "MySQL Schema",
+      "Bootstrap 5",
+      "Vanilla CSS"
+    ],
+    "highlights": [
+      "Architected a complex MySQL database schema featuring entity relationships for 7 distinct data groups.",
+      "Designed logical workflows for a tiered digital wallet commission system and multi-stage KYC verification.",
+      "Built a scalable PHP includes architecture to maintain layout consistency across diverse user dashboards."
+    ]
+  },
+  {
+    "id": "exp-data-management",
+    "role": "Web Developer",
+    "projectType": "College Chatbot & Admin System",
+    "duration": "Project Based",
+    "description": "Created an integrated campus management solution featuring a student-facing voice-enabled chatbot and a secure administrative control panel.",
+    "technologies": [
+      "Firebase Firestore",
+      "JavaScript",
+      "Tabulator.js",
+      "Web Speech API"
+    ],
+    "highlights": [
+      "Implemented real-time data synchronization and complex CRUD operations using Firebase Firestore.",
+      "Built an NLP-lite keyword matching engine for the chatbot to provide accurate academic information.",
+      "Configured advanced, filterable data tables with bulk CSV import capabilities for managing course and student records."
+    ]
+  },
+  {
+    "id": "exp-ui-ux",
+    "role": "UI/UX & Animation Developer",
+    "projectType": "Premium Agency Websites",
+    "duration": "Project Based",
+    "description": "Crafted high-conversion, visually striking landing pages and multi-page sites for digital agencies and SaaS products.",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "GSAP",
+      "ScrollTrigger",
+      "CSS Variables"
+    ],
+    "highlights": [
+      "Developed custom CSS design systems from scratch, utilizing CSS custom properties for maintainable theming.",
+      "Implemented performant, 60fps scroll-linked animations and 3D card tilt effects using GSAP and Vanilla JavaScript.",
+      "Ensured strict cross-browser compatibility for advanced visual effects like glassmorphism and gradient overlays."
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+{
+    "title": "About Me",
+    "content": [
+        "I enjoy learning new technologies and building projects that solve real problems.",
+        "My main interests are Full Stack Web Development, Data Analytics, Artificial Intelligence, and Generative AI. I like exploring how these technologies can work together to build useful applications.",
+        "I enjoy creating complete web applications, understanding data, and using AI to make applications smarter and more helpful.",
+        "Apart from coding, I like learning how software works behind the scenes and always try to understand concepts instead of just following tutorials.",
+        "I believe that learning is a continuous journey, so I keep improving my skills by building projects, exploring new ideas, and practicing regularly.",
+        "My goal is to become a software developer who can build modern web applications, work with data, and create intelligent AI-powered solutions."
+    ],
+    "learningPhilosophy": [
+        "I believe the best way to learn is by building real projects.",
+        "I enjoy understanding how things work instead of only learning how to use them.",
+        "Every project helps me improve my knowledge and become a better developer."
+    ],
+    "currentFocus": [
+        "Full Stack Web Development",
+        "Data Analytics",
+        "Artificial Intelligence",
+        "Generative AI",
+        "Building real-world projects"
+    ],
+    "interests": [
+        "Web Development",
+        "Data Analytics",
+        "Artificial Intelligence",
+        "Generative AI",
+        "Open Source",
+        "Problem Solving"
+    ],
+    "currentlyLearning": [
+        "Modern Web Technologies",
+        "Backend Development",
+        "Data Analysis",
+        "Generative AI",
+        "AI Integration",
+        "Software Engineering"
+    ],
+    "openSource": "I enjoy exploring open-source projects to learn how real software is built and to improve my development skills.",
+    "collaboration": "I enjoy learning from other developers, sharing ideas, and working together to build better software.",
+    "goal": "My goal is to build useful products by combining web development, data, and artificial intelligence to solve real-world problems.",
+    "quote": "Learn. Build. Improve. Repeat."
+}

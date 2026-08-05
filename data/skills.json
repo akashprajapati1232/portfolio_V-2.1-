@@ -1,27 +1,261 @@
-{
-  "programming": [
-    { "name": "JavaScript", "level": 85, "icon": "fab fa-js" },
-    { "name": "Python",     "level": 85, "icon": "fab fa-python" },
-    { "name": "C",          "level": 80, "icon": "fas fa-copyright" },
-    { "name": "C++",        "level": 75, "icon": "fas fa-code" },
-    { "name": "PHP",        "level": 65, "icon": "fab fa-php" }
-  ],
-  "web": [
-    { "name": "HTML5",     "level": 95, "icon": "fab fa-html5" },
-    { "name": "CSS3",      "level": 90, "icon": "fab fa-css3-alt" },
-    { "name": "React",     "level": 80, "icon": "fab fa-react" },
-    { "name": "Node.js",   "level": 75, "icon": "fab fa-node-js" },
-    { "name": "WordPress", "level": 85, "icon": "fab fa-wordpress" }
-  ],
-  "database": [
-    { "name": "MySQL",   "level": 85, "icon": "fas fa-database" },
-    { "name": "MongoDB", "level": 70, "icon": "fas fa-leaf" }
-  ],
-  "tools": [
-    { "name": "Git",       "level": 85, "icon": "fab fa-git-alt" },
-    { "name": "GitHub",    "level": 90, "icon": "fab fa-github" },
-    { "name": "Canva",     "level": 80, "icon": "fas fa-palette" },
-    { "name": "Photoshop", "level": 75, "icon": "fas fa-image" },
-    { "name": "VS Code",   "level": 95, "icon": "fas fa-code" }
-  ]
-}
+[
+  {
+    "id": "frontend",
+    "icon": "layout",
+    "category": "Frontend Development",
+    "description": "Building responsive, accessible, and modern user interfaces for web applications.",
+    "featured": true,
+    "skills": [
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "React",
+      "React Router DOM",
+      "Single Page Applications (SPA)",
+      "Responsive Design",
+      "Mobile-First Design",
+      "Semantic HTML",
+      "CSS Flexbox",
+      "CSS Grid",
+      "CSS Variables",
+      "Accessibility (ARIA Basics)",
+      "Cross Browser Compatibility"
+    ]
+  },
+  {
+    "id": "backend",
+    "icon": "server",
+    "category": "Backend Development",
+    "description": "Building server-side applications, APIs, and scalable backend systems.",
+    "featured": true,
+    "skills": [
+      "Node.js",
+      "Express.js",
+      "PHP",
+      "REST APIs",
+      "CRUD Operations",
+      "Express Middleware",
+      "MVC Architecture",
+      "File Upload Handling"
+    ]
+  },
+  {
+    "id": "languages",
+    "icon": "code",
+    "category": "Programming Languages",
+    "description": "Programming languages used for web development, automation, and problem solving.",
+    "featured": true,
+    "skills": [
+      "JavaScript",
+      "TypeScript",
+      "PHP",
+      "Python",
+      "C++"
+    ]
+  },
+  {
+    "id": "database",
+    "icon": "database",
+    "category": "Databases",
+    "description": "Working with relational and NoSQL databases for data storage and management.",
+    "featured": true,
+    "skills": [
+      "MySQL",
+      "MongoDB",
+      "Firebase Firestore",
+      "Supabase",
+      "SQL"
+    ]
+  },
+  {
+    "id": "frameworks",
+    "icon": "package",
+    "category": "Frameworks & Libraries",
+    "description": "Frameworks and libraries used to speed up development and improve user experience.",
+    "featured": true,
+    "skills": [
+      "React",
+      "Bootstrap",
+      "GSAP",
+      "ScrollTrigger",
+      "Swiper.js",
+      "AOS",
+      "SweetAlert2",
+      "Toastify.js",
+      "Tabulator.js",
+      "Particles.js",
+      "LottieFiles",
+      "VanillaTilt.js",
+      "Cropper.js"
+    ]
+  },
+  {
+    "id": "browser-api",
+    "icon": "globe",
+    "category": "Browser APIs",
+    "description": "Using modern browser APIs to create interactive web applications.",
+    "featured": false,
+    "skills": [
+      "Canvas API",
+      "File API",
+      "Blob API",
+      "FileReader API",
+      "LocalStorage API",
+      "Web Audio API",
+      "Web Speech API",
+      "Clipboard API"
+    ]
+  },
+  {
+    "id": "authentication",
+    "icon": "shield",
+    "category": "Authentication & Security",
+    "description": "Managing authentication, authorization, and secure application workflows.",
+    "featured": false,
+    "skills": [
+      "Firebase Authentication",
+      "Clerk Authentication",
+      "OAuth",
+      "Email & Password Authentication",
+      "OTP Verification",
+      "Secure Expression Parsing (Without eval)"
+    ]
+  },
+  {
+    "id": "ai",
+    "icon": "sparkles",
+    "category": "Artificial Intelligence & Generative AI",
+    "description": "Building intelligent applications using modern AI technologies.",
+    "featured": true,
+    "skills": [
+      "Large Language Models (LLMs)",
+      "Prompt Engineering",
+      "Ollama",
+      "AI Integration",
+      "Natural Language Processing (Basic)",
+      "Intent Matching"
+    ]
+  },
+  {
+    "id": "analytics",
+    "icon": "chart",
+    "category": "Data Analytics",
+    "description": "Analyzing and processing data to generate meaningful insights.",
+    "featured": true,
+    "skills": [
+      "Data Analysis",
+      "Data Cleaning",
+      "Pandas",
+      "NumPy",
+      "MS Excel",
+      "CSV Processing"
+    ]
+  },
+  {
+    "id": "uiux",
+    "icon": "palette",
+    "category": "UI/UX & Styling",
+    "description": "Creating clean, responsive, and visually appealing user interfaces.",
+    "featured": false,
+    "skills": [
+      "Design Systems",
+      "Glassmorphism",
+      "Dark Mode",
+      "CSS Animations",
+      "Keyframes",
+      "Micro Interactions",
+      "Responsive Typography",
+      "Google Fonts",
+      "BEM Methodology"
+    ]
+  },
+  {
+    "id": "architecture",
+    "icon": "boxes",
+    "category": "Software Architecture",
+    "description": "Organizing applications with scalable and maintainable architecture.",
+    "featured": false,
+    "skills": [
+      "Component-Based Architecture",
+      "Client-Server Architecture",
+      "Modular JavaScript",
+      "JSON Driven Architecture",
+      "PHP Includes Architecture",
+      "Monorepo Structure",
+      "Folder Structure Design"
+    ]
+  },
+  {
+    "id": "performance",
+    "icon": "zap",
+    "category": "Performance Optimization",
+    "description": "Optimizing applications for speed, responsiveness, and better user experience.",
+    "featured": false,
+    "skills": [
+      "Lazy Loading",
+      "Code Splitting",
+      "Deferred JavaScript",
+      "Image Optimization",
+      "Memory Management",
+      "Hardware Accelerated Animations",
+      "SEO",
+      "JSON-LD"
+    ]
+  },
+  {
+    "id": "version-control",
+    "icon": "git-branch",
+    "category": "Version Control",
+    "description": "Managing source code and collaborating using Git.",
+    "featured": false,
+    "skills": [
+      "Git",
+      "GitHub"
+    ]
+  },
+  {
+    "id": "deployment",
+    "icon": "cloud",
+    "category": "Deployment & Hosting",
+    "description": "Deploying and hosting modern web applications.",
+    "featured": false,
+    "skills": [
+      "Vercel",
+      "Firebase Hosting",
+      "GitHub Pages",
+      "Static Hosting"
+    ]
+  },
+  {
+    "id": "tools",
+    "icon": "wrench",
+    "category": "Tools & Platforms",
+    "description": "Development tools used in daily workflow.",
+    "featured": false,
+    "skills": [
+      "VS Code",
+      "Vite",
+      "npm",
+      "XAMPP",
+      "Chrome DevTools",
+      "ESLint",
+      "Oxlint"
+    ]
+  },
+  {
+    "id": "exploring",
+    "icon": "compass",
+    "category": "Currently Exploring",
+    "description": "Technologies and concepts I am actively learning and improving.",
+    "featured": true,
+    "skills": [
+      "System Design",
+      "Backend Architecture",
+      "Artificial Intelligence",
+      "Generative AI",
+      "Data Analytics",
+      "AI Integration"
+    ]
+  }
+]

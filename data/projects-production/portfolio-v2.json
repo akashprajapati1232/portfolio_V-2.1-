@@ -1,0 +1,125 @@
+{
+    "id": "portfolio-v2",
+    "title": "Personal Portfolio v2.0",
+    "shortDescription": "A next-generation personal portfolio website featuring a fully interactive terminal interface, command-line navigation, dynamic JSON-driven content, and a premium dark aesthetic — built entirely with HTML, CSS, and Vanilla JavaScript.",
+    "overview": "Personal Portfolio v2.0 is a complete rebuild of Akash Prajapati's personal portfolio website — designed to stand out with a unique interactive terminal experience at its core. Unlike conventional portfolio sites, this version features a fully functional terminal command-line interface where visitors can explore projects, skills, certifications, and contact information through typed commands. The entire site is data-driven — all content (profile, projects, skills, certifications, education) is sourced from individual JSON files, enabling easy updates without touching the codebase. The design follows a premium dark-mode aesthetic with glassmorphism, gradient accents, and smooth animations throughout. The terminal supports custom commands, help menus, autocomplete, and animated output responses.",
+    "category": "Personal Portfolio",
+    "type": "Production Project",
+    "status": "In Progress",
+    "year": "2026",
+    "timeline": {
+        "startDate": "2026",
+        "endDate": "Ongoing",
+        "duration": "Ongoing solo project"
+    },
+    "features": [
+        "Interactive terminal interface with custom command-line navigation",
+        "Command history, autocomplete, and help menu in the terminal",
+        "JSON-driven content architecture — all data loaded dynamically from JSON files",
+        "Separate JSON files for profile, skills, projects (micro + production), certifications, education, and socials",
+        "Production project cards with detailed modal overlays",
+        "Micro project showcase section",
+        "Skills visualization with categorized tech stacks",
+        "Certifications section with verifiable credentials",
+        "Education timeline section",
+        "About me section with personality and tech philosophy",
+        "Dark-mode premium aesthetic with glassmorphism and gradients",
+        "Custom CSS animation system for smooth transitions",
+        "Responsive layout across all device sizes",
+        "DataService layer for centralized JSON data fetching",
+        "TerminalCommands.js for modular terminal command handling",
+        "SEO-optimized with semantic HTML structure"
+    ],
+    "techStack": {
+        "core": [
+            "HTML5",
+            "CSS3",
+            "Vanilla JavaScript (ES6+)"
+        ],
+        "dataLayer": [
+            "JSON files (profile, projects, skills, certifications, education)"
+        ],
+        "typography": [
+            "Google Fonts"
+        ],
+        "tools": [
+            "Git",
+            "GitHub"
+        ]
+    },
+    "architecture": {
+        "pattern": "Single Page Application with JSON Data Layer",
+        "description": "A vanilla HTML/CSS/JS single-page application where all content is loaded dynamically from a structured set of JSON data files. The JavaScript layer is organized into services (DataService for data fetching) and components (terminal, project cards, sections) for maintainability.",
+        "dataFiles": [
+            "data/profile.json — personal profile and bio",
+            "data/aboutme.json — about section content",
+            "data/skills.json — tech skills by category",
+            "data/certifications.json — certifications with details",
+            "data/education.json — education history",
+            "data/socials.json — social media links",
+            "data/projects-micro.json — micro/learning projects",
+            "data/projects-production/ — individual JSON files per production project"
+        ]
+    },
+    "myRole": "Sole Developer. Designed and built the entire portfolio from scratch — including the terminal interface, JSON data architecture, DataService layer, component system, CSS design system, and all content.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Sole Developer"
+        }
+    ],
+    "challenges": [
+        "Building a fully functional terminal interface in pure Vanilla JavaScript with command history, autocomplete, and formatted output rendering",
+        "Designing a JSON-driven architecture where all content is decoupled from the codebase — enabling easy updates across dozens of data points",
+        "Creating a unique, memorable portfolio experience that stands out from typical portfolio websites while remaining professional and navigable",
+        "Managing the state and rendering of the DataService to efficiently load and cache JSON data across multiple UI sections",
+        "Designing and implementing detailed production project JSON schemas that are comprehensive enough for rich modal rendering yet simple enough to maintain"
+    ],
+    "solutions": [
+        "Built a dedicated TerminalCommands.js module that maps command strings to handler functions — with a base command parser that supports arguments, flags, and multi-line formatted output",
+        "Implemented a DataService singleton that fetches all JSON files once on load and caches them in memory, exposing methods for individual section data retrieval",
+        "Designed the terminal experience as the central UX differentiator — a feature-first approach that makes the portfolio inherently interactive and exploratory",
+        "Used Promise.all for parallel JSON file loading during initialization, then exposed individual getter methods on the DataService for lazy section rendering",
+        "Created a consistent JSON schema across all production project files with required fields (id, title, overview, features, techStack, images) and optional enrichment fields (architecture, challenges, solutions)"
+    ],
+    "keyLearnings": [
+        "Building a terminal emulator in Vanilla JavaScript — command parsing, history management, and formatted rich-text output",
+        "JSON-driven content architecture for portfolios — separating data from presentation for maintainability",
+        "DataService design patterns in Vanilla JavaScript — singleton pattern, async data fetching, and caching strategies",
+        "Advanced CSS techniques for premium dark-mode aesthetics — glassmorphism, gradient layering, and animation systems",
+        "Modular JavaScript component architecture without a framework — organizing code into services and component handlers"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/Portfolio(v2.0)/thumbnail.png",
+        "gallery": [
+            "data/Project-images/Production Projects/Portfolio(v2.0)/thumbnail.png"
+        ]
+    },
+    "links": {
+        "github": "https://github.com/akashprajapati1232/portfolio_V-2.1-",
+        "liveDemo": "https://akashprajapati.rf.gd/"
+    },
+    "tags": [
+        "Portfolio",
+        "Terminal Interface",
+        "Vanilla JavaScript",
+        "JSON Data Layer",
+        "Dark Mode",
+        "Interactive",
+        "Personal Project",
+        "Frontend"
+    ],
+    "featured": true,
+    "designHighlights": {
+        "colorPalette": {
+            "theme": "Premium Dark Mode with gradient accents"
+        },
+        "designFeatures": [
+            "Interactive terminal with command-line navigation",
+            "Glassmorphism UI components",
+            "Gradient text and card accents",
+            "Smooth CSS transitions and animations",
+            "Modular JSON-driven content system"
+        ]
+    }
+}

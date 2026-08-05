@@ -1,0 +1,135 @@
+{
+    "id": "scaleiq",
+    "title": "ScaleIQ",
+    "shortDescription": "A modern SaaS landing page built in React 19 + TypeScript for a platform that helps businesses collect more Google reviews using smart QR Codes and AI-powered review suggestions — featuring a custom CSS design system and TypeScript-first architecture.",
+    "overview": "ScaleIQ is a SaaS product landing page built for a platform that helps businesses effortlessly collect more Google reviews through smart QR Codes and AI-powered review suggestion prompts. Built with React 19, Vite, and TypeScript, the project demonstrates a production-quality frontend architecture — with a custom CSS design system, colocated component styles, TypeScript interfaces, custom hooks, and a modular routing setup. The design is clean, conversion-focused, and professional — featuring a home page, features overview, pricing page, blog, auth pages, and account creation flow. The project uses Oxlint for modern, fast linting instead of traditional ESLint.",
+    "category": "SaaS Frontend / Landing Page",
+    "type": "Production Project",
+    "status": "Completed",
+    "year": "2025",
+    "timeline": {
+        "startDate": "2025",
+        "endDate": "2025",
+        "duration": "Solo project"
+    },
+    "features": [
+        "SaaS landing page with complete product marketing copy",
+        "Features page showcasing QR Code and AI review suggestion capabilities",
+        "Tiered pricing page with plan comparison",
+        "Blog section with SEO-optimized article listings",
+        "Authentication pages — Login and Create Account flows",
+        "Custom CSS design system with global design tokens",
+        "Colocated CSS files per component for scoped styling",
+        "Custom React hooks for scroll handling and UI behavior",
+        "TypeScript interfaces for all data structures and props",
+        "AuthLayout and MainLayout wrapper components for consistent page structure",
+        "React Router DOM routing with clean route configuration",
+        "Global animations and keyframes in centralized animation styles",
+        "Reusable UI component library — Buttons, Inputs, Accordions, etc.",
+        "Oxlint for fast, modern JavaScript/TypeScript linting",
+        "Fully responsive across all device sizes"
+    ],
+    "techStack": {
+        "frontend": [
+            "React 19",
+            "TypeScript",
+            "Vite",
+            "React Router DOM",
+            "Vanilla CSS (Custom Design System)"
+        ],
+        "linting": [
+            "Oxlint"
+        ],
+        "tools": [
+            "Git",
+            "GitHub",
+            "npm"
+        ]
+    },
+    "architecture": {
+        "pattern": "Component-Based SPA with TypeScript",
+        "description": "Single Page Application built with React 19 and TypeScript. The project uses a clear separation of concerns — layout components, UI components, pages, hooks, constants, data, types, styles, and routes each have dedicated directories. CSS is colocated with components rather than centralized.",
+        "directoryStructure": {
+            "components": "High-level layout (Navbar, Footer) and reusable UI (Buttons, Inputs, Accordions)",
+            "constants": "Application-wide constants and configuration data",
+            "data": "Static data and mock data used across pages",
+            "hooks": "Custom React hooks (e.g., scroll handling)",
+            "layouts": "Page layout wrappers (AuthLayout, MainLayout)",
+            "pages": "Application views (Home, Features, Pricing, Blog, Login, CreateAccount)",
+            "routes": "Router configuration and route definitions",
+            "styles": "Global CSS, variables, animations, and typography",
+            "types": "TypeScript type definitions and interfaces"
+        }
+    },
+    "myRole": "Sole Developer. Built the entire frontend architecture from scratch — including the TypeScript setup, CSS design system, component library, routing configuration, and all page content. Made architectural decisions for project structure, linting strategy, and state management patterns.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Sole Developer"
+        }
+    ],
+    "challenges": [
+        "Setting up a TypeScript-first React project with proper type safety across components, hooks, and data layers without adding unnecessary complexity",
+        "Building a colocated CSS architecture where each component owns its own stylesheet — maintaining style encapsulation without a CSS-in-JS library",
+        "Designing a conversion-focused SaaS landing page that feels premium and professional while being built entirely with Vanilla CSS (no Tailwind or UI frameworks)",
+        "Configuring Oxlint as a replacement for ESLint — a newer, faster linter with different rule configurations",
+        "Creating a consistent design token system in CSS that scales across multiple pages and layout types"
+    ],
+    "solutions": [
+        "Used TypeScript interfaces in the dedicated types/ directory to define props, data structures, and hook return types, with strict mode enabled for maximum type safety",
+        "Structured the CSS architecture so each component file has a colocated .css file imported directly into the component — keeping styles scoped and easy to find during maintenance",
+        "Built a custom CSS design system in styles/variables.css with all design tokens (colors, spacing, typography, shadows) and referenced them throughout component stylesheets via CSS custom properties",
+        "Configured Oxlint in the project with React-specific rules for hooks and JSX, leveraging its Rust-based speed advantage for fast CI/CD linting",
+        "Defined all global animations in styles/animations.css as named @keyframes, then referenced animation names in component-level CSS — keeping animation logic centralized while application remains distributed"
+    ],
+    "keyLearnings": [
+        "TypeScript-first React architecture — proper interface design, generic types for reusable components, and strict mode configuration",
+        "Colocated CSS architecture as an alternative to CSS modules or CSS-in-JS for component-level style encapsulation",
+        "Oxlint configuration and its advantages over ESLint for React TypeScript projects",
+        "SaaS product marketing UI/UX — conversion-focused page design, pricing table patterns, and feature highlight structures",
+        "Building scalable CSS design token systems with custom properties across multi-page applications"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/scaleIQ/home-page.png",
+        "gallery": [
+            "data/Project-images/Production Projects/scaleIQ/home-page.png",
+            "data/Project-images/Production Projects/scaleIQ/Features-page.png",
+            "data/Project-images/Production Projects/scaleIQ/Pricing-page.png",
+            "data/Project-images/Production Projects/scaleIQ/create-account-page.png",
+            "data/Project-images/Production Projects/scaleIQ/login-page.png"
+        ]
+    },
+    "links": {
+        "github": "https://github.com/akashprajapati1232/ScaleIQ",
+        "liveDemo": ""
+    },
+    "tags": [
+        "SaaS",
+        "React",
+        "TypeScript",
+        "Vite",
+        "Landing Page",
+        "QR Code",
+        "AI",
+        "Google Reviews",
+        "Frontend",
+        "Design System"
+    ],
+    "featured": true,
+    "designHighlights": {
+        "colorPalette": {
+            "theme": "Clean, modern SaaS aesthetic with conversion-focused color choices"
+        },
+        "typography": {
+            "description": "Professional SaaS typography with clear visual hierarchy"
+        },
+        "designFeatures": [
+            "Colocated CSS per component",
+            "Global CSS variables design system",
+            "Centralized animation keyframes",
+            "AuthLayout for login/signup pages",
+            "MainLayout for marketing pages",
+            "Responsive navigation and pricing tables"
+        ]
+    }
+}

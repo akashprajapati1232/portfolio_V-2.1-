@@ -1,0 +1,156 @@
+{
+    "id": "gpt-for-bca",
+    "title": "GPT for BCA",
+    "shortDescription": "An AI-powered, semester-wise learning platform built exclusively for BCA students — featuring an intelligent chat workspace, structured syllabus browser, and auth-gated AI assistance.",
+    "overview": "GPT for BCA is a student-focused, full-stack learning platform developed as a BCA 6th Semester academic project. The platform provides BCA students with a semester-wise structured syllabus browser covering all 6 semesters, an AI-driven chat workspace powered by a locally-hosted LLM (qwen3:8b via Ollama), and downloadable PDF resources. The project was born to solve the problem of scattered academic resources — bringing syllabus content, unit details, and AI-guided learning under a single, beautifully designed interface. The frontend is a React 19 SPA hosted on Vercel, communicating with a Node.js/Express backend that routes queries to a local Ollama server. Authentication is handled entirely through Clerk with a popup modal UX — no standalone login pages — ensuring a frictionless onboarding experience.",
+    "category": "Full Stack Web Application",
+    "type": "Production Project",
+    "status": "Completed",
+    "year": "2026",
+    "timeline": {
+        "startDate": "March 2026",
+        "endDate": "May 2026",
+        "duration": "~2 months"
+    },
+    "features": [
+        "Semester-wise syllabus browser (Sem 1 to Sem 6) with accordion-style navigation",
+        "AI-driven chat workspace powered by locally-hosted qwen3:8b LLM via Ollama",
+        "Auth-gated chat route — only authenticated users can access the AI assistant",
+        "Clerk-based authentication via popup modal (no standalone login/signup pages)",
+        "Three AI response verbosity tiers: Short, Medium, and Detailed",
+        "Conversation history context injection (last 10 messages) for continuity",
+        "Built-in shortcut handlers for greetings and syllabus page redirects",
+        "Downloadable PDF resources for each semester's subjects",
+        "Responsive design optimized for desktop, tablet, and mobile",
+        "User profile management page with Clerk session integration",
+        "Google OAuth and Email/Password authentication support",
+        "Custom dark-theme design system with glassmorphism and gradient effects",
+        "Multilingual AI responses — auto-detects English or Hindi from user input"
+    ],
+    "techStack": {
+        "frontend": [
+            "React 19",
+            "Vite 8",
+            "React Router DOM v7",
+            "Vanilla CSS",
+            "Google Fonts (Inter, Outfit)"
+        ],
+        "backend": [
+            "Node.js 18+",
+            "Express.js 5",
+            "axios",
+            "cors",
+            "dotenv"
+        ],
+        "ai": [
+            "Ollama",
+            "qwen3:8b (8B parameter LLM)"
+        ],
+        "authentication": [
+            "Clerk (@clerk/clerk-react)"
+        ],
+        "deployment": [
+            "Vercel (Frontend)",
+            "Local/Self-hosted (Backend + Ollama)"
+        ],
+        "tools": [
+            "Git",
+            "GitHub",
+            "ESLint",
+            "npm"
+        ]
+    },
+    "architecture": {
+        "pattern": "Client-Server (Monorepo)",
+        "description": "The system follows a Client-Server Architecture. The React SPA (hosted on Vercel) communicates with a Node.js/Express backend via RESTful HTTP API calls. The backend routes AI inference requests to a locally-running Ollama LLM server.",
+        "apiEndpoints": [
+            {
+                "method": "GET",
+                "path": "/",
+                "description": "Health check endpoint"
+            },
+            {
+                "method": "POST",
+                "path": "/api/chat",
+                "description": "Primary AI inference endpoint — processes user messages and returns LLM-generated responses"
+            }
+        ]
+    },
+    "myRole": "Co-developer (Frontend Lead). Designed and built the entire React frontend including all pages, routing, auth modal system, and custom CSS design system. Collaborated with Vivek Yadav on backend integration and system architecture.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Frontend Lead"
+        },
+        {
+            "name": "Vivek Yadav",
+            "role": "Backend Developer"
+        }
+    ],
+    "challenges": [
+        "Integrating Clerk authentication without standalone login/signup pages — implementing a popup modal UX that triggers in-place from any page",
+        "Managing conversation history context to be passed efficiently to the LLM prompt without exceeding limits",
+        "Handling LLM warm-up time — the model needs pre-loading on server startup for acceptable first-response latency",
+        "Deploying the React frontend on Vercel while keeping the backend local — managing CORS and environment variables across both environments",
+        "Building three distinct AI response verbosity tiers using the same underlying model through system prompt engineering"
+    ],
+    "solutions": [
+        "Built a custom AuthModal component with React Context (AuthModalContext) that manages open/close state and target redirect path — triggered by a ProtectedChatLink wrapper instead of route-level redirects",
+        "Injected only the last 10 conversation messages into the LLM prompt to maintain context continuity while staying within token limits",
+        "Implemented a warm-up request on server startup that pre-loads the qwen3:8b model into memory, reducing first-user response time significantly",
+        "Used vercel.json rewrite rules to handle SPA routing on Vercel, and configured CORS middleware on Express to allow cross-origin requests from the Vercel frontend domain",
+        "Designed a tier system (gptforbca-low / medium / high) where only the system prompt instruction changes — same model, different verbosity behavior"
+    ],
+    "keyLearnings": [
+        "Implementing popup-based authentication flows with Clerk in React without standalone auth routes",
+        "Prompt engineering for custom AI personas and response behavior with open-source LLMs",
+        "Monorepo project structure management with separate frontend and backend dependencies",
+        "Deploying React/Vite SPAs on Vercel with proper SPA routing rewrite configuration",
+        "Building a custom CSS design system with CSS variables, utility classes, and component-level stylesheets"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/GPT-for-BCA/home-page.png",
+        "gallery": [
+            "data/Project-images/Production Projects/GPT-for-BCA/home-page.png",
+            "data/Project-images/Production Projects/GPT-for-BCA/chat-page.png",
+            "data/Project-images/Production Projects/GPT-for-BCA/login-page.png",
+            "data/Project-images/Production Projects/GPT-for-BCA/profile-page.png"
+        ]
+    },
+    "links": {
+        "github": "https://github.com/akashprajapati1232/GPT-for-BCA",
+        "liveDemo": "https://gptforbca.vercel.app/"
+    },
+    "tags": [
+        "AI",
+        "LLM",
+        "React",
+        "Full Stack",
+        "Education",
+        "Ollama",
+        "Clerk",
+        "Node.js",
+        "BCA",
+        "Student Project"
+    ],
+    "featured": true,
+    "designHighlights": {
+        "colorPalette": {
+            "primary": "#6366f1",
+            "secondary": "#06b6d4",
+            "background": "#0a0a1a",
+            "theme": "Dark Mode First"
+        },
+        "typography": {
+            "heading": "Outfit (400–900)",
+            "body": "Inter (300–700)"
+        },
+        "designFeatures": [
+            "Glassmorphism cards",
+            "Gradient text and button CTAs",
+            "Custom keyframe animations (fadeInUp, float, pulse-glow)",
+            "Responsive mobile drawer navigation",
+            "Chat sidebar collapse behavior on mobile"
+        ]
+    }
+}

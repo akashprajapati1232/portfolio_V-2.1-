@@ -1,0 +1,149 @@
+{
+    "id": "total-solution",
+    "title": "Total Solution Digital Agency",
+    "shortDescription": "A premium, dark-themed digital agency website built with PHP and Bootstrap 5 — featuring a deep indigo gradient aesthetic, glassmorphism cards, AOS animations, WhatsApp integration, and localized Indian Rupee pricing for four core digital services.",
+    "overview": "Total Solution is a high-end digital agency website crafted for the Indian digital services market. The platform showcases four core digital services — Website Design & Development, SEO & Digital Marketing, E-Commerce Solutions, and Website Management — in a visually immersive dark/indigo gradient aesthetic. Built with PHP 8 for server-side rendering and Bootstrap 5 for the responsive grid, the site features glassmorphism card components, animated GIF service icons, AOS (Animate on Scroll) reveal animations, Swiper.js carousel for testimonials, and direct WhatsApp integration for instant client contact. The design is fully localized for India — with Indian Rupee (₹) budget options, an Indian team showcase, and a Noida-based business context.",
+    "category": "Business / Agency Website",
+    "type": "Production Project",
+    "status": "Completed",
+    "year": "2025",
+    "timeline": {
+        "startDate": "2025",
+        "endDate": "2025",
+        "duration": "Solo project"
+    },
+    "features": [
+        "Four core digital service pages — Web Design, SEO, E-Commerce, Website Management",
+        "Deep indigo gradient hero section (#060c1f to #091128)",
+        "Glassmorphism card components with frosted glass effects",
+        "Animated GIF service icons for visual richness",
+        "AOS (Animate on Scroll) fade-in and slide animations",
+        "Swiper.js carousel for client testimonials",
+        "Direct WhatsApp integration via wa.me links for instant client contact",
+        "Portfolio gallery with case studies and project showcase",
+        "Contact page with Indian Rupee (₹) budget selection",
+        "Team section highlighting agency members",
+        "Shared PHP header.php and footer.php includes for consistent layout",
+        "Dedicated service detail pages for each of the four services",
+        "Fully responsive — desktop, tablet, and mobile with Bootstrap 5 grid",
+        "Performance-optimized with clean, semantic code structure",
+        "SEO-ready with proper meta tags and heading structure"
+    ],
+    "techStack": {
+        "frontend": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Bootstrap 5.3",
+            "AOS (Animate on Scroll)",
+            "Swiper.js"
+        ],
+        "backend": [
+            "PHP 8+"
+        ],
+        "typography": [
+            "Google Fonts (Inter, Poppins)"
+        ],
+        "iconography": [
+            "FontAwesome",
+            "Animated GIFs (custom service icons)"
+        ],
+        "tools": [
+            "XAMPP",
+            "Git",
+            "GitHub"
+        ]
+    },
+    "architecture": {
+        "pattern": "PHP Multi-Page with Shared Template Includes",
+        "description": "Multi-page PHP website with a reusable includes system for navigation and footer. Each page is a standalone PHP file that includes header.php and footer.php for consistent layout. Dedicated sub-pages exist for each of the four core services.",
+        "pages": [
+            "index.php — Homepage with hero, services overview, and testimonials",
+            "about.php — Agency story, mission, and team members",
+            "portfolio.php — Case studies and project gallery",
+            "contact.php — Contact form with ₹ budget selection and WhatsApp link",
+            "services/ — Dedicated detail pages for each service"
+        ]
+    },
+    "myRole": "Sole Developer and Designer. Designed and built the complete agency website from scratch — including the design system, glassmorphism UI components, PHP template architecture, responsive layout, and all service page content.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Sole Developer and Designer"
+        }
+    ],
+    "challenges": [
+        "Creating a deep, immersive dark gradient aesthetic that feels premium and high-end while maintaining readability and contrast accessibility standards",
+        "Integrating animated GIF icons with CSS hover effects without causing performance issues or layout jank",
+        "Building a service-focused architecture where each of the four core services has its own dedicated detail page while maintaining shared navigation context",
+        "Localizing the contact form for Indian clients — implementing ₹ budget ranges and WhatsApp as the primary contact channel",
+        "Achieving a glassmorphism card effect that works consistently across Bootstrap's grid system without conflicting with Bootstrap's own styling"
+    ],
+    "solutions": [
+        "Used deeply layered CSS custom properties for the gradient system, with background: linear-gradient(135deg, #060c1f, #091128) on the base layer and radial gradient overlays for depth, ensuring all text meets WCAG contrast requirements",
+        "Optimized animated GIFs for web delivery and controlled animation timing with CSS animation-play-state to only animate on hover, reducing idle CPU usage",
+        "Created a services/ subdirectory with individual PHP files per service, each linked from the main nav and services overview section, with shared header/footer includes for consistency",
+        "Implemented a budget dropdown with predefined ₹ ranges (₹10K–₹50K, ₹50K–₹1L, ₹1L+) and added a prominent WhatsApp CTA button that opens wa.me with a pre-filled message",
+        "Applied Bootstrap utility classes for grid and spacing, then overrode with custom CSS namespaced under .glass-card to implement backdrop-filter blur without affecting Bootstrap components"
+    ],
+    "keyLearnings": [
+        "PHP shared include architecture for consistent multi-page website layout and navigation",
+        "Building a premium dark gradient design system that scales across multiple service pages",
+        "Bootstrap 5 customization — overriding and extending Bootstrap with custom CSS without breaking the grid system",
+        "WhatsApp Business integration for client communication in Indian market websites",
+        "AOS and Swiper.js configuration for professional scroll animations and touch-friendly carousels"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/totalsolution/home-page.png",
+        "gallery": [
+            "data/Project-images/Production Projects/totalsolution/home-page.png",
+            "data/Project-images/Production Projects/totalsolution/homepage-2.png",
+            "data/Project-images/Production Projects/totalsolution/aboutme-page.png",
+            "data/Project-images/Production Projects/totalsolution/project-page.png"
+        ]
+    },
+    "links": {
+        "github": "https://github.com/akashprajapati1232/total-solution",
+        "liveDemo": ""
+    },
+    "tags": [
+        "Digital Agency",
+        "PHP",
+        "Bootstrap",
+        "Business Website",
+        "India",
+        "Glassmorphism",
+        "SEO",
+        "WhatsApp Integration",
+        "Dark Theme"
+    ],
+    "featured": true,
+    "coreServices": [
+        "Website Design & Development",
+        "SEO & Digital Marketing",
+        "E-Commerce Solutions",
+        "Website Management"
+    ],
+    "designHighlights": {
+        "colorPalette": {
+            "background": "#060c1f",
+            "backgroundSecondary": "#091128",
+            "primary": "#007bff",
+            "accent": "#6f42c1",
+            "theme": "Deep Indigo Dark with Blue-Purple accents"
+        },
+        "typography": {
+            "heading": "Poppins (strong, impactful headings)",
+            "body": "Inter (clean body text)"
+        },
+        "designFeatures": [
+            "Deep indigo gradient background",
+            "Glassmorphism service cards",
+            "Animated GIF service icons",
+            "AOS scroll-based reveal animations",
+            "Swiper.js testimonial carousel",
+            "WhatsApp CTA integration",
+            "Indian Rupee budget selection"
+        ]
+    }
+}

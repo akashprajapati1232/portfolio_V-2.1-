@@ -1,26 +1,183 @@
-[
-  {
-    "name": "Web Development Fundamentals",
-    "body": "Online Certification",
-    "icon": "fab fa-html5",
-    "desc": "HTML, CSS, and JavaScript basics"
-  },
-  {
-    "name": "JavaScript Programming",
-    "body": "Online Certification",
-    "icon": "fab fa-js",
-    "desc": "Advanced concepts and frameworks"
-  },
-  {
-    "name": "Python Programming",
-    "body": "Online Certification",
-    "icon": "fab fa-python",
-    "desc": "Core concepts and applications"
-  },
-  {
-    "name": "ADCA Certification",
-    "body": "Computer Institute",
-    "icon": "fas fa-laptop-code",
-    "desc": "Advanced Diploma in Computer Applications"
-  }
-]
+{
+  "title": "Certifications",
+  "description": "A collection of certifications, diplomas, and achievements that reflect my learning journey across Web Development, Programming, Artificial Intelligence, and Computer Applications.",
+  "certificates": [
+    {
+      "id": "cert-001",
+      "title": "Web Development Diploma",
+      "issuer": "STP Computer Education",
+      "category": "Diploma",
+      "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Web Development"
+      ],
+      "issueDate": "2024-10-10",
+      "duration": "12 Months",
+      "grade": "A",
+      "score": "95%",
+      "credentialId": "347498",
+      "description": "Successfully completed a 12-month Web Development Diploma with Grade A.",
+      "image": "/assets/images/certificate/01-web development diploma.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-002",
+      "title": "Web Development Marksheet",
+      "issuer": "STP Computer Education",
+      "category": "Marksheet",
+      "skills": [
+        "Web Development"
+      ],
+      "issueDate": "2024-10-10",
+      "grade": "A",
+      "score": "95%",
+      "description": "Official marksheet of the Web Development Diploma examination.",
+      "image": "/assets/images/certificate/02-web development marksheet.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-003",
+      "title": "CSS Course",
+      "issuer": "STP Computer Education",
+      "category": "Certificate",
+      "skills": [
+        "CSS3"
+      ],
+      "issueDate": "2023-10-13",
+      "duration": "1 Month",
+      "grade": "A",
+      "score": "86%",
+      "description": "Completed CSS Course with Grade A.",
+      "image": "/assets/images/certificate/03-css certificate.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-004",
+      "title": "CSS Marksheet",
+      "issuer": "STP Computer Education",
+      "category": "Marksheet",
+      "skills": [
+        "CSS3"
+      ],
+      "issueDate": "2023-10-13",
+      "grade": "A",
+      "score": "86%",
+      "description": "Official marksheet of the CSS Course.",
+      "image": "/assets/images/certificate/04-css marksheet.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-005",
+      "title": "HTML YouTube Course",
+      "issuer": "KnowledgeGate",
+      "category": "Certificate",
+      "skills": [
+        "HTML5"
+      ],
+      "issueDate": "2023-10-20",
+      "description": "Successfully completed the HTML YouTube Course.",
+      "image": "/assets/images/certificate/05-knowladge gate html.png",
+      "verified": true
+    },
+    {
+      "id": "cert-006",
+      "title": "CSS Certification Test",
+      "issuer": "KnowledgeGate",
+      "category": "Certificate",
+      "skills": [
+        "CSS3"
+      ],
+      "description": "Successfully completed the CSS Certification Test.",
+      "image": "/assets/images/certificate/06-knowladge gate css certificate.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-007",
+      "title": "30 Days Python Using AI",
+      "issuer": "AI For Techies",
+      "category": "Certificate",
+      "skills": [
+        "Python",
+        "Artificial Intelligence"
+      ],
+      "issueDate": "2025-05-09",
+      "description": "Completed the 30 Days Python Using AI Program.",
+      "image": "/assets/images/certificate/07-Python.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-008",
+      "title": "SCOA Data Entry Operator (DEO)",
+      "issuer": "Supply Chain Operations Academy",
+      "category": "Certificate",
+      "skills": [
+        "Data Entry"
+      ],
+      "issueDate": "2025-04-14",
+      "description": "Successfully passed the SCOA Data Entry Operator pre-assessment test.",
+      "image": "/assets/images/certificate/08-SCOA Data Entry Operator.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-009",
+      "title": "Emotional Intelligence",
+      "issuer": "MindLuster",
+      "category": "Certificate",
+      "skills": [
+        "Soft Skills"
+      ],
+      "issueDate": "2023-10-13",
+      "description": "Completed the Emotional Intelligence course.",
+      "image": "/assets/images/certificate/09-Mindluster_Certificate.jpg",
+      "verified": true
+    },
+    {
+      "id": "cert-010",
+      "title": "ADCA Marksheet",
+      "issuer": "Wizard-Tech Computer Academy",
+      "category": "Marksheet",
+      "skills": [
+        "Computer Applications"
+      ],
+      "issueDate": "2022-02-12",
+      "grade": "Very Good",
+      "score": "80.5%",
+      "description": "Official marksheet of the ADCA course.",
+      "image": "/assets/images/certificate/10-ADCA marksheet.jpeg",
+      "verified": true
+    },
+    {
+      "id": "cert-011",
+      "title": "ADCA Diploma",
+      "issuer": "Wizard-Tech Computer Academy",
+      "category": "Diploma",
+      "skills": [
+        "Computer Applications"
+      ],
+      "issueDate": "2022-02-12",
+      "duration": "12 Months",
+      "grade": "Very Good",
+      "score": "80.5%",
+      "description": "Successfully completed the ADCA Diploma.",
+      "image": "/assets/images/certificate/11-ADCA certificate.jpeg",
+      "verified": true
+    },
+    {
+      "id": "cert-012",
+      "title": "Quiz Competition",
+      "issuer": "Bhagwant Group of Institutions",
+      "category": "Achievement",
+      "skills": [
+        "Quiz",
+        "Problem Solving"
+      ],
+      "issueDate": "2023-10-10",
+      "achievement": "3rd Position",
+      "description": "Secured 3rd position in the Logic Club Quiz Competition.",
+      "image": "/assets/images/certificate/12-quiz certificate(1).jpeg",
+      "verified": true
+    }
+  ]
+}

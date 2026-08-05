@@ -1,0 +1,164 @@
+{
+    "id": "imgninja",
+    "title": "ImgNinja",
+    "shortDescription": "A comprehensive, privacy-first browser-based image processing suite — featuring compression, format conversion, resizing, and cropping with zero server communication and support for 15+ image formats.",
+    "overview": "ImgNinja is a complete, client-side image optimization and manipulation toolkit that runs entirely within the user's browser. Built with zero external JavaScript dependencies, it delivers professional-grade image processing capabilities — compression, format conversion, resizing, and cropping — without ever sending user data to a server. The project is positioned as a privacy-first alternative to cloud-based image tools, with no file size limits, no watermarks, no usage restrictions, and no user accounts required. ImgNinja uses advanced algorithms including a binary search compression engine, format-specific quality matrices, and hardware-accelerated Canvas API processing to rival the output quality of desktop software. The platform includes a full blog system, SEO-optimized pages, and supports 15+ image formats including JPEG, PNG, WebP, AVIF, HEIF/HEIC, GIF, BMP, TIFF, ICO, and SVG.",
+    "category": "Frontend Web Application",
+    "type": "Production Project",
+    "status": "Completed",
+    "year": "2025",
+    "timeline": {
+        "startDate": "2025",
+        "endDate": "2025",
+        "duration": "Solo project"
+    },
+    "features": [
+        "Image Compressor — reduce file sizes by up to 90% with smart quality detection",
+        "Target Size Compression — compress to a specific file size using binary search algorithm",
+        "Image Converter — convert between 15+ image formats with quality control per format",
+        "Batch Conversion — process up to 10 images simultaneously with progress tracking",
+        "Image Resizer — multiple resize modes (Fit, Fill, Stretch, Crop) with aspect ratio lock",
+        "Preset dimensions for social media and web standards",
+        "Integrated image cropping with aspect ratio presets (powered by Cropper.js)",
+        "Zero-server architecture — all processing happens locally in the browser",
+        "No data collection, no file storage, no analytics or tracking",
+        "GDPR compliant — no cookies or personal data processing",
+        "Drag-and-drop and click-to-select file upload with batch support",
+        "Real-time preview with before/after comparison",
+        "Metadata preservation option during format conversion",
+        "Responsive, mobile-first design with touch-friendly interface",
+        "Blog system with SEO-optimized articles on image formats and optimization"
+    ],
+    "techStack": {
+        "core": [
+            "HTML5",
+            "CSS3",
+            "Vanilla JavaScript (ES6+)"
+        ],
+        "browserApis": [
+            "Canvas API",
+            "File API",
+            "Blob API",
+            "FileReader API",
+            "URL.createObjectURL",
+            "ImageData API"
+        ],
+        "libraries": [
+            "Font Awesome 6.5.1",
+            "Cropper.js (image cropping)"
+        ],
+        "typography": [
+            "Google Fonts (Poppins)"
+        ],
+        "tools": [
+            "Git",
+            "GitHub"
+        ]
+    },
+    "architecture": {
+        "pattern": "Zero-Dependency Client-Side (Modular Vanilla JS)",
+        "description": "ImgNinja follows a zero-server architecture where all processing happens locally in the user's browser. The project is organized into modular JavaScript files, each responsible for a specific image processing function. The Canvas 2D context is used as the core processing engine, with Blob API for file creation and URL object management for memory efficiency.",
+        "coreModules": [
+            {
+                "file": "script.js",
+                "description": "Image compression engine with binary search algorithm"
+            },
+            {
+                "file": "image-converter.js",
+                "description": "Format conversion engine with quality control per format"
+            },
+            {
+                "file": "resize-image.js",
+                "description": "Image resizing engine with multiple resize modes"
+            },
+            {
+                "file": "crop.js",
+                "description": "Cropping functionality with Cropper.js integration"
+            }
+        ]
+    },
+    "myRole": "Sole Developer. Designed and built the entire application from scratch — including all image processing algorithms, UI components, responsive layout, blog system, and static pages. Implemented the binary search compression engine and format-specific quality matrix independently.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Sole Developer"
+        }
+    ],
+    "challenges": [
+        "Implementing a binary search compression algorithm that efficiently finds the optimal quality setting to meet a user-specified target file size",
+        "Building a universal quality control system that works for ALL image formats (not just lossy ones like JPEG) — a differentiator from most online tools",
+        "Handling large images (10–50MB+) without causing browser memory crashes or out-of-memory errors",
+        "Ensuring consistent canvas processing behavior across different browsers, especially Safari's handling of WebP and AVIF",
+        "Building a batch processing engine that maintains performance and user feedback with progress tracking"
+    ],
+    "solutions": [
+        "Implemented a binary search algorithm that iteratively adjusts JPEG/WebP quality values between bounds until the output file size falls within an acceptable range of the target",
+        "Created a format-specific quality matrix that maps custom quality settings to each format's native encoding parameters, enabling quality control even for PNG and other lossless formats",
+        "Used proper canvas cleanup (revokeObjectURL, canvas context clearing) and garbage collection patterns to manage memory efficiently during large file processing",
+        "Implemented a smart format fallback system that detects browser support and automatically falls back to supported alternatives for unsupported format conversions",
+        "Built an asynchronous batch processing pipeline that processes images sequentially with real-time progress updates to prevent UI freezing"
+    ],
+    "keyLearnings": [
+        "Deep understanding of the HTML5 Canvas API for image rendering, manipulation, and format-specific encoding",
+        "Binary search algorithm application in a real-world use case for intelligent target size compression",
+        "Browser memory management patterns for large file processing (object URL lifecycle, canvas cleanup)",
+        "Cross-browser compatibility challenges with modern image formats (WebP, AVIF, HEIF) and mitigation strategies",
+        "Building a modular, zero-dependency JavaScript architecture for a production-ready tool"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/ImgNinja/project-ImgNinja-01.png",
+        "gallery": [
+            "data/Project-images/Production Projects/ImgNinja/project-ImgNinja-01.png",
+            "data/Project-images/Production Projects/ImgNinja/project-ImgNinja-02.png",
+            "data/Project-images/Production Projects/ImgNinja/project-ImgNinja-03.png",
+            "data/Project-images/Production Projects/ImgNinja/project-ImgNinja-04.png",
+            "data/Project-images/Production Projects/ImgNinja/project-ImgNinja-05.png",
+            "data/Project-images/Production Projects/ImgNinja/project-ImgNinja-06.png"
+        ]
+    },
+    "links": {
+        "github": "https://github.com/akashprajapati1232/ImgNinja",
+        "liveDemo": "https://imgninja.in"
+    },
+    "tags": [
+        "Image Processing",
+        "Privacy-First",
+        "Canvas API",
+        "Vanilla JavaScript",
+        "Frontend",
+        "Zero-Dependency",
+        "Compression",
+        "Open Source",
+        "Web Tool"
+    ],
+    "featured": true,
+    "stats": {
+        "totalFiles": "25+",
+        "linesOfCode": "3000+",
+        "jsModules": 5,
+        "cssStylesheets": 6,
+        "supportedFormats": "15+",
+        "tools": 3
+    },
+    "designHighlights": {
+        "colorPalette": {
+            "theme": "Modern Light with accent colors"
+        },
+        "typography": {
+            "body": "Poppins (Google Fonts)"
+        },
+        "designFeatures": [
+            "Mobile-first responsive grid",
+            "CSS custom properties for dynamic theming",
+            "Smooth animations and micro-interactions",
+            "Progressive enhancement for older browsers"
+        ]
+    },
+    "performanceBenchmarks": {
+        "smallImages": "Instant processing (< 1MB)",
+        "mediumImages": "1–3 seconds (1–10MB)",
+        "largeImages": "3–10 seconds (10–50MB)",
+        "peakMemoryUsage": "< 100MB on mobile"
+    },
+    "license": "MIT"
+}

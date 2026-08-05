@@ -1,0 +1,143 @@
+{
+    "id": "bitbot-college-chatbot",
+    "title": "BitBot — College Chatbot & Admin Panel",
+    "shortDescription": "A comprehensive college management system featuring an intelligent AI chatbot interface with voice support and a powerful admin panel with full CRUD operations, Firebase backend, and real-time data management for Bhagwant Institute of Technology.",
+    "overview": "BitBot is a full-featured college management system built for Bhagwant Institute of Technology (BIT). The project comprises two integrated applications: an intelligent chatbot interface for students and a powerful admin panel for college staff. The chatbot handles student queries about courses, faculty, facilities, admission procedures, fee structures, and academic schedules — using NLP-based response matching with text-to-speech and speech-to-text capabilities. The admin panel provides comprehensive CRUD operations for courses, faculty, students, timetables, notices, and fee structures, all backed by Firebase Firestore. The system uses advanced libraries like Tabulator.js for data tables, SweetAlert2 for UI dialogs, and Toastify for notifications.",
+    "category": "Full Stack Web Application",
+    "type": "Production Project",
+    "status": "Completed",
+    "year": "2025",
+    "timeline": {
+        "startDate": "2025",
+        "endDate": "2025",
+        "duration": "Solo project"
+    },
+    "features": [
+        "Intelligent chatbot with NLP-based response matching for student queries",
+        "Voice support — text-to-speech and speech-to-text capabilities",
+        "Multi-language support for diverse student demographics",
+        "Real-time typing indicators and animated chat responses",
+        "Quick action predefined response buttons for common queries",
+        "Multimedia-rich responses with images, links, and formatted content",
+        "Admin dashboard with system-wide statistics and recent activity overview",
+        "Full CRUD operations for Course, Faculty, Student, and Timetable management",
+        "Bulk CSV import/export for efficient course data management",
+        "Notice management system — publish and manage college announcements",
+        "Fee structure management for multiple courses",
+        "Firebase Firestore real-time database integration",
+        "Advanced search, filter, and sort capabilities in all data tables",
+        "Responsive design working across desktop, tablet, and mobile",
+        "Light and dark theme toggle",
+        "Firebase Authentication integration for admin security"
+    ],
+    "techStack": {
+        "frontend": [
+            "HTML5",
+            "CSS3",
+            "JavaScript (ES6+)"
+        ],
+        "libraries": [
+            "Tabulator.js (advanced data tables)",
+            "SweetAlert2 (alert dialogs)",
+            "Toastify.js (toast notifications)",
+            "Firebase SDK",
+            "Font Awesome",
+            "Google Fonts (Poppins)"
+        ],
+        "backend": [
+            "Firebase Firestore (NoSQL database)",
+            "Firebase Authentication"
+        ],
+        "tools": [
+            "Git",
+            "GitHub"
+        ]
+    },
+    "architecture": {
+        "pattern": "Multi-Page Frontend + Firebase BaaS",
+        "description": "The project uses a multi-page HTML architecture split into a public-facing chatbot interface and a protected admin panel. Firebase Firestore serves as the backend-as-a-service (BaaS) for real-time data persistence. The admin panel communicates with Firebase via the SDK for all CRUD operations.",
+        "databaseStructure": {
+            "collections": [
+                "courses — course details, affiliation, duration, fees, HOD",
+                "faculty — faculty records and assignments",
+                "students — student enrollment records",
+                "timetables — class schedules",
+                "notices — college announcements",
+                "feeStructure — course fee configurations"
+            ]
+        }
+    },
+    "myRole": "Sole Developer. Designed and built the complete chatbot interface and admin panel — including Firebase integration, all CRUD operations, data table configuration with Tabulator.js, and the NLP-based chatbot response system.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Sole Developer"
+        }
+    ],
+    "challenges": [
+        "Building a context-aware chatbot without a traditional AI API — relying on pattern matching and keyword detection for intelligent response generation",
+        "Implementing bulk CSV import/export for course data with proper validation, error handling, and user feedback",
+        "Integrating Firebase Firestore in real-time for admin panel operations with proper loading states and optimistic UI updates",
+        "Designing a dual-interface system (public chatbot + protected admin) with a consistent visual language but distinct user experiences",
+        "Configuring Tabulator.js for complex, sortable, filterable data tables with custom cell renderers"
+    ],
+    "solutions": [
+        "Built a keyword-based intent recognition system that maps user query patterns to predefined response templates, with fallback responses for unrecognized queries",
+        "Implemented CSV parsing with FileReader API and row-by-row Firebase batch write operations, with progress indicators and validation error reporting",
+        "Used Firebase's real-time listeners (onSnapshot) for dashboard statistics and Firestore's promise-based API for CRUD operations with proper async/await error handling",
+        "Created separate CSS namespaces for chatbot and admin styles, sharing only design tokens (colors, fonts, spacing) via CSS custom properties",
+        "Configured Tabulator with custom formatters, sorters, and editors to handle Firebase-style data structures with nested fields"
+    ],
+    "keyLearnings": [
+        "Firebase Firestore integration — real-time listeners, batch operations, and structuring NoSQL data for a college management use case",
+        "Building an NLP-lite chatbot using keyword matching and pattern detection without external AI APIs",
+        "Advanced Tabulator.js configuration for production-ready data tables with custom rendering",
+        "Implementing voice input/output (Web Speech API) for chatbot accessibility",
+        "Designing admin panels with complex CRUD workflows and data visualization"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/clgchatbot/clg-chat-bot-01.png",
+        "gallery": [
+            "data/Project-images/Production Projects/clgchatbot/clg-chat-bot-01.png",
+            "data/Project-images/Production Projects/clgchatbot/clg-chat-bot-02.png",
+            "data/Project-images/Production Projects/clgchatbot/clg-chat-bot-03.png",
+            "data/Project-images/Production Projects/clgchatbot/clg-chat-bot-04.png",
+            "data/Project-images/Production Projects/clgchatbot/clg-chat-bot-05.png",
+            "data/Project-images/Production Projects/clgchatbot/clg-chat-bot-06.png"
+        ]
+    },
+    "links": {
+        "github": "",
+        "liveDemo": ""
+    },
+    "tags": [
+        "Chatbot",
+        "Firebase",
+        "Admin Panel",
+        "College Management",
+        "NLP",
+        "Voice Interface",
+        "CRUD",
+        "Full Stack",
+        "Education"
+    ],
+    "featured": true,
+    "client": "Bhagwant Institute of Technology",
+    "designHighlights": {
+        "colorPalette": {
+            "theme": "Modern Light with institutional color scheme"
+        },
+        "typography": {
+            "body": "Poppins (Google Fonts)"
+        },
+        "designFeatures": [
+            "Responsive admin sidebar navigation",
+            "Animated chat bubble interface",
+            "Real-time form validation with instant feedback",
+            "SweetAlert2 confirmation dialogs",
+            "Toastify notification system",
+            "Light/Dark theme toggle"
+        ]
+    },
+    "license": "MIT"
+}

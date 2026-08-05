@@ -1,0 +1,70 @@
+{
+    "name": "Akash Prajapati",
+    "handle": "akashprajapati1232",
+    "location": "Ghazipur, Uttar Pradesh, India",
+    "headline": "Full Stack Developer exploring Data Analytics, Artificial Intelligence, and Generative AI.",
+    "bio": "I enjoy building modern web applications, exploring data, and learning how AI can solve real-world problems. I love learning new technologies, building projects, and improving my skills every day.",
+    "focus": [
+        "Full Stack Web Development",
+        "Data Analytics",
+        "Artificial Intelligence",
+        "Generative AI"
+    ],
+    "currentlyLearning": [
+        "Backend Development",
+        "System Design",
+        "Data Analytics",
+        "Generative AI",
+        "AI Integration"
+    ],
+    "workingOn": [
+        "AI-powered Web Applications",
+        "Data Analytics Projects",
+        "Personal Portfolio"
+    ],
+    "interests": [
+        "Open Source",
+        "Problem Solving",
+        "Software Engineering",
+        "Data Analytics",
+        "Generative AI"
+    ],
+    "favoriteTech": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Python",
+        "SQL",
+        "Pandas",
+        "NumPy",
+        "Supabase",
+        "Git"
+    ],
+    "lookingFor": [
+        "Internships",
+        "Freelance Projects",
+        "Open Source Collaboration",
+        "Full-Time Opportunities"
+    ],
+    "experienceLevel": "Student Developer",
+    "languages": [
+        "Hindi",
+        "English"
+    ],
+    "socials": {
+        "website": "https://akashprajapati.rf.gd/",
+        "github": "https://github.com/akashprajapati1232",
+        "linkedin": "https://www.linkedin.com/in/akash-prajapati1232/",
+        "instagram": "https://www.instagram.com/akash.prajapati1232/"
+    },
+    "contact": {
+        "email": "akashprajapati1232@gmail.com",
+        "openToWork": true
+    },
+    "status": "Currently building and learning.",
+    "funFact": "I enjoy understanding how technologies work behind the scenes and prefer learning by building real projects.",
+    "philosophy": "Learn by building. Improve with every project.",
+    "goal": "To build useful software by combining Web Development, Data Analytics, and Artificial Intelligence.",
+    "timezone": "IST (UTC+05:30)"
+}

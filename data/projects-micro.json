@@ -1,0 +1,220 @@
+{
+    "title": "Micro Projects",
+    "description": "These projects were built while learning HTML, CSS, and JavaScript. Each project helped me understand core web development concepts, improve problem-solving skills, and gain hands-on coding experience.",
+    "projects": [
+        {
+            "id": "snake-game",
+            "name": "Retro Snake Game",
+            "category": "Game",
+            "type": "Learning Project",
+            "description": "A modern implementation of the classic Snake game with a retro monochrome aesthetic, responsive design, and enhanced gameplay features. Built with HTML5 Canvas, it includes multiple difficulty levels, special food items, sound effects, mobile touch controls, and score persistence via LocalStorage.",
+            "overview": "This Snake Game is a modern take on the classic game that was popular on early mobile phones. It features a clean, monochrome aesthetic with a retro pixel art style. The game is fully responsive and works on both desktop and mobile devices. It uses a RequestAnimationFrame-based game loop for smooth animation and a 20x20 grid system for the game board.",
+            "techStack": [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "LocalStorage API",
+                "Canvas API"
+            ],
+            "keyFeatures": [
+                "Multiple difficulty levels — Easy, Medium, Hard (speed: 5/9/15)",
+                "Special food items worth 3–5 bonus points (disappear after 5 seconds)",
+                "Pause/Resume functionality with Space Bar or on-screen button",
+                "Sound toggle for background and effect audio",
+                "Speed adjustment slider",
+                "Mobile touch controls — on-screen directional buttons",
+                "High score persistence via LocalStorage",
+                "Countdown (3, 2, 1, GO!) before game starts",
+                "Retro monochrome pixel art aesthetic",
+                "Responsive layout for desktop, tablet, and mobile"
+            ],
+            "learning": [
+                "Game Loop with RequestAnimationFrame",
+                "Canvas API rendering",
+                "Collision Detection (wall and self)",
+                "LocalStorage for score persistence",
+                "Responsive Design with touch controls",
+                "Keyboard and touch event handling"
+            ],
+            "status": "Completed",
+            "year": "2025",
+            "github": "",
+            "liveDemo": "",
+            "thumbnail": "data/Project-images/learning/snake-game/04-new-version-snake-game.png",
+            "gallery": [
+                "data/Project-images/learning/snake-game/04-new-version-snake-game.png",
+                "data/Project-images/learning/snake-game/05-new-version-snake-game.png",
+                "data/Project-images/learning/snake-game/06-new-version-snake-game.png",
+                "data/Project-images/learning/snake-game/01-old-version-snake-game.png",
+                "data/Project-images/learning/snake-game/02-old-version-snake-game.png",
+                "data/Project-images/learning/snake-game/03-old-version-snake-game.png"
+            ],
+            "featured": true
+        },
+        {
+            "id": "calculator",
+            "name": "Professional Calculator",
+            "category": "Utility",
+            "type": "Learning Project",
+            "description": "A professional calculator built with HTML, CSS, and Vanilla JavaScript that correctly evaluates BODMAS expressions using a custom two-pass safe parser (no eval()), converts numeric results into Hindi words, and supports full keyboard shortcuts and sound effects.",
+            "overview": "This calculator goes beyond basic arithmetic — it evaluates full expressions like '2+3+7-6*2' with correct operator precedence (BODMAS: multiplication/division before addition/subtraction) using a custom-built tokenizer and two-pass parser. Results are automatically converted into Hindi Devanagari words (e.g., '5' displays as 'पाँच'). The design uses a monochrome glassmorphism aesthetic with Google Fonts (Inter + Noto Sans Devanagari) for bilingual typography.",
+            "techStack": [
+                "HTML5",
+                "CSS3",
+                "Vanilla JavaScript (ES6+)",
+                "Google Fonts (Inter, Noto Sans Devanagari)"
+            ],
+            "keyFeatures": [
+                "BODMAS expression evaluation — correct operator precedence without eval()",
+                "Custom two-pass safe expression parser (Tokenizer → Pass 1: */ → Pass 2: +-)",
+                "Hindi word conversion for results (e.g., 5 → पाँच, 0 → शून्य)",
+                "Full keyboard support — numbers, operators, Enter, Escape, Backspace",
+                "Sound effects on button clicks and calculation",
+                "Monochrome glassmorphism UI design",
+                "Responsive design — works on all devices",
+                "Bilingual typography with Devanagari font support"
+            ],
+            "learning": [
+                "Expression parsing and tokenization",
+                "Operator precedence (BODMAS) algorithm",
+                "Secure expression evaluation without eval()",
+                "DOM Manipulation",
+                "Keyboard event handling",
+                "Web Audio API for sound effects",
+                "Bilingual typography with Google Fonts"
+            ],
+            "status": "Completed",
+            "year": "2025",
+            "github": "",
+            "liveDemo": "",
+            "thumbnail": "data/Project-images/learning/calculator/preview.png",
+            "gallery": [
+                "data/Project-images/learning/calculator/preview.png"
+            ],
+            "featured": true
+        },
+        {
+            "id": "advocate-atul",
+            "name": "Advocate Atul Pal — Legal Website",
+            "category": "Business Website",
+            "type": "Learning Project",
+            "description": "A modern, professional, fully responsive multi-page website for Advocate Atul Pal — a legal practitioner specializing in Civil, Criminal, Property, Family, and Constitutional Law. Features a modular CSS and JS architecture, scroll animations, form validation, and an elegant gold-on-black legal design system.",
+            "overview": "This project is a professional legal website built for Advocate Atul Pal. It consists of 5 pages (Home, About, Services, Cases, Contact) each with dedicated CSS and JS modules — implementing a clean separation of concerns. The design uses a prestigious Black (#1a1a1a) and Gold (#d4af37) color palette with Playfair Display serif headings for an authoritative legal aesthetic. The project was a significant learning milestone for modular CSS architecture, component-based JS patterns, and real-world multi-page website structure.",
+            "techStack": [
+                "HTML5",
+                "CSS3",
+                "JavaScript (ES6+)",
+                "Google Fonts (Playfair Display, Inter, Crimson Text)"
+            ],
+            "keyFeatures": [
+                "5-page website — Home, About, Services, Cases, Contact",
+                "Modular CSS architecture — each page has its own CSS file",
+                "Modular JS architecture — each page has its own JS module",
+                "Legal services timeline with step-by-step process visualization",
+                "Interactive case filtering and search functionality",
+                "Real-time contact form validation",
+                "Loading animations and scroll-triggered element reveals",
+                "Gold (#d4af37) and black legal color palette",
+                "Playfair Display serif typography for authoritative headings",
+                "Fully responsive — mobile-first with breakpoints at 480px, 768px, 1200px",
+                "WCAG accessible design",
+                "SEO-optimized semantic HTML structure",
+                "Legacy files preserved in /legacy directory for reference"
+            ],
+            "learning": [
+                "Modular CSS architecture with component-level stylesheets",
+                "Multi-page website structure and navigation",
+                "JavaScript module pattern and page-specific code splitting",
+                "CSS BEM methodology for class naming",
+                "Scroll animations and intersection observer",
+                "Form validation with real-time feedback",
+                "Responsive design with mobile-first breakpoints",
+                "SEO basics with semantic HTML"
+            ],
+            "status": "Completed",
+            "year": "2025",
+            "github": "",
+            "liveDemo": "",
+            "thumbnail": "data/Project-images/Featured/advocateatulpal/advocate-atul-pal-01.png",
+            "gallery": [
+                "data/Project-images/Featured/advocateatulpal/advocate-atul-pal-01.png",
+                "data/Project-images/Featured/advocateatulpal/advocate-atul-pal-02.png",
+                "data/Project-images/Featured/advocateatulpal/advocate-atul-pal-03.png",
+                "data/Project-images/Featured/advocateatulpal/advocate-atul-pal-04.png",
+                "data/Project-images/Featured/advocateatulpal/advocate-atul-pal-05.png"
+            ],
+            "designSystem": {
+                "colors": {
+                    "primary": "#1a1a1a",
+                    "secondary": "#333333",
+                    "accent": "#d4af37",
+                    "background": "#ffffff"
+                },
+                "typography": {
+                    "headings": "Playfair Display (serif)",
+                    "body": "Inter (sans-serif)",
+                    "accent": "Crimson Text (serif)"
+                }
+            },
+            "featured": true
+        },
+        {
+            "id": "portfolio-v1",
+            "name": "Personal Portfolio v1",
+            "category": "Portfolio",
+            "type": "Learning Project",
+            "description": "My first personal portfolio website built with HTML, CSS, and Vanilla JavaScript. Features a monochrome glassmorphism design, interactive particle background, an animated jellyfish hero section, VanillaTilt.js card effects, filterable project and skill sections, a certificate lightbox gallery, and full SEO optimization with JSON-LD structured data.",
+            "overview": "This is the first version of my personal portfolio — a feature-rich website that showcases my early projects, skills, certificates, and achievements. The portfolio is notable for its interactive animated hero (LottieFiles jellyfish that reacts to mouse movement), Particles.js background, 3D card tilt effects via VanillaTilt.js, and a comprehensive certificate gallery with lightbox viewing and download capability. The site is fully SEO-optimized with sitemap.xml, robots.txt, Open Graph tags, Twitter Cards, and JSON-LD structured data (Schema.org Person markup). The design uses an elegant monochrome aesthetic with glassmorphism card elements.",
+            "techStack": [
+                "HTML5",
+                "CSS3",
+                "JavaScript (Vanilla)",
+                "Particles.js",
+                "LottieFiles",
+                "VanillaTilt.js",
+                "Font Awesome",
+                "CSS Grid & Flexbox"
+            ],
+            "keyFeatures": [
+                "Interactive jellyfish hero animation (LottieFiles) that reacts to mouse movement",
+                "Dynamic particle background (Particles.js) with mouse interaction",
+                "3D card tilt hover effect via VanillaTilt.js on project, skill, and achievement cards",
+                "Typewriter animation cycling through different developer roles",
+                "Tabbed About section — Bio, Education, Certifications",
+                "Filterable Projects section — Web Apps, Games, Other",
+                "Skills section with category filtering and visual progress indicators",
+                "Certificate gallery with grid view, lightbox, navigation, and download functionality",
+                "Keyboard navigation support (arrow keys, Escape) in lightbox",
+                "Lazy loading for all images (30–50% faster initial load)",
+                "SEO optimization — sitemap.xml, robots.txt, Open Graph, Twitter Cards, JSON-LD",
+                "Schema.org Person structured data for rich Google results",
+                "Contact form with validation",
+                "Fully responsive — hamburger menu on mobile"
+            ],
+            "learning": [
+                "Portfolio design and user experience",
+                "Third-party library integration (Particles.js, LottieFiles, VanillaTilt.js)",
+                "SEO optimization with structured data and Open Graph",
+                "Lightbox and gallery implementation",
+                "Filterable content with JavaScript",
+                "Typewriter and animation effects",
+                "Performance optimization (lazy loading, deferred JS)",
+                "Responsive layout with hamburger navigation"
+            ],
+            "status": "Completed",
+            "year": "2025",
+            "github": "https://github.com/akashprajapati1232/my-portfolio",
+            "liveDemo": "https://akashprajapati.rf.gd/",
+            "thumbnail": "data/Project-images/Featured/portfolio/01-portfolio.png",
+            "gallery": [
+                "data/Project-images/Featured/portfolio/01-portfolio.png",
+                "data/Project-images/Featured/portfolio/02-portfolio.png",
+                "data/Project-images/Featured/portfolio/03-portfolio.png",
+                "data/Project-images/Featured/portfolio/04-portfolio.png",
+                "data/Project-images/Featured/portfolio/05-portfolio.png",
+                "data/Project-images/Featured/portfolio/06-portfolio.png"
+            ],
+            "featured": true
+        }
+    ]
+}

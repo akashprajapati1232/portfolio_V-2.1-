@@ -1,0 +1,183 @@
+{
+    "id": "rozgarsetu",
+    "title": "RozgarSetu — Workforce Hiring Portal",
+    "shortDescription": "A premium, bilingual (Hindi + English) workforce hiring ecosystem built in PHP — connecting verified Workers, Businesses, and Contractor Partners with KYC verification workflows, digital wallet systems, and a multi-tier user architecture inspired by Digital India.",
+    "overview": "RozgarSetu (रोजगार सेतु) is a premium, mobile-first workforce hiring portal designed to bridge India's employment gap for blue-collar and semi-skilled workers. Inspired by the Digital India and Skill India initiatives, the platform connects three user groups: Workers/Job Seekers (श्रमिक), Businesses/Employers (व्यापार), and Contractor Partners (साझेदार). The platform features a rich bilingual UI in both English and Hindi Devanagari, making it accessible to diverse Indian demographics. Built with PHP 8 server-side rendering, Bootstrap 5 grid, and a custom Vanilla CSS design system, the portal showcases KYC verification workflows (Aadhaar, eShram, PAN), Partner digital wallet systems with commission tiers (Silver/Gold/Platinum), and comprehensive admin oversight. The current version is a fully designed UI/UX prototype with a detailed system architecture and database schema ready for backend implementation.",
+    "category": "Multi-Role Web Platform",
+    "type": "Production Project",
+    "status": "In Progress (Frontend Complete, Backend Architecture Designed)",
+    "year": "2025",
+    "timeline": {
+        "startDate": "2025",
+        "endDate": "Ongoing",
+        "duration": "Solo project"
+    },
+    "features": [
+        "Multi-role architecture — Workers, Businesses, Partners, and Admin",
+        "Bilingual UI — seamless Hindi Devanagari and English throughout",
+        "Mobile-first responsive design optimized for ~95% mobile user base",
+        "Worker KYC verification workflows — Aadhaar, eShram, PAN document visualizers",
+        "Partner digital wallet system with Silver/Gold/Platinum commission tiers",
+        "Partner bulk worker onboarding at ₹30 per registration (wallet deduction)",
+        "Direct worker self-registration at ₹50 one-time fee",
+        "Business KYC with GSTN and company document verification",
+        "Job posting system with admin approval before going live",
+        "Worker application tracking with status lifecycle management",
+        "AOS (Animate on Scroll) scroll-based animations",
+        "Dynamic stat counters triggered on scroll into view",
+        "Active page navigation tracking using PHP backend routing",
+        "7-stage worker status system (Registered → Verified)",
+        "Reusable PHP template architecture (header, navbar, footer includes)",
+        "Privacy Policy and Terms of Service pages with full legal content",
+        "Fully designed database schema with ERD for MySQL backend"
+    ],
+    "techStack": {
+        "frontend": [
+            "HTML5",
+            "Bootstrap 5 (CSS utilities and grid)",
+            "Vanilla CSS (Custom design system)",
+            "JavaScript (ES6+)",
+            "AOS (Animate on Scroll)"
+        ],
+        "backend": [
+            "PHP 8"
+        ],
+        "databaseDesign": [
+            "MySQL (architecture designed)"
+        ],
+        "iconography": [
+            "FontAwesome 6"
+        ],
+        "typography": [
+            "Google Fonts (Poppins, Inter)"
+        ],
+        "tools": [
+            "XAMPP",
+            "Git",
+            "GitHub"
+        ]
+    },
+    "architecture": {
+        "pattern": "PHP Multi-Page with Reusable Template Includes",
+        "description": "The project uses PHP 8 for server-side page rendering with a reusable includes system (header.php, navbar.php, footer.php) shared across all pages. Active page state is tracked using PHP's basename($_SERVER['PHP_SELF']) for automatic navigation highlighting. The system architecture document defines a complete MySQL database schema with 7 entity groups and full ERD relationships.",
+        "userRoles": [
+            {
+                "role": "Admin",
+                "capabilities": "Full platform control — verify workers/businesses/partners, approve jobs, manage wallets, view reports"
+            },
+            {
+                "role": "Worker/Job Seeker",
+                "capabilities": "Register, complete profile, upload KYC, add skills/education, apply for jobs, track applications"
+            },
+            {
+                "role": "Business/Employer",
+                "capabilities": "Register company, upload KYC, post jobs, view applications, coordinate hiring"
+            },
+            {
+                "role": "Partner/Contractor",
+                "capabilities": "Register workers in bulk, manage digital wallet, track commission tiers, view worker list"
+            }
+        ],
+        "workerStatusLifecycle": [
+            "Registered",
+            "OTP Verified",
+            "Profile Pending",
+            "Under Review",
+            "Verified",
+            "Rejected",
+            "Suspended"
+        ]
+    },
+    "myRole": "Sole Developer and Architect. Designed the complete frontend, PHP architecture, reusable template system, and the full system architecture document including database schema, workflow diagrams, and future backend roadmap.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Sole Developer and System Architect"
+        }
+    ],
+    "challenges": [
+        "Designing a multi-role platform with three distinct user journeys (Worker, Business, Partner) and a shared admin layer — each with different dashboards, KYC requirements, and workflows",
+        "Building a bilingual UI that seamlessly mixes Hindi Devanagari and English text without breaking layout or causing font rendering issues",
+        "Architecting a Partner digital wallet system with tiered commission structures and real-time balance deductions that maintains data integrity across concurrent transactions",
+        "Representing complex business logic (KYC workflows, job approval flows, hiring pipeline) as visual UI mockups that feel authentic to end users",
+        "Designing a mobile-first layout for users on low-end devices common in the target demographic"
+    ],
+    "solutions": [
+        "Created separate dedicated PHP pages (worker.php, business.php, partner.php) with page-specific content while sharing a common header, navbar, and footer via PHP includes — maintaining clear separation of user journeys",
+        "Used Google Fonts with extended character sets (Poppins supports Devanagari) and established CSS font-family fallbacks for cross-platform text rendering",
+        "Designed the wallet system with a WALLET-TRANSACTIONS audit table and double-entry balance tracking pattern in the MySQL schema, ensuring every debit is logged before the worker account is created",
+        "Built detailed UI mockups showing mock KYC document upload states, mock transaction ledgers, and tier commission tables to accurately represent the planned backend functionality",
+        "Applied Bootstrap 5's mobile-first breakpoint system for grid layout and custom CSS for large touch targets (minimum 44px), sticky navigation, and optimized typography scaling"
+    ],
+    "keyLearnings": [
+        "Designing complex multi-role platform architectures with distinct user journeys and shared admin oversight",
+        "PHP reusable template architecture using server-side includes for consistent multi-page websites",
+        "Bilingual web design — integrating Hindi Devanagari text with English in a cohesive responsive layout",
+        "MySQL relational database schema design for a workforce management system with ERD relationships",
+        "Building detailed system architecture documents that bridge UI/UX design to backend implementation planning"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/rojgarsetu-jobportal/home-page.png",
+        "gallery": [
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/home-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/worker-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/business-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/about-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/contact-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/login-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/worker-login-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/business-login-page.png",
+            "data/Project-images/Production Projects/rojgarsetu-jobportal/partner-login-page.png"
+        ]
+    },
+    "links": {
+        "github": "",
+        "liveDemo": ""
+    },
+    "tags": [
+        "Job Portal",
+        "Workforce",
+        "PHP",
+        "India",
+        "Bilingual",
+        "Multi-Role Platform",
+        "KYC",
+        "Digital Wallet",
+        "Blue Collar",
+        "Digital India",
+        "Skill India"
+    ],
+    "featured": true,
+    "designHighlights": {
+        "colorPalette": {
+            "theme": "Premium Dark with vibrant gradients and HSL custom tokens",
+            "approach": "Custom Vanilla CSS design system over Bootstrap 5 grid"
+        },
+        "typography": {
+            "heading": "Poppins (sans-serif)",
+            "body": "Inter (sans-serif)"
+        },
+        "designFeatures": [
+            "Mobile-first responsive layout",
+            "Glassmorphism card components",
+            "AOS scroll-based reveal animations",
+            "Animated count-up stat counters",
+            "Custom CSS card-hover transitions",
+            "Sticky dark-theme navbar",
+            "Active page nav link tracking",
+            "4-column responsive footer"
+        ]
+    },
+    "roadmap": {
+        "phase2": "Live MySQL backend with PDO, SMS OTP gateways, Partner digital wallets, Razorpay integration",
+        "phase3": "OCR document reading, auto IFSC detection, AI job match scoring",
+        "phase4": "Native Android mobile app, video interviews, payroll transfer integration"
+    },
+    "businessLogic": {
+        "registrationFees": {
+            "directWorkerRegistration": "₹50 one-time",
+            "partnerWorkerRegistration": "₹30 wallet deduction per worker"
+        },
+        "partnerTiers": ["Silver", "Gold", "Platinum"]
+    }
+}

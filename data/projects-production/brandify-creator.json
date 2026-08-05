@@ -1,0 +1,146 @@
+{
+    "id": "brandify-creator",
+    "title": "Brandify Creator",
+    "shortDescription": "A premium influencer marketing agency website connecting brands with 500+ verified Instagram creators — featuring GSAP animations, glassmorphism UI, and dual registration flows for brands and creators.",
+    "overview": "Brandify Creator is a high-end influencer marketing agency website built for India's Instagram marketing ecosystem. The platform serves as the digital identity and lead generation engine for Brandify Creator — an agency that connects brands with a curated network of 500+ verified Instagram creators to drive authentic engagement and measurable ROI. The website is built with HTML, CSS, and JavaScript, enhanced with GSAP 3.12.5 animations and ScrollTrigger for premium scroll-based interactions. It features a dark-themed, glassmorphism design system with floating particles, 3D card tilt effects, and smooth micro-animations. The site includes dedicated registration flows for brands (with pricing packages) and creators (with earning potential highlights), along with comprehensive legal pages.",
+    "category": "Business / Agency Website",
+    "type": "Production Project",
+    "status": "Completed",
+    "year": "2026",
+    "timeline": {
+        "startDate": "2026",
+        "endDate": "2026",
+        "duration": "Solo project"
+    },
+    "features": [
+        "Dual user journeys — separate dedicated pages for Brands and Creators",
+        "Hero section with platform statistics (500+ creators, 1M+ reach, 98% success rate)",
+        "GSAP-powered animated title reveals and scroll-based section transitions",
+        "ScrollTrigger scroll-based animations and parallax effects",
+        "Glassmorphism card design with backdrop-filter blur effects",
+        "3D card tilt effects with interactive magnetic hover behavior",
+        "Floating particle ambient background animations",
+        "Floating radial gradient orb background effects",
+        "6-step collaboration process visualization (How It Works section)",
+        "Brand pricing packages — Starter, Professional, Enterprise tiers",
+        "Creator registration form with requirements and earning highlights",
+        "Multiple contact touchpoints — Instagram DM, Email, Live Chat",
+        "Navbar scroll effects with dynamic glassmorphism on scroll",
+        "Gradient text effects and smooth hover micro-interactions",
+        "Privacy Policy and Terms of Service pages",
+        "Fully responsive mobile-first design with all device breakpoints"
+    ],
+    "techStack": {
+        "core": [
+            "HTML5",
+            "CSS3",
+            "JavaScript (ES6+)"
+        ],
+        "libraries": [
+            "GSAP 3.12.5",
+            "ScrollTrigger (GSAP plugin)",
+            "Font Awesome 6.5.1"
+        ],
+        "typography": [
+            "Google Fonts (Poppins, Inter)"
+        ],
+        "tools": [
+            "Git",
+            "GitHub"
+        ]
+    },
+    "architecture": {
+        "pattern": "Multi-Page Static Website",
+        "description": "Multi-page HTML website with a shared CSS design system and JavaScript animation layer. Pages are linked statically with consistent navigation and footer components across all pages.",
+        "pages": [
+            "index.html — Main landing page",
+            "become-brand.html — Brand registration and pricing",
+            "become-creator.html — Creator onboarding",
+            "privacy-policy.html — Data protection policy",
+            "terms-of-service.html — Service terms"
+        ]
+    },
+    "myRole": "Sole Developer and Designer. Designed and built the entire website from concept to deployment — including the complete design system, GSAP animation implementation, responsive layout, and all page content.",
+    "contributors": [
+        {
+            "name": "Akash Prajapati",
+            "role": "Sole Developer and Designer"
+        }
+    ],
+    "challenges": [
+        "Implementing smooth, performant GSAP scroll-triggered animations without impacting page load time or causing layout shifts",
+        "Creating a premium glassmorphism design that renders consistently across browsers, especially Safari's backdrop-filter support",
+        "Building interactive 3D card tilt effects that feel natural and responsive to mouse movement without being jarring on touch devices",
+        "Designing a dual-audience website (Brands vs. Creators) with clear visual separation and independent user journeys on the same platform",
+        "Achieving a premium, high-fidelity aesthetic using only HTML, CSS, and vanilla JavaScript without any UI framework"
+    ],
+    "solutions": [
+        "Optimized GSAP animations by using ScrollTrigger's 'once' option for entry animations and leveraging GPU-composited properties (transform, opacity) for 60fps performance",
+        "Applied vendor prefixes and graceful degradation for backdrop-filter, with JavaScript-based feature detection to fallback to solid backgrounds on unsupported browsers",
+        "Implemented the 3D tilt effect using JavaScript mousemove event listeners with CSS perspective transforms, and disabled the effect on touch devices using pointer media queries",
+        "Created distinct hero sections, color accent variations, and tailored CTAs for the Brands page (blue/conversion-focused) vs. Creators page (indigo/aspiration-focused)",
+        "Built a complete CSS design system with CSS custom properties for all design tokens, ensuring visual consistency and maintainability across 5 pages"
+    ],
+    "keyLearnings": [
+        "Advanced GSAP animation techniques including ScrollTrigger, timeline sequencing, and stagger animations for professional web experiences",
+        "Building a complete CSS design system from scratch with custom properties, utility classes, and component-level scoping",
+        "Designing for dual audiences — creating a single brand identity that speaks authentically to both brands and content creators",
+        "Performance optimization for animation-heavy pages — balancing visual richness with smooth 60fps rendering",
+        "Creating glassmorphism effects and cross-browser compatible CSS filters"
+    ],
+    "images": {
+        "thumbnail": "data/Project-images/Production Projects/brandifycreator/brandify-creator-01.png",
+        "gallery": [
+            "data/Project-images/Production Projects/brandifycreator/brandify-creator-01.png",
+            "data/Project-images/Production Projects/brandifycreator/brandify-creator-02.png",
+            "data/Project-images/Production Projects/brandifycreator/brandify-creator-03.png",
+            "data/Project-images/Production Projects/brandifycreator/brandify-creator-04.png",
+            "data/Project-images/Production Projects/brandifycreator/brandify-creator-05.png",
+            "data/Project-images/Production Projects/brandifycreator/brandify-creator-06.png"
+        ]
+    },
+    "links": {
+        "github": "https://github.com/akashprajapati1232/brandify-creator",
+        "liveDemo": "https://brandifycreator.42web.io/"
+    },
+    "tags": [
+        "Influencer Marketing",
+        "Agency Website",
+        "GSAP",
+        "Animations",
+        "Glassmorphism",
+        "Instagram",
+        "Business",
+        "Landing Page",
+        "India"
+    ],
+    "featured": true,
+    "designHighlights": {
+        "colorPalette": {
+            "background": "#030712",
+            "primary": "#3B82F6",
+            "accent": "#6366F1",
+            "text": "#F8FAFC",
+            "textMuted": "#94A3B8",
+            "theme": "Rich Dark with Blue-Indigo accents"
+        },
+        "typography": {
+            "heading": "Poppins (sans-serif)",
+            "body": "Inter (sans-serif)"
+        },
+        "designFeatures": [
+            "Glassmorphism cards with backdrop-filter blur",
+            "Gradient text and background effects",
+            "GSAP-powered scroll-based reveals",
+            "3D card tilt effects on hover",
+            "Floating particle ambient animations",
+            "Floating radial gradient orbs",
+            "Noise overlay texture for depth",
+            "Navbar glassmorphism on scroll"
+        ]
+    },
+    "contactInfo": {
+        "instagram": "@brandify_creator_official",
+        "email": "brandify.creator.official@gmail.com"
+    }
+}

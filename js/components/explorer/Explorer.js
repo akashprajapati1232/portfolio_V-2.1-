@@ -22,6 +22,9 @@ const FILE_ICON_MAP = {
     'yaml':   { cls: 'fas fa-file-code',   color: '#6a9955' },  // YAML: green
     'xml':    { cls: 'fas fa-file-code',   color: '#e8b67a' },  // XML: orange
     'py':     { cls: 'fas fa-file-code',   color: '#4ec9b0' },  // Python: teal
+    'png':    { cls: 'fas fa-file-image',  color: '#a074c4' },  // PNG: purple
+    'jpg':    { cls: 'fas fa-file-image',  color: '#a074c4' },  // JPG: purple
+    'jpeg':   { cls: 'fas fa-file-image',  color: '#a074c4' },  // JPEG: purple
     // Fallback
     'default': { cls: 'fas fa-file',       color: '#8a8a8a' }
 };
@@ -32,35 +35,81 @@ function getFileIcon(fileName) {
 }
 
 // ── Tree structure definition ─────────────────────────────────────────────────
-// Defines the visual hierarchy rendered in the explorer panel.
-// 'key' is used as data-file to open the editor pane.
+// Mirrors the actual data/ directory structure on disk.
+// 'key' is the unique identifier emitted on 'file:open' to open the editor pane.
 const TREE = [
     {
-        type: 'folder', name: 'about', id: 'about',
+        type: 'folder', name: 'About', id: 'profile',
         children: [
-            { type: 'file', name: 'README.md',     key: 'README.md'     },
-            { type: 'file', name: 'profile.json',  key: 'profile.json'  },
+            { type: 'file', name: 'README.md',       key: 'README.md'       },
+            { type: 'file', name: 'profile.json',    key: 'profile.json'    },
+            { type: 'file', name: 'socials.yml',     key: 'socials.yml'     },
         ]
     },
     {
         type: 'folder', name: 'Education', id: 'education',
         children: [
-            { type: 'file', name: 'education.md',       key: 'education.md'       },
-            { type: 'file', name: 'certificates.json',  key: 'certificates.json'  },
+            { type: 'file', name: 'education.json',      key: 'education.json'      },
+            { type: 'file', name: 'certifications.tsx',  key: 'certifications.tsx'  },
+        ]
+    },
+    {
+        type: 'folder', name: 'Experience', id: 'experience',
+        children: [
+            { type: 'file', name: 'experience.xml', key: 'experience.json' },
         ]
     },
     {
         type: 'folder', name: 'Skills', id: 'skills',
         children: [
-            { type: 'file', name: 'skills.json', key: 'skills.json' },
+            { type: 'file', name: 'tech-stack.tsx', key: 'tech-stack.tsx' },
         ]
     },
     {
-        type: 'folder', name: 'OurWork', id: 'ourwork',
+        type: 'folder', name: 'Services', id: 'services',
         children: [
-            { type: 'file', name: 'projects.md', key: 'projects.md' },
+            { type: 'file', name: 'services.ts', key: 'services.ts' },
         ]
     },
+    {
+        type: 'folder', name: 'Achievements', id: 'achievements',
+        children: [
+            { type: 'file', name: 'achievements.xml', key: 'achievements.xml' },
+        ]
+    },
+    {
+        type: 'folder', name: 'Projects', id: 'projects',
+        children: [
+            {
+                type: 'folder', name: 'production', id: 'projects-production',
+                children: [
+                    { type: 'file', name: 'gpt-for-bca.json',           key: 'gpt-for-bca.json'           },
+                    { type: 'file', name: 'imgninja.json',               key: 'imgninja.json'               },
+                    { type: 'file', name: 'brandify-creator.json',       key: 'brandify-creator.json'       },
+                    { type: 'file', name: 'bitbot-college-chatbot.json', key: 'bitbot-college-chatbot.json' },
+                    { type: 'file', name: 'rozgarsetu.json',             key: 'rozgarsetu.json'             },
+                    { type: 'file', name: 'scaleiq.json',                key: 'scaleiq.json'                },
+                    { type: 'file', name: 'total-solution.json',         key: 'total-solution.json'         },
+                    { type: 'file', name: 'portfolio-v2.json',           key: 'portfolio-v2.json'           },
+                ]
+            },
+            {
+                type: 'folder', name: 'micro', id: 'projects-micro',
+                children: [
+                    { type: 'file', name: 'projects-micro.json', key: 'projects-micro.json' },
+                ]
+            },
+        ]
+    },
+    {
+        type: 'file', name: 'LICENSE.txt', key: 'LICENSE.txt'
+    },
+    {
+        type: 'folder', name: 'config', id: 'config',
+        children: [
+            { type: 'file', name: 'settings.yml', key: 'settings.yml' }
+        ]
+    }
 ];
 
 // ── HTML generators ────────────────────────────────────────────────────────────

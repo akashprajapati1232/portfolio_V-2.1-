@@ -20,26 +20,44 @@ import { statusBar } from './components/layout/StatusBar.js';
 class App {
     constructor() {
         this.CONTENT_BUILDERS = {
-            'README.md': this.buildReadme.bind(this),
+            // About/
+            'README.md': this.buildAboutMe.bind(this),
             'profile.json': this.buildProfileJson.bind(this),
-            'education.md': this.buildEducation.bind(this),
-            'certificates.json': this.buildCertificates.bind(this),
-            'skills.json': this.buildSkillsJson.bind(this),
-            'projects.md': this.buildProjects.bind(this),
+            'socials.yml': this.buildSocials.bind(this),
+            // Education/
+            'education.json': this.buildEducation.bind(this),
+            'certifications.tsx': this.buildCertifications.bind(this),
+            // Experience/
+            'experience.json': this.buildExperience.bind(this),
+            // Skills/
+            'tech-stack.tsx': this.buildSkills.bind(this),
+            // Services/
+            'services.ts': this.buildServices.bind(this),
+            // Achievements/
+            'achievements.xml': this.buildAchievements.bind(this),
+            // Projects/production/
+            'gpt-for-bca.json': this.buildProductionProject.bind(this, 'gpt-for-bca.json'),
+            'imgninja.json': this.buildProductionProject.bind(this, 'imgninja.json'),
+            'brandify-creator.json': this.buildProductionProject.bind(this, 'brandify-creator.json'),
+            'bitbot-college-chatbot.json': this.buildProductionProject.bind(this, 'bitbot-college-chatbot.json'),
+            'rozgarsetu.json': this.buildProductionProject.bind(this, 'rozgarsetu.json'),
+            'scaleiq.json': this.buildProductionProject.bind(this, 'scaleiq.json'),
+            'total-solution.json': this.buildProductionProject.bind(this, 'total-solution.json'),
+            'portfolio-v2.json': this.buildProductionProject.bind(this, 'portfolio-v2.json'),
+            // Projects/micro/
+            'projects-micro.json': this.buildMicroProjects.bind(this),
+            // Root/Config
+            'LICENSE.txt': this.buildLicense.bind(this),
+            'settings.yml': this.buildSettings.bind(this),
         };
     }
 
     // =========================================================================
     // Initialization & Setup
     // =========================================================================
-    // This section is responsible for rendering the initial UI structure,
-    // initializing all the child components, setting up event bus listeners,
-    // and opening the default set of files when the application boots up.
 
     init() {
-        // Render the UI structure before components try to attach event listeners
         this.renderUI();
-
         eventBus.on('portfolioDataReady', this.boot.bind(this));
         dataService.loadAll();
     }
@@ -79,9 +97,10 @@ class App {
         eventBus.on('file:switched', this.openFile.bind(this));
         eventBus.on('file:closedAll', this.showWelcome.bind(this));
 
-        const defaultFiles = ['README.md', 'profile.json', 'education.md', 'certificates.json', 'skills.json', 'projects.md'];
+        // Open default files on load
+        const defaultFiles = ['profile.json', 'tech-stack.tsx', 'projects-micro.json'];
         defaultFiles.forEach(file => eventBus.emit('file:open', file));
-        eventBus.emit('file:open', 'profile.json');
+        eventBus.emit('file:open', 'README.md'); // Focus README.md
 
         setTimeout(() => {
             const leftSidebar = document.getElementById('sidebar');
@@ -94,25 +113,16 @@ class App {
     // =========================================================================
     // Editor UI State Management
     // =========================================================================
-    // This section handles the state of the central editor area. It manages
-    // switching between different file panes, rendering the welcome screen,
-    // updating breadcrumbs based on the current file, and synchronizing the
-    // status bar indicators (like language mode and line/col numbers).
 
     openFile(fileName) {
-        if (!fileName) {
-            this.showWelcome();
-            return;
-        }
+        if (!fileName) { this.showWelcome(); return; }
 
         const editorContent = document.getElementById('editor-content');
         if (!editorContent) return;
 
-        const panes = editorContent.querySelectorAll('.editor-pane');
-        panes.forEach(p => p.style.display = 'none');
+        editorContent.querySelectorAll('.editor-pane').forEach(p => p.style.display = 'none');
 
         let pane = editorContent.querySelector(`.editor-pane[data-file="${fileName}"]`);
-
         if (!pane) {
             pane = document.createElement('div');
             pane.className = 'editor-pane';
@@ -142,18 +152,14 @@ class App {
 
         requestAnimationFrame(() => this.updateLineNumbers(pane));
         this.updateStatusPosition(1, 1);
-
         pane.onclick = () => this.updateStatusPosition(1, 1);
-
         router.navigate(fileName);
     }
 
     showWelcome() {
         const editorContent = document.getElementById('editor-content');
         if (editorContent) {
-            const panes = editorContent.querySelectorAll('.editor-pane');
-            panes.forEach(p => p.style.display = 'none');
-
+            editorContent.querySelectorAll('.editor-pane').forEach(p => p.style.display = 'none');
             let welcomePane = editorContent.querySelector('.editor-pane[data-file="welcome"]');
             if (!welcomePane) {
                 welcomePane = document.createElement('div');
@@ -167,8 +173,8 @@ class App {
                         <div style="margin-top:16px;">
                             <div class="badges-row" style="justify-content:center;gap:8px;">
                                 <span class="badge badge-blue" onclick="window.openFile('README.md')" style="cursor:pointer;">📄 README.md</span>
-                                <span class="badge badge-yellow" onclick="window.openFile('projects.md')" style="cursor:pointer;">🚀 projects.md</span>
-                                <span class="badge badge-green" onclick="window.openFile('skills.json')" style="cursor:pointer;">🛠️ skills.json</span>
+                                <span class="badge badge-yellow" onclick="window.openFile('tech-stack.tsx')" style="cursor:pointer;">🛠️ tech-stack.tsx</span>
+                                <span class="badge badge-green" onclick="window.openFile('gpt-for-bca.json')" style="cursor:pointer;">🚀 gpt-for-bca.json</span>
                             </div>
                         </div>
                     </div>`;
@@ -195,7 +201,6 @@ class App {
         const bcFolder = document.querySelector('.bc-item.bc-folder');
         const bcFile = document.getElementById('bc-current');
         const titleFile = document.getElementById('title-current-file');
-
         if (bcFolder) bcFolder.textContent = folder;
         if (bcFile) bcFile.textContent = fileName;
         if (titleFile) titleFile.textContent = fileName;
@@ -205,8 +210,7 @@ class App {
         const reg = dataService.getFileRegistry() || {};
         const fileInfo = reg[fileName] || {};
         const lang = fileInfo.lang || 'text';
-        const MAP = { markdown: 'Markdown', json: 'JSON', text: 'Plain Text', js: 'JavaScript', html: 'HTML', css: 'CSS' };
-
+        const MAP = { markdown: 'Markdown', json: 'JSON', text: 'Plain Text', js: 'JavaScript', html: 'HTML', css: 'CSS', yaml: 'YAML', tsx: 'TypeScript React', ts: 'TypeScript', xml: 'XML' };
         const langEl = document.getElementById('status-lang');
         if (langEl) langEl.textContent = MAP[lang] || 'Plain Text';
     }
@@ -214,7 +218,6 @@ class App {
     updateLineNumbers(contentEl) {
         const lineNumEl = document.getElementById('line-numbers');
         if (!lineNumEl || !contentEl) return;
-
         const approxLines = Math.max(40, Math.ceil(contentEl.scrollHeight / (14 * 1.6)));
         const nums = [];
         for (let i = 1; i <= approxLines; i++) nums.push(i);
@@ -227,179 +230,474 @@ class App {
     }
 
     // =========================================================================
-    // Content Builders
+    // Shared Helpers
     // =========================================================================
-    // This section contains builder methods that convert raw JSON data fetched
-    // from the DataService into HTML snippets representing formatted content
-    // files. These methods generate the visually rich representations of projects,
-    // skills, profile JSON, and other markdown/JSON files within the editor.
 
-    buildReadme() {
-        const data = dataService.getData();
-        const p = data.person || {};
-        const stats = p.stats || {};
+    _jsonBlock(obj) {
+        return `<div class="json-viewer">${markdownRenderer.highlightJSON(obj)}</div>`;
+    }
+
+    _tagList(tags = []) {
+        return tags.map(t => `<span class="project-card-tag">${t}</span>`).join('');
+    }
+
+    _techBadges(items = []) {
+        return items.map(t => `<span class="ach-tag">${t}</span>`).join('');
+    }
+
+    // =========================================================================
+    // Content Builders — profile/
+    // =========================================================================
+
+    buildProfileJson() {
+        const d = dataService.getData();
+        const p = d.profile || {};
         return `<div class="md-content">
-            <h1 class="md-h1">👋 Hi, I'm ${p.name || 'Akash Prajapati'}</h1>
-            <p class="md-p">${p.title || ''} — ${p.location || ''}</p>
-            <div class="badges-row" style="margin: 12px 0;">
-                <span class="badge badge-blue">⚡ ${stats.projects || 0} Projects</span>
-                <span class="badge badge-green">📜 ${stats.certifications || 0} Certifications</span>
-                <span class="badge badge-yellow">🎓 ${stats.experience || '1+ year'} Experience</span>
-            </div>
-            ${(p.bio || []).map(b => `<p class="md-p">${b}</p>`).join('')}
-            <h2 class="md-h2">📬 Contact</h2>
-            <div class="contact-card">
-                <a href="mailto:${p.email}" class="contact-item" aria-label="Email">
-                    <div class="contact-icon ci-email"><i class="fas fa-envelope"></i></div>
-                    <div><div class="contact-label">Email</div><div class="contact-value">${p.email || ''}</div></div>
-                </a>
-                <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="GitHub">
-                    <div class="contact-icon ci-github"><i class="fab fa-github"></i></div>
-                    <div><div class="contact-label">GitHub</div><div class="contact-value">akashprajapati1232</div></div>
-                </a>
-                <a href="${p.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="LinkedIn">
-                    <div class="contact-icon ci-linkedin"><i class="fab fa-linkedin"></i></div>
-                    <div><div class="contact-label">LinkedIn</div><div class="contact-value">akash-prajapati1232</div></div>
-                </a>
-            </div>
+            ${this._jsonBlock(p)}
         </div>`;
     }
 
-    buildProfileJson() {
-        const data = dataService.getData();
-        const p = data.person;
-        const obj = {
-            name: p.name,
-            title: p.title,
-            location: p.location,
-            email: p.email,
-            phone: p.phone,
-            website: p.website,
-            github: p.github,
-            linkedin: p.linkedin,
-            bio: p.bio,
-            stats: p.stats,
-            education: data.education.map(e => ({ degree: e.degree, institution: e.institution, period: e.period })),
-            skills: Object.fromEntries(Object.entries(data.skills).map(([cat, items]) => [cat, items.map(s => s.name)])),
-            certifications: data.certifications.map(c => c.name)
-        };
-        const highlighted = markdownRenderer.highlightJSON(obj);
-        return `<div class="json-viewer">${highlighted}</div>`;
+    buildAboutMe() {
+        const d = dataService.getData();
+        const a = d.aboutme || {};
+
+        const paras = (a.content || []).map(c => `<p class="md-p" style="font-size: 1em; line-height: 1.6;">${c}</p>`).join('');
+        const philosophy = (a.learningPhilosophy || []).map(p => `<li style="margin-bottom:8px;color:var(--clr-text-secondary);"><i class="fas fa-check-circle" style="color:#6a9955;margin-right:8px;"></i>${p}</li>`).join('');
+        const currentFocus = (a.currentFocus || []).map(f => `<span class="badge badge-yellow" style="margin:4px;"><i class="fas fa-crosshairs"></i> ${f}</span>`).join('');
+        const interests = (a.interests || []).map(i => `<span class="badge badge-blue" style="margin:4px;"><i class="fas fa-heart"></i> ${i}</span>`).join('');
+        const currentlyLearning = (a.currentlyLearning || []).map(i => `<span class="badge badge-green" style="margin:4px;"><i class="fas fa-book-open"></i> ${i}</span>`).join('');
+
+        return `
+        <style>
+            .typing-cursor {
+                display: inline-block;
+                width: 10px;
+                height: 1.1em;
+                background-color: var(--clr-accent, #61afef);
+                vertical-align: text-bottom;
+                animation: blink 1s step-end infinite;
+                margin-left: 8px;
+            }
+            @keyframes blink { 50% { opacity: 0; } }
+            
+            .github-section {
+                margin: 16px 0;
+                padding: 16px;
+                background: var(--clr-bg-dark);
+                border: 1px solid var(--clr-border);
+                border-radius: 8px;
+            }
+            .github-section h2 {
+                margin-top: 0;
+                border-bottom: 1px solid var(--clr-border);
+                padding-bottom: 10px;
+                font-size: 1.25em;
+            }
+            .readme-section .md-h1::before,
+            .readme-section .md-h2::before {
+                display: none;
+                content: none;
+            }
+        </style>
+        <div class="md-content readme-section">
+            <h1 class="md-h1" style="font-size: 2.2em; border-bottom: none; display: flex; align-items: center; margin-bottom: 10px;">
+                 # AKASH PRAJAPATI<span class="typing-cursor"></span>
+            </h1>
+            
+            <div style="margin-bottom: 20px;">
+                ${paras}
+            </div>
+
+            <div class="github-section">
+                <h2 class="md-h2"><i class="fas fa-brain" style="margin-right:8px; color:var(--clr-accent);"></i>Learning Philosophy</h2>
+                <ul style="list-style-type:none; padding-left:0; margin-bottom:0;">${philosophy}</ul>
+            </div>
+
+            <div class="github-section">
+                <h2 class="md-h2"><i class="fas fa-bullseye" style="margin-right:8px; color:#e5c07b;"></i>Current Focus</h2>
+                <div style="display:flex; flex-wrap:wrap; margin-top:12px;">${currentFocus}</div>
+            </div>
+
+            <div class="github-section">
+                <h2 class="md-h2"><i class="fas fa-star" style="margin-right:8px; color:#519aba;"></i>Interests</h2>
+                <div style="display:flex; flex-wrap:wrap; margin-top:12px;">${interests}</div>
+            </div>
+
+            <div class="github-section">
+                <h2 class="md-h2"><i class="fas fa-laptop-code" style="margin-right:8px; color:#6a9955;"></i>Currently Learning</h2>
+                <div style="display:flex; flex-wrap:wrap; margin-top:12px;">${currentlyLearning}</div>
+            </div>
+
+            <div class="github-section">
+                <h2 class="md-h2"><i class="fab fa-osi" style="margin-right:8px; color:#c678dd;"></i>Open Source</h2>
+                <p class="md-p" style="color:var(--clr-text-secondary); margin-bottom:0;">${a.openSource || ''}</p>
+            </div>
+
+            <div class="github-section">
+                <h2 class="md-h2"><i class="fas fa-users" style="margin-right:8px; color:#e06c75;"></i>Collaboration</h2>
+                <p class="md-p" style="color:var(--clr-text-secondary); margin-bottom:0;">${a.collaboration || ''}</p>
+            </div>
+            
+            <div class="github-section">
+                <h2 class="md-h2"><i class="fas fa-flag-checkered" style="margin-right:8px; color:#98c379;"></i>Goal</h2>
+                <p class="md-p" style="color:var(--clr-text-secondary); font-weight: 500; margin-bottom:0;">${a.goal || ''}</p>
+            </div>
+
+            <blockquote style="margin: 20px 0; padding: 16px 20px; background: rgba(97, 175, 239, 0.1); border-left: 4px solid var(--clr-accent); border-radius: 0 8px 8px 0; font-size: 1.1em; font-style: italic; color: var(--clr-accent);">
+                <i class="fas fa-quote-left" style="margin-right: 10px; opacity: 0.5;"></i> ${a.quote || ''}
+            </blockquote>
+        </div>`;
     }
 
+    buildSocials() {
+        const d = dataService.getData();
+        const s = d.socials || {};
+        const links = Object.entries(s).map(([platform, url]) => {
+            const icons = { github: 'fab fa-github', linkedin: 'fab fa-linkedin', instagram: 'fab fa-instagram', website: 'fas fa-globe', twitter: 'fab fa-twitter' };
+            const colors = { github: 'ci-github', linkedin: 'ci-linkedin', instagram: 'ci-instagram', website: 'ci-email' };
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon ${colors[platform] || 'ci-email'}"><i class="${icons[platform] || 'fas fa-link'}"></i></div>
+                <div><div class="contact-label">${platform.charAt(0).toUpperCase() + platform.slice(1)}</div><div class="contact-value">${url}</div></div>
+            </a>`;
+        }).join('');
+        return `<div class="md-content">
+            <h1 class="md-h1">🌐 Socials</h1>
+            <p class="md-p">Connect with me across the web.</p>
+            <div class="contact-card">${links}</div>
+        </div>`;
+    }
+
+    // =========================================================================
+    // Content Builders — education/
+    // =========================================================================
+
     buildEducation() {
-        const data = dataService.getData();
-        const eduHtml = data.education.map(edu => `
+        const d = dataService.getData();
+        const eduHtml = (d.education || []).map(edu => `
             <div class="timeline-item">
                 <div class="timeline-title">${edu.degree}</div>
                 <div class="timeline-date">${edu.institution}, ${edu.location} · ${edu.period}</div>
                 <div class="timeline-desc">${edu.description}</div>
             </div>`).join('');
-        const achHtml = data.achievements.map(ach => `
-            <div class="achievement-card">
-                <div class="achievement-icon ${ach.icon}"><i class="${ach.iconClass}"></i></div>
-                <div class="achievement-content">
-                    <div class="achievement-title-text">${ach.title}</div>
-                    <div class="achievement-subtitle">${ach.subtitle} &nbsp;·&nbsp; ${ach.date}</div>
-                    <div class="achievement-desc">${ach.description}</div>
-                    <div class="achievement-tags">${ach.tags.map(t => `<span class="ach-tag">${t}</span>`).join('')}</div>
+        return `<div class="md-content">
+            <h1 class="md-h1">🎓 Education</h1>
+            <p class="md-p">Academic background and qualifications.</p>
+            <div class="timeline">${eduHtml}</div>
+        </div>`;
+    }
+
+    buildCertifications() {
+        const d = dataService.getData();
+        const certs = d.certifications || [];
+        const certsHtml = certs.map(c => `
+            <div class="project-card">
+                ${c.image ? `<img src="${c.image}" alt="${c.title}" class="project-card-img" style="object-fit: cover;" />` : ''}
+                <div class="project-card-body">
+                    <div class="project-card-title">${c.title}</div>
+                    <div class="project-card-desc">
+                        <div style="font-weight: 600; color: #4fc1ff; margin-bottom: 6px;">${c.issuer}</div>
+                        ${c.category ? `<div style="margin-bottom:2px;"><strong>Category:</strong> ${c.category}</div>` : ''}
+                        ${c.issueDate ? `<div style="margin-bottom:2px;"><strong>Issued:</strong> ${c.issueDate}</div>` : ''}
+                        ${c.duration ? `<div style="margin-bottom:2px;"><strong>Duration:</strong> ${c.duration}</div>` : ''}
+                        ${c.grade ? `<div style="margin-bottom:2px;"><strong>Grade:</strong> ${c.grade}</div>` : ''}
+                        ${c.score ? `<div style="margin-bottom:2px;"><strong>Score:</strong> ${c.score}</div>` : ''}
+                        ${c.credentialId ? `<div style="margin-bottom:2px;"><strong>Credential ID:</strong> ${c.credentialId}</div>` : ''}
+                        ${c.achievement ? `<div style="margin-bottom:2px;"><strong>Achievement:</strong> ${c.achievement}</div>` : ''}
+                        <div style="margin-top: 10px; color: var(--text-secondary); line-height: 1.5;">${c.description || ''}</div>
+                    </div>
+                    <div class="project-card-tags">
+                        ${this._tagList(c.skills || [])}
+                    </div>
+                    ${c.verified ? `<div style="color: #4ec9b0; font-size: 11px; margin-top: 8px; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;"><i class="fas fa-check-circle"></i> Verified Credential</div>` : ''}
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button class="project-card-link link-live view-cert-btn" data-image="${c.image}" style="cursor: pointer; border: none; font-size: 12px; padding: 6px 14px;"><i class="fas fa-eye"></i> View</button>
+                        <a href="${c.image}" download class="project-card-link link-github" style="font-size: 12px; padding: 6px 14px;"><i class="fas fa-download"></i> Download</a>
+                    </div>
                 </div>
             </div>`).join('');
         return `<div class="md-content">
-            <h1 class="md-h1">🎓 Education</h1>
-            <p class="md-p">Academic background and notable achievements throughout the journey.</p>
-            <div class="timeline">${eduHtml}</div>
-            <h2 class="md-h2">🏆 Achievements</h2>
+            <h1 class="md-h1">📜 Certifications</h1>
+            <p class="md-p" style="margin-bottom: 24px; color: var(--text-secondary); line-height: 1.6;">A collection of certifications, diplomas, and achievements that reflect my learning journey across Web Development, Programming, Artificial Intelligence, and Computer Applications.</p>
+            <div class="projects-grid">
+                ${certsHtml}
+            </div>
+        </div>`;
+    }
+
+    // =========================================================================
+    // Content Builders — experience/
+    // =========================================================================
+
+    buildExperience() {
+        const d = dataService.getData();
+        const expData = d.experience || {};
+        const exp = Array.isArray(expData.experience) ? expData.experience : [];
+        const expHtml = exp.map(e => `
+            <div class="timeline-item">
+                <div class="timeline-title">${e.project}</div>
+                <div class="timeline-date">${e.type}</div>
+                <div class="timeline-desc">${e.description}</div>
+                <div style="margin-top:8px;">
+                    <div class="achievement-tags">${this._techBadges(e.technologies || [])}</div>
+                </div>
+                <ul style="margin:10px 0 0 16px;padding:0;">
+                    ${(e.highlights || []).map(h => `<li style="margin-bottom:5px;color:var(--clr-text-secondary);font-size:13px;">${h}</li>`).join('')}
+                </ul>
+            </div>`).join('');
+        return `<div class="md-content">
+            <h1 class="md-h1">💼 ${expData.title || 'Experience'}</h1>
+            <p class="md-p" style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">${expData.description || 'Project-based experience gained through building real-world applications.'}</p>
+            <div class="timeline">${expHtml}</div>
+        </div>`;
+    }
+
+    // =========================================================================
+    // Content Builders — skills/
+    // =========================================================================
+
+    buildSkills() {
+        const d = dataService.getData();
+        const skills = Array.isArray(d.skills) ? d.skills : [];
+        const featured = skills.filter(s => s.featured);
+        const rest = skills.filter(s => !s.featured);
+
+        const renderSection = (s) => `
+            <div class="skills-section">
+                <div class="skills-section-title"><i class="fas fa-layer-group"></i>${s.category}</div>
+                <div style="font-size:12px;color:var(--clr-text-muted);margin-bottom:8px;">${s.description || ''}</div>
+                <div class="achievement-tags" style="flex-wrap:wrap;gap:6px;display:flex;">
+                    ${(s.skills || []).map(sk => `<span class="ach-tag">${sk}</span>`).join('')}
+                </div>
+            </div>`;
+
+        return `<div class="md-content">
+            <h1 class="md-h1">🛠️ Technical Skills</h1>
+            <p class="md-p">Skills derived from real projects — every entry represents hands-on experience.</p>
+            <h2 class="md-h2">⭐ Featured</h2>
+            ${featured.map(renderSection).join('')}
+            <h2 class="md-h2">All Skills</h2>
+            ${rest.map(renderSection).join('')}
+        </div>`;
+    }
+
+    // =========================================================================
+    // Content Builders — services/
+    // =========================================================================
+
+    buildServices() {
+        const d = dataService.getData();
+        const services = d.services || [];
+        const iconMap = {
+            layers: 'fas fa-layer-group', monitor: 'fas fa-desktop', cpu: 'fas fa-microchip',
+            server: 'fas fa-server', database: 'fas fa-database', code: 'fas fa-code',
+            briefcase: 'fas fa-briefcase', layout: 'fas fa-th-large'
+        };
+        const svcHtml = services.map(s => `
+            <div class="achievement-card">
+                <div class="achievement-icon ach-cert"><i class="${iconMap[s.icon] || 'fas fa-star'}"></i></div>
+                <div class="achievement-content">
+                    <div class="achievement-title-text">${s.title}</div>
+                    <div class="achievement-desc">${s.description}</div>
+                </div>
+            </div>`).join('');
+        return `<div class="md-content">
+            <h1 class="md-h1">🧰 Services</h1>
+            <p class="md-p">Freelance services offered based on real project experience.</p>
+            ${svcHtml}
+        </div>`;
+    }
+
+    // =========================================================================
+    // Content Builders — achievements/
+    // =========================================================================
+
+    buildAchievements() {
+        const d = dataService.getData();
+        const achievements = Array.isArray(d.achievements) ? d.achievements : [];
+        const achHtml = achievements.map(a => `
+            <div class="achievement-card">
+                <div class="achievement-icon ach-hack"><i class="fas fa-trophy"></i></div>
+                <div class="achievement-content">
+                    <div class="achievement-title-text">${a.title}</div>
+                    <div class="achievement-subtitle">${a.event} · ${a.date} · ${a.location}</div>
+                    <div class="achievement-desc">${a.description}</div>
+                    <div class="achievement-tags">
+                        <span class="ach-tag">📱 ${a.project}</span>
+                        ${this._techBadges(a.technologies || [])}
+                    </div>
+                    ${a.images && a.images.length > 0 ? `
+                        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+                            ${a.images.map(img => `<img src="${img}" alt="${a.project}" style="height:80px;border-radius:6px;object-fit:cover;border:1px solid var(--clr-border);" loading="lazy" onerror="this.style.display='none'">`).join('')}
+                        </div>` : ''}
+                </div>
+            </div>`).join('');
+        return `<div class="md-content">
+            <h1 class="md-h1">🏆 Achievements</h1>
+            <p class="md-p">Real milestones and participation from my developer journey.</p>
             ${achHtml}
         </div>`;
     }
 
-    buildCertificates() {
-        const data = dataService.getData();
-        const obj = {
-            total: data.certifications.length,
-            certifications: data.certifications.map(c => ({
-                name: c.name,
-                issuing_body: c.body,
-                description: c.desc,
-                icon: c.icon
-            }))
+    // =========================================================================
+    // Content Builders — projects/production/
+    // =========================================================================
+
+    buildProductionProject(fileName) {
+        const d = dataService.getData();
+        const projects = d.productionProjects || [];
+        const fileKeyMap = {
+            'gpt-for-bca.json': 'gpt-for-bca',
+            'imgninja.json': 'imgninja',
+            'brandify-creator.json': 'brandify-creator',
+            'bitbot-college-chatbot.json': 'bitbot-college-chatbot',
+            'rozgarsetu.json': 'rozgarsetu',
+            'scaleiq.json': 'scaleiq',
+            'total-solution.json': 'total-solution',
+            'portfolio-v2.json': 'portfolio-v2',
         };
-        const certsHtml = data.certifications.map(cert => `
-            <div class="achievement-card">
-                <div class="achievement-icon ach-cert"><i class="${cert.icon}"></i></div>
-                <div class="achievement-content">
-                    <div class="achievement-title-text">${cert.name}</div>
-                    <div class="achievement-subtitle">${cert.body}</div>
-                    <div class="achievement-desc">${cert.desc}</div>
-                </div>
-            </div>`).join('');
-        const highlighted = markdownRenderer.highlightJSON(obj);
-        return `<div class="md-content">
-            <h1 class="md-h1">📜 Certificates</h1>
-            <p class="md-p">Professional certifications earned across various technology domains.</p>
-            ${certsHtml}
-            <h2 class="md-h2" style="margin-top: 20px;">certificates.json</h2>
-            <div class="json-viewer">${highlighted}</div>
-        </div>`;
-    }
+        const projectId = fileKeyMap[fileName];
+        const proj = projects.find(p => p.id === projectId) || {};
 
-    buildSkillsJson() {
-        const data = dataService.getData();
-        function section(title, icon, items) {
-            const listHtml = items.map(skill => `
-                <div class="skill-item">
-                    <div class="skill-name"><i class="${skill.icon}" style="font-size:14px;color:#4fc1ff;width:16px;text-align:center;"></i>${skill.name}</div>
-                    <div class="skill-bar-track"><div class="skill-bar-fill" style="width:${skill.level}%"></div></div>
-                    <span class="skill-percent">${skill.level}%</span>
-                </div>`).join('');
-            return `<div class="skills-section"><div class="skills-section-title"><i class="${icon}"></i>${title}</div><div class="skills-list">${listHtml}</div></div>`;
+        if (!proj.title) {
+            return `<div class="welcome-screen"><div class="welcome-icon">📄</div><h2>${fileName}</h2><p>Project data not found.</p></div>`;
         }
-        const obj = Object.fromEntries(
-            Object.entries(data.skills).map(([cat, items]) => [
-                cat, items.map(s => ({ name: s.name, level: s.level, icon: s.icon }))
-            ])
-        );
-        const highlighted = markdownRenderer.highlightJSON(obj);
+
+        const tech = proj.techStack || {};
+        const allTech = [
+            ...(tech.frontend || []),
+            ...(tech.backend || []),
+            ...(tech.database || []),
+            ...(tech.tools || []),
+            ...(Array.isArray(tech) ? tech : []),
+        ].filter(Boolean);
+
+        const imagesArr = proj.images || (proj.thumbnail ? [proj.thumbnail] : []);
+        const imagesHtml = imagesArr.length > 0 ? `
+            <h2 class="md-h2">📸 Screenshots</h2>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+                ${imagesArr.slice(0, 4).map(img => `<img src="${img}" alt="${proj.title}" style="height:120px;border-radius:8px;object-fit:cover;border:1px solid var(--clr-border);" loading="lazy" onerror="this.style.display='none'">`).join('')}
+            </div>` : '';
+
+        const statusColor = proj.status === 'Completed' ? '#6a9955' : proj.status === 'In Progress' ? '#e5c07b' : '#61afef';
+        const liveBtnHtml = proj.liveDemo && proj.liveDemo !== 'N/A'
+            ? `<a href="${proj.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-card-link link-live" style="margin-left:8px;"><i class="fas fa-external-link-alt"></i> Live Demo</a>`
+            : '';
+        const githubBtnHtml = proj.github && proj.github !== 'N/A' && proj.github !== 'Private'
+            ? `<a href="${proj.github}" target="_blank" rel="noopener noreferrer" class="project-card-link link-github"><i class="fab fa-github"></i> GitHub</a>`
+            : `<span class="ach-tag">🔒 ${proj.github || 'Private'}</span>`;
+
         return `<div class="md-content">
-            <h1 class="md-h1">🛠️ Technical Skills</h1>
-            <p class="md-p">I specialize in creating modern, responsive web applications with a focus on clean code and user experience.</p>
-            ${section('Programming Languages', 'fas fa-code', data.skills.programming)}
-            ${section('Web Development', 'fab fa-html5', data.skills.web)}
-            ${section('Databases', 'fas fa-database', data.skills.database)}
-            ${section('Tools & Platforms', 'fas fa-tools', data.skills.tools)}
-            <h2 class="md-h2" style="margin-top: 20px;">skills.json</h2>
-            <div class="json-viewer">${highlighted}</div>
+            <h1 class="md-h1">${proj.title}</h1>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
+                <span class="badge badge-blue">${proj.category || proj.type || ''}</span>
+                <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:${statusColor}22;color:${statusColor};border:1px solid ${statusColor}55;">● ${proj.status}</span>
+                ${proj.timeline ? `<span class="badge badge-yellow">📅 ${proj.timeline.startDate} – ${proj.timeline.endDate}</span>` : ''}
+            </div>
+            <p class="md-p">${proj.overview || proj.shortDescription || ''}</p>
+            ${imagesHtml}
+            <h2 class="md-h2">✨ Key Features</h2>
+            <ul style="padding-left:20px;margin:0 0 16px 0;">
+                ${(proj.features || []).map(f => `<li style="margin-bottom:5px;color:var(--clr-text-secondary);font-size:13px;">${f}</li>`).join('')}
+            </ul>
+            <h2 class="md-h2">🔧 Tech Stack</h2>
+            <div class="achievement-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
+                ${this._techBadges(allTech)}
+            </div>
+            ${proj.myRole ? `<h2 class="md-h2">👤 My Role</h2><p class="md-p">${proj.myRole}</p>` : ''}
+            ${proj.challenges && proj.challenges.length > 0 ? `
+            <h2 class="md-h2">⚡ Challenges & Solutions</h2>
+            ${proj.challenges.map((ch, i) => `
+                <div style="margin-bottom:10px;padding:10px 14px;border-left:3px solid var(--clr-accent);background:var(--clr-surface2);border-radius:0 6px 6px 0;">
+                    <div style="font-size:13px;font-weight:600;color:var(--clr-text);">Challenge: ${ch}</div>
+                    ${proj.solutions && proj.solutions[i] ? `<div style="font-size:12px;color:var(--clr-text-secondary);margin-top:4px;">Solution: ${proj.solutions[i]}</div>` : ''}
+                </div>`).join('')}` : ''}
+            <div class="project-card-links" style="margin-top:20px;">
+                ${githubBtnHtml}
+                ${liveBtnHtml}
+            </div>
         </div>`;
     }
 
-    buildProjects() {
-        const data = dataService.getData();
-        const cards = data.projects.map(proj => {
-            const tagsHtml = proj.tech.map(t => `<span class="project-card-tag">${t}</span>`).join('');
-            const liveBtn = proj.live && proj.live !== '#'
-                ? `<a href="${proj.live}" target="_blank" rel="noopener noreferrer" class="project-card-link link-live"><i class="fas fa-external-link-alt"></i>Live Demo</a>`
+    // =========================================================================
+    // Content Builders — projects/micro/
+    // =========================================================================
+
+    buildMicroProjects() {
+        const d = dataService.getData();
+        const micro = d.projectsMicro || {};
+        const projects = micro.projects || [];
+        const cards = projects.map(proj => {
+            const thumbnail = proj.thumbnail || (proj.gallery && proj.gallery[0]) || '';
+            const liveBtnHtml = proj.liveDemo && proj.liveDemo !== 'N/A'
+                ? `<a href="${proj.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-card-link link-live"><i class="fas fa-external-link-alt"></i> Live</a>`
+                : '';
+            const ghBtnHtml = proj.github && proj.github !== 'N/A'
+                ? `<a href="${proj.github}" target="_blank" rel="noopener noreferrer" class="project-card-link link-github"><i class="fab fa-github"></i> GitHub</a>`
                 : '';
             return `
                 <div class="project-card">
-                    <img src="${proj.image}" alt="${proj.title}" class="project-card-img" loading="lazy" onerror="this.style.display='none'">
+                    ${thumbnail ? `<img src="${thumbnail}" alt="${proj.name}" class="project-card-img" loading="lazy" onerror="this.style.display='none'">` : ''}
                     <div class="project-card-body">
-                        <div class="project-card-tags">${tagsHtml}</div>
-                        <div class="project-card-title">${proj.title}</div>
+                        <div class="project-card-tags">${this._tagList(proj.techStack || [])}</div>
+                        <div class="project-card-title">${proj.name}</div>
                         <div class="project-card-desc">${proj.description}</div>
-                        <div class="project-card-links">
-                            <a href="${proj.github}" target="_blank" rel="noopener noreferrer" class="project-card-link link-github">
-                                <i class="fab fa-github"></i>GitHub
-                            </a>
-                            ${liveBtn}
-                        </div>
+                        <div class="project-card-links">${ghBtnHtml}${liveBtnHtml}</div>
                     </div>
                 </div>`;
         }).join('');
         return `<div class="md-content">
-            <h1 class="md-h1">🚀 My Projects</h1>
-            <p class="md-p">Here are some of my recent projects that showcase my skills and passion for web development.</p>
+            <h1 class="md-h1">🧪 Micro Projects</h1>
+            <p class="md-p">${micro.description || 'Learning projects built while mastering core web technologies.'}</p>
+            <div class="badges-row"><span class="badge badge-yellow">📦 ${projects.length} Projects</span></div>
             <div class="projects-grid">${cards}</div>
+        </div>`;
+    }
+
+    // =========================================================================
+    // Content Builders — Root & Config
+    // =========================================================================
+
+    buildLicense() {
+        return `<div class="md-content">
+            <h1 class="md-h1">📄 MIT License</h1>
+            <pre style="background:var(--clr-bg-dark);padding:10px;border-radius:6px;color:#8a8a8a;white-space:pre-wrap;font-family:monospace;font-size:13px;line-height:1.5;">
+Copyright (c) 2026 Akash Prajapati
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+            </pre>
+        </div>`;
+    }
+
+    buildSettings() {
+        return `<div class="md-content">
+            <h1 class="md-h1">⚙️ Settings</h1>
+            <pre style="background:var(--clr-bg-dark);padding:10px;border-radius:6px;font-family:monospace;color:#61afef">
+theme: "dark-modern"
+editor:
+  fontSize: 14
+  fontFamily: "Fira Code, monospace"
+  wordWrap: "on"
+  lineNumbers: "on"
+explorer:
+  autoReveal: true
+  compactFolders: false
+            </pre>
         </div>`;
     }
 }
@@ -409,3 +707,44 @@ if (document.readyState === 'loading') {
 } else {
     new App().init();
 }
+
+// ── Global Modal Logic ──
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.view-cert-btn');
+    if (btn) {
+        const src = btn.getAttribute('data-image');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        if (modal && modalImg && src) {
+            modalImg.src = src;
+            modal.style.display = 'flex';
+        }
+    }
+});
+
+const setupModalListeners = () => {
+    const modal = document.getElementById('image-modal');
+    const closeBtn = document.getElementById('modal-close');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            if (modal) modal.style.display = 'none';
+        });
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+};
+
+// If document is already loaded, run immediately, otherwise wait
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupModalListeners);
+} else {
+    setupModalListeners();
+}
+

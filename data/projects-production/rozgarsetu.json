@@ -131,7 +131,7 @@
         ]
     },
     "links": {
-        "github": "",
+        "github": "https://github.com/akashprajapati1232/job-portal",
         "liveDemo": ""
     },
     "tags": [
@@ -178,6 +178,10 @@
             "directWorkerRegistration": "₹50 one-time",
             "partnerWorkerRegistration": "₹30 wallet deduction per worker"
         },
-        "partnerTiers": ["Silver", "Gold", "Platinum"]
+        "partnerTiers": [
+            "Silver",
+            "Gold",
+            "Platinum"
+        ]
     }
 }

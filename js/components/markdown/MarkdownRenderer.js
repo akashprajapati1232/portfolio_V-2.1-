@@ -110,6 +110,12 @@ class MarkdownRenderer {
                             return `<span class="${cls}">${this.escapeHtml(match.slice(0, -1))}</span>:`;
                         } else {
                             cls = 'json-string';
+                            const strVal = match.slice(1, -1);
+                            if (/^https?:\/\//.test(strVal)) {
+                                return `<span class="${cls}">"<a href="${strVal}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">${this.escapeHtml(strVal)}</a>"</span>`;
+                            } else if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(strVal)) {
+                                return `<span class="${cls}">"<a href="mailto:${strVal}" style="color: inherit; text-decoration: underline;">${this.escapeHtml(strVal)}</a>"</span>`;
+                            }
                         }
                     } else if (/true|false/.test(match)) {
                         cls = 'json-boolean';

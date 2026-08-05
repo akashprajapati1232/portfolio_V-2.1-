@@ -1,52 +1,46 @@
 {
-  "services": [
-    {
-      "id": "fullstack",
-      "title": "Full Stack Web Development",
-      "description": "Building end-to-end web applications with modern frontend frameworks and robust backend architectures. Capable of handling everything from interactive UIs to server logic and API integration.",
-      "icon": "layers"
-    },
-    {
-      "id": "frontend",
-      "title": "Frontend & UI/UX Development",
-      "description": "Crafting highly interactive, responsive, and visually stunning user interfaces. Specializing in smooth animations, glassmorphism, and performance-optimized single-page applications.",
-      "icon": "monitor"
-    },
-    {
-      "id": "ai-integration",
-      "title": "AI Integration & Automation",
-      "description": "Enhancing applications with intelligent features using Large Language Models (LLMs), prompt engineering, and custom NLP chatbot implementations.",
-      "icon": "cpu"
-    },
-    {
-      "id": "backend",
-      "title": "Backend & API Development",
-      "description": "Designing secure and scalable server-side systems, RESTful APIs, and implementing complex business logic including authentication and payment workflows.",
-      "icon": "server"
-    },
-    {
-      "id": "database",
-      "title": "Database Design & Integration",
-      "description": "Architecting relational (MySQL) and NoSQL (Firebase Firestore) databases. Structuring schemas, managing real-time data, and handling complex CRUD operations.",
-      "icon": "database"
-    },
-    {
-      "id": "custom-apps",
-      "title": "Custom Web Applications",
-      "description": "Developing specialized, logic-heavy browser applications without relying on third-party APIs, such as client-side image processing tools and calculators.",
-      "icon": "code"
-    },
-    {
-      "id": "business-sites",
-      "title": "Business & Portfolio Websites",
-      "description": "Creating premium, SEO-optimized landing pages and multi-page websites for agencies, professionals, and SaaS products with clean, modular architectures.",
-      "icon": "briefcase"
-    },
-    {
-      "id": "admin-dashboards",
-      "title": "Admin Dashboard Development",
-      "description": "Building secure, data-rich control panels with advanced data tables, bulk import/export capabilities, and real-time statistics.",
-      "icon": "layout"
-    }
-  ]
+    "services": [
+        {
+            "id": "fullstack",
+            "title": "Full Stack Web Development",
+            "description": "Building end-to-end web applications with modern frontend frameworks and robust backend architectures. Capable of handling everything from interactive UIs to server logic and API integration.",
+            "icon": "layers"
+        },
+        {
+            "id": "frontend",
+            "title": "Frontend & UI/UX Development",
+            "description": "Crafting highly interactive, responsive, and visually stunning user interfaces. Specializing in smooth animations, glassmorphism, and performance-optimized single-page applications.",
+            "icon": "monitor"
+        },
+        {
+            "id": "ai-integration",
+            "title": "AI Integration & Automation",
+            "description": "Enhancing applications with intelligent features using Large Language Models (LLMs), prompt engineering, and custom NLP chatbot implementations.",
+            "icon": "cpu"
+        },
+        {
+            "id": "backend",
+            "title": "Backend & API Development",
+            "description": "Designing secure and scalable server-side systems, RESTful APIs, and implementing complex business logic including authentication and payment workflows.",
+            "icon": "server"
+        },
+        {
+            "id": "custom-apps",
+            "title": "Custom Web Applications",
+            "description": "Developing specialized, logic-heavy browser applications without relying on third-party APIs, such as client-side image processing tools and calculators.",
+            "icon": "code"
+        },
+        {
+            "id": "business-sites",
+            "title": "Business & Portfolio Websites",
+            "description": "Creating premium, SEO-optimized landing pages and multi-page websites for agencies, professionals, and SaaS products with clean, modular architectures.",
+            "icon": "briefcase"
+        },
+        {
+            "id": "admin-dashboards",
+            "title": "Admin Dashboard Development",
+            "description": "Building secure, data-rich control panels with advanced data tables, bulk import/export capabilities, and real-time statistics.",
+            "icon": "layout"
+        }
+    ]
 }

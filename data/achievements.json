@@ -1,0 +1,25 @@
+[
+  {
+    "id": "innovate-bijnor-2024",
+    "title": "Innovate Bijnor Hackathon",
+    "achievement": "Team Participant & Developer",
+    "event": "2-Day Innovate Bijnor Hackathon",
+    "date": "December 2024",
+    "location": "Bijnor, Uttar Pradesh",
+    "project": "E-Health (QR-Based Health Record System)",
+    "description": "Participated in a 2-day hackathon and collaboratively developed 'E-Health', a mobile application designed to make medical records instantly accessible. The system enables doctors to scan a unique QR code generated on a patient's phone to instantly retrieve their complete medical history, lab reports, and prescriptions.",
+    "technologies": [
+      "Mobile App Development",
+      "UI/UX Design",
+      "QR Code Integration",
+      "Authentication"
+    ],
+    "images": [
+      "assets/images/hackthone/02.jpeg",
+      "assets/images/hackthone/07.jpeg",
+      "assets/images/hackthone/09.jpeg",
+      "assets/images/hackthone/12.jpeg"
+    ],
+    "category": "Hackathon"
+  }
+]

@@ -457,26 +457,61 @@ class App {
 
     buildSkills() {
         const d = dataService.getData();
-        const skills = Array.isArray(d.skills) ? d.skills : [];
-        const featured = skills.filter(s => s.featured);
-        const rest = skills.filter(s => !s.featured);
+        const skillsData = d.skills || {};
 
-        const renderSection = (s) => `
-            <div class="skills-section">
-                <div class="skills-section-title"><i class="fas fa-layer-group"></i>${s.category}</div>
-                <div style="font-size:12px;color:var(--clr-text-muted);margin-bottom:8px;">${s.description || ''}</div>
-                <div class="achievement-tags" style="flex-wrap:wrap;gap:6px;display:flex;">
-                    ${(s.skills || []).map(sk => `<span class="ach-tag">${sk}</span>`).join('')}
-                </div>
-            </div>`;
+        // Support both old array format and new object format
+        const categories = Array.isArray(skillsData)
+            ? skillsData
+            : (skillsData.primaryCategories || []);
+
+        const domainFilters = Array.isArray(skillsData)
+            ? []
+            : (skillsData.domainFilters || []);
+
+        // ── Minimal Domain filter tabs HTML ──
+        const tabsHtml = domainFilters.length > 0 ? `
+            <div class="ts-clean-tabs">
+                ${domainFilters.map((f, i) => `
+                    <div class="ts-clean-tab${i === 0 ? ' active' : ''}"
+                         data-domain-id="${f.id}">
+                        ${f.label}
+                    </div>
+                `).join('')}
+            </div>` : '';
+
+        // ── Standard Category Layout (All Skills) ──
+        const cardsHtml = categories.map(cat => {
+            const chipsHtml = (cat.skills || [])
+                .map(sk => `<span class="ts-clean-pill">${sk}</span>`)
+                .join('');
+
+            return `
+                <div class="ts-clean-category" data-category-id="${cat.id}">
+                    <h2 class="ts-clean-heading">${cat.emoji ? cat.emoji + ' ' : ''}${cat.category}</h2>
+                    <div class="ts-clean-skills">
+                        ${chipsHtml}
+                    </div>
+                </div>`;
+        }).join('');
+        
+        // ── Pre-rendered Domain Filters ──
+        const domainPanelsHtml = domainFilters.map(df => {
+            if (df.id === 'all' || !df.skills) return '';
+            const pills = df.skills.map(sk => `<span class="ts-clean-pill">${sk}</span>`).join('');
+            return `
+                <div class="ts-domain-panel hidden" id="ts-domain-${df.id}">
+                    ${pills}
+                </div>`;
+        }).join('');
 
         return `<div class="md-content">
-            <h1 class="md-h1">🛠️ Technical Skills</h1>
-            <p class="md-p">Skills derived from real projects — every entry represents hands-on experience.</p>
-            <h2 class="md-h2">⭐ Featured</h2>
-            ${featured.map(renderSection).join('')}
-            <h2 class="md-h2">All Skills</h2>
-            ${rest.map(renderSection).join('')}
+            <div class="ts-clean-section">
+                ${tabsHtml}
+                <div class="ts-clean-grid" id="ts-all-skills">
+                    ${cardsHtml}
+                </div>
+                ${domainPanelsHtml}
+            </div>
         </div>`;
     }
 
@@ -708,8 +743,9 @@ if (document.readyState === 'loading') {
     new App().init();
 }
 
-// ── Global Modal Logic ──
+// ── Global Modal Logic & Event Delegation ──
 document.addEventListener('click', (e) => {
+    // 1. Certificate Modal Logic
     const btn = e.target.closest('.view-cert-btn');
     if (btn) {
         const src = btn.getAttribute('data-image');
@@ -718,6 +754,42 @@ document.addEventListener('click', (e) => {
         if (modal && modalImg && src) {
             modalImg.src = src;
             modal.style.display = 'flex';
+        }
+    }
+
+    // 2. Technical Skills Domain Filtering
+    const tsTab = e.target.closest('.ts-clean-tab');
+    if (tsTab) {
+        // Update active tab
+        document.querySelectorAll('.ts-clean-tab').forEach(t => t.classList.remove('active'));
+        tsTab.classList.add('active');
+
+        const domainId = tsTab.getAttribute('data-domain-id');
+        const allSkillsGrid = document.getElementById('ts-all-skills');
+        const allPanels = document.querySelectorAll('.ts-domain-panel');
+        
+        // Hide all panels
+        allPanels.forEach(p => p.classList.add('hidden'));
+
+        if (domainId === 'all') {
+            allSkillsGrid.classList.remove('hidden');
+            // Trigger animation on categories
+            const cats = allSkillsGrid.querySelectorAll('.ts-clean-category');
+            cats.forEach(cat => {
+                cat.style.animation = 'none';
+                void cat.offsetHeight;
+                cat.style.animation = 'fadeInUp 0.3s ease forwards';
+            });
+        } else {
+            allSkillsGrid.classList.add('hidden');
+            const targetPanel = document.getElementById(`ts-domain-${domainId}`);
+            if (targetPanel) {
+                targetPanel.classList.remove('hidden');
+                // Trigger animation on the panel
+                targetPanel.style.animation = 'none';
+                void targetPanel.offsetHeight;
+                targetPanel.style.animation = 'fadeInUp 0.3s ease forwards';
+            }
         }
     }
 });
@@ -747,4 +819,5 @@ if (document.readyState === 'loading') {
 } else {
     setupModalListeners();
 }
+
 

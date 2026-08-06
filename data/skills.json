@@ -1,261 +1,319 @@
-[
-  {
-    "id": "frontend",
-    "icon": "layout",
-    "category": "Frontend Development",
-    "description": "Building responsive, accessible, and modern user interfaces for web applications.",
-    "featured": true,
-    "skills": [
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
-      "TypeScript",
-      "React",
-      "React Router DOM",
-      "Single Page Applications (SPA)",
-      "Responsive Design",
-      "Mobile-First Design",
-      "Semantic HTML",
-      "CSS Flexbox",
-      "CSS Grid",
-      "CSS Variables",
-      "Accessibility (ARIA Basics)",
-      "Cross Browser Compatibility"
-    ]
-  },
-  {
-    "id": "backend",
-    "icon": "server",
-    "category": "Backend Development",
-    "description": "Building server-side applications, APIs, and scalable backend systems.",
-    "featured": true,
-    "skills": [
-      "Node.js",
-      "Express.js",
-      "PHP",
-      "REST APIs",
-      "CRUD Operations",
-      "Express Middleware",
-      "MVC Architecture",
-      "File Upload Handling"
-    ]
-  },
-  {
-    "id": "languages",
-    "icon": "code",
-    "category": "Programming Languages",
-    "description": "Programming languages used for web development, automation, and problem solving.",
-    "featured": true,
-    "skills": [
-      "JavaScript",
-      "TypeScript",
-      "PHP",
-      "Python",
-      "C++"
-    ]
-  },
-  {
-    "id": "database",
-    "icon": "database",
-    "category": "Databases",
-    "description": "Working with relational and NoSQL databases for data storage and management.",
-    "featured": true,
-    "skills": [
-      "MySQL",
-      "MongoDB",
-      "Firebase Firestore",
-      "Supabase",
-      "SQL"
-    ]
-  },
-  {
-    "id": "frameworks",
-    "icon": "package",
-    "category": "Frameworks & Libraries",
-    "description": "Frameworks and libraries used to speed up development and improve user experience.",
-    "featured": true,
-    "skills": [
-      "React",
-      "Bootstrap",
-      "GSAP",
-      "ScrollTrigger",
-      "Swiper.js",
-      "AOS",
-      "SweetAlert2",
-      "Toastify.js",
-      "Tabulator.js",
-      "Particles.js",
-      "LottieFiles",
-      "VanillaTilt.js",
-      "Cropper.js"
-    ]
-  },
-  {
-    "id": "browser-api",
-    "icon": "globe",
-    "category": "Browser APIs",
-    "description": "Using modern browser APIs to create interactive web applications.",
-    "featured": false,
-    "skills": [
-      "Canvas API",
-      "File API",
-      "Blob API",
-      "FileReader API",
-      "LocalStorage API",
-      "Web Audio API",
-      "Web Speech API",
-      "Clipboard API"
-    ]
-  },
-  {
-    "id": "authentication",
-    "icon": "shield",
-    "category": "Authentication & Security",
-    "description": "Managing authentication, authorization, and secure application workflows.",
-    "featured": false,
-    "skills": [
-      "Firebase Authentication",
-      "Clerk Authentication",
-      "OAuth",
-      "Email & Password Authentication",
-      "OTP Verification",
-      "Secure Expression Parsing (Without eval)"
-    ]
-  },
-  {
-    "id": "ai",
-    "icon": "sparkles",
-    "category": "Artificial Intelligence & Generative AI",
-    "description": "Building intelligent applications using modern AI technologies.",
-    "featured": true,
-    "skills": [
-      "Large Language Models (LLMs)",
-      "Prompt Engineering",
-      "Ollama",
-      "AI Integration",
-      "Natural Language Processing (Basic)",
-      "Intent Matching"
-    ]
-  },
-  {
-    "id": "analytics",
-    "icon": "chart",
-    "category": "Data Analytics",
-    "description": "Analyzing and processing data to generate meaningful insights.",
-    "featured": true,
-    "skills": [
-      "Data Analysis",
-      "Data Cleaning",
-      "Pandas",
-      "NumPy",
-      "MS Excel",
-      "CSV Processing"
-    ]
-  },
-  {
-    "id": "uiux",
-    "icon": "palette",
-    "category": "UI/UX & Styling",
-    "description": "Creating clean, responsive, and visually appealing user interfaces.",
-    "featured": false,
-    "skills": [
-      "Design Systems",
-      "Glassmorphism",
-      "Dark Mode",
-      "CSS Animations",
-      "Keyframes",
-      "Micro Interactions",
-      "Responsive Typography",
-      "Google Fonts",
-      "BEM Methodology"
-    ]
-  },
-  {
-    "id": "architecture",
-    "icon": "boxes",
-    "category": "Software Architecture",
-    "description": "Organizing applications with scalable and maintainable architecture.",
-    "featured": false,
-    "skills": [
-      "Component-Based Architecture",
-      "Client-Server Architecture",
-      "Modular JavaScript",
-      "JSON Driven Architecture",
-      "PHP Includes Architecture",
-      "Monorepo Structure",
-      "Folder Structure Design"
-    ]
-  },
-  {
-    "id": "performance",
-    "icon": "zap",
-    "category": "Performance Optimization",
-    "description": "Optimizing applications for speed, responsiveness, and better user experience.",
-    "featured": false,
-    "skills": [
-      "Lazy Loading",
-      "Code Splitting",
-      "Deferred JavaScript",
-      "Image Optimization",
-      "Memory Management",
-      "Hardware Accelerated Animations",
-      "SEO",
-      "JSON-LD"
-    ]
-  },
-  {
-    "id": "version-control",
-    "icon": "git-branch",
-    "category": "Version Control",
-    "description": "Managing source code and collaborating using Git.",
-    "featured": false,
-    "skills": [
-      "Git",
-      "GitHub"
-    ]
-  },
-  {
-    "id": "deployment",
-    "icon": "cloud",
-    "category": "Deployment & Hosting",
-    "description": "Deploying and hosting modern web applications.",
-    "featured": false,
-    "skills": [
-      "Vercel",
-      "Firebase Hosting",
-      "GitHub Pages",
-      "Static Hosting"
-    ]
-  },
-  {
-    "id": "tools",
-    "icon": "wrench",
-    "category": "Tools & Platforms",
-    "description": "Development tools used in daily workflow.",
-    "featured": false,
-    "skills": [
-      "VS Code",
-      "Vite",
-      "npm",
-      "XAMPP",
-      "Chrome DevTools",
-      "ESLint",
-      "Oxlint"
-    ]
-  },
-  {
-    "id": "exploring",
-    "icon": "compass",
-    "category": "Currently Exploring",
-    "description": "Technologies and concepts I am actively learning and improving.",
-    "featured": true,
-    "skills": [
-      "System Design",
-      "Backend Architecture",
-      "Artificial Intelligence",
-      "Generative AI",
-      "Data Analytics",
-      "AI Integration"
-    ]
-  }
-]
+{
+  "primaryCategories": [
+    {
+      "id": "frontend",
+      "emoji": "🎨",
+      "category": "Frontend Development",
+      "skills": [
+        "React",
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "HTML5",
+        "CSS3",
+        "TailwindCSS",
+        "React Router DOM",
+        "Responsive Design",
+        "CSS Flexbox",
+        "CSS Grid",
+        "DOM Manipulation",
+        "Fetch API",
+        "Async/Await",
+        "Form Validation",
+        "GSAP"
+      ]
+    },
+    {
+      "id": "backend",
+      "emoji": "⚙️",
+      "category": "Backend Development",
+      "skills": [
+        "Node.js",
+        "Express.js",
+        "PHP",
+        "REST APIs",
+        "CRUD Operations",
+        "JWT Authentication",
+        "Express Middleware",
+        "File Upload Handling",
+        "Environment Variables"
+      ]
+    },
+    {
+      "id": "database",
+      "emoji": "🗄️",
+      "category": "Databases",
+      "skills": [
+        "MySQL",
+        "MongoDB",
+        "Supabase",
+        "Firebase Firestore",
+        "SQL",
+        "Database Design"
+      ]
+    },
+    {
+      "id": "ai",
+      "emoji": "🤖",
+      "category": "AI & Generative AI",
+      "skills": [
+        "Large Language Models (LLMs)",
+        "Prompt Engineering",
+        "Structured Prompting",
+        "AI Integration",
+        "Ollama",
+        "AI Response Processing"
+      ]
+    },
+    {
+      "id": "analytics",
+      "emoji": "📊",
+      "category": "Data Analytics",
+      "skills": [
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Data Analysis",
+        "Data Cleaning",
+        "CSV Processing",
+        "MS Excel",
+        "SQL"
+      ]
+    },
+    {
+      "id": "languages",
+      "emoji": "💻",
+      "category": "Programming Languages",
+      "skills": [
+        "JavaScript",
+        "TypeScript",
+        "PHP",
+        "Python",
+        "C++"
+      ]
+    },
+    {
+      "id": "frameworks",
+      "emoji": "📦",
+      "category": "Frameworks & Libraries",
+      "skills": [
+        "React",
+        "Next.js",
+        "Bootstrap",
+        "GSAP"
+      ]
+    },
+    {
+      "id": "authentication",
+      "emoji": "🔐",
+      "category": "Authentication & Security",
+      "skills": [
+        "Firebase Authentication",
+        "Clerk Authentication",
+        "OAuth",
+        "Email & Password Auth",
+        "OTP Verification",
+        "Protected Routes"
+      ]
+    },
+    {
+      "id": "browser-api",
+      "emoji": "🌐",
+      "category": "Browser APIs",
+      "skills": [
+        "Canvas API",
+        "File API",
+        "FileReader API",
+        "Blob API",
+        "LocalStorage API"
+      ]
+    },
+    {
+      "id": "design",
+      "emoji": "🎭",
+      "category": "Design & Media",
+      "skills": [
+        "Adobe Photoshop",
+        "Canva",
+        "Photo Editing",
+        "Image Optimization",
+        "Banner Design",
+        "Social Media Design"
+      ]
+    },
+    {
+      "id": "version-control",
+      "emoji": "🔀",
+      "category": "Version Control",
+      "skills": [
+        "Git",
+        "GitHub"
+      ]
+    },
+    {
+      "id": "tools",
+      "emoji": "🛠️",
+      "category": "Tools & Platforms",
+      "skills": [
+        "VS Code",
+        "Vite",
+        "npm",
+        "Postman",
+        "Chrome DevTools",
+        "XAMPP"
+      ]
+    },
+    {
+      "id": "deployment",
+      "emoji": "☁️",
+      "category": "Deployment & Hosting",
+      "skills": [
+        "Docker",
+        "GitHub",
+        "Vercel",
+        "Cpanel hosting",
+        "VPS (Ubuntu Server)",
+        "Supabase Storage"
+      ]
+    },
+    {
+      "id": "os",
+      "emoji": "🖥️",
+      "category": "Operating Systems",
+      "skills": [
+        "Windows",
+        "Ubuntu",
+        "Kali Linux",
+        "macOS"
+      ]
+    },
+    {
+      "id": "exploring",
+      "emoji": "🧭",
+      "category": "Currently Exploring",
+      "skills": [
+        "System Design",
+        "Backend Architecture",
+        "Generative AI (Advanced)",
+        "Data Analytics (Advanced)"
+      ]
+    }
+  ],
+  "domainFilters": [
+    {
+      "id": "all",
+      "label": "All Skills"
+    },
+    {
+      "label": "Frontend Stack",
+      "skills": [
+        "React",
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "HTML5",
+        "CSS3",
+        "TailwindCSS",
+        "React Router DOM",
+        "Responsive Design",
+        "CSS Flexbox",
+        "CSS Grid",
+        "DOM Manipulation",
+        "Fetch API",
+        "Async/Await",
+        "Form Validation",
+        "GSAP"
+      ]
+    },
+    {
+      "id": "backend-stack",
+      "label": "Backend Stack",
+      "skills": [
+        "Node.js",
+        "Express.js",
+        "PHP",
+        "REST APIs",
+        "CRUD Operations",
+        "JWT Authentication",
+        "Express Middleware",
+        "File Upload Handling",
+        "MySQL",
+        "MongoDB",
+        "Supabase",
+        "Firebase Firestore",
+        "SQL",
+        "Database Design"
+      ]
+    },
+    {
+      "id": "fullstack-stack",
+      "label": "Full Stack",
+      "skills": [
+        "React",
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "HTML5",
+        "CSS3",
+        "TailwindCSS",
+        "React Router DOM",
+        "Node.js",
+        "Express.js",
+        "PHP",
+        "REST APIs",
+        "MySQL",
+        "MongoDB",
+        "Supabase",
+        "Firebase Firestore",
+        "SQL",
+        "JWT Authentication",
+        "Git",
+        "GitHub",
+        "Vite",
+        "Postman",
+        "Vercel",
+        "Firebase Hosting"
+      ]
+    },
+    {
+      "id": "generative-ai-stack",
+      "label": "Generative AI",
+      "skills": [
+        "Large Language Models (LLMs)",
+        "Prompt Engineering",
+        "JSON Prompting",
+        "Structured Prompting",
+        "RAG (Retrieval-Augmented Generation)",
+        "Python",
+        "JavaScript/TypeScript",
+        "Node.js",
+        "SQL",
+        "AI Integration",
+        "Ollama",
+        "LM Studio",
+        "Chat GPT API",
+        "Hugging Face API",
+        "Gemini API",
+        "Anthropic Claude API",
+        "OpenRouter",
+        "AI Response Processing",
+        "REST APIs",
+        "JSON",
+        "Fetch API",
+        "Async/Await"
+      ]
+    },
+    {
+      "id": "data-analytics-stack",
+      "label": "Data Analytics",
+      "skills": [
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Data Analysis",
+        "Data Cleaning",
+        "CSV Processing",
+        "MS Excel",
+        "SQL",
+        "MySQL"
+      ]
+    }
+  ]
+}

@@ -25,7 +25,7 @@ class App {
             'profile.json': this.buildProfileJson.bind(this),
             'socials.db': this.buildSocialsDb.bind(this),
             // Education/
-            'education.json': this.buildEducation.bind(this),
+            'education.html': this.buildEducation.bind(this),
             'certifications.tsx': this.buildCertifications.bind(this),
             // Experience/
             'experience.json': this.buildExperience.bind(this),
@@ -34,20 +34,29 @@ class App {
             // Services/
             'services.ts': this.buildServices.bind(this),
             // Achievements/
-            'achievements.xml': this.buildAchievements.bind(this),
+            'achievements.html': this.buildAchievements.bind(this),
             // Projects/production/ — in user-specified order (01–08)
-            'imgninja.json':               this.buildProductionProject.bind(this, 'imgninja.json'),
+            'imgninja.json': this.buildProductionProject.bind(this, 'imgninja.json'),
             'bitbot-college-chatbot.json': this.buildProductionProject.bind(this, 'bitbot-college-chatbot.json'),
-            'brandify-creator.json':       this.buildProductionProject.bind(this, 'brandify-creator.json'),
-            'total-solution.json':         this.buildProductionProject.bind(this, 'total-solution.json'),
-            'gpt-for-bca.json':            this.buildProductionProject.bind(this, 'gpt-for-bca.json'),
-            'rozgarsetu.json':             this.buildProductionProject.bind(this, 'rozgarsetu.json'),
-            'scaleiq.json':                this.buildProductionProject.bind(this, 'scaleiq.json'),
-            'portfolio-v2.json':           this.buildProductionProject.bind(this, 'portfolio-v2.json'),
+            'brandify-creator.json': this.buildProductionProject.bind(this, 'brandify-creator.json'),
+            'total-solution.json': this.buildProductionProject.bind(this, 'total-solution.json'),
+            'gpt-for-bca.json': this.buildProductionProject.bind(this, 'gpt-for-bca.json'),
+            'rozgarsetu.json': this.buildProductionProject.bind(this, 'rozgarsetu.json'),
+            'scaleiq.json': this.buildProductionProject.bind(this, 'scaleiq.json'),
+            'portfolio-v2.json': this.buildProductionProject.bind(this, 'portfolio-v2.json'),
             // Projects/micro/
             'projects-micro.json': this.buildMicroProjects.bind(this),
             // Root/Config
             'settings.yml': this.buildSettings.bind(this),
+            // life/
+            'lessons.md': this.buildLessonsMd.bind(this),
+            'books.md': this.buildBooksMd.bind(this),
+            'goals.json': this.buildGoalsJson.bind(this),
+            'life.config': this.buildLifeConfig.bind(this),
+            '.gitignore': this.buildGitignore.bind(this),
+            'package.json': this.buildPackageJson.bind(this),
+            'CHANGELOG.md': this.buildChangelogMd.bind(this),
+            'LICENSE.txt': this.buildLicenseTxt.bind(this),
         };
     }
 
@@ -96,10 +105,8 @@ class App {
         eventBus.on('file:switched', this.openFile.bind(this));
         eventBus.on('file:closedAll', this.showWelcome.bind(this));
 
-        // Open default files on load
-        const defaultFiles = ['profile.json', 'tech-stack.tsx', 'projects-micro.json'];
-        defaultFiles.forEach(file => eventBus.emit('file:open', file));
-        eventBus.emit('file:open', 'README.md'); // Focus README.md
+        // Start in a clean, empty state
+        this.showWelcome();
 
         setTimeout(() => {
             const leftSidebar = document.getElementById('sidebar');
@@ -144,14 +151,15 @@ class App {
         }
 
         this.updateBreadcrumb(fileName);
-        this.updateStatusLang(fileName);
 
         const editorWrap = document.getElementById('editor-wrap');
         if (editorWrap) editorWrap.scrollTop = 0;
 
-        requestAnimationFrame(() => this.updateLineNumbers(pane));
-        this.updateStatusPosition(1, 1);
-        pane.onclick = () => this.updateStatusPosition(1, 1);
+        requestAnimationFrame(() => {
+            this.updateLineNumbers(pane);
+            this.updateStatusBarMetrics(fileName, pane);
+        });
+
         router.navigate(fileName);
     }
 
@@ -173,7 +181,7 @@ class App {
                             <div class="badges-row" style="justify-content:center;gap:8px;">
                                 <span class="badge badge-blue" onclick="window.openFile('README.md')" style="cursor:pointer;">📄 README.md</span>
                                 <span class="badge badge-yellow" onclick="window.openFile('tech-stack.tsx')" style="cursor:pointer;">🛠️ tech-stack.tsx</span>
-                                <span class="badge badge-green" onclick="window.openFile('gpt-for-bca.json')" style="cursor:pointer;">🚀 gpt-for-bca.json</span>
+                                <span class="badge badge-green" onclick="window.openFile('education.html')" style="cursor:pointer;">🎓education.html</span>
                             </div>
                         </div>
                     </div>`;
@@ -205,13 +213,65 @@ class App {
         if (titleFile) titleFile.textContent = fileName;
     }
 
-    updateStatusLang(fileName) {
-        const reg = dataService.getFileRegistry() || {};
-        const fileInfo = reg[fileName] || {};
-        const lang = fileInfo.lang || 'text';
-        const MAP = { markdown: 'Markdown', json: 'JSON', text: 'Plain Text', js: 'JavaScript', html: 'HTML', css: 'CSS', yaml: 'YAML', tsx: 'TypeScript React', ts: 'TypeScript', xml: 'XML' };
+    updateStatusBarMetrics(fileName, contentEl) {
+        const m1 = document.getElementById('status-metric-1');
+        const m2 = document.getElementById('status-metric-2');
+        const m3 = document.getElementById('status-metric-3');
+        const m4 = document.getElementById('status-metric-4');
         const langEl = document.getElementById('status-lang');
-        if (langEl) langEl.textContent = MAP[lang] || 'Plain Text';
+
+        if (!m1 || !m2 || !m3 || !m4 || !langEl) return;
+
+        [m1, m2, m3, m4].forEach(el => el.style.display = 'none');
+
+        const ext = (fileName.split('.').pop() || '').toLowerCase();
+        let approxLines = 1;
+        if (contentEl) {
+            approxLines = Math.max(40, Math.ceil(contentEl.scrollHeight / (14 * 1.6)));
+        }
+
+        if (ext === 'md') {
+            langEl.textContent = 'Markdown';
+            m1.textContent = 'UTF-8'; m1.style.display = 'flex';
+            m2.textContent = 'LF'; m2.style.display = 'flex';
+            m3.textContent = approxLines + ' Lines'; m3.style.display = 'flex';
+        } else if (ext === 'json') {
+            langEl.textContent = 'JSON';
+            const objCount = Math.max(2, Math.floor(approxLines / 4));
+            m1.textContent = objCount + ' Objects'; m1.style.display = 'flex';
+            m2.textContent = 'UTF-8'; m2.style.display = 'flex';
+        } else if (ext === 'db') {
+            langEl.textContent = 'SQLite';
+            m1.textContent = 'Connected'; m1.style.display = 'flex';
+            m2.textContent = '6 Rows'; m2.style.display = 'flex';
+        } else if (ext === 'tsx' || ext === 'ts') {
+            langEl.textContent = ext === 'tsx' ? 'TypeScript React' : 'TypeScript';
+            m1.textContent = 'Compiled'; m1.style.display = 'flex';
+            m2.textContent = 'No Errors'; m2.style.display = 'flex';
+        } else if (ext === 'html') {
+            langEl.textContent = 'HTML';
+            m1.textContent = 'UTF-8'; m1.style.display = 'flex';
+            m2.textContent = 'LF'; m2.style.display = 'flex';
+            m3.textContent = 'Validated'; m3.style.display = 'flex';
+        } else if (ext === 'xml') {
+            langEl.textContent = 'XML';
+            m1.textContent = 'Well-Formed'; m1.style.display = 'flex';
+            m2.textContent = 'UTF-8'; m2.style.display = 'flex';
+        } else if (ext === 'yml' || ext === 'yaml') {
+            langEl.textContent = 'YAML';
+            m1.textContent = 'UTF-8'; m1.style.display = 'flex';
+            m2.textContent = 'Parsed'; m2.style.display = 'flex';
+        } else if (ext === 'log') {
+            langEl.textContent = 'Log';
+            m1.textContent = 'UTF-8'; m1.style.display = 'flex';
+            m2.textContent = 'Read-Only'; m2.style.display = 'flex';
+            m3.textContent = approxLines + ' Lines'; m3.style.display = 'flex';
+        } else {
+            langEl.textContent = 'Plain Text';
+            m1.textContent = 'UTF-8'; m1.style.display = 'flex';
+            m2.textContent = 'LF'; m2.style.display = 'flex';
+            m3.textContent = 'Ln 1, Col 1'; m3.style.display = 'flex';
+        }
     }
 
     updateLineNumbers(contentEl) {
@@ -221,11 +281,6 @@ class App {
         const nums = [];
         for (let i = 1; i <= approxLines; i++) nums.push(i);
         lineNumEl.innerHTML = nums.join('<br>');
-    }
-
-    updateStatusPosition(ln, col) {
-        const posEl = document.getElementById('status-position');
-        if (posEl) posEl.textContent = `Ln ${ln}, Col ${col}`;
     }
 
     // =========================================================================
@@ -663,7 +718,7 @@ class App {
                     </div>
                 </div>`;
         }).join('');
-        
+
         // ── Pre-rendered Domain Filters ──
         const domainPanelsHtml = domainFilters.map(df => {
             if (df.id === 'all' || !df.skills) return '';
@@ -749,33 +804,33 @@ class App {
 
         // Map file key → project id
         const fileKeyMap = {
-            'imgninja.json':               'imgninja',
+            'imgninja.json': 'imgninja',
             'bitbot-college-chatbot.json': 'bitbot-college-chatbot',
-            'brandify-creator.json':       'brandify-creator',
-            'total-solution.json':         'total-solution',
-            'gpt-for-bca.json':            'gpt-for-bca',
-            'rozgarsetu.json':             'rozgarsetu',
-            'scaleiq.json':                'scaleiq',
-            'portfolio-v2.json':           'portfolio-v2',
+            'brandify-creator.json': 'brandify-creator',
+            'total-solution.json': 'total-solution',
+            'gpt-for-bca.json': 'gpt-for-bca',
+            'rozgarsetu.json': 'rozgarsetu',
+            'scaleiq.json': 'scaleiq',
+            'portfolio-v2.json': 'portfolio-v2',
         };
 
         // User-specified display names in order
         const displayNameMap = {
-            'imgninja.json':               'project-01.imgNinja',
+            'imgninja.json': 'project-01.imgNinja',
             'bitbot-college-chatbot.json': 'project-02.bitBot',
-            'brandify-creator.json':       'project-03.brandifyCreator',
-            'total-solution.json':         'project-04.totalSolution',
-            'gpt-for-bca.json':            'project-05.GPTforBCA',
-            'rozgarsetu.json':             'project-06.rozgarSeva',
-            'scaleiq.json':                'project-07.scaleIQ',
-            'portfolio-v2.json':           'project-08.portfolio (v2.0)',
+            'brandify-creator.json': 'project-03.brandifyCreator',
+            'total-solution.json': 'project-04.totalSolution',
+            'gpt-for-bca.json': 'project-05.GPTforBCA',
+            'rozgarsetu.json': 'project-06.rozgarSeva',
+            'scaleiq.json': 'project-07.scaleIQ',
+            'portfolio-v2.json': 'project-08.portfolio (v2.0)',
         };
 
         // Consistent timeline read from each JSON's own `timeline` field
-        const projectId   = fileKeyMap[fileName];
-        const proj        = projects.find(p => p.id === projectId) || {};
+        const projectId = fileKeyMap[fileName];
+        const proj = projects.find(p => p.id === projectId) || {};
         const displayName = displayNameMap[fileName] || fileName;
-        const yr          = proj.timeline || {};
+        const yr = proj.timeline || {};
 
         if (!proj.title) {
             return `<div class="welcome-screen"><div class="welcome-icon">📄</div><h2>${displayName}</h2><p>Project data not found.</p></div>`;
@@ -789,8 +844,8 @@ class App {
 
         // ── Gallery ──
         const gallery = (proj.images && proj.images.gallery) ? proj.images.gallery
-                        : (proj.images && Array.isArray(proj.images)) ? proj.images
-                        : [];
+            : (proj.images && Array.isArray(proj.images)) ? proj.images
+                : [];
         const thumbnail = (proj.images && proj.images.thumbnail) || '';
         const allImages = thumbnail ? [thumbnail, ...gallery.filter(i => i !== thumbnail)] : gallery;
 
@@ -812,13 +867,13 @@ class App {
         // ── Status color ──
         const projStatus = yr.status || proj.status || '';
         const statusColor = projStatus.includes('Complete') ? '#6a9955'
-                           : projStatus.includes('Progress') || projStatus.includes('Ongoing') ? '#e5c07b' : '#61afef';
+            : projStatus.includes('Progress') || projStatus.includes('Ongoing') ? '#e5c07b' : '#61afef';
 
         // ── Links ──
         const links = proj.links || {};
         const liveLink = links.liveDemo || proj.liveDemo || '';
-        const ghLink   = links.github   || proj.github   || '';
-        const liveBtnHtml  = liveLink && liveLink !== 'N/A'
+        const ghLink = links.github || proj.github || '';
+        const liveBtnHtml = liveLink && liveLink !== 'N/A'
             ? `<a href="${liveLink}" target="_blank" rel="noopener noreferrer" class="project-card-link link-live"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : '';
         const githubBtnHtml = ghLink && ghLink !== 'N/A' && ghLink !== 'Private' && ghLink !== ''
             ? `<a href="${ghLink}" target="_blank" rel="noopener noreferrer" class="project-card-link link-github"><i class="fab fa-github"></i> GitHub</a>`
@@ -843,13 +898,13 @@ class App {
             <h2 class="md-h2">🔧 Tech Stack</h2>
             <div style="margin-bottom:16px;">
                 ${Object.entries(tech).map(([group, items]) => {
-                    const arr = Array.isArray(items) ? items : (typeof items === 'string' ? [items] : []);
-                    if (!arr.length) return '';
-                    return `<div style="margin-bottom:10px;">
+            const arr = Array.isArray(items) ? items : (typeof items === 'string' ? [items] : []);
+            if (!arr.length) return '';
+            return `<div style="margin-bottom:10px;">
                         <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:6px;">${group}</div>
                         <div class="achievement-tags" style="display:flex;flex-wrap:wrap;gap:6px;">${this._techBadges(arr)}</div>
                     </div>`;
-                }).join('')}
+        }).join('')}
             </div>` : '';
 
         // ── Architecture ──
@@ -897,7 +952,7 @@ class App {
                 ${Object.entries(proj.stats).map(([k, v]) => `
                     <div style="padding:8px 14px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);text-align:center;min-width:80px;">
                         <div style="font-size:18px;font-weight:700;color:var(--clr-accent);">${v}</div>
-                        <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);">${k.replace(/([A-Z])/g,' $1').trim()}</div>
+                        <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);">${k.replace(/([A-Z])/g, ' $1').trim()}</div>
                     </div>`).join('')}
             </div>` : '';
 
@@ -925,7 +980,7 @@ class App {
             <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
                 ${Object.entries(perf).map(([k, v]) => `
                     <div style="padding:8px 14px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);">
-                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:3px;">${k.replace(/([A-Z])/g,' $1').trim()}</div>
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:3px;">${k.replace(/([A-Z])/g, ' $1').trim()}</div>
                         <div style="font-size:13px;color:var(--clr-accent);font-weight:600;">${v}</div>
                     </div>`).join('')}
             </div>` : '';
@@ -1016,7 +1071,7 @@ class App {
                     <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--clr-text);">Tech Stack:</div>
                     <div class="project-card-tags">${this._tagList(proj.techStack)}</div>
                 </div>` : '';
-                
+
             const featuresHtml = (proj.keyFeatures || []).length > 0 ? `
                 <div style="margin-top:12px;">
                     <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--clr-text);">Key Features:</div>
@@ -1037,14 +1092,14 @@ class App {
             if (proj.designSystem) {
                 const colors = proj.designSystem.colors || {};
                 const typo = proj.designSystem.typography || {};
-                
+
                 let colorsHtml = '';
                 if (Object.keys(colors).length > 0) {
                     colorsHtml = `<div style="margin-bottom:6px;"><span style="font-size:12px;color:var(--clr-text-secondary);">Colors: </span>` +
-                        Object.entries(colors).map(([k,v]) => `<span style="display:inline-block;width:12px;height:12px;background:${v};border-radius:50%;margin-right:4px;border:1px solid var(--clr-border);vertical-align:middle;" title="${k}: ${v}"></span>`).join('') +
+                        Object.entries(colors).map(([k, v]) => `<span style="display:inline-block;width:12px;height:12px;background:${v};border-radius:50%;margin-right:4px;border:1px solid var(--clr-border);vertical-align:middle;" title="${k}: ${v}"></span>`).join('') +
                         `</div>`;
                 }
-                
+
                 let typoHtml = '';
                 if (Object.keys(typo).length > 0) {
                     typoHtml = `<div style="margin-bottom:6px;"><span style="font-size:12px;color:var(--clr-text-secondary);">Typography: </span>` +
@@ -1107,6 +1162,351 @@ explorer:
             </pre>
         </div>`;
     }
+
+    // =========================================================================
+    // Content Builders — life/
+    // =========================================================================
+
+    buildLessonsMd() {
+        const markdown = `# 📖 Lessons Learned
+
+> Every project teaches something new.
+
+---
+
+## 01. Build More, Memorize Less
+
+I realized that reading documentation is important,
+but building real projects is where concepts truly become clear.
+
+---
+
+## 02. Bugs Are Teachers
+
+Every bug forced me to understand how things work internally.
+
+---
+
+## 03. Start Before You Feel Ready
+
+Many of my best projects started before I knew how to build them.
+
+---
+
+## 04. Consistency Beats Motivation
+
+Small progress every day is better than waiting for perfect motivation.
+
+---
+
+## 05. Simplicity Wins
+
+Simple solutions are easier to maintain, debug, and improve.`;
+
+        return `<div class="md-content">
+            ${markdownRenderer.render(markdown)}
+        </div>`;
+    }
+
+    buildBooksMd() {
+        const markdown = `# 📚 Developer Library
+
+Books and resources that shaped the way I think.
+
+---
+
+## Clean Code
+
+Status:
+✔ Completed
+
+Category:
+Software Engineering
+
+Key Takeaway:
+Code is read far more often than it is written.
+
+---
+
+## Atomic Habits
+
+Status:
+✔ Completed
+
+Category:
+Productivity
+
+Key Takeaway:
+Focus on systems instead of goals.
+
+---
+
+## You Don't Know JS
+
+Status:
+📖 Reading
+
+Category:
+JavaScript
+
+Key Takeaway:
+Understanding JavaScript deeply is more valuable than memorizing syntax.
+
+---
+
+## Designing Data-Intensive Applications
+
+Status:
+📅 Planned
+
+Category:
+System Design`;
+
+        return `<div class="md-content">
+            ${markdownRenderer.render(markdown)}
+        </div>`;
+    }
+
+    buildGoalsJson() {
+        const obj = {
+            "shortTerm": [
+                "Master JavaScript",
+                "Master React",
+                "Practices Data Analyst",
+                "Improve Backend Development"
+            ],
+            "longTerm": [
+                "Build SaaS Products",
+                "Contribute to Open Source",
+                "Become a Full Stack Engineer",
+                "Create an AI Startup"
+            ],
+            "currentlyWorkingOn": [
+                "Portfolio v2",
+                "ImgNinja",
+                "AI Integration"
+            ],
+            "completed": [
+                "Learn HTML",
+                "Learn CSS",
+                "Learn JavaScript Basics",
+                "Build Portfolio"
+            ]
+        };
+
+        return `<div class="md-content">
+            ${this._jsonBlock(obj)}
+        </div>`;
+    }
+
+    buildLifeConfig() {
+        const configText = `# Developer Configuration
+
+[developer]
+name = Akash Prajapati
+mode = learning
+status = building
+
+---
+[mindset]
+curiosity = high
+consistency = enabled
+ego = disabled
+learning = infinite
+
+---
+[workflow]
+coffee = optional
+music = lofi
+debug_before_sleep = true
+ship_projects = true
+
+---
+[mission]
+build_real_products = true
+help_people = true
+never_stop_learning = true`;
+
+        const highlighted = configText.split('\n').map(line => {
+            if (line.startsWith('#') || line.startsWith('---')) {
+                return `<span style="color: #6a9955;">${line}</span>`;
+            }
+            if (line.startsWith('[')) {
+                return `<span style="color: #c678dd;">${line}</span>`;
+            }
+            if (line.includes('=')) {
+                const parts = line.split('=');
+                const key = parts[0];
+                const val = parts.slice(1).join('=');
+
+                const valStr = val.trim();
+                let valColor = '#ce9178';
+                if (valStr === 'true' || valStr === 'false') valColor = '#569cd6';
+                if (!isNaN(valStr) && valStr !== '') valColor = '#b5cea8';
+
+                return `<span style="color: #9cdcfe;">${key.trimEnd()}</span> <span style="color: #d4d4d4;">=</span> <span style="color: ${valColor};">${val.trimStart()}</span>`;
+            }
+            return line;
+        }).join('\n');
+
+        return `<div class="md-content">
+            <pre style="background:var(--clr-bg-dark);padding:16px;border-radius:6px;font-family:var(--font-mono, monospace);font-size:14px;line-height:1.6;overflow-x:auto;">${highlighted}</pre>
+        </div>`;
+    }
+
+    buildGitignore() {
+        const ignoreText = `# ---------------------------------------
+# Life Ignore Rules
+# ---------------------------------------
+
+# Negativity
+negative_people/
+
+# Excuses
+excuses.log
+
+# Toxic Environment
+toxicity/
+
+# Fear of Failure
+fear/
+
+# Procrastination
+later/
+
+# Comparison
+compare_mode/
+
+# Fake Motivation
+motivation_reels.mp4
+
+# Copy-Paste Coding
+copy_paste/
+
+# Temporary Files
+ego.tmp
+
+# Everything ignored here makes room for learning.`;
+
+        const highlighted = ignoreText.split('\n').map(line => {
+            if (line.startsWith('#')) {
+                return `<span style="color: #6a9955;">${line}</span>`;
+            }
+            return `<span style="color: #d4d4d4;">${line}</span>`;
+        }).join('\n');
+
+        return `<div class="md-content">
+            <pre style="background:var(--clr-bg-dark);padding:16px;border-radius:6px;font-family:var(--font-mono, monospace);font-size:14px;line-height:1.6;overflow-x:auto;">${highlighted}</pre>
+        </div>`;
+    }
+
+    buildPackageJson() {
+        const pkgText = `{
+  "name": "akash-prajapati",
+  "version": "2.1.0",
+  "description": "Personal Developer Portfolio",
+
+  "author": "Akash Prajapati",
+
+  "license": "MIT",
+
+  "scripts": {
+    "learn": "study daily",
+    "build": "build real projects",
+    "debug": "learn from mistakes",
+    "deploy": "ship products"
+  },
+
+  "engines": {
+    "node": "Always Curious",
+    "brain": "Learning Mode"
+  },
+
+  "dependencies": {
+    "javascript": "latest",
+    "typescript": "latest",
+    "react": "latest",
+    "nodejs": "latest",
+    "coffee": "^1.0.0"
+  }
+}`;
+        // Passing the string directly to _jsonBlock so the MarkdownRenderer 
+        // will preserve the exact newlines without JSON.stringify removing them.
+        return `<div class="md-content">
+            <pre style="background:var(--clr-bg-dark);padding:16px;border-radius:6px;font-family:var(--font-mono, monospace);font-size:14px;line-height:1.6;overflow-x:auto;">${markdownRenderer.highlightJSON(pkgText)}</pre>
+        </div>`;
+    }
+
+    buildChangelogMd() {
+        const markdown = `# Changelog
+
+All notable changes to this developer have been documented here.
+
+---
+
+## v2.1.0
+
+### Added
+- Redesigned portfolio as a VS Code workspace
+- Added SQL-based social database
+- Improved project documentation
+- Added life configuration
+
+### Improved
+- Better project structure
+- Cleaner UI
+- Better responsive layout
+
+---
+
+## v2.0.0
+
+### Added
+- Production projects
+- Skills explorer
+- Experience timeline
+
+---
+
+## v1.0.0
+
+### Initial Release
+- Started web development journey
+- Built first portfolio`;
+
+        return `<div class="md-content">
+            ${markdownRenderer.render(markdown)}
+        </div>`;
+    }
+
+    buildLicenseTxt() {
+        const txt = `MIT License
+
+Copyright (c) 2026 Akash Prajapati
+
+Permission is granted to view, learn, and get inspired from this portfolio.
+
+You may:
+
+✔ Explore the code
+✔ Learn from ideas
+✔ Take inspiration
+
+You may not:
+
+✘ Copy the complete design
+✘ Re-upload it as your own work
+✘ Remove attribution
+
+Build your own story.
+Don't copy someone else's.
+
+Happy Coding ❤️`;
+
+        return `<div class="md-content">
+            <pre style="background:var(--clr-bg-dark);padding:16px;border-radius:6px;font-family:var(--font-mono, monospace);font-size:14px;line-height:1.6;overflow-x:auto;color:var(--text-secondary);white-space:pre-wrap;">${txt}</pre>
+        </div>`;
+    }
 }
 
 if (document.readyState === 'loading') {
@@ -1119,18 +1519,18 @@ if (document.readyState === 'loading') {
 
 /** Shared modal state */
 let _modalGallery = [];
-let _modalIndex   = 0;
+let _modalIndex = 0;
 
 function openModal(images, index) {
-    const modal   = document.getElementById('image-modal');
-    const img     = document.getElementById('modal-image');
+    const modal = document.getElementById('image-modal');
+    const img = document.getElementById('modal-image');
     const prevBtn = document.getElementById('modal-prev');
     const nextBtn = document.getElementById('modal-next');
     const counter = document.getElementById('modal-counter');
     if (!modal || !img) return;
 
     _modalGallery = Array.isArray(images) ? images : [images];
-    _modalIndex   = Math.max(0, Math.min(index, _modalGallery.length - 1));
+    _modalIndex = Math.max(0, Math.min(index, _modalGallery.length - 1));
 
     const hasNav = _modalGallery.length > 1;
 
@@ -1164,7 +1564,7 @@ function closeModal() {
     const modal = document.getElementById('image-modal');
     if (modal) modal.style.display = 'none';
     _modalGallery = [];
-    _modalIndex   = 0;
+    _modalIndex = 0;
 }
 
 // Delegated click handler
@@ -1180,7 +1580,7 @@ document.addEventListener('click', (e) => {
     // 2. Project gallery image — .proj-gallery-img
     const projImg = e.target.closest('.proj-gallery-img');
     if (projImg) {
-        const raw   = projImg.getAttribute('data-gallery');
+        const raw = projImg.getAttribute('data-gallery');
         const index = parseInt(projImg.getAttribute('data-index') || '0', 10);
         try {
             const gallery = JSON.parse(raw.replace(/&apos;/g, "'"));
@@ -1225,18 +1625,18 @@ document.addEventListener('click', (e) => {
 
 // Setup static modal listeners (close button + backdrop)
 const setupModalListeners = () => {
-    const modal   = document.getElementById('image-modal');
+    const modal = document.getElementById('image-modal');
     const closeBtn = document.getElementById('modal-close');
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (modal)    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         const modal = document.getElementById('image-modal');
         if (!modal || modal.style.display === 'none') return;
-        if (e.key === 'Escape')     closeModal();
-        if (e.key === 'ArrowLeft')  document.getElementById('modal-prev')?.click();
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') document.getElementById('modal-prev')?.click();
         if (e.key === 'ArrowRight') document.getElementById('modal-next')?.click();
     });
 };

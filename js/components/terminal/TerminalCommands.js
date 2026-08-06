@@ -11,29 +11,29 @@ import { eventBus } from '../../core/EventBus.js';
 class TerminalCommands {
     constructor() {
         this.registry = [
-            'help','clear','ls','dir','pwd','cd','about','projects',
-            'skills','education','experience','contact','social',
-            'github','linkedin','email','phone','resume','whoami',
-            'history','date','time','achievements','certifications',
-            'technologies','goals','services','location','hire'
+            'help', 'clear', 'ls', 'dir', 'pwd', 'cd', 'about', 'projects',
+            'skills', 'education', 'experience', 'contact', 'social',
+            'github', 'linkedin', 'email', 'phone', 'resume', 'whoami',
+            'history', 'date', 'time', 'achievements', 'certifications',
+            'technologies', 'goals', 'services', 'location', 'hire'
         ];
 
         this.NLP_RULES = [
-            { re:/\b(project|work|built|made|created|developed|portfolio)\b/i, fn: this.cmdProjects.bind(this) },
-            { re:/\b(skill|capable|proficien|good at|expert|speciali[sz])\b/i, fn: this.cmdSkills.bind(this) },
-            { re:/\b(tech(nolog|nique|stack)|framework|language|tool|stack)\b/i, fn: this.cmdTechnologies.bind(this) },
-            { re:/\b(educat|degree|university|college|study|bca|school)\b/i, fn: this.cmdEducation.bind(this) },
-            { re:/\b(contact|email|phone|reach|get in touch|message)\b/i, fn: this.cmdContact.bind(this) },
-            { re:/\b(social|github|linkedin|instagram|link|follow|connect)\b/i, fn: this.cmdSocial.bind(this) },
-            { re:/\b(achiev|award|hackathon|competition|prize|win)\b/i, fn: this.cmdAchievements.bind(this) },
-            { re:/\b(certif|credential|diploma|course|training)\b/i, fn: this.cmdCertifications.bind(this) },
-            { re:/\b(hire|available|open to work|freelance|opportunit)\b/i, fn: this.cmdHire.bind(this) },
-            { re:/\b(goal|aim|aspir|dream|future|plan)\b/i, fn: this.cmdGoals.bind(this) },
-            { re:/\b(service|offer|provide|what (do|can) (you|he))\b/i, fn: this.cmdServices.bind(this) },
-            { re:/\b(about|who (is|are)|bio|background|profile|introduce)\b/i, fn: this.cmdAbout.bind(this) },
-            { re:/\b(experience|career|professional)\b/i, fn: this.cmdExperience.bind(this) },
-            { re:/\b(where|locat|city|india|from|based)\b/i, fn: this.cmdLocation.bind(this) },
-            { re:/\b(resume|cv|curriculum)\b/i, fn: this.cmdResume.bind(this) },
+            { re: /\b(project|work|built|made|created|developed|portfolio)\b/i, fn: this.cmdProjects.bind(this) },
+            { re: /\b(skill|capable|proficien|good at|expert|speciali[sz])\b/i, fn: this.cmdSkills.bind(this) },
+            { re: /\b(tech(nolog|nique|stack)|framework|language|tool|stack)\b/i, fn: this.cmdTechnologies.bind(this) },
+            { re: /\b(educat|degree|university|college|study|bca|school)\b/i, fn: this.cmdEducation.bind(this) },
+            { re: /\b(contact|email|phone|reach|get in touch|message)\b/i, fn: this.cmdContact.bind(this) },
+            { re: /\b(social|github|linkedin|instagram|link|follow|connect)\b/i, fn: this.cmdSocial.bind(this) },
+            { re: /\b(achiev|award|hackathon|competition|prize|win)\b/i, fn: this.cmdAchievements.bind(this) },
+            { re: /\b(certif|credential|diploma|course|training)\b/i, fn: this.cmdCertifications.bind(this) },
+            { re: /\b(hire|available|open to work|freelance|opportunit)\b/i, fn: this.cmdHire.bind(this) },
+            { re: /\b(goal|aim|aspir|dream|future|plan)\b/i, fn: this.cmdGoals.bind(this) },
+            { re: /\b(service|offer|provide|what (do|can) (you|he))\b/i, fn: this.cmdServices.bind(this) },
+            { re: /\b(about|who (is|are)|bio|background|profile|introduce)\b/i, fn: this.cmdAbout.bind(this) },
+            { re: /\b(experience|career|professional)\b/i, fn: this.cmdExperience.bind(this) },
+            { re: /\b(where|locat|city|india|from|based)\b/i, fn: this.cmdLocation.bind(this) },
+            { re: /\b(resume|cv|curriculum)\b/i, fn: this.cmdResume.bind(this) },
         ];
     }
 
@@ -58,33 +58,33 @@ class TerminalCommands {
 
         let lines;
         switch (cmd) {
-            case 'help':            lines = this.cmdHelp(); break;
-            case 'about':           lines = this.cmdAbout(); break;
-            case 'whoami':          lines = this.cmdWhoami(); break;
-            case 'projects':        lines = this.cmdProjects(); break;
-            case 'skills':          lines = this.cmdSkills(); break;
-            case 'technologies':    lines = this.cmdTechnologies(); break;
-            case 'education':       lines = this.cmdEducation(); break;
-            case 'experience':      lines = this.cmdExperience(); break;
-            case 'achievements':    lines = this.cmdAchievements(); break;
-            case 'certifications':  lines = this.cmdCertifications(); break;
-            case 'contact':         lines = this.cmdContact(); break;
-            case 'social':          lines = this.cmdSocial(); break;
-            case 'github':          lines = this.cmdGithub(); break;
-            case 'linkedin':        lines = this.cmdLinkedin(); break;
-            case 'email':           lines = this.cmdEmail(); break;
-            case 'phone':           lines = this.cmdPhone(); break;
-            case 'hire':            lines = this.cmdHire(); break;
-            case 'goals':           lines = this.cmdGoals(); break;
-            case 'services':        lines = this.cmdServices(); break;
-            case 'location':        lines = this.cmdLocation(); break;
-            case 'resume':          lines = this.cmdResume(); break;
-            case 'ls': case 'dir':  lines = this.cmdLs(); break;
-            case 'pwd':             lines = this.cmdPwd(); break;
-            case 'history':         lines = this.cmdHistory(historyCmds); break;
-            case 'date':            lines = this.cmdDate(); break;
-            case 'time':            lines = this.cmdTime(); break;
-            case 'cd':              lines = [{ text: 'cd: no filesystem here, but feel free to explore!', cls: 'term-info' }]; break;
+            case 'help': lines = this.cmdHelp(); break;
+            case 'about': lines = this.cmdAbout(); break;
+            case 'whoami': lines = this.cmdWhoami(); break;
+            case 'projects': lines = this.cmdProjects(); break;
+            case 'skills': lines = this.cmdSkills(); break;
+            case 'technologies': lines = this.cmdTechnologies(); break;
+            case 'education': lines = this.cmdEducation(); break;
+            case 'experience': lines = this.cmdExperience(); break;
+            case 'achievements': lines = this.cmdAchievements(); break;
+            case 'certifications': lines = this.cmdCertifications(); break;
+            case 'contact': lines = this.cmdContact(); break;
+            case 'social': lines = this.cmdSocial(); break;
+            case 'github': lines = this.cmdGithub(); break;
+            case 'linkedin': lines = this.cmdLinkedin(); break;
+            case 'email': lines = this.cmdEmail(); break;
+            case 'phone': lines = this.cmdPhone(); break;
+            case 'hire': lines = this.cmdHire(); break;
+            case 'goals': lines = this.cmdGoals(); break;
+            case 'services': lines = this.cmdServices(); break;
+            case 'location': lines = this.cmdLocation(); break;
+            case 'resume': lines = this.cmdResume(); break;
+            case 'ls': case 'dir': lines = this.cmdLs(); break;
+            case 'pwd': lines = this.cmdPwd(); break;
+            case 'history': lines = this.cmdHistory(historyCmds); break;
+            case 'date': lines = this.cmdDate(); break;
+            case 'time': lines = this.cmdTime(); break;
+            case 'cd': lines = [{ text: 'cd: no filesystem here, but feel free to explore!', cls: 'term-info' }]; break;
             default: {
                 lines = this.nlpMatch(cmd);
                 if (!lines) {
@@ -136,7 +136,7 @@ class TerminalCommands {
     }
 
     cmdAbout() {
-        const p   = this.getData().person || {};
+        const p = this.getData().person || {};
         const bio = p.bio || [];
         return [
             { text: `\ud83d\udc64  ${p.name || 'Akash Prajapati'}`, cls: 'term-success' },
@@ -150,7 +150,7 @@ class TerminalCommands {
     }
 
     cmdProjects() {
-        const list  = this.getData().projects || [];
+        const list = this.getData().projects || [];
         const lines = [{ text: `\ud83d\udcc1  Projects (${list.length})`, cls: 'term-success' }, { text: '' }];
         list.forEach((pr, i) => {
             lines.push({ text: `  ${i + 1}. ${pr.title}`, cls: 'term-info' });
@@ -164,13 +164,13 @@ class TerminalCommands {
     }
 
     cmdSkills() {
-        const s     = this.getData().skills || {};
+        const s = this.getData().skills || {};
         const lines = [{ text: '\ud83d\udcbb  Skills', cls: 'term-success' }, { text: '' }];
-        const cats  = [
+        const cats = [
             ['Programming', s.programming || []],
-            ['Web',         s.web         || []],
-            ['Databases',   s.database    || []],
-            ['Tools',       s.tools       || []],
+            ['Web', s.web || []],
+            ['Databases', s.database || []],
+            ['Tools', s.tools || []],
         ];
         cats.forEach(([lbl, items]) => {
             lines.push({ text: `  ${lbl}:`, cls: 'term-info' });
@@ -181,7 +181,7 @@ class TerminalCommands {
     }
 
     cmdTechnologies() {
-        const s   = this.getData().skills || {};
+        const s = this.getData().skills || {};
         const all = [...(s.programming || []), ...(s.web || []), ...(s.database || []), ...(s.tools || [])];
         return [
             { text: '\ud83d\udee0\ufe0f  Technologies', cls: 'term-success' },
@@ -193,7 +193,7 @@ class TerminalCommands {
     }
 
     cmdEducation() {
-        const ed    = this.getData().education || [];
+        const ed = this.getData().education || [];
         const lines = [{ text: '\ud83c\udf93  Education', cls: 'term-success' }, { text: '' }];
         ed.forEach(e => {
             lines.push({ text: `  ${e.degree}`, cls: 'term-info' });
@@ -223,7 +223,7 @@ class TerminalCommands {
     }
 
     cmdAchievements() {
-        const list  = this.getData().achievements || [];
+        const list = this.getData().achievements || [];
         const lines = [{ text: '\ud83c\udfc6  Achievements', cls: 'term-success' }, { text: '' }];
         list.forEach(a => {
             lines.push({ text: `  ${a.title}  \u2014  ${a.subtitle}`, cls: 'term-info' });
@@ -235,7 +235,7 @@ class TerminalCommands {
     }
 
     cmdCertifications() {
-        const list  = this.getData().certifications || [];
+        const list = this.getData().certifications || [];
         const lines = [{ text: '\ud83d\udcdc  Certifications', cls: 'term-success' }, { text: '' }];
         list.forEach(c => {
             lines.push({ text: `  ${c.name}`, cls: 'term-info' });
@@ -250,31 +250,31 @@ class TerminalCommands {
         return [
             { text: '\ud83d\udcec  Contact', cls: 'term-success' },
             { text: '' },
-            { text: `  Email    ${p.email    || ''}`, cls: 'term-info' },
-            { text: `  Phone    ${p.phone    || ''}`, cls: 'term-info' },
+            { text: `  Email    ${p.email || ''}`, cls: 'term-info' },
+            { text: `  Phone    ${p.phone || ''}`, cls: 'term-info' },
             { text: `  LinkedIn ${p.linkedin || ''}`, cls: 'term-info' },
-            { text: `  GitHub   ${p.github   || ''}`, cls: 'term-info' },
-            { text: `  Website  ${p.website  || ''}`, cls: 'term-info' },
+            { text: `  GitHub   ${p.github || ''}`, cls: 'term-info' },
+            { text: `  Website  ${p.website || ''}`, cls: 'term-info' },
         ];
     }
 
     cmdSocial() {
         const s = this.getData().socials || {};
-        const p = this.getData().person  || {};
+        const p = this.getData().person || {};
         return [
             { text: '\ud83d\udd17  Social Links', cls: 'term-success' },
             { text: '' },
-            { text: `  GitHub     ${s.github    || p.github   || ''}`, cls: 'term-info' },
-            { text: `  LinkedIn   ${s.linkedin  || p.linkedin || ''}`, cls: 'term-info' },
-            { text: `  Instagram  ${s.instagram || ''}`,               cls: 'term-info' },
-            { text: `  Website    ${p.website   || ''}`,               cls: 'term-info' },
+            { text: `  GitHub     ${s.github || p.github || ''}`, cls: 'term-info' },
+            { text: `  LinkedIn   ${s.linkedin || p.linkedin || ''}`, cls: 'term-info' },
+            { text: `  Instagram  ${s.instagram || ''}`, cls: 'term-info' },
+            { text: `  Website    ${p.website || ''}`, cls: 'term-info' },
         ];
     }
 
-    cmdGithub()   { const p = this.getData().person || {}; return [{ text: p.github   || '', cls: 'term-info' }]; }
+    cmdGithub() { const p = this.getData().person || {}; return [{ text: p.github || '', cls: 'term-info' }]; }
     cmdLinkedin() { const p = this.getData().person || {}; return [{ text: p.linkedin || '', cls: 'term-info' }]; }
-    cmdEmail()    { const p = this.getData().person || {}; return [{ text: p.email    || '', cls: 'term-info' }]; }
-    cmdPhone()    { const p = this.getData().person || {}; return [{ text: p.phone    || '', cls: 'term-info' }]; }
+    cmdEmail() { const p = this.getData().person || {}; return [{ text: p.email || '', cls: 'term-info' }]; }
+    cmdPhone() { const p = this.getData().person || {}; return [{ text: p.phone || '', cls: 'term-info' }]; }
 
     cmdWhoami() {
         const p = this.getData().person || {};
@@ -314,7 +314,7 @@ class TerminalCommands {
             { text: '    \u00b7 Freelance Projects', cls: '' },
             { text: '    \u00b7 Internships', cls: '' },
             { text: '    \u00b7 Open Source Collaborations', cls: '' },
-            { text: '    \u00b7 Full-time (post-graduation)', cls: '' },
+            { text: '    \u00b7 Full-time Opportunities', cls: '' },
             { text: '' },
             { text: `  Contact: ${p.email}`, cls: 'term-info' },
         ];

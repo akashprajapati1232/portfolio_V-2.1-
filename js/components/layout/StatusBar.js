@@ -21,10 +21,11 @@ class StatusBar {
                 </div>
             </div>
             <div class="status-right">
-                <div class="status-item" title="Line and Column" id="status-position" aria-label="Cursor position">Ln 1, Col 1</div>
-                <div class="status-item" title="File Encoding" aria-label="File encoding">UTF-8</div>
-                <div class="status-item" title="Line Ending" aria-label="Line ending">LF</div>
-                <div class="status-item" title="Language Mode" id="status-lang" aria-label="Language mode">Markdown</div>
+                <div class="status-item" id="status-metric-1" style="display:none;"></div>
+                <div class="status-item" id="status-metric-2" style="display:none;"></div>
+                <div class="status-item" id="status-metric-3" style="display:none;"></div>
+                <div class="status-item" id="status-metric-4" style="display:none;"></div>
+                <div class="status-item" id="status-lang" aria-label="Language mode">Markdown</div>
                 <div class="status-item status-github" title="View on GitHub" aria-label="View on GitHub">
                     <i class="fab fa-github"></i>
                     <a href="https://github.com/akashprajapati1232" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">akashprajapati1232</a>

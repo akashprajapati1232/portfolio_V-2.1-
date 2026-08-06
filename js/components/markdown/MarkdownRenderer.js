@@ -89,9 +89,15 @@ class MarkdownRenderer {
                 htmlParts.push(`<ol class="md-ol">${items.join('')}</ol>`);
                 continue;
             } else if (line.trim() === '') {
-                htmlParts.push('<br>');
+                // Ignore empty lines to prevent double spacing, let CSS margins handle gaps
             } else {
-                htmlParts.push(`<p class="md-p">${this.renderInline(this.escapeHtml(line))}</p>`);
+                const pLines = [];
+                while (i < lines.length && !/^(#|>|-|\*|\d+\.|```|---|\*\*\*)/.test(lines[i]) && lines[i].trim() !== '') {
+                    pLines.push(this.renderInline(this.escapeHtml(lines[i])));
+                    i++;
+                }
+                htmlParts.push(`<p class="md-p">${pLines.join('<br>')}</p>`);
+                continue;
             }
             i++;
         }

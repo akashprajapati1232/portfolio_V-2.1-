@@ -22,8 +22,11 @@ class Router {
     }
 
     init() {
+        // Force clean state on load/refresh
+        if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname);
+        }
         window.addEventListener('hashchange', this.handleHash);
-        this.handleHash();
     }
 
     handleHash() {

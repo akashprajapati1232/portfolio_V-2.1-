@@ -131,8 +131,8 @@
     flex-shrink: 0;
 }
 
-/* ── Terminal Body ── */
-#terminal-body {
+/* ── Terminal Body & Panel Content ── */
+.panel-content-area {
     flex: 1;
     overflow-y: auto;
     padding: 10px 14px;
@@ -141,7 +141,14 @@
     line-height: 1.5;
     color: var(--text-primary);
     background: var(--bg-terminal);
+    display: none;
 }
+
+.panel-content-area.active {
+    display: block;
+}
+
+
 
 /* Terminal output lines */
 #terminal-output {

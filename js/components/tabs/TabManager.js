@@ -6,6 +6,7 @@
 
 import { eventBus } from '../../core/EventBus.js';
 import { dataService } from '../../services/DataService.js';
+import { getFileIcon } from '../explorer/Explorer.js';
 
 class TabManager {
     constructor() {
@@ -125,10 +126,7 @@ class TabManager {
     }
 
     createTabElement(fileName, isActive) {
-        const fileRegistry = dataService.getFileRegistry() || {};
-        const fileInfo = fileRegistry[fileName] || {};
-        const iconClass = fileInfo.icon || 'fas fa-file';
-        const iconColor = fileInfo.iconColor || '#9d9d9d';
+        const iconUrl = getFileIcon(fileName);
 
         const tab = document.createElement('div');
         tab.className = `editor-tab${isActive ? ' active' : ''}`;
@@ -140,7 +138,7 @@ class TabManager {
         tab.title = fileName;
 
         tab.innerHTML = `
-            <i class="${iconClass} tab-icon" style="color:${iconColor};" aria-hidden="true"></i>
+            <img src="${iconUrl}" class="tab-icon" style="width:14px; height:14px; margin-right:6px;" alt="" />
             <span class="tab-label">${fileName}</span>
             <button class="tab-close" aria-label="Close ${fileName}" tabindex="-1">
                 <i class="fas fa-times" aria-hidden="true"></i>

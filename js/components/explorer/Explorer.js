@@ -6,34 +6,45 @@
 
 import { eventBus } from '../../core/EventBus.js';
 
-// ── File-type icon map ────────────────────────────────────────────────────────
-// Maps a file extension (or exact name) to its VS Code–style icon class + color.
-// Uses Material-style icon naming aligned with Font Awesome 6.
+const ICON_BASE = 'https://cdn.jsdelivr.net/gh/PKief/vscode-material-icon-theme@master/icons/';
+
 const FILE_ICON_MAP = {
-    // Extension-based
-    'json':   { cls: 'fas fa-file-code',   color: '#cbcb41' },  // JSON: yellow
-    'md':     { cls: 'fas fa-file-alt',    color: '#519aba' },  // Markdown: blue
-    'txt':    { cls: 'fas fa-file-lines',  color: '#8a8a8a' },  // Text: gray
-    'js':     { cls: 'fas fa-file-code',   color: '#e5c07b' },  // JS: amber
-    'ts':     { cls: 'fas fa-file-code',   color: '#3178c6' },  // TS: blue
-    'tsx':    { cls: 'fas fa-file-code',   color: '#61afef' },  // TSX: cyan
-    'html':   { cls: 'fas fa-file-code',   color: '#e06c75' },  // HTML: red
-    'css':    { cls: 'fas fa-file-code',   color: '#61afef' },  // CSS: light-blue
-    'yaml':   { cls: 'fas fa-file-code',   color: '#6a9955' },  // YAML: green
-    'xml':    { cls: 'fas fa-file-code',   color: '#e8b67a' },  // XML: orange
-    'py':     { cls: 'fas fa-file-code',   color: '#4ec9b0' },  // Python: teal
-    'png':    { cls: 'fas fa-file-image',  color: '#a074c4' },  // PNG: purple
-    'jpg':    { cls: 'fas fa-file-image',  color: '#a074c4' },  // JPG: purple
-    'jpeg':   { cls: 'fas fa-file-image',  color: '#a074c4' },  // JPEG: purple
-    'log':    { cls: 'fas fa-file-alt',    color: '#8a8a8a' },  // LOG: gray
-    'db':     { cls: 'fas fa-database',    color: '#c678dd' },  // DB: purple
-    // Fallback
-    'default': { cls: 'fas fa-file',       color: '#8a8a8a' }
+    'json':   'json.svg',
+    'md':     'markdown.svg',
+    'txt':    'document.svg',
+    'js':     'javascript.svg',
+    'ts':     'typescript.svg',
+    'tsx':    'react_ts.svg',
+    'html':   'html.svg',
+    'css':    'css.svg',
+    'yaml':   'yaml.svg',
+    'yml':    'yaml.svg',
+    'xml':    'xml.svg',
+    'py':     'python.svg',
+    'png':    'image.svg',
+    'jpg':    'image.svg',
+    'jpeg':   'image.svg',
+    'log':    'log.svg',
+    'db':     'database.svg',
+    'sh':     'console.svg',
+    'env':    'tune.svg',
+    'gitignore': 'git.svg',
+    'config': 'settings.svg',
+    'default': 'document.svg'
 };
 
-function getFileIcon(fileName) {
-    const ext = (fileName.split('.').pop() || '').toLowerCase();
-    return FILE_ICON_MAP[ext] || FILE_ICON_MAP['default'];
+export function getFileIcon(fileName) {
+    const name = fileName.toLowerCase();
+    let iconName = FILE_ICON_MAP['default'];
+    if (name === 'package.json') {
+        iconName = 'npm.svg';
+    } else if (name.includes('license')) {
+        iconName = 'certificate.svg';
+    } else {
+        const ext = name.split('.').pop() || '';
+        iconName = FILE_ICON_MAP[ext] || FILE_ICON_MAP['default'];
+    }
+    return ICON_BASE + iconName;
 }
 
 // ── Tree structure definition ─────────────────────────────────────────────────
@@ -51,7 +62,7 @@ const TREE = [
     {
         type: 'folder', name: 'Education', id: 'education',
         children: [
-            { type: 'file', name: 'education.json',      key: 'education.json'      },
+            { type: 'file', name: 'education.html',      key: 'education.html'      },
             { type: 'file', name: 'certifications.tsx',  key: 'certifications.tsx'  },
         ]
     },
@@ -76,7 +87,7 @@ const TREE = [
     {
         type: 'folder', name: 'Achievements', id: 'achievements',
         children: [
-            { type: 'file', name: 'achievements.xml', key: 'achievements.xml' },
+            { type: 'file', name: 'achievements.html', key: 'achievements.html' },
         ]
     },
     {
@@ -96,33 +107,29 @@ const TREE = [
     {
         type: 'folder', name: 'life', id: 'life',
         children: [
-            { type: 'file', name: 'failures.md',  key: 'failures.md'  },
             { type: 'file', name: 'lessons.md',   key: 'lessons.md'   },
             { type: 'file', name: 'books.md',     key: 'books.md'     },
-            { type: 'file', name: 'habits.json',  key: 'habits.json'  },
             { type: 'file', name: 'goals.json',   key: 'goals.json'   },
-            { type: 'file', name: 'mistakes.log', key: 'mistakes.log' },
+            { type: 'file', name: 'life.config',  key: 'life.config'  },
         ]
     },
-    {
-        type: 'folder', name: 'config', id: 'config',
-        children: [
-            { type: 'file', name: 'settings.yml', key: 'settings.yml' }
-        ]
-    }
+    { type: 'file', name: '.gitignore',   key: '.gitignore'   },
+    { type: 'file', name: 'package.json', key: 'package.json' },
+    { type: 'file', name: 'CHANGELOG.md', key: 'CHANGELOG.md' },
+    { type: 'file', name: 'LICENSE.txt',  key: 'LICENSE.txt'  }
 ];
 
 // ── HTML generators ────────────────────────────────────────────────────────────
 
 function renderFile(node, depth = 1) {
-    const icon = getFileIcon(node.name);
+    const iconUrl = getFileIcon(node.name);
     const indent = depth * 16;
     return `
         <div class="tree-item file-item" data-file="${node.key}"
             role="treeitem" aria-label="${node.name}" tabindex="0"
             style="padding-left:${indent + 8}px">
             <span class="tree-arrow" aria-hidden="true"></span>
-            <i class="${icon.cls} tree-icon" style="color:${icon.color}; width:16px; text-align:center; flex-shrink:0; font-size:14px;"></i>
+            <img src="${iconUrl}" class="tree-icon" style="width:16px; height:16px; flex-shrink:0;" alt="" />
             <span class="tree-label">${node.name}</span>
         </div>`;
 }
@@ -135,15 +142,21 @@ function renderFolder(node, depth = 1) {
             : renderFile(child, depth + 1))
         .join('');
 
+    const isAbout = node.name === 'About';
+    const folderClass = isAbout ? 'expanded' : 'collapsed';
+    const ariaExpanded = isAbout ? 'true' : 'false';
+    const chevronIcon = isAbout ? 'fa-chevron-down' : 'fa-chevron-right';
+    const folderIcon = isAbout ? 'fa-folder-open' : 'fa-folder';
+
     return `
-        <div class="tree-item folder-item expanded" data-type="folder" data-folder="${node.id}"
-            role="treeitem" aria-expanded="true" aria-label="${node.name} folder" tabindex="0"
+        <div class="tree-item folder-item ${folderClass}" data-type="folder" data-folder="${node.id}"
+            role="treeitem" aria-expanded="${ariaExpanded}" aria-label="${node.name} folder" tabindex="0"
             style="padding-left:${indent}px">
-            <span class="tree-arrow"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
-            <i class="fas fa-folder-open tree-icon folder-icon" aria-hidden="true"></i>
+            <span class="tree-arrow"><i class="fas ${chevronIcon}" aria-hidden="true"></i></span>
+            <i class="fas ${folderIcon} tree-icon folder-icon" aria-hidden="true"></i>
             <span class="tree-label">${node.name}</span>
         </div>
-        <div class="tree-children folder-children" data-parent="${node.id}">
+        <div class="tree-children folder-children ${folderClass}" data-parent="${node.id}">
             ${childrenHtml}
         </div>`;
 }

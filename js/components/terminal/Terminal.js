@@ -35,16 +35,24 @@ class Terminal {
         this.layoutBtn    = null;
 
         this.BOOT_SEQUENCE = [
-            { type: 'pause',  ms: 400 },
-            { type: 'output', text: 'Microsoft Windows [Version 10.0.19045]', cls: '' },
-            { type: 'output', text: '(c) Microsoft Corporation. All rights reserved.', cls: '' },
+            { type: 'pause',  ms: 300 },
+            { type: 'cmd',    text: 'portfolio CLI v2.0.1' },
             { type: 'pause',  ms: 200 },
-            { type: 'blank' },
-            { type: 'cmd',    text: 'node portfolio.js' },
-            { type: 'pause',  ms: 350 },
-            { type: 'output', text: '\u2713  Portfolio loaded successfully.', cls: 'term-success' },
-            { type: 'output', text: '   Type  help  to see available commands.', cls: 'term-info' },
-            { type: 'blank' },
+            { type: 'output', text: 'Starting Portfolio Engine...', cls: '' },
+            { type: 'pause',  ms: 250 },
+            { type: 'output', text: '[✓] Loading workspace', cls: 'term-success' },
+            { type: 'pause',  ms: 150 },
+            { type: 'output', text: '[✓] Loading developer profile', cls: 'term-success' },
+            { type: 'pause',  ms: 200 },
+            { type: 'output', text: '[✓] Loading projects', cls: 'term-success' },
+            { type: 'pause',  ms: 150 },
+            { type: 'output', text: '[✓] Loading skills', cls: 'term-success' },
+            { type: 'pause',  ms: 100 },
+            { type: 'output', text: '[✓] Loading terminal commands', cls: 'term-success' },
+            { type: 'pause',  ms: 300 },
+            { type: 'output', text: 'Portfolio loaded successfully.', cls: 'term-success' },
+            { type: 'output', text: "Type 'help' to see available commands.", cls: 'term-info' },
+            { type: 'blank' }
         ];
     }
 
@@ -54,20 +62,20 @@ class Terminal {
             <div id="terminal-panel" role="complementary" aria-label="Terminal panel">
                 <div id="terminal-header">
                     <div class="terminal-tabs">
-                        <div class="terminal-tab" id="term-tab-problems" title="Problems">
+                        <div class="terminal-tab" data-target="panel-content-problems" id="term-tab-problems" title="Problems">
                             <span>PROBLEMS</span>
                         </div>
-                        <div class="terminal-tab" id="term-tab-output" title="Output">
+                        <div class="terminal-tab" data-target="panel-content-output" id="term-tab-output" title="Output">
                             <span>OUTPUT</span>
                         </div>
-                        <div class="terminal-tab" id="term-tab-debug" title="Debug Console">
+                        <div class="terminal-tab" data-target="panel-content-debug" id="term-tab-debug" title="Debug Console">
                             <span>DEBUG CONSOLE</span>
                         </div>
-                        <div class="terminal-tab active" id="term-tab" title="Terminal">
+                        <div class="terminal-tab active" data-target="terminal-body" id="term-tab-terminal" title="Terminal">
                             <span>TERMINAL</span>
                             <span class="term-tab-badge">1</span>
                         </div>
-                        <div class="terminal-tab" id="term-tab-ports" title="Ports">
+                        <div class="terminal-tab" data-target="panel-content-ports" id="term-tab-ports" title="Ports">
                             <span>PORTS</span>
                         </div>
                     </div>
@@ -98,9 +106,75 @@ class Terminal {
                         </button>
                     </div>
                 </div>
-                <div id="terminal-body" aria-live="polite" aria-label="Terminal output">
+                
+                <!-- Tab contents -->
+                <div id="panel-content-problems" class="panel-content-area">
+                    <div class="term-line"><span class="term-output">Problems</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Errors: 0</span></div>
+                    <div class="term-line"><span class="term-output">Warnings: 3</span></div>
+                    <div class="term-line"><span class="term-output">Info: 2</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Coffee level is running low.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Too many project ideas, not enough weekends.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Curiosity exceeds recommended limits.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #6a9955;">✓ No coding issues detected.</span></div>
+                </div>
+                
+                <div id="panel-content-output" class="panel-content-area">
+                    <div class="term-line"><span class="term-output">[Portfolio Engine]</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Loading README.md...</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Loading developer profile...</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Loading projects...</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Loading coffee...</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #f48771;">Coffee not found.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Retrying...</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #6a9955;">Coffee restored.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #6a9955;">Workspace loaded successfully.</span></div>
+                </div>
+                
+                <div id="panel-content-debug" class="panel-content-area">
+                    <div class="term-line"><span class="term-output" style="color: #4fc1ff;">Debugger attached.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Watching for bugs...</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #6a9955;">Found 0 bugs.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #4fc1ff;">Found 17 new ideas.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Stopping debugger...</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Opening GitHub instead.</span></div>
+                </div>
+
+                <div id="terminal-body" class="panel-content-area active" aria-live="polite" aria-label="Terminal output">
                     <div id="terminal-output"></div>
                     <!-- Interactive input line injected by JS -->
+                </div>
+
+                <div id="panel-content-ports" class="panel-content-area">
+                    <div class="term-line"><span class="term-output">PORT    SERVICE              STATUS</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">3000    Portfolio UI         🟢 Running</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">5432    Social Database      🟢 Connected</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">8080    Motivation API       🟡 Fluctuating</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">9999    Coffee Service       🟢 Active</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">4040    Comfort Zone         🔴 Not Found</span></div>
                 </div>
             </div>
         `;
@@ -170,7 +244,32 @@ class Terminal {
         });
 
         // Wire header buttons
-        document.getElementById('term-tab')?.addEventListener('click', () => this.focusInput());
+        const tabs = this.panel.querySelectorAll('.terminal-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Hide all panel content areas
+                this.panel.querySelectorAll('.panel-content-area').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Show target content area
+                const targetId = tab.getAttribute('data-target');
+                if (targetId) {
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) targetContent.classList.add('active');
+                    
+                    // Focus input if terminal tab is active
+                    if (targetId === 'terminal-body') {
+                        this.focusInput();
+                    }
+                }
+            });
+        });
+
         document.getElementById('term-close')?.addEventListener('click', () => this.hide());
         document.getElementById('term-new')?.addEventListener('click', () => { this._execute('clear'); this.focusInput(); });
         document.getElementById('term-maximize')?.addEventListener('click', () => {

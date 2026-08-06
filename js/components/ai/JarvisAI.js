@@ -26,22 +26,22 @@ class JarvisAI {
         ];
 
         this.INTENTS = [
-            { name:'greeting',       re:/\b(hi|hello|hey|howdy|good (morning|evening|afternoon))\b/i },
-            { name:'about',          re:/\b(who (is|are)|about (akash|you|yourself)|introduce|bio|background|profile|tell me about (akash|you))\b/i },
-            { name:'projects',       re:/\b(project|portfolio|work|built|made|created|developed|app|application|website|show (your|me|his) (project|work))\b/i },
-            { name:'skills',         re:/\b(skill|capability|proficien|good at|expert|speciali[sz]|what (can|do) (you|he))\b/i },
-            { name:'technologies',   re:/\b(tech(nolog|stack|nique)|framework|language|tool|library|stack|react|node\.?js|javascript|python|html|css|php|mysql|mongodb|wordpress)\b/i },
-            { name:'education',      re:/\b(educat|degree|university|college|study|studi|school|bca|course|qualif|academic)\b/i },
-            { name:'experience',     re:/\b(experience|work histor|career|professional|years|intern)\b/i },
-            { name:'achievements',   re:/\b(achiev|award|winner|won|hackathon|competition|prize|recogn|accomplishment)\b/i },
-            { name:'certifications', re:/\b(certif|credential|diploma|training)\b/i },
-            { name:'contact',        re:/\b(contact|email|phone|reach|get in touch|message|mail)\b/i },
-            { name:'social',         re:/\b(social|github|linkedin|instagram|twitter|link|profile|follow|connect)\b/i },
-            { name:'hire',           re:/\b(hire|hiring|available|open to work|freelance|job offer|opportunity|collaborate|work together)\b/i },
-            { name:'resume',         re:/\b(resume|cv|curriculum vitae|download)\b/i },
-            { name:'goals',          re:/\b(goal|aim|aspir|dream|future|plan|objective|ambition)\b/i },
-            { name:'services',       re:/\b(service|offer|provide|what (do|can) (you|he) (do|offer))\b/i },
-            { name:'location',       re:/\b(locat|where|city|country|india|from|based)\b/i }
+            { name: 'greeting', re: /\b(hi|hello|hey|howdy|good (morning|evening|afternoon))\b/i },
+            { name: 'about', re: /\b(who (is|are)|about (akash|you|yourself)|introduce|bio|background|profile|tell me about (akash|you))\b/i },
+            { name: 'projects', re: /\b(project|portfolio|work|built|made|created|developed|app|application|website|show (your|me|his) (project|work))\b/i },
+            { name: 'skills', re: /\b(skill|capability|proficien|good at|expert|speciali[sz]|what (can|do) (you|he))\b/i },
+            { name: 'technologies', re: /\b(tech(nolog|stack|nique)|framework|language|tool|library|stack|react|node\.?js|javascript|python|html|css|php|mysql|mongodb|wordpress)\b/i },
+            { name: 'education', re: /\b(educat|degree|university|college|study|studi|school|bca|course|qualif|academic)\b/i },
+            { name: 'experience', re: /\b(experience|work histor|career|professional|years|intern)\b/i },
+            { name: 'achievements', re: /\b(achiev|award|winner|won|hackathon|competition|prize|recogn|accomplishment)\b/i },
+            { name: 'certifications', re: /\b(certif|credential|diploma|training)\b/i },
+            { name: 'contact', re: /\b(contact|email|phone|reach|get in touch|message|mail)\b/i },
+            { name: 'social', re: /\b(social|github|linkedin|instagram|twitter|link|profile|follow|connect)\b/i },
+            { name: 'hire', re: /\b(hire|hiring|available|open to work|freelance|job offer|opportunity|collaborate|work together)\b/i },
+            { name: 'resume', re: /\b(resume|cv|curriculum vitae|download)\b/i },
+            { name: 'goals', re: /\b(goal|aim|aspir|dream|future|plan|objective|ambition)\b/i },
+            { name: 'services', re: /\b(service|offer|provide|what (do|can) (you|he) (do|offer))\b/i },
+            { name: 'location', re: /\b(locat|where|city|country|india|from|based)\b/i }
         ];
 
         this.OFF_TOPIC = [
@@ -69,14 +69,14 @@ class JarvisAI {
         const d = dataService.getData();
         if (!d || !d.person) return null;
         return {
-            person:         d.person,
-            education:      d.education,
-            skills:         d.skills,
-            projects:       d.projects,
-            achievements:   d.achievements,
+            person: d.person,
+            education: d.education,
+            skills: d.skills,
+            projects: d.projects,
+            achievements: d.achievements,
             certifications: d.certifications,
-            socials:        d.socials,
-            allSkillNames:  [
+            socials: d.socials,
+            allSkillNames: [
                 ...(d.skills.programming || []),
                 ...(d.skills.web || []),
                 ...(d.skills.database || []),
@@ -125,19 +125,19 @@ ${tagsArr ? this.tags(tagsArr) : ''}
                 return `<p>Hello! Great to meet you. 👋</p>
 <p>I'm <strong>${this.BOT_NAME}</strong>, ${p.name}'s personal AI portfolio assistant.</p>
 <p>What would you like to know?</p>
-${this.chips(['Tell me about Akash','Show me his projects','What are his skills?','How to contact him?'])}`;
+${this.chips(['Tell me about Akash', 'Show me his projects', 'What are his skills?', 'How to contact him?'])}`;
 
             case 'about':
                 return `<p><strong>${p.name}</strong> is a <em>${p.title}</em> based in <strong>${p.location}</strong>.</p>
-${p.bio.map(b=>`<p>${b}</p>`).join('')}
+${p.bio.map(b => `<p>${b}</p>`).join('')}
 ${this.tags(p.roles)}
 <p>📊 <strong>${p.stats.projects}</strong> Projects · <strong>${p.stats.certifications}</strong> Certifications · <strong>${p.stats.experience}</strong> Experience</p>`;
 
             case 'projects':
                 return `<p>${p.name} has built <strong>${kb.projects.length}</strong> projects:</p>
 ${kb.projects.map(pr => {
-    const live = pr.live && pr.live !== '#' ? `<a href="${pr.live}" target="_blank" rel="noopener noreferrer" class="ai-link">🔗 Live Demo</a>` : '';
-    return `<div class="ai-project-item">
+                    const live = pr.live && pr.live !== '#' ? `<a href="${pr.live}" target="_blank" rel="noopener noreferrer" class="ai-link">🔗 Live Demo</a>` : '';
+                    return `<div class="ai-project-item">
 <div class="ai-project-title">📁 ${pr.title}</div>
 <div class="ai-project-desc">${pr.description}</div>
 <div class="ai-project-meta">
@@ -146,15 +146,15 @@ ${this.techTags(pr.tech)}
 <a href="${pr.github}" target="_blank" rel="noopener noreferrer" class="ai-link">⭐ GitHub</a>
 ${live}
 </div></div></div>`;
-}).join('')}
+                }).join('')}
 <p>💡 <em>Open <strong>projects.md</strong> in the Explorer for a visual gallery.</em></p>`;
 
             case 'skills':
                 return `<p>Here's ${p.name}'s technical skill breakdown:</p>
-${[['💻 Programming',kb.skills.programming],['🌐 Web Dev',kb.skills.web],['🗄️ Databases',kb.skills.database],['🛠️ Tools',kb.skills.tools]]
-.map(([lbl,items])=>`<div class="ai-skill-group">
+${[['💻 Programming', kb.skills.programming], ['🌐 Web Dev', kb.skills.web], ['🗄️ Databases', kb.skills.database], ['🛠️ Tools', kb.skills.tools]]
+                        .map(([lbl, items]) => `<div class="ai-skill-group">
 <div class="ai-skill-group-title">${lbl}</div>
-<div class="ai-tags">${items.map(s=>`<span class="ai-tag">${s.name} <span class="ai-tag-level">${s.level}%</span></span>`).join('')}</div>
+<div class="ai-tags">${items.map(s => `<span class="ai-tag">${s.name} <span class="ai-tag-level">${s.level}%</span></span>`).join('')}</div>
 </div>`).join('')}
 <p>💡 <em>See <strong>skills.md</strong> for interactive skill bars.</em></p>`;
 
@@ -165,26 +165,26 @@ ${this.techTags(kb.allSkillNames)}
 
             case 'education':
                 return `<p>${p.name}'s educational background:</p>
-${kb.education.map(e=>this.eduItem(`🎓 ${e.degree}`,`${e.institution}, ${e.location} · ${e.period}`,e.description)).join('')}`;
+${kb.education.map(e => this.eduItem(`🎓 ${e.degree}`, `${e.institution}, ${e.location} · ${e.period}`, e.description)).join('')}`;
 
             case 'experience':
                 return `<p>${p.name} has <strong>${p.stats.experience}</strong> of hands-on development experience, building real-world projects while pursuing his BCA degree.</p>
-${this.tags(['Frontend Development','Full-Stack Projects','Open Source','Hackathon Participation'])}
+${this.tags(['Frontend Development', 'Full-Stack Projects', 'Open Source', 'Hackathon Participation'])}
 <p>💡 <em>Check <strong>work.md</strong> for the full timeline.</em></p>`;
 
             case 'achievements':
                 return `<p>Notable achievements:</p>
-${kb.achievements.map(a=>this.eduItem(`🏆 ${a.title}`,`${a.subtitle} · ${a.date}`,a.description,a.tags)).join('')}`;
+${kb.achievements.map(a => this.eduItem(`🏆 ${a.title}`, `${a.subtitle} · ${a.date}`, a.description, a.tags)).join('')}`;
 
             case 'certifications':
                 return `<p>${p.name} holds <strong>${kb.certifications.length}</strong> certifications:</p>
-${kb.certifications.map(c=>this.eduItem(`📜 ${c.name}`,c.body,c.desc)).join('')}`;
+${kb.certifications.map(c => this.eduItem(`📜 ${c.name}`, c.body, c.desc)).join('')}`;
 
             case 'contact':
                 return `<p>Here's how to reach <strong>${p.name}</strong>:</p>
 <div class="ai-contact-list">
 <a href="mailto:${p.email}" class="ai-contact-item"><span class="ai-contact-icon">📧</span><span>${p.email}</span></a>
-<a href="tel:${p.phone.replace(/\s/g,'')}" class="ai-contact-item"><span class="ai-contact-icon">📞</span><span>${p.phone}</span></a>
+<a href="tel:${p.phone.replace(/\s/g, '')}" class="ai-contact-item"><span class="ai-contact-icon">📞</span><span>${p.phone}</span></a>
 <a href="${p.linkedin}" target="_blank" rel="noopener noreferrer" class="ai-contact-item"><span class="ai-contact-icon">💼</span><span>LinkedIn</span></a>
 <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="ai-contact-item"><span class="ai-contact-icon">🐙</span><span>GitHub</span></a>
 </div>
@@ -201,7 +201,7 @@ ${kb.certifications.map(c=>this.eduItem(`📜 ${c.name}`,c.body,c.desc)).join(''
 
             case 'hire':
                 return `<p>Yes! <strong>${p.name}</strong> is open to new opportunities! 🎉</p>
-${this.tags(['Freelance Projects','Internships','Open Source Collaborations','Full-time (Post-graduation)'])}
+${this.tags(['Freelance Projects', 'Internships', 'Open Source Collaborations', 'Full-time Opportunities'])}
 <div class="ai-contact-list">
 <a href="mailto:${p.email}" class="ai-contact-item"><span class="ai-contact-icon">📧</span><span>${p.email}</span></a>
 <a href="${p.linkedin}" target="_blank" rel="noopener noreferrer" class="ai-contact-item"><span class="ai-contact-icon">💼</span><span>LinkedIn</span></a>
@@ -209,7 +209,7 @@ ${this.tags(['Freelance Projects','Internships','Open Source Collaborations','Fu
 
             case 'resume':
                 return `<p>Summary of <strong>${p.name}'s</strong> profile:</p>
-${this.eduItem(`👤 ${p.name}`,`${p.title} · ${p.location}`,null)}
+${this.eduItem(`👤 ${p.name}`, `${p.title} · ${p.location}`, null)}
 <div class="ai-tags">
 <span class="ai-tag">Projects: ${p.stats.projects}</span>
 <span class="ai-tag">Certifications: ${p.stats.certifications}</span>
@@ -219,16 +219,16 @@ ${this.eduItem(`👤 ${p.name}`,`${p.title} · ${p.location}`,null)}
 
             case 'goals':
                 return `<p>${p.name}'s goals:</p>
-${this.eduItem('🎯 Short-term','','Complete BCA, land a developer internship, contribute to open source.')}
-${this.eduItem('🚀 Long-term','','Become a skilled full-stack engineer and build products that solve real-world problems.')}
-${this.tags(['Full-Stack Dev','Open Source','Innovation','Software Engineering'])}`;
+${this.eduItem('🎯 Short-term', '', 'Complete BCA, land a developer internship, contribute to open source.')}
+${this.eduItem('🚀 Long-term', '', 'Become a skilled full-stack engineer and build products that solve real-world problems.')}
+${this.tags(['Full-Stack Dev', 'Open Source', 'Innovation', 'Software Engineering'])}`;
 
             case 'services':
                 return `<p><strong>${p.name}</strong> offers:</p>
-${this.eduItem('🌐 Web Development','','Modern, responsive websites using HTML, CSS, JS, React, Node.js.')}
-${this.eduItem('🎨 UI/UX Design','','Clean, user-friendly interfaces focused on experience and accessibility.')}
-${this.eduItem('🤖 Chatbot Development','','AI-powered assistants and chatbots for websites.')}
-${this.eduItem('🗃️ Backend & Database','','Server-side with Node.js, MySQL, and MongoDB.')}`;
+${this.eduItem('🌐 Web Development', '', 'Modern, responsive websites using HTML, CSS, JS, React, Node.js.')}
+${this.eduItem('🎨 UI/UX Design', '', 'Clean, user-friendly interfaces focused on experience and accessibility.')}
+${this.eduItem('🤖 Chatbot Development', '', 'AI-powered assistants and chatbots for websites.')}
+${this.eduItem('🗃️ Backend & Database', '', 'Server-side with Node.js, MySQL, and MongoDB.')}`;
 
             case 'location':
                 return `<p><strong>${p.name}</strong> is based in <strong>${p.location}</strong> 📍</p>
@@ -236,28 +236,28 @@ ${this.eduItem('🗃️ Backend & Database','','Server-side with Node.js, MySQL,
 
             default:
                 return `<p>I'm not sure about that. Try asking me something else:</p>
-${this.chips(['About Akash','Projects','Skills','Education','Contact'])}`;
+${this.chips(['About Akash', 'Projects', 'Skills', 'Education', 'Contact'])}`;
         }
     }
 
     offTopicResp() {
         return `<p>I'm <strong>${this.BOT_NAME}</strong>, Akash's portfolio assistant. I can only answer questions related to his portfolio.</p>
 <p>Try asking about:</p>
-${this.chips(['Tell me about Akash','What projects has he built?','What skills does he have?','How to contact him?'])}`;
+${this.chips(['Tell me about Akash', 'What projects has he built?', 'What skills does he have?', 'How to contact him?'])}`;
     }
 
     ts() {
-        return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+        return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
     escHtml(s) {
-        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     }
 
     appendMsg(sender, html, empty) {
         const wrap = document.createElement('div');
         wrap.className = `jarvis-msg ${sender} jarvis-msg-entering`;
-        const ico  = sender === 'bot' ? 'fa-robot' : 'fa-user';
+        const ico = sender === 'bot' ? 'fa-robot' : 'fa-user';
         const name = sender === 'bot' ? this.BOT_NAME : 'You';
         wrap.innerHTML = `
 <div class="jarvis-msg-header">
@@ -267,7 +267,7 @@ ${this.chips(['Tell me about Akash','What projects has he built?','What skills d
 </div>
 <div class="jarvis-msg-content">${empty ? '' : html}</div>`;
         this.container.appendChild(wrap);
-        requestAnimationFrame(()=>requestAnimationFrame(()=>wrap.classList.remove('jarvis-msg-entering')));
+        requestAnimationFrame(() => requestAnimationFrame(() => wrap.classList.remove('jarvis-msg-entering')));
         this.scroll();
         return wrap.querySelector('.jarvis-msg-content');
     }
@@ -284,9 +284,9 @@ ${this.chips(['Tell me about Akash','What projects has he built?','What skills d
   <div class="jarvis-typing-indicator"><span></span><span></span><span></span></div>
 </div>`;
         this.container.appendChild(wrap);
-        requestAnimationFrame(()=>requestAnimationFrame(()=>wrap.classList.remove('jarvis-msg-entering')));
+        requestAnimationFrame(() => requestAnimationFrame(() => wrap.classList.remove('jarvis-msg-entering')));
         this.scroll();
-        return ()=>wrap.remove();
+        return () => wrap.remove();
     }
 
     stream(contentEl, html, done) {
@@ -299,7 +299,7 @@ ${this.chips(['Tell me about Akash','What projects has he built?','What skills d
 
         const tick = () => {
             const chunk = Math.min(this.MAX_CHUNK, full.length - i);
-            for (let k=0; k<chunk; k++) { para.textContent += full[i++]; }
+            for (let k = 0; k < chunk; k++) { para.textContent += full[i++]; }
             this.scroll();
             if (i < full.length) {
                 setTimeout(tick, this.STREAM_DELAY);
@@ -324,7 +324,7 @@ ${this.chips(['Tell me about Akash','What projects has he built?','What skills d
     }
 
     disableInput(v) {
-        if (this.input)   this.input.disabled   = v;
+        if (this.input) this.input.disabled = v;
         if (this.sendBtn) this.sendBtn.disabled = v;
         if (this.sendBtn && v) this.sendBtn.classList.remove('active');
     }
@@ -348,8 +348,8 @@ ${this.chips(this.SUGGESTED_PROMPTS)}`;
         this.scroll();
     }
 
-    handleChip(q) { 
-        if (!this.busy) this.sendMsg(q); 
+    handleChip(q) {
+        if (!this.busy) this.sendMsg(q);
     }
 
     sendMsg(query) {
@@ -412,9 +412,9 @@ ${this.chips(this.SUGGESTED_PROMPTS)}`;
 
     init() {
         this.container = document.getElementById('jarvis-messages');
-        this.input     = document.getElementById('jarvis-input');
-        this.sendBtn   = document.getElementById('jarvis-send');
-        this.clearBtn  = document.getElementById('clear-jarvis');
+        this.input = document.getElementById('jarvis-input');
+        this.sendBtn = document.getElementById('jarvis-send');
+        this.clearBtn = document.getElementById('clear-jarvis');
         if (!this.container || !this.input) return;
 
         this.kb = this.buildKB();
@@ -425,24 +425,24 @@ ${this.chips(this.SUGGESTED_PROMPTS)}`;
         if (this.sendBtn) {
             this.sendBtn.addEventListener('click', () => {
                 const v = this.input.value.trim();
-                if (v) { const q=v; this.input.value=''; this.input.style.height='auto'; this.sendBtn.classList.remove('active'); this.sendMsg(q); }
+                if (v) { const q = v; this.input.value = ''; this.input.style.height = 'auto'; this.sendBtn.classList.remove('active'); this.sendMsg(q); }
             });
         }
 
         const self = this;
-        this.input.addEventListener('input', function() {
+        this.input.addEventListener('input', function () {
             self.resize(this);
             if (self.sendBtn) self.sendBtn.classList.toggle('active', this.value.trim().length > 0);
         });
 
-        this.input.addEventListener('keydown', function(e) {
+        this.input.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 const v = this.value.trim();
-                if (v && !self.busy) { 
-                    const q=v; this.value=''; this.style.height='auto'; 
-                    if(self.sendBtn) self.sendBtn.classList.remove('active'); 
-                    self.sendMsg(q); 
+                if (v && !self.busy) {
+                    const q = v; this.value = ''; this.style.height = 'auto';
+                    if (self.sendBtn) self.sendBtn.classList.remove('active');
+                    self.sendMsg(q);
                 }
             }
         });
@@ -464,7 +464,7 @@ ${this.chips(this.SUGGESTED_PROMPTS)}`;
     clearChat() {
         if (this.busy) return;
         this.renderWelcome();
-        if (this.input) { this.input.value=''; this.input.style.height='auto'; }
+        if (this.input) { this.input.value = ''; this.input.style.height = 'auto'; }
         if (this.sendBtn) this.sendBtn.classList.remove('active');
     }
 }

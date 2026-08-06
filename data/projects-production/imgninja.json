@@ -10,7 +10,7 @@
     "timeline": {
         "startDate": "2025",
         "status": "In Progress",
-        "duration": "Solo project"
+        "members": "Solo project"
     },
     "features": [
         "Image Compressor — reduce file sizes by up to 90% with smart quality detection",

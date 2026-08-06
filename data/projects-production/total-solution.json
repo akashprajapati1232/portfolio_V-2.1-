@@ -8,9 +8,9 @@
     "status": "Completed",
     "year": "2025",
     "timeline": {
-        "startDate": "Jul 2025",
-        "endDate": "Sep 2025",
-        "duration": "Solo project"
+        "startDate": "2025",
+        "status": "In Progress",
+        "members": "Solo project"
     },
     "features": [
         "Four core digital service pages — Web Design, SEO, E-Commerce, Website Management",

@@ -8,9 +8,9 @@
     "status": "Completed",
     "year": "2026",
     "timeline": {
-        "startDate": "Feb 2026",
-        "endDate": "Apr 2026",
-        "duration": "Solo project"
+        "startDate": "2026",
+        "status": "In Progress",
+        "members": "Solo project"
     },
     "features": [
         "SaaS landing page with complete product marketing copy",

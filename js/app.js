@@ -656,12 +656,15 @@ class App {
 
         // ── Contributors ──
         const contribHtml = (proj.contributors || []).length > 0 ? `
-            <h2 class="md-h2">👥 Contributors</h2>
+            <h2 class="md-h2">👥 Team Members</h2>
             <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
                 ${proj.contributors.map(c => `
-                    <div style="padding:8px 14px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);">
-                        <div style="font-weight:600;color:var(--clr-text);font-size:13px;">${c.name}</div>
-                        <div style="font-size:11px;color:var(--clr-text-secondary);">${c.role}</div>
+                    <div style="display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--clr-surface2);border-radius:20px;border:1px solid var(--clr-border);">
+                        ${c.avatar ? `<img src="${c.avatar}" style="width:24px;height:24px;border-radius:50%;">` : '<i class="fas fa-user-circle" style="color:var(--clr-text-secondary);font-size:24px;"></i>'}
+                        <div style="display:flex;flex-direction:column;">
+                            ${c.url ? `<a href="${c.url}" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--clr-accent);text-decoration:none;font-weight:600;">${c.name}</a>` : `<span style="font-size:13px;color:var(--clr-text-primary);font-weight:600;">${c.name}</span>`}
+                            <span style="font-size:10px;color:var(--clr-text-secondary);text-transform:uppercase;">${c.role}</span>
+                        </div>
                     </div>`).join('')}
             </div>` : '';
 

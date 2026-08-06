@@ -1,45 +1,39 @@
 {
     "services": [
         {
-            "id": "fullstack",
-            "title": "Full Stack Web Development",
-            "description": "Building end-to-end web applications with modern frontend frameworks and robust backend architectures. Capable of handling everything from interactive UIs to server logic and API integration.",
-            "icon": "layers"
-        },
-        {
-            "id": "frontend",
-            "title": "Frontend & UI/UX Development",
-            "description": "Crafting highly interactive, responsive, and visually stunning user interfaces. Specializing in smooth animations, glassmorphism, and performance-optimized single-page applications.",
-            "icon": "monitor"
-        },
-        {
-            "id": "ai-integration",
-            "title": "AI Integration & Automation",
-            "description": "Enhancing applications with intelligent features using Large Language Models (LLMs), prompt engineering, and custom NLP chatbot implementations.",
-            "icon": "cpu"
-        },
-        {
-            "id": "backend",
-            "title": "Backend & API Development",
-            "description": "Designing secure and scalable server-side systems, RESTful APIs, and implementing complex business logic including authentication and payment workflows.",
-            "icon": "server"
-        },
-        {
-            "id": "custom-apps",
-            "title": "Custom Web Applications",
-            "description": "Developing specialized, logic-heavy browser applications without relying on third-party APIs, such as client-side image processing tools and calculators.",
-            "icon": "code"
-        },
-        {
-            "id": "business-sites",
-            "title": "Business & Portfolio Websites",
-            "description": "Creating premium, SEO-optimized landing pages and multi-page websites for agencies, professionals, and SaaS products with clean, modular architectures.",
+            "id": "business-websites",
+            "title": "Business Website Development",
+            "description": "Professional, responsive, and SEO-friendly websites for local businesses, startups, agencies, restaurants, clinics, coaching institutes, and service providers. Designed to build trust and generate more customers.",
             "icon": "briefcase"
         },
         {
-            "id": "admin-dashboards",
-            "title": "Admin Dashboard Development",
-            "description": "Building secure, data-rich control panels with advanced data tables, bulk import/export capabilities, and real-time statistics.",
+            "id": "portfolio-websites",
+            "title": "Portfolio Website Development",
+            "description": "Modern portfolio websites for freelancers, developers, designers, photographers, creators, and professionals to showcase their work with a premium online presence.",
+            "icon": "monitor"
+        },
+        {
+            "id": "landing-pages",
+            "title": "Landing Page Development",
+            "description": "High-converting landing pages for product launches, SaaS, marketing campaigns, events, and lead generation with fast performance and responsive design.",
+            "icon": "layers"
+        },
+        {
+            "id": "custom-web-apps",
+            "title": "Custom Web Application Development",
+            "description": "Custom web applications tailored to your business needs, including admin panels, dashboards, internal tools, client portals, booking systems, and workflow automation.",
+            "icon": "code"
+        },
+        {
+            "id": "ai-integration",
+            "title": "AI Integration",
+            "description": "Integrate AI capabilities into your existing or new application using modern LLMs, AI chatbots, content generation, automation, and intelligent workflows.",
+            "icon": "cpu"
+        },
+        {
+            "id": "data-analytics",
+            "title": "Data Analytics & Dashboard",
+            "description": "Analyze business data and create clean dashboards, reports, and visualizations that help transform raw data into meaningful insights for better decision-making.",
             "icon": "layout"
         }
     ]

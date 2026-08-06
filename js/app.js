@@ -35,15 +35,15 @@ class App {
             'services.ts': this.buildServices.bind(this),
             // Achievements/
             'achievements.xml': this.buildAchievements.bind(this),
-            // Projects/production/
-            'gpt-for-bca.json': this.buildProductionProject.bind(this, 'gpt-for-bca.json'),
-            'imgninja.json': this.buildProductionProject.bind(this, 'imgninja.json'),
-            'brandify-creator.json': this.buildProductionProject.bind(this, 'brandify-creator.json'),
+            // Projects/production/ — in user-specified order (01–08)
+            'imgninja.json':               this.buildProductionProject.bind(this, 'imgninja.json'),
             'bitbot-college-chatbot.json': this.buildProductionProject.bind(this, 'bitbot-college-chatbot.json'),
-            'rozgarsetu.json': this.buildProductionProject.bind(this, 'rozgarsetu.json'),
-            'scaleiq.json': this.buildProductionProject.bind(this, 'scaleiq.json'),
-            'total-solution.json': this.buildProductionProject.bind(this, 'total-solution.json'),
-            'portfolio-v2.json': this.buildProductionProject.bind(this, 'portfolio-v2.json'),
+            'brandify-creator.json':       this.buildProductionProject.bind(this, 'brandify-creator.json'),
+            'total-solution.json':         this.buildProductionProject.bind(this, 'total-solution.json'),
+            'gpt-for-bca.json':            this.buildProductionProject.bind(this, 'gpt-for-bca.json'),
+            'rozgarsetu.json':             this.buildProductionProject.bind(this, 'rozgarsetu.json'),
+            'scaleiq.json':                this.buildProductionProject.bind(this, 'scaleiq.json'),
+            'portfolio-v2.json':           this.buildProductionProject.bind(this, 'portfolio-v2.json'),
             // Projects/micro/
             'projects-micro.json': this.buildMicroProjects.bind(this),
             // Root/Config
@@ -573,85 +573,232 @@ class App {
         </div>`;
     }
 
-    // =========================================================================
-    // Content Builders — projects/production/
-    // =========================================================================
-
     buildProductionProject(fileName) {
         const d = dataService.getData();
         const projects = d.productionProjects || [];
+
+        // Map file key → project id
         const fileKeyMap = {
-            'gpt-for-bca.json': 'gpt-for-bca',
-            'imgninja.json': 'imgninja',
-            'brandify-creator.json': 'brandify-creator',
+            'imgninja.json':               'imgninja',
             'bitbot-college-chatbot.json': 'bitbot-college-chatbot',
-            'rozgarsetu.json': 'rozgarsetu',
-            'scaleiq.json': 'scaleiq',
-            'total-solution.json': 'total-solution',
-            'portfolio-v2.json': 'portfolio-v2',
+            'brandify-creator.json':       'brandify-creator',
+            'total-solution.json':         'total-solution',
+            'gpt-for-bca.json':            'gpt-for-bca',
+            'rozgarsetu.json':             'rozgarsetu',
+            'scaleiq.json':                'scaleiq',
+            'portfolio-v2.json':           'portfolio-v2',
         };
+
+        // User-specified display names in order
+        const displayNameMap = {
+            'imgninja.json':               'project-01.imgNinja',
+            'bitbot-college-chatbot.json': 'project-02.bitBot',
+            'brandify-creator.json':       'project-03.brandifyCreator',
+            'total-solution.json':         'project-04.totalSolution',
+            'gpt-for-bca.json':            'project-05.GPTforBCA',
+            'rozgarsetu.json':             'project-06.rozgarSeva',
+            'scaleiq.json':                'project-07.scaleIQ',
+            'portfolio-v2.json':           'project-08.portfolio (v2.0)',
+        };
+
+        // Consistent timeline years — chronologically ordered 2025 → 2026
+        const timelineYears = {
+            'imgninja.json':               { start: 'Jan 2025',  end: 'Mar 2025'  },
+            'bitbot-college-chatbot.json': { start: 'Mar 2025',  end: 'May 2025'  },
+            'brandify-creator.json':       { start: 'May 2025',  end: 'Jul 2025'  },
+            'total-solution.json':         { start: 'Jul 2025',  end: 'Sep 2025'  },
+            'gpt-for-bca.json':            { start: 'Sep 2025',  end: 'Nov 2025'  },
+            'rozgarsetu.json':             { start: 'Nov 2025',  end: 'Jan 2026'  },
+            'scaleiq.json':                { start: 'Feb 2026',  end: 'Apr 2026'  },
+            'portfolio-v2.json':           { start: 'Apr 2026',  end: 'Ongoing'   },
+        };
+
         const projectId = fileKeyMap[fileName];
         const proj = projects.find(p => p.id === projectId) || {};
+        const displayName = displayNameMap[fileName] || fileName;
+        const yr = timelineYears[fileName] || {};
 
         if (!proj.title) {
-            return `<div class="welcome-screen"><div class="welcome-icon">📄</div><h2>${fileName}</h2><p>Project data not found.</p></div>`;
+            return `<div class="welcome-screen"><div class="welcome-icon">📄</div><h2>${displayName}</h2><p>Project data not found.</p></div>`;
         }
 
+        // ── Collect all tech from any key in techStack ──
         const tech = proj.techStack || {};
-        const allTech = [
-            ...(tech.frontend || []),
-            ...(tech.backend || []),
-            ...(tech.database || []),
-            ...(tech.tools || []),
-            ...(Array.isArray(tech) ? tech : []),
-        ].filter(Boolean);
+        const allTech = Object.values(tech)
+            .flatMap(v => Array.isArray(v) ? v : (typeof v === 'string' ? [v] : []))
+            .filter(Boolean);
 
-        const imagesArr = proj.images || (proj.thumbnail ? [proj.thumbnail] : []);
-        const imagesHtml = imagesArr.length > 0 ? `
+        // ── Gallery ──
+        const gallery = (proj.images && proj.images.gallery) ? proj.images.gallery
+                        : (proj.images && Array.isArray(proj.images)) ? proj.images
+                        : [];
+        const thumbnail = (proj.images && proj.images.thumbnail) || '';
+        const allImages = thumbnail ? [thumbnail, ...gallery.filter(i => i !== thumbnail)] : gallery;
+
+        const galleryHtml = allImages.length > 0 ? `
             <h2 class="md-h2">📸 Screenshots</h2>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
-                ${imagesArr.slice(0, 4).map(img => `<img src="${img}" alt="${proj.title}" style="height:120px;border-radius:8px;object-fit:cover;border:1px solid var(--clr-border);" loading="lazy" onerror="this.style.display='none'">`).join('')}
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px;">
+                ${allImages.map(img => `<img src="${img}" alt="${proj.title}" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:16/9;border:1px solid var(--clr-border);cursor:zoom-in;" loading="lazy" onerror="this.style.display='none'">`).join('')}
             </div>` : '';
 
-        const statusColor = proj.status === 'Completed' ? '#6a9955' : proj.status === 'In Progress' ? '#e5c07b' : '#61afef';
-        const liveBtnHtml = proj.liveDemo && proj.liveDemo !== 'N/A'
-            ? `<a href="${proj.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-card-link link-live" style="margin-left:8px;"><i class="fas fa-external-link-alt"></i> Live Demo</a>`
-            : '';
-        const githubBtnHtml = proj.github && proj.github !== 'N/A' && proj.github !== 'Private'
-            ? `<a href="${proj.github}" target="_blank" rel="noopener noreferrer" class="project-card-link link-github"><i class="fab fa-github"></i> GitHub</a>`
-            : `<span class="ach-tag">🔒 ${proj.github || 'Private'}</span>`;
+        // ── Status color ──
+        const statusColor = (proj.status || '').includes('Completed') ? '#6a9955'
+                           : (proj.status || '').includes('Progress')  ? '#e5c07b' : '#61afef';
+
+        // ── Links ──
+        const links = proj.links || {};
+        const liveLink = links.liveDemo || proj.liveDemo || '';
+        const ghLink   = links.github   || proj.github   || '';
+        const liveBtnHtml  = liveLink && liveLink !== 'N/A'
+            ? `<a href="${liveLink}" target="_blank" rel="noopener noreferrer" class="project-card-link link-live"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : '';
+        const githubBtnHtml = ghLink && ghLink !== 'N/A' && ghLink !== 'Private' && ghLink !== ''
+            ? `<a href="${ghLink}" target="_blank" rel="noopener noreferrer" class="project-card-link link-github"><i class="fab fa-github"></i> GitHub</a>`
+            : `<span class="ach-tag">🔒 Private / No Link</span>`;
+
+        // ── Contributors ──
+        const contribHtml = (proj.contributors || []).length > 0 ? `
+            <h2 class="md-h2">👥 Contributors</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+                ${proj.contributors.map(c => `
+                    <div style="padding:8px 14px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);">
+                        <div style="font-weight:600;color:var(--clr-text);font-size:13px;">${c.name}</div>
+                        <div style="font-size:11px;color:var(--clr-text-secondary);">${c.role}</div>
+                    </div>`).join('')}
+            </div>` : '';
+
+        // ── Tech Stack grouped ──
+        const techGroupsHtml = Object.keys(tech).length > 0 ? `
+            <h2 class="md-h2">🔧 Tech Stack</h2>
+            <div style="margin-bottom:16px;">
+                ${Object.entries(tech).map(([group, items]) => {
+                    const arr = Array.isArray(items) ? items : (typeof items === 'string' ? [items] : []);
+                    if (!arr.length) return '';
+                    return `<div style="margin-bottom:10px;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:6px;">${group}</div>
+                        <div class="achievement-tags" style="display:flex;flex-wrap:wrap;gap:6px;">${this._techBadges(arr)}</div>
+                    </div>`;
+                }).join('')}
+            </div>` : '';
+
+        // ── Architecture ──
+        const arch = proj.architecture || {};
+        const archHtml = arch.description ? `
+            <h2 class="md-h2">🏗️ Architecture</h2>
+            <div style="margin-bottom:16px;padding:12px 16px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);">
+                <div style="font-weight:600;color:var(--clr-accent);margin-bottom:6px;font-size:13px;">${arch.pattern || ''}</div>
+                <div style="font-size:13px;color:var(--clr-text-secondary);line-height:1.6;">${arch.description}</div>
+                ${(arch.pages || []).length > 0 ? `<div style="margin-top:10px;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:6px;">Pages</div><ul style="padding-left:20px;margin:0;">${arch.pages.map(p => `<li style="font-size:12px;color:var(--clr-text-secondary);margin-bottom:3px;">${p}</li>`).join('')}</ul></div>` : ''}
+                ${(arch.apiEndpoints || []).length > 0 ? `<div style="margin-top:10px;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:6px;">API Endpoints</div><ul style="padding-left:20px;margin:0;">${arch.apiEndpoints.map(e => `<li style="font-size:12px;color:var(--clr-text-secondary);margin-bottom:3px;"><code style="color:var(--clr-accent);">${e.method} ${e.path}</code> — ${e.description}</li>`).join('')}</ul></div>` : ''}
+                ${arch.databaseStructure && arch.databaseStructure.collections ? `<div style="margin-top:10px;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:6px;">Database Collections</div><ul style="padding-left:20px;margin:0;">${arch.databaseStructure.collections.map(c => `<li style="font-size:12px;color:var(--clr-text-secondary);margin-bottom:3px;">${c}</li>`).join('')}</ul></div>` : ''}
+            </div>` : '';
+
+        // ── Challenges & Solutions ──
+        const challengesHtml = (proj.challenges || []).length > 0 ? `
+            <h2 class="md-h2">⚡ Challenges & Solutions</h2>
+            ${proj.challenges.map((ch, i) => `
+                <div style="margin-bottom:10px;padding:10px 14px;border-left:3px solid var(--clr-accent);background:var(--clr-surface2);border-radius:0 6px 6px 0;">
+                    <div style="font-size:13px;font-weight:600;color:var(--clr-text);">⚠ ${ch}</div>
+                    ${proj.solutions && proj.solutions[i] ? `<div style="font-size:12px;color:var(--clr-text-secondary);margin-top:5px;padding-top:5px;border-top:1px solid var(--clr-border);">✅ ${proj.solutions[i]}</div>` : ''}
+                </div>`).join('')}` : '';
+
+        // ── Key Learnings ──
+        const learningsHtml = (proj.keyLearnings || []).length > 0 ? `
+            <h2 class="md-h2">🎓 Key Learnings</h2>
+            <ul style="padding-left:20px;margin:0 0 16px 0;">
+                ${proj.keyLearnings.map(l => `<li style="margin-bottom:5px;color:var(--clr-text-secondary);font-size:13px;">${l}</li>`).join('')}
+            </ul>` : '';
+
+        // ── Design Highlights ──
+        const design = proj.designHighlights || {};
+        const designHtml = Object.keys(design).length > 0 ? `
+            <h2 class="md-h2">🎨 Design Highlights</h2>
+            <div style="padding:12px 16px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);margin-bottom:16px;">
+                ${design.colorPalette ? `<div style="margin-bottom:8px;"><span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);">Color Theme:</span> <span style="font-size:13px;color:var(--clr-text);">${design.colorPalette.theme || ''}</span></div>` : ''}
+                ${design.typography && (design.typography.heading || design.typography.body) ? `<div style="margin-bottom:8px;"><span style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);">Typography:</span> <span style="font-size:13px;color:var(--clr-text);">${[design.typography.heading, design.typography.body].filter(Boolean).join(' / ')}</span></div>` : ''}
+                ${(design.designFeatures || []).length > 0 ? `<div class="achievement-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">${this._techBadges(design.designFeatures)}</div>` : ''}
+            </div>` : '';
+
+        // ── Stats ──
+        const statsHtml = proj.stats ? `
+            <h2 class="md-h2">📊 Project Stats</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+                ${Object.entries(proj.stats).map(([k, v]) => `
+                    <div style="padding:8px 14px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);text-align:center;min-width:80px;">
+                        <div style="font-size:18px;font-weight:700;color:var(--clr-accent);">${v}</div>
+                        <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);">${k.replace(/([A-Z])/g,' $1').trim()}</div>
+                    </div>`).join('')}
+            </div>` : '';
+
+        // ── Tags ──
+        const tagsHtml = (proj.tags || []).length > 0 ? `
+            <h2 class="md-h2">🏷️ Tags</h2>
+            <div class="project-card-tags" style="margin-bottom:16px;">${this._tagList(proj.tags)}</div>` : '';
+
+        // ── Roadmap ──
+        const roadmap = proj.roadmap || {};
+        const roadmapHtml = Object.keys(roadmap).length > 0 ? `
+            <h2 class="md-h2">🗺️ Roadmap</h2>
+            <div style="margin-bottom:16px;">
+                ${Object.entries(roadmap).map(([phase, desc]) => `
+                    <div style="margin-bottom:8px;padding:8px 14px;border-left:3px solid #e5c07b;background:var(--clr-surface2);border-radius:0 6px 6px 0;">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#e5c07b;margin-bottom:3px;">${phase}</div>
+                        <div style="font-size:12px;color:var(--clr-text-secondary);">${desc}</div>
+                    </div>`).join('')}
+            </div>` : '';
+
+        // ── Performance Benchmarks ──
+        const perf = proj.performanceBenchmarks || {};
+        const perfHtml = Object.keys(perf).length > 0 ? `
+            <h2 class="md-h2">⚡ Performance Benchmarks</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+                ${Object.entries(perf).map(([k, v]) => `
+                    <div style="padding:8px 14px;background:var(--clr-surface2);border-radius:8px;border:1px solid var(--clr-border);">
+                        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--clr-text-secondary);margin-bottom:3px;">${k.replace(/([A-Z])/g,' $1').trim()}</div>
+                        <div style="font-size:13px;color:var(--clr-accent);font-weight:600;">${v}</div>
+                    </div>`).join('')}
+            </div>` : '';
+
+        // ── Client ──
+        const clientHtml = proj.client ? `
+            <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(97,175,239,0.1);border-radius:6px;border:1px solid rgba(97,175,239,0.3);margin-bottom:12px;">
+                <i class="fas fa-building" style="color:#61afef;"></i>
+                <span style="font-size:13px;color:#61afef;font-weight:500;">Client: ${proj.client}</span>
+            </div>` : '';
 
         return `<div class="md-content">
-            <h1 class="md-h1">${proj.title}</h1>
+            <h1 class="md-h1">${displayName}</h1>
+            <div style="font-size:14px;color:var(--clr-text-secondary);margin-bottom:12px;font-style:italic;">${proj.title}</div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
                 <span class="badge badge-blue">${proj.category || proj.type || ''}</span>
                 <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:${statusColor}22;color:${statusColor};border:1px solid ${statusColor}55;">● ${proj.status}</span>
-                ${proj.timeline ? `<span class="badge badge-yellow">📅 ${proj.timeline.startDate} – ${proj.timeline.endDate}</span>` : ''}
+                <span class="badge badge-yellow">📅 ${yr.start || proj.year || ''} – ${yr.end || proj.year || ''}</span>
+                ${proj.timeline && proj.timeline.duration ? `<span class="badge badge-green">⏱ ${proj.timeline.duration}</span>` : ''}
             </div>
+            ${clientHtml}
             <p class="md-p">${proj.overview || proj.shortDescription || ''}</p>
-            ${imagesHtml}
+            ${galleryHtml}
             <h2 class="md-h2">✨ Key Features</h2>
             <ul style="padding-left:20px;margin:0 0 16px 0;">
                 ${(proj.features || []).map(f => `<li style="margin-bottom:5px;color:var(--clr-text-secondary);font-size:13px;">${f}</li>`).join('')}
             </ul>
-            <h2 class="md-h2">🔧 Tech Stack</h2>
-            <div class="achievement-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;">
-                ${this._techBadges(allTech)}
-            </div>
+            ${techGroupsHtml}
+            ${statsHtml}
+            ${archHtml}
             ${proj.myRole ? `<h2 class="md-h2">👤 My Role</h2><p class="md-p">${proj.myRole}</p>` : ''}
-            ${proj.challenges && proj.challenges.length > 0 ? `
-            <h2 class="md-h2">⚡ Challenges & Solutions</h2>
-            ${proj.challenges.map((ch, i) => `
-                <div style="margin-bottom:10px;padding:10px 14px;border-left:3px solid var(--clr-accent);background:var(--clr-surface2);border-radius:0 6px 6px 0;">
-                    <div style="font-size:13px;font-weight:600;color:var(--clr-text);">Challenge: ${ch}</div>
-                    ${proj.solutions && proj.solutions[i] ? `<div style="font-size:12px;color:var(--clr-text-secondary);margin-top:4px;">Solution: ${proj.solutions[i]}</div>` : ''}
-                </div>`).join('')}` : ''}
-            <div class="project-card-links" style="margin-top:20px;">
+            ${contribHtml}
+            ${challengesHtml}
+            ${learningsHtml}
+            ${designHtml}
+            ${perfHtml}
+            ${roadmapHtml}
+            ${tagsHtml}
+            <div class="project-card-links" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;">
                 ${githubBtnHtml}
                 ${liveBtnHtml}
             </div>
         </div>`;
     }
+
 
     // =========================================================================
     // Content Builders — projects/micro/

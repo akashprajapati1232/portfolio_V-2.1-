@@ -83,14 +83,14 @@ const TREE = [
             {
                 type: 'folder', name: 'production', id: 'projects-production',
                 children: [
-                    { type: 'file', name: 'gpt-for-bca.json',           key: 'gpt-for-bca.json'           },
-                    { type: 'file', name: 'imgninja.json',               key: 'imgninja.json'               },
-                    { type: 'file', name: 'brandify-creator.json',       key: 'brandify-creator.json'       },
-                    { type: 'file', name: 'bitbot-college-chatbot.json', key: 'bitbot-college-chatbot.json' },
-                    { type: 'file', name: 'rozgarsetu.json',             key: 'rozgarsetu.json'             },
-                    { type: 'file', name: 'scaleiq.json',                key: 'scaleiq.json'                },
-                    { type: 'file', name: 'total-solution.json',         key: 'total-solution.json'         },
-                    { type: 'file', name: 'portfolio-v2.json',           key: 'portfolio-v2.json'           },
+                    { type: 'file', name: 'project-01.imgNinja',            key: 'imgninja.json'               },
+                    { type: 'file', name: 'project-02.bitBot',              key: 'bitbot-college-chatbot.json' },
+                    { type: 'file', name: 'project-03.brandifyCreator',     key: 'brandify-creator.json'       },
+                    { type: 'file', name: 'project-04.totalSolution',       key: 'total-solution.json'         },
+                    { type: 'file', name: 'project-05.GPTforBCA',           key: 'gpt-for-bca.json'            },
+                    { type: 'file', name: 'project-06.rozgarSeva',          key: 'rozgarsetu.json'             },
+                    { type: 'file', name: 'project-07.scaleIQ',             key: 'scaleiq.json'                },
+                    { type: 'file', name: 'project-08.portfolio (v2.0)',    key: 'portfolio-v2.json'           },
                 ]
             },
             {

@@ -76,15 +76,15 @@
             }
         ]
     },
-    "myRole": "Co-developer (Frontend Lead). Designed and built the entire React frontend including all pages, routing, auth modal system, and custom CSS design system. Collaborated with Vivek Yadav on backend integration and system architecture.",
+    "myRole": "Lead Developer. Responsible for the entire project, including the backend development, application architecture, business logic, system design, and the overall implementation of how the project works.",
     "contributors": [
         {
             "name": "Akash Prajapati",
-            "role": "Frontend Lead"
+            "role": "Lead Developer (Backend & Architecture)"
         },
         {
             "name": "Vivek Yadav",
-            "role": "Backend Developer"
+            "role": "Frontend UI Developer"
         }
     ],
     "challenges": [

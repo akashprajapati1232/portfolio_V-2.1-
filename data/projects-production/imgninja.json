@@ -1,15 +1,15 @@
 {
     "id": "imgninja",
     "title": "ImgNinja",
-    "shortDescription": "A comprehensive, privacy-first browser-based image processing suite — featuring compression, format conversion, resizing, and cropping with zero server communication and support for 15+ image formats.",
-    "overview": "ImgNinja is a complete, client-side image optimization and manipulation toolkit that runs entirely within the user's browser. Built with zero external JavaScript dependencies, it delivers professional-grade image processing capabilities — compression, format conversion, resizing, and cropping — without ever sending user data to a server. The project is positioned as a privacy-first alternative to cloud-based image tools, with no file size limits, no watermarks, no usage restrictions, and no user accounts required. ImgNinja uses advanced algorithms including a binary search compression engine, format-specific quality matrices, and hardware-accelerated Canvas API processing to rival the output quality of desktop software. The platform includes a full blog system, SEO-optimized pages, and supports 15+ image formats including JPEG, PNG, WebP, AVIF, HEIF/HEIC, GIF, BMP, TIFF, ICO, and SVG.",
+    "shortDescription": "An image processing tools website worked on since my 4th semester. It used to receive around 3,000–5,000 monthly users before going offline, and I plan to relaunch it rebuilt with Next.js.",
+    "overview": "ImgNinja is an image processing tools website that I have been working on since my 4th semester. It used to receive around 3,000–5,000 monthly users before it went offline. I plan to relaunch it with a completely new tech stack, rebuilding it using Next.js. The previous version was a complete, client-side image optimization and manipulation toolkit running entirely within the browser. It featured compression, format conversion, resizing, and cropping — without ever sending user data to a server. It served as a privacy-first alternative to cloud tools, with no usage restrictions.",
     "category": "Frontend Web Application",
     "type": "Production Project",
     "status": "Completed",
     "year": "2025",
     "timeline": {
         "startDate": "2025",
-        "endDate": "2025",
+        "status": "In Progress",
         "duration": "Solo project"
     },
     "features": [

@@ -9,8 +9,8 @@
     "year": "2026",
     "timeline": {
         "startDate": "2026",
-        "endDate": "Ongoing",
-        "duration": "Ongoing solo project"
+        "status": "Ongoing",
+        "members": "Solo project"
     },
     "features": [
         "Interactive terminal interface with custom command-line navigation",

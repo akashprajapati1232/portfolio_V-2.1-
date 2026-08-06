@@ -6,11 +6,11 @@
     "category": "Full Stack Web Application",
     "type": "Production Project",
     "status": "Completed",
-    "year": "2026",
+    "year": "2025",
     "timeline": {
-        "startDate": "March 2026",
-        "endDate": "May 2026",
-        "duration": "~2 months"
+        "startDate": "2025",
+        "status": "Complete",
+        "members": "Akash Prajapati, Vivek Yadav"
     },
     "features": [
         "Semester-wise syllabus browser (Sem 1 to Sem 6) with accordion-style navigation",

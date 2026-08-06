@@ -601,22 +601,11 @@ class App {
             'portfolio-v2.json':           'project-08.portfolio (v2.0)',
         };
 
-        // Consistent timeline years — chronologically ordered 2025 → 2026
-        const timelineYears = {
-            'imgninja.json':               { start: 'Jan 2025',  end: 'Mar 2025'  },
-            'bitbot-college-chatbot.json': { start: 'Mar 2025',  end: 'May 2025'  },
-            'brandify-creator.json':       { start: 'May 2025',  end: 'Jul 2025'  },
-            'total-solution.json':         { start: 'Jul 2025',  end: 'Sep 2025'  },
-            'gpt-for-bca.json':            { start: 'Sep 2025',  end: 'Nov 2025'  },
-            'rozgarsetu.json':             { start: 'Nov 2025',  end: 'Jan 2026'  },
-            'scaleiq.json':                { start: 'Feb 2026',  end: 'Apr 2026'  },
-            'portfolio-v2.json':           { start: 'Apr 2026',  end: 'Ongoing'   },
-        };
-
-        const projectId = fileKeyMap[fileName];
-        const proj = projects.find(p => p.id === projectId) || {};
+        // Consistent timeline read from each JSON's own `timeline` field
+        const projectId   = fileKeyMap[fileName];
+        const proj        = projects.find(p => p.id === projectId) || {};
         const displayName = displayNameMap[fileName] || fileName;
-        const yr = timelineYears[fileName] || {};
+        const yr          = proj.timeline || {};
 
         if (!proj.title) {
             return `<div class="welcome-screen"><div class="welcome-icon">📄</div><h2>${displayName}</h2><p>Project data not found.</p></div>`;
@@ -637,13 +626,23 @@ class App {
 
         const galleryHtml = allImages.length > 0 ? `
             <h2 class="md-h2">📸 Screenshots</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px;">
-                ${allImages.map(img => `<img src="${img}" alt="${proj.title}" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:16/9;border:1px solid var(--clr-border);cursor:zoom-in;" loading="lazy" onerror="this.style.display='none'">`).join('')}
+            <div class="proj-gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px;">
+                ${allImages.map((img, idx) => `<img
+                    src="${img}"
+                    alt="${proj.title} screenshot ${idx + 1}"
+                    class="proj-gallery-img"
+                    data-index="${idx}"
+                    data-gallery='${JSON.stringify(allImages).replace(/'/g, '&apos;')}'
+                    style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:16/9;border:1px solid var(--clr-border);cursor:zoom-in;transition:opacity 0.2s;"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                >`).join('')}
             </div>` : '';
 
         // ── Status color ──
-        const statusColor = (proj.status || '').includes('Completed') ? '#6a9955'
-                           : (proj.status || '').includes('Progress')  ? '#e5c07b' : '#61afef';
+        const projStatus = yr.status || proj.status || '';
+        const statusColor = projStatus.includes('Complete') ? '#6a9955'
+                           : projStatus.includes('Progress') || projStatus.includes('Ongoing') ? '#e5c07b' : '#61afef';
 
         // ── Links ──
         const links = proj.links || {};
@@ -770,9 +769,9 @@ class App {
             <div style="font-size:14px;color:var(--clr-text-secondary);margin-bottom:12px;font-style:italic;">${proj.title}</div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
                 <span class="badge badge-blue">${proj.category || proj.type || ''}</span>
-                <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:${statusColor}22;color:${statusColor};border:1px solid ${statusColor}55;">● ${proj.status}</span>
-                <span class="badge badge-yellow">📅 ${yr.start || proj.year || ''} – ${yr.end || proj.year || ''}</span>
-                ${proj.timeline && proj.timeline.duration ? `<span class="badge badge-green">⏱ ${proj.timeline.duration}</span>` : ''}
+                <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:${statusColor}22;color:${statusColor};border:1px solid ${statusColor}55;">● ${projStatus}</span>
+                <span class="badge badge-yellow">📅 ${yr.startDate || proj.year || ''}</span>
+                ${yr.members ? `<span class="badge badge-green">👥 ${yr.members}</span>` : ''}
             </div>
             ${clientHtml}
             <p class="md-p">${proj.overview || proj.shortDescription || ''}</p>
@@ -891,38 +890,96 @@ if (document.readyState === 'loading') {
 }
 
 // ── Global Modal Logic & Event Delegation ──
-document.addEventListener('click', (e) => {
-    // 1. Certificate Modal Logic
-    const btn = e.target.closest('.view-cert-btn');
-    if (btn) {
-        const src = btn.getAttribute('data-image');
-        const modal = document.getElementById('image-modal');
-        const modalImg = document.getElementById('modal-image');
-        if (modal && modalImg && src) {
-            modalImg.src = src;
-            modal.style.display = 'flex';
+
+/** Shared modal state */
+let _modalGallery = [];
+let _modalIndex   = 0;
+
+function openModal(images, index) {
+    const modal   = document.getElementById('image-modal');
+    const img     = document.getElementById('modal-image');
+    const prevBtn = document.getElementById('modal-prev');
+    const nextBtn = document.getElementById('modal-next');
+    const counter = document.getElementById('modal-counter');
+    if (!modal || !img) return;
+
+    _modalGallery = Array.isArray(images) ? images : [images];
+    _modalIndex   = Math.max(0, Math.min(index, _modalGallery.length - 1));
+
+    const hasNav = _modalGallery.length > 1;
+
+    function showImage(i) {
+        _modalIndex = (i + _modalGallery.length) % _modalGallery.length;
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = _modalGallery[_modalIndex];
+            img.style.opacity = '1';
+        }, 150);
+        if (counter) {
+            counter.textContent = `${_modalIndex + 1} / ${_modalGallery.length}`;
         }
     }
 
-    // 2. Technical Skills Domain Filtering
+    if (prevBtn) {
+        prevBtn.style.display = hasNav ? 'flex' : 'none';
+        prevBtn.onclick = (e) => { e.stopPropagation(); showImage(_modalIndex - 1); };
+    }
+    if (nextBtn) {
+        nextBtn.style.display = hasNav ? 'flex' : 'none';
+        nextBtn.onclick = (e) => { e.stopPropagation(); showImage(_modalIndex + 1); };
+    }
+    if (counter) counter.style.display = hasNav ? 'block' : 'none';
+
+    showImage(_modalIndex);
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    const modal = document.getElementById('image-modal');
+    if (modal) modal.style.display = 'none';
+    _modalGallery = [];
+    _modalIndex   = 0;
+}
+
+// Delegated click handler
+document.addEventListener('click', (e) => {
+    // 1. Certificate (single image) — .view-cert-btn
+    const certBtn = e.target.closest('.view-cert-btn');
+    if (certBtn) {
+        const src = certBtn.getAttribute('data-image');
+        if (src) openModal([src], 0);
+        return;
+    }
+
+    // 2. Project gallery image — .proj-gallery-img
+    const projImg = e.target.closest('.proj-gallery-img');
+    if (projImg) {
+        const raw   = projImg.getAttribute('data-gallery');
+        const index = parseInt(projImg.getAttribute('data-index') || '0', 10);
+        try {
+            const gallery = JSON.parse(raw.replace(/&apos;/g, "'"));
+            openModal(gallery, index);
+        } catch {
+            openModal([projImg.src], 0);
+        }
+        return;
+    }
+
+    // 3. Technical Skills Domain Filtering — .ts-clean-tab
     const tsTab = e.target.closest('.ts-clean-tab');
     if (tsTab) {
-        // Update active tab
         document.querySelectorAll('.ts-clean-tab').forEach(t => t.classList.remove('active'));
         tsTab.classList.add('active');
 
         const domainId = tsTab.getAttribute('data-domain-id');
         const allSkillsGrid = document.getElementById('ts-all-skills');
         const allPanels = document.querySelectorAll('.ts-domain-panel');
-        
-        // Hide all panels
+
         allPanels.forEach(p => p.classList.add('hidden'));
 
         if (domainId === 'all') {
             allSkillsGrid.classList.remove('hidden');
-            // Trigger animation on categories
-            const cats = allSkillsGrid.querySelectorAll('.ts-clean-category');
-            cats.forEach(cat => {
+            allSkillsGrid.querySelectorAll('.ts-clean-category').forEach(cat => {
                 cat.style.animation = 'none';
                 void cat.offsetHeight;
                 cat.style.animation = 'fadeInUp 0.3s ease forwards';
@@ -932,7 +989,6 @@ document.addEventListener('click', (e) => {
             const targetPanel = document.getElementById(`ts-domain-${domainId}`);
             if (targetPanel) {
                 targetPanel.classList.remove('hidden');
-                // Trigger animation on the panel
                 targetPanel.style.animation = 'none';
                 void targetPanel.offsetHeight;
                 targetPanel.style.animation = 'fadeInUp 0.3s ease forwards';
@@ -941,30 +997,26 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Setup static modal listeners (close button + backdrop)
 const setupModalListeners = () => {
-    const modal = document.getElementById('image-modal');
+    const modal   = document.getElementById('image-modal');
     const closeBtn = document.getElementById('modal-close');
-    
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            if (modal) modal.style.display = 'none';
-        });
-    }
-    
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (modal)    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('image-modal');
+        if (!modal || modal.style.display === 'none') return;
+        if (e.key === 'Escape')     closeModal();
+        if (e.key === 'ArrowLeft')  document.getElementById('modal-prev')?.click();
+        if (e.key === 'ArrowRight') document.getElementById('modal-next')?.click();
+    });
 };
 
-// If document is already loaded, run immediately, otherwise wait
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupModalListeners);
 } else {
     setupModalListeners();
 }
-
-

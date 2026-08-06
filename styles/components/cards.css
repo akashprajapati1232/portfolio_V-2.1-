@@ -586,32 +586,34 @@
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.88);
     z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
     opacity: 0;
     animation: fadeIn 0.2s forwards;
 }
 
 .modal-content {
     position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
+    max-width: 95vw;
+    max-height: 92vh;
     background: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
 }
 
 .modal-close-btn {
     position: absolute;
-    top: -40px;
-    right: -40px;
-    background: rgba(255, 255, 255, 0.1);
+    top: -44px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.12);
     color: #fff;
     border: none;
     width: 36px;
@@ -621,36 +623,90 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     transition: background 0.2s;
     z-index: 10001;
 }
 
 @media (max-width: 768px) {
     .modal-close-btn {
-        top: 10px;
-        right: 10px;
-        background: rgba(0, 0, 0, 0.6);
+        top: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.7);
     }
 }
 
 .modal-close-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Modal Nav Buttons (Prev / Next) ── */
+.modal-nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+    z-index: 10001;
+}
+
+.modal-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.26);
+    transform: scale(1.08);
+}
+
+.modal-nav-prev { margin-right: 10px; }
+.modal-nav-next { margin-left: 10px;  }
+
+@media (max-width: 600px) {
+    .modal-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.6);
+        width: 36px;
+        height: 36px;
+    }
+    .modal-nav-prev { left: 6px;  }
+    .modal-nav-next { right: 6px; }
 }
 
 .modal-image-container {
+    position: relative;
     overflow: auto;
-    max-width: 90vw;
+    max-width: 88vw;
     max-height: 90vh;
     border-radius: 8px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 #modal-image {
     max-width: 100%;
-    max-height: 90vh;
+    max-height: 85vh;
     object-fit: contain;
     border-radius: 8px;
+    transition: opacity 0.18s ease;
+}
+
+/* ── Modal Counter (e.g. "3 / 6") ── */
+.modal-counter {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    white-space: nowrap;
+    letter-spacing: 0.5px;
 }

@@ -6,11 +6,11 @@
     "category": "Multi-Role Web Platform",
     "type": "Production Project",
     "status": "In Progress (Frontend Complete, Backend Architecture Designed)",
-    "year": "2025",
+    "year": "2026",
     "timeline": {
-        "startDate": "2025",
-        "endDate": "Ongoing",
-        "duration": "Solo project"
+        "startDate": "2026",
+        "status": "In Progress",
+        "members": "Solo project"
     },
     "features": [
         "Multi-role architecture — Workers, Businesses, Partners, and Admin",
@@ -131,7 +131,7 @@
         ]
     },
     "links": {
-        "github": "https://github.com/akashprajapati1232/job-portal",
+        "github": "Private",
         "liveDemo": ""
     },
     "tags": [

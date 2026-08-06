@@ -6,11 +6,11 @@
     "category": "Business / Agency Website",
     "type": "Production Project",
     "status": "Completed",
-    "year": "2026",
+    "year": "2025",
     "timeline": {
-        "startDate": "2026",
-        "endDate": "2026",
-        "duration": "Solo project"
+        "startDate": "2025",
+        "status": "In Progress",
+        "members": "Solo project"
     },
     "features": [
         "Dual user journeys — separate dedicated pages for Brands and Creators",

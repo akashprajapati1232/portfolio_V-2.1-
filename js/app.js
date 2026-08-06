@@ -10,7 +10,7 @@ import { tabManager } from './components/tabs/TabManager.js';
 import { layoutController } from './components/layout/LayoutController.js';
 import { explorer } from './components/explorer/Explorer.js';
 import { terminal } from './components/terminal/Terminal.js';
-import { jarvisAI } from './components/ai/JarvisAI.js';
+import { echoAI as jarvisAI } from './components/ai/EchoAI.js';
 import { panelResizer } from './components/layout/PanelResizer.js';
 import { markdownRenderer } from './components/markdown/MarkdownRenderer.js';
 import { titleBar } from './components/layout/TitleBar.js';

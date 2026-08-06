@@ -64,9 +64,11 @@ class Terminal {
                     <div class="terminal-tabs">
                         <div class="terminal-tab" data-target="panel-content-problems" id="term-tab-problems" title="Problems">
                             <span>PROBLEMS</span>
+                            <span class="term-tab-badge">3</span>
                         </div>
                         <div class="terminal-tab" data-target="panel-content-output" id="term-tab-output" title="Output">
                             <span>OUTPUT</span>
+                            <span class="term-tab-badge">1</span>
                         </div>
                         <div class="terminal-tab" data-target="panel-content-debug" id="term-tab-debug" title="Debug Console">
                             <span>DEBUG CONSOLE</span>
@@ -77,6 +79,7 @@ class Terminal {
                         </div>
                         <div class="terminal-tab" data-target="panel-content-ports" id="term-tab-ports" title="Ports">
                             <span>PORTS</span>
+                            <span class="term-tab-badge">5</span>
                         </div>
                     </div>
                     <div class="terminal-actions">
@@ -115,13 +118,20 @@ class Terminal {
                     <div class="term-line"><span class="term-output">Warnings: 3</span></div>
                     <div class="term-line"><span class="term-output">Info: 2</span></div>
                     <div class="term-line"><span class="term-output"></span></div>
-                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Coffee level is running low.</span></div>
                     <div class="term-line"><span class="term-output"></span></div>
-                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Too many project ideas, not enough weekends.</span></div>
+                    <div class="term-line"><span class="term-output">Warnings</span></div>
                     <div class="term-line"><span class="term-output"></span></div>
-                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Curiosity exceeds recommended limits.</span></div>
+                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Coffee level below 20%.</span></div>
                     <div class="term-line"><span class="term-output"></span></div>
-                    <div class="term-line"><span class="term-output" style="color: #6a9955;">✓ No coding issues detected.</span></div>
+                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ "I'll just add one more feature..." detected.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #cca700;">⚠ Weekend has been converted into coding time.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output">Info</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #4fc1ff;">💡 Portfolio running successfully.</span></div>
+                    <div class="term-line"><span class="term-output"></span></div>
+                    <div class="term-line"><span class="term-output" style="color: #4fc1ff;">💡 Developer still learning...</span></div>
                 </div>
                 
                 <div id="panel-content-output" class="panel-content-area">

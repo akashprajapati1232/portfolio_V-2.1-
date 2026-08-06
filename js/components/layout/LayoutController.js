@@ -52,7 +52,7 @@ class LayoutController {
         const layoutLeft = document.getElementById('layout-left');
         const layoutBottom = document.getElementById('layout-bottom');
         const layoutRight = document.getElementById('layout-right');
-        const closeJarvis = document.getElementById('close-jarvis');
+        const closeEcho = document.getElementById('close-echo') || document.getElementById('close-jarvis');
         
         const sidebar = document.getElementById('sidebar');
         const terminalPanel = document.getElementById('terminal-panel');
@@ -77,7 +77,7 @@ class LayoutController {
             });
         }
 
-        // Toggle Right Sidebar (Jarvis)
+        // Toggle Right Sidebar (ECHO AI)
         const toggleRightSidebar = () => {
             if (!rightSidebar || !layoutRight) return;
             const isHidden = rightSidebar.classList.toggle('hidden');
@@ -93,8 +93,8 @@ class LayoutController {
             layoutRight.addEventListener('click', toggleRightSidebar);
         }
         
-        if (closeJarvis) {
-            closeJarvis.addEventListener('click', () => {
+        if (closeEcho) {
+            closeEcho.addEventListener('click', () => {
                 rightSidebar.classList.add('hidden');
                 if (layoutRight) layoutRight.classList.remove('active');
             });

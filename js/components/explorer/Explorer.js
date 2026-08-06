@@ -25,6 +25,8 @@ const FILE_ICON_MAP = {
     'png':    { cls: 'fas fa-file-image',  color: '#a074c4' },  // PNG: purple
     'jpg':    { cls: 'fas fa-file-image',  color: '#a074c4' },  // JPG: purple
     'jpeg':   { cls: 'fas fa-file-image',  color: '#a074c4' },  // JPEG: purple
+    'log':    { cls: 'fas fa-file-alt',    color: '#8a8a8a' },  // LOG: gray
+    'db':     { cls: 'fas fa-database',    color: '#c678dd' },  // DB: purple
     // Fallback
     'default': { cls: 'fas fa-file',       color: '#8a8a8a' }
 };
@@ -43,7 +45,7 @@ const TREE = [
         children: [
             { type: 'file', name: 'README.md',       key: 'README.md'       },
             { type: 'file', name: 'profile.json',    key: 'profile.json'    },
-            { type: 'file', name: 'socials.yml',     key: 'socials.yml'     },
+            { type: 'file', name: 'socials.db',      key: 'socials.db'      },
         ]
     },
     {
@@ -80,29 +82,27 @@ const TREE = [
     {
         type: 'folder', name: 'Projects', id: 'projects',
         children: [
-            {
-                type: 'folder', name: 'production', id: 'projects-production',
-                children: [
-                    { type: 'file', name: 'project-01.imgNinja',            key: 'imgninja.json'               },
-                    { type: 'file', name: 'project-02.bitBot',              key: 'bitbot-college-chatbot.json' },
-                    { type: 'file', name: 'project-03.brandifyCreator',     key: 'brandify-creator.json'       },
-                    { type: 'file', name: 'project-04.totalSolution',       key: 'total-solution.json'         },
-                    { type: 'file', name: 'project-05.GPTforBCA',           key: 'gpt-for-bca.json'            },
-                    { type: 'file', name: 'project-06.rozgarSeva',          key: 'rozgarsetu.json'             },
-                    { type: 'file', name: 'project-07.scaleIQ',             key: 'scaleiq.json'                },
-                    { type: 'file', name: 'project-08.portfolio (v2.0)',    key: 'portfolio-v2.json'           },
-                ]
-            },
-            {
-                type: 'folder', name: 'micro', id: 'projects-micro',
-                children: [
-                    { type: 'file', name: 'projects-micro.json', key: 'projects-micro.json' },
-                ]
-            },
+            { type: 'file', name: 'projects.micro', key: 'projects-micro.json' },
+            { type: 'file', name: 'project-01.imgNinja',            key: 'imgninja.json'               },
+            { type: 'file', name: 'project-02.bitBot',              key: 'bitbot-college-chatbot.json' },
+            { type: 'file', name: 'project-03.brandifyCreator',     key: 'brandify-creator.json'       },
+            { type: 'file', name: 'project-04.totalSolution',       key: 'total-solution.json'         },
+            { type: 'file', name: 'project-05.GPTforBCA',           key: 'gpt-for-bca.json'            },
+            { type: 'file', name: 'project-06.rozgarSeva',          key: 'rozgarsetu.json'             },
+            { type: 'file', name: 'project-07.scaleIQ',             key: 'scaleiq.json'                },
+            { type: 'file', name: 'project-08.portfolio (v2.0)',    key: 'portfolio-v2.json'           },
         ]
     },
     {
-        type: 'file', name: 'LICENSE.txt', key: 'LICENSE.txt'
+        type: 'folder', name: 'life', id: 'life',
+        children: [
+            { type: 'file', name: 'failures.md',  key: 'failures.md'  },
+            { type: 'file', name: 'lessons.md',   key: 'lessons.md'   },
+            { type: 'file', name: 'books.md',     key: 'books.md'     },
+            { type: 'file', name: 'habits.json',  key: 'habits.json'  },
+            { type: 'file', name: 'goals.json',   key: 'goals.json'   },
+            { type: 'file', name: 'mistakes.log', key: 'mistakes.log' },
+        ]
     },
     {
         type: 'folder', name: 'config', id: 'config',

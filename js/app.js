@@ -23,7 +23,7 @@ class App {
             // About/
             'README.md': this.buildAboutMe.bind(this),
             'profile.json': this.buildProfileJson.bind(this),
-            'socials.yml': this.buildSocials.bind(this),
+            'socials.db': this.buildSocialsDb.bind(this),
             // Education/
             'education.json': this.buildEducation.bind(this),
             'certifications.tsx': this.buildCertifications.bind(this),
@@ -47,7 +47,6 @@ class App {
             // Projects/micro/
             'projects-micro.json': this.buildMicroProjects.bind(this),
             // Root/Config
-            'LICENSE.txt': this.buildLicense.bind(this),
             'settings.yml': this.buildSettings.bind(this),
         };
     }
@@ -349,25 +348,196 @@ class App {
         </div>`;
     }
 
-    buildSocials() {
-        const d = dataService.getData();
-        const s = d.socials || {};
-        const links = Object.entries(s).map(([platform, url]) => {
-            const icons = { github: 'fab fa-github', linkedin: 'fab fa-linkedin', instagram: 'fab fa-instagram', website: 'fas fa-globe', twitter: 'fab fa-twitter' };
-            const colors = { github: 'ci-github', linkedin: 'ci-linkedin', instagram: 'ci-instagram', website: 'ci-email' };
-            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <div class="contact-icon ${colors[platform] || 'ci-email'}"><i class="${icons[platform] || 'fas fa-link'}"></i></div>
-                <div><div class="contact-label">${platform.charAt(0).toUpperCase() + platform.slice(1)}</div><div class="contact-value">${url}</div></div>
-            </a>`;
-        }).join('');
-        return `<div class="md-content">
-            <h1 class="md-h1">🌐 Socials</h1>
-            <p class="md-p">Connect with me across the web.</p>
-            <div class="contact-card">${links}</div>
+    buildSocialsDb() {
+        return `
+        <style>
+            /* ── socials.db — VS Code editor style ── */
+            .sdb-meta {
+                background: var(--clr-surface2, #1a1a2e);
+                border: 1px solid var(--clr-border, #333);
+                border-radius: 6px;
+                padding: 14px 18px;
+                font-family: 'Fira Code', 'Consolas', monospace;
+                font-size: 13px;
+                color: var(--clr-text-secondary, #a0a0b0);
+                margin-bottom: 20px;
+                line-height: 1.8;
+            }
+            .sdb-meta-row { display: flex; gap: 8px; }
+            .sdb-meta-key { color: #6c7086; min-width: 80px; }
+            .sdb-meta-val { color: var(--clr-text, #cdd6f4); }
+            .sdb-meta-val.connected { color: #a6e3a1; }
+
+            .sdb-editor {
+                background: var(--clr-bg-dark, #0d1117);
+                border: 1px solid var(--clr-border, #333);
+                border-radius: 6px;
+                overflow: hidden;
+                margin-bottom: 20px;
+                font-family: 'Fira Code', 'Consolas', monospace;
+            }
+            .sdb-editor-bar {
+                background: var(--clr-surface2, #1a1a2e);
+                border-bottom: 1px solid var(--clr-border, #333);
+                padding: 6px 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 11px;
+                color: #6c7086;
+            }
+            .sdb-editor-run {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: #a6e3a1;
+                font-size: 11px;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+            .sdb-editor-run:hover {
+                color: #fff;
+            }
+            .sdb-editor-code {
+                padding: 16px 18px;
+                font-size: 13px;
+                line-height: 1.8;
+                color: var(--clr-text, #cdd6f4);
+            }
+            .sdb-kw  { color: #c678dd; font-weight: 600; }
+            .sdb-id  { color: #61afef; }
+            .sdb-val { color: #98c379; }
+            .sdb-op  { color: #e06c75; }
+            .sdb-ln  { color: #444; user-select: none; display: inline-block; width: 28px; text-align: right; margin-right: 14px; }
+
+            .sdb-result {
+                background: var(--clr-bg-dark, #0d1117);
+                border: 1px solid var(--clr-border, #333);
+                border-radius: 6px;
+                overflow: hidden;
+                font-family: 'Fira Code', 'Consolas', monospace;
+                font-size: 12.5px;
+            }
+            .sdb-result-bar {
+                background: var(--clr-surface2, #1a1a2e);
+                border-bottom: 1px solid var(--clr-border, #333);
+                padding: 6px 14px;
+                font-size: 11px;
+                color: #6c7086;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .sdb-result-bar .dot { width: 7px; height: 7px; border-radius: 50%; background: #a6e3a1; display: inline-block; }
+            .sdb-hint {
+                padding: 20px 18px;
+                color: #6c7086;
+                font-size: 12px;
+                font-style: italic;
+            }
+            #sdb-result-panel.running .sdb-hint {
+                display: none;
+            }
+            .sdb-loading {
+                display: none;
+                padding: 20px 18px;
+                color: #a6e3a1;
+                font-size: 12px;
+            }
+            #sdb-result-panel.running .sdb-loading {
+                display: block;
+                animation: sdbHideLoading 0s ease-in 1.6s forwards;
+            }
+            @keyframes sdbHideLoading {
+                to { opacity: 0; height: 0; padding: 0; margin: 0; overflow: hidden; }
+            }
+            #sdb-result-panel.running .sdb-loading::after {
+                content: 'Executing query';
+                animation: sdbDots 1.6s steps(4, end) forwards;
+            }
+            @keyframes sdbDots {
+                0%   { content: 'Executing query'; }
+                25%  { content: 'Executing query.'; }
+                50%  { content: 'Executing query..'; }
+                75%  { content: 'Executing query...'; }
+                100% { content: 'Executing query...'; }
+            }
+            .sdb-output {
+                display: none;
+                padding: 14px 18px;
+                opacity: 0;
+            }
+            #sdb-result-panel.running .sdb-output {
+                display: block;
+                animation: sdbFadeIn 0.3s ease-in 1.6s forwards;
+            }
+            @keyframes sdbFadeIn { to { opacity: 1; } }
+            .sdb-ascii {
+                color: var(--clr-text-secondary, #a0a0b0);
+                white-space: pre;
+                line-height: 1.6;
+                margin: 0;
+                overflow-x: auto;
+            }
+            .sdb-ascii a { color: #61afef; text-decoration: none; }
+            .sdb-ascii a:hover { text-decoration: underline; }
+            .sdb-stat {
+                margin-top: 12px;
+                font-size: 11px;
+                color: #585b70;
+            }
+            .sdb-stat .ok { color: #a6e3a1; margin-right: 8px; }
+        </style>
+
+        <div class="md-content">
+
+            <!-- DB metadata -->
+            <div class="sdb-meta">
+                <div class="sdb-meta-row"><span class="sdb-meta-key">Database :</span><span class="sdb-meta-val">socials.db</span></div>
+                <div class="sdb-meta-row"><span class="sdb-meta-key">Table    :</span><span class="sdb-meta-val">socials</span></div>
+                <div class="sdb-meta-row"><span class="sdb-meta-key">Status   :</span><span class="sdb-meta-val connected">● Connected</span></div>
+                <div class="sdb-meta-row"><span class="sdb-meta-key">Rows     :</span><span class="sdb-meta-val">6</span></div>
+            </div>
+
+            <!-- SQL editor -->
+            <div class="sdb-editor">
+                <div class="sdb-editor-bar">
+                    <span><i class="fas fa-database" style="margin-right:6px;color:#c678dd;"></i>SQL Query Runner</span>
+                    <span class="sdb-editor-run" onclick="document.getElementById('sdb-result-panel').classList.add('running')"><i class="fas fa-play"></i> Run</span>
+                </div>
+                <div class="sdb-editor-code">
+                    <span class="sdb-ln">1</span><span class="sdb-kw">SELECT</span> <span class="sdb-id">id</span>, <span class="sdb-id">platform</span>, <span class="sdb-id">value</span><br>
+                    <span class="sdb-ln">2</span><span class="sdb-kw">FROM</span>   <span class="sdb-id">socials</span><br>
+                    <span class="sdb-ln">3</span><span class="sdb-kw">ORDER BY</span> <span class="sdb-id">platform</span> <span class="sdb-kw">ASC</span>;
+                </div>
+            </div>
+
+            <!-- Query result -->
+            <div class="sdb-result" id="sdb-result-panel">
+                <div class="sdb-result-bar">
+                    <span class="dot"></span>
+                    <span>Results</span>
+                </div>
+                <div class="sdb-hint"><i class="fas fa-info-circle" style="margin-right: 6px;"></i> Click "Run" to execute query</div>
+                <div class="sdb-loading"></div>
+                <div class="sdb-output">
+<pre class="sdb-ascii">+----+-----------+----------------------------------------------+
+| id | platform  | value                                        |
++----+-----------+----------------------------------------------+
+| 1  | GitHub    | <a href="https://github.com/akashprajapati1232" target="_blank" rel="noopener noreferrer">github.com/akashprajapati1232</a>                |
+| 2  | LinkedIn  | <a href="https://linkedin.com/in/akash-prajapati1232" target="_blank" rel="noopener noreferrer">linkedin.com/in/akash-prajapati1232</a>          |
+| 3  | Instagram | <a href="https://instagram.com/akash.prajapati1232" target="_blank" rel="noopener noreferrer">instagram.com/akash.prajapati1232</a>            |
+| 4  | Email     | <a href="mailto:akashprajapati1232@gmail.com">akashprajapati1232@gmail.com</a>                 |
+| 5  | Phone     | <a href="tel:+918115201583">+91 8115201583</a>                               |
+| 6  | Website   | <a href="https://akashprajapati.rf.gd" target="_blank" rel="noopener noreferrer">akashprajapati.rf.gd</a>                         |
++----+-----------+----------------------------------------------+</pre>
+                    <div class="sdb-stat"><span class="ok">✓</span>6 rows returned (0.002 sec)</div>
+                </div>
+            </div>
         </div>`;
     }
 
-    // =========================================================================
+
     // Content Builders — education/
     // =========================================================================
 
@@ -812,61 +982,114 @@ class App {
         const projects = micro.projects || [];
         const cards = projects.map(proj => {
             const thumbnail = proj.thumbnail || (proj.gallery && proj.gallery[0]) || '';
-            const liveBtnHtml = proj.liveDemo && proj.liveDemo !== 'N/A'
-                ? `<a href="${proj.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-card-link link-live"><i class="fas fa-external-link-alt"></i> Live</a>`
-                : '';
+            const allImages = thumbnail ? [thumbnail, ...(proj.gallery || []).filter(i => i !== thumbnail)] : (proj.gallery || []);
+
             const ghBtnHtml = proj.github && proj.github !== 'N/A'
                 ? `<a href="${proj.github}" target="_blank" rel="noopener noreferrer" class="project-card-link link-github"><i class="fab fa-github"></i> GitHub</a>`
                 : '';
+
+            const galleryHtml = allImages.length > 0 ? `
+                <div class="proj-gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:16px;margin-bottom:16px;">
+                    ${allImages.map((img, idx) => `<img
+                        src="${img}"
+                        alt="${proj.name} screenshot ${idx + 1}"
+                        class="proj-gallery-img"
+                        data-index="${idx}"
+                        data-gallery='${JSON.stringify(allImages).replace(/'/g, '&apos;')}'
+                        style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:16/9;border:1px solid var(--clr-border);cursor:zoom-in;transition:opacity 0.2s;"
+                        loading="lazy"
+                        onerror="this.style.display='none'"
+                    >`).join('')}
+                </div>` : '';
+
+            const badgesHtml = `
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+                    ${proj.category ? `<span class="badge badge-blue">${proj.category}</span>` : ''}
+                    ${proj.type ? `<span class="badge badge-yellow">${proj.type}</span>` : ''}
+                    ${proj.status ? `<span style="font-size:11px;padding:3px 8px;border-radius:4px;background:#6a995522;color:#6a9955;border:1px solid #6a995555;">● ${proj.status}</span>` : ''}
+                    ${proj.year ? `<span class="badge badge-yellow">📅 ${proj.year}</span>` : ''}
+                    ${proj.featured ? `<span style="font-size:11px;padding:3px 8px;border-radius:4px;background:#c678dd22;color:#c678dd;border:1px solid #c678dd55;">⭐ Featured</span>` : ''}
+                </div>`;
+
+            const techStackHtml = (proj.techStack || []).length > 0 ? `
+                <div style="margin-top:12px;">
+                    <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--clr-text);">Tech Stack:</div>
+                    <div class="project-card-tags">${this._tagList(proj.techStack)}</div>
+                </div>` : '';
+                
+            const featuresHtml = (proj.keyFeatures || []).length > 0 ? `
+                <div style="margin-top:12px;">
+                    <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--clr-text);">Key Features:</div>
+                    <ul style="padding-left:20px;margin:0;">
+                        ${proj.keyFeatures.map(f => `<li style="font-size:13px;color:var(--clr-text-secondary);margin-bottom:4px;">${f}</li>`).join('')}
+                    </ul>
+                </div>` : '';
+
+            const learningHtml = (proj.learning || []).length > 0 ? `
+                <div style="margin-top:12px;">
+                    <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--clr-text);">Learning Outcomes:</div>
+                    <ul style="padding-left:20px;margin:0;">
+                        ${proj.learning.map(f => `<li style="font-size:13px;color:var(--clr-text-secondary);margin-bottom:4px;">${f}</li>`).join('')}
+                    </ul>
+                </div>` : '';
+
+            let designSystemHtml = '';
+            if (proj.designSystem) {
+                const colors = proj.designSystem.colors || {};
+                const typo = proj.designSystem.typography || {};
+                
+                let colorsHtml = '';
+                if (Object.keys(colors).length > 0) {
+                    colorsHtml = `<div style="margin-bottom:6px;"><span style="font-size:12px;color:var(--clr-text-secondary);">Colors: </span>` +
+                        Object.entries(colors).map(([k,v]) => `<span style="display:inline-block;width:12px;height:12px;background:${v};border-radius:50%;margin-right:4px;border:1px solid var(--clr-border);vertical-align:middle;" title="${k}: ${v}"></span>`).join('') +
+                        `</div>`;
+                }
+                
+                let typoHtml = '';
+                if (Object.keys(typo).length > 0) {
+                    typoHtml = `<div style="margin-bottom:6px;"><span style="font-size:12px;color:var(--clr-text-secondary);">Typography: </span>` +
+                        `<span style="font-size:12px;color:var(--clr-text);">${Object.values(typo).join(', ')}</span></div>`;
+                }
+
+                if (colorsHtml || typoHtml) {
+                    designSystemHtml = `
+                        <div style="margin-top:12px;padding:10px;background:var(--clr-surface2);border-radius:6px;border:1px solid var(--clr-border);">
+                            <div style="font-size:12px;font-weight:600;margin-bottom:6px;color:var(--clr-text);">Design System:</div>
+                            ${colorsHtml}
+                            ${typoHtml}
+                        </div>`;
+                }
+            }
+
             return `
-                <div class="project-card">
-                    ${thumbnail ? `<img src="${thumbnail}" alt="${proj.name}" class="project-card-img" loading="lazy" onerror="this.style.display='none'">` : ''}
-                    <div class="project-card-body">
-                        <div class="project-card-tags">${this._tagList(proj.techStack || [])}</div>
-                        <div class="project-card-title">${proj.name}</div>
-                        <div class="project-card-desc">${proj.description}</div>
-                        <div class="project-card-links">${ghBtnHtml}${liveBtnHtml}</div>
+                <div class="project-card" style="display:flex;flex-direction:column;">
+                    <div class="project-card-body" style="padding:20px;">
+                        ${badgesHtml}
+                        <div class="project-card-title" style="font-size:20px;margin-bottom:8px;">${proj.name}</div>
+                        ${proj.description ? `<div class="project-card-desc" style="font-size:14px;color:var(--clr-text);margin-bottom:8px;font-weight:500;">${proj.description}</div>` : ''}
+                        ${proj.overview ? `<div class="project-card-desc" style="font-size:13px;color:var(--clr-text-secondary);margin-bottom:12px;">${proj.overview}</div>` : ''}
+                        
+                        ${galleryHtml}
+                        ${techStackHtml}
+                        ${featuresHtml}
+                        ${learningHtml}
+                        ${designSystemHtml}
+                        
+                        ${ghBtnHtml ? `<div class="project-card-links" style="margin-top:20px;">${ghBtnHtml}</div>` : ''}
                     </div>
                 </div>`;
         }).join('');
         return `<div class="md-content">
-            <h1 class="md-h1">🧪 Micro Projects</h1>
+            <h1 class="md-h1">🧪 ${micro.title || 'projects.micro'}</h1>
             <p class="md-p">${micro.description || 'Learning projects built while mastering core web technologies.'}</p>
             <div class="badges-row"><span class="badge badge-yellow">📦 ${projects.length} Projects</span></div>
-            <div class="projects-grid">${cards}</div>
+            <div class="projects-grid" style="grid-template-columns:1fr;gap:24px;">${cards}</div>
         </div>`;
     }
 
     // =========================================================================
     // Content Builders — Root & Config
     // =========================================================================
-
-    buildLicense() {
-        return `<div class="md-content">
-            <h1 class="md-h1">📄 MIT License</h1>
-            <pre style="background:var(--clr-bg-dark);padding:10px;border-radius:6px;color:#8a8a8a;white-space:pre-wrap;font-family:monospace;font-size:13px;line-height:1.5;">
-Copyright (c) 2026 Akash Prajapati
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-            </pre>
-        </div>`;
-    }
 
     buildSettings() {
         return `<div class="md-content">

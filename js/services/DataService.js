@@ -37,6 +37,7 @@ class DataService {
                 scaleiq,
                 totalSolution,
                 portfolioV2,
+                echoQa,
             ] = await Promise.all([
                 this.fetchJSON('data/profile.json'),
                 this.fetchJSON('data/aboutme.json'),
@@ -56,6 +57,7 @@ class DataService {
                 this.fetchJSON('data/projects-production/scaleiq.json'),
                 this.fetchJSON('data/projects-production/total-solution.json'),
                 this.fetchJSON('data/projects-production/portfolio-v2.json'),
+                this.fetchJSON('data/ai/echo-qa.json'),
             ]);
 
             const productionProjects = [
@@ -75,6 +77,7 @@ class DataService {
                 achievements,
                 projectsMicro,
                 productionProjects,
+                echoQa,
             };
 
             // ── File Registry ──────────────────────────────────────────────────
@@ -130,6 +133,7 @@ class DataService {
                 education: [], certifications: [], experience: [],
                 skills: [], services: [], achievements: [],
                 projectsMicro: {}, productionProjects: [],
+                echoQa: [],
             };
             this.fileRegistry = {};
             eventBus.emit('portfolioDataReady', this.data);

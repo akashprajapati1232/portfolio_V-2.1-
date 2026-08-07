@@ -1,0 +1,1358 @@
+[
+    {
+        "id": "q_about_me",
+        "category": "About Me",
+        "question": "Tell me about yourself.",
+        "keywords": [
+            "about",
+            "who are you",
+            "introduce yourself",
+            "tell me about"
+        ],
+        "answer": "<p>Hello! I'm <strong>Akash Prajapati</strong>, a passionate <strong>Full Stack Developer</strong> with a strong interest in building modern, scalable, and user-friendly web applications.</p><p>My primary areas of interest include <strong>Full Stack Web Development</strong>, <strong>Data Analytics</strong>, <strong>Generative AI</strong>, and creating intelligent software solutions that solve real-world problems.</p><p>I enjoy turning ideas into practical products, exploring new technologies, and continuously improving my technical skills by building real-world projects. I believe the best way to grow as a developer is through curiosity, consistency, and hands-on experience.</p><p><em>\"Learn. Build. Improve. Repeat.\"</em></p>",
+        "relatedQuestions": [
+            "What are your career goals?",
+            "What technologies do you know?",
+            "Tell me about your experience.",
+            "Which project are you most proud of?",
+            "How can I contact you?"
+        ]
+    },
+    {
+        "id": "q_why_hire",
+        "category": "About Me",
+        "question": "Why should we hire you?",
+        "keywords": [
+            "why hire",
+            "why should we hire",
+            "what makes you stand out",
+            "hire you"
+        ],
+        "answer": "<p>Here is why I believe I would be a strong addition to your team:</p><ul><li><strong>Real-World Project Depth:</strong> I have built 8 production-quality projects independently — including an AI-powered learning platform (GPT for BCA), a bilingual workforce hiring portal (RozgarSetu), and an image processing tool that once served 3,000–5,000 monthly users (ImgNinja).</li><li><strong>Full Stack Capability:</strong> I am comfortable across the entire stack — React, TypeScript, Node.js, Express, PHP, MySQL, MongoDB, and Firebase.</li><li><strong>AI Enthusiasm:</strong> I have practical experience integrating locally-hosted LLMs via Ollama, working with Clerk authentication, and building AI-powered chat interfaces from scratch.</li><li><strong>Self-Driven Learner:</strong> My philosophy is \"Learn by building. Improve with every project.\" I consistently grow my skills without waiting for formal instruction.</li><li><strong>Proven Independence:</strong> The majority of my projects were built solo — handling architecture, design, backend, frontend, and deployment entirely on my own.</li></ul>",
+        "relatedPages": [
+            "profile.json",
+            "experience.xml",
+            "README.md"
+        ],
+        "relatedQuestions": [
+            "What makes you different from other developers?",
+            "Tell me about your experience.",
+            "Which project are you most proud of?",
+            "What technologies do you know?"
+        ]
+    },
+    {
+        "id": "q_what_makes_different",
+        "category": "About Me",
+        "question": "What makes you different from other developers?",
+        "keywords": [
+            "different",
+            "unique",
+            "stand out",
+            "special",
+            "distinguish"
+        ],
+        "answer": "<p>A few things that distinguish me:</p><ul><li><strong>I build to understand, not just to use:</strong> My fun fact is that I enjoy understanding how technologies work behind the scenes — I don't just follow tutorials.</li><li><strong>I think in systems:</strong> Projects like RozgarSetu (multi-role architecture with KYC workflows) and GPT for BCA (client-server AI architecture) show I think beyond individual features.</li><li><strong>I build across the full stack:</strong> From Canvas API image manipulation in Vanilla JS (ImgNinja) to React + Node.js + Ollama AI pipelines (GPT for BCA), my range is broad and backed by actual code.</li><li><strong>I am exploring Data Analytics and Generative AI:</strong> While most developers focus purely on web development, I am actively building skills in Python, Pandas, LLMs, and prompt engineering — a combination that is increasingly valuable.</li></ul>",
+        "relatedPages": [
+            "aboutme.json",
+            "profile.json",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Tell me about yourself.",
+            "What technologies do you know?",
+            "What are you currently learning?",
+            "Which project are you most proud of?"
+        ]
+    },
+    {
+        "id": "q_learning_philosophy",
+        "category": "About Me",
+        "question": "What is your learning philosophy?",
+        "keywords": [
+            "learning",
+            "philosophy",
+            "how do you learn",
+            "study approach"
+        ],
+        "answer": "<p>My learning philosophy is straightforward: <strong>\"Learn by building. Improve with every project.\"</strong></p><p>I believe the best way to truly understand a technology is to build something real with it. I do not just watch tutorials — I build projects, hit real problems, debug them, and come out with a deeper understanding than any lecture could provide.</p><p>I also prefer understanding <em>how</em> things work rather than just <em>how to use</em> them. This is why I understand Binary Search algorithms well enough to implement one for ImgNinja's compression engine, or why I understand LLM prompt engineering well enough to design verbosity tier systems for GPT for BCA.</p>",
+        "relatedPages": [
+            "aboutme.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What are you currently learning?",
+            "What are your future career goals?",
+            "How do you debug problems?",
+            "Tell me about yourself."
+        ]
+    },
+    {
+        "id": "q_experience",
+        "category": "Experience",
+        "question": "Tell me about your experience.",
+        "keywords": [
+            "experience",
+            "background",
+            "work history",
+            "professional history"
+        ],
+        "answer": "<p>My experience is project-based. I have not yet worked in a traditional corporate role, but I have gained substantial hands-on experience by designing and developing multiple production-quality personal projects.</p><p>Key highlights from my project experience include:</p><ul><li><strong>GPT for BCA (2025):</strong> Lead Developer on a full-stack AI learning platform using React 19, Node.js, Express.js, Ollama (qwen3:8b LLM), and Clerk authentication.</li><li><strong>ImgNinja (2025):</strong> Sole Developer of a privacy-first browser-based image processing suite in Vanilla JS with Canvas API that received 3,000–5,000 monthly users.</li><li><strong>RozgarSetu (2026):</strong> Sole Developer and System Architect of a bilingual multi-role workforce hiring portal in PHP with a fully designed MySQL database schema.</li></ul><p>These projects have given me practical experience in system architecture, API design, authentication, database design, and UI/UX implementation.</p>",
+        "relatedPages": [
+            "experience.xml",
+            "profile.json",
+            "README.md"
+        ],
+        "relatedQuestions": [
+            "Which project are you most proud of?",
+            "Tell me about GPT for BCA.",
+            "Tell me about ImgNinja.",
+            "Tell me about RozgarSetu.",
+            "Are you open to internships or full-time roles?"
+        ]
+    },
+    {
+        "id": "q_open_to_work",
+        "category": "Experience",
+        "question": "Are you open to internships or full-time roles?",
+        "keywords": [
+            "open to work",
+            "hiring",
+            "available",
+            "job",
+            "internship",
+            "full-time",
+            "freelance"
+        ],
+        "answer": "<p>Yes — I am actively open to new opportunities. Specifically, I am looking for:</p><ul><li><strong>Internships</strong> — to gain professional team experience and mentorship.</li><li><strong>Full-Time Opportunities</strong> — as a Frontend, Backend, or Full Stack Developer.</li><li><strong>Freelance Projects</strong> — for clients who need web development or AI integration work.</li><li><strong>Open Source Collaboration</strong> — to contribute to meaningful projects and grow with a community.</li></ul><p>I am based in Ghazipur, India (IST timezone) and am open to both remote and on-site positions.</p><p>Feel free to reach me at <strong>akashprajapati1232@gmail.com</strong> or connect on LinkedIn.</p>",
+        "relatedPages": [
+            "profile.json",
+            "socials.db"
+        ],
+        "relatedQuestions": [
+            "How can I contact you?",
+            "What services do you offer?",
+            "What are your career goals?",
+            "Tell me about your experience."
+        ]
+    },
+    {
+        "id": "q_gpt_for_bca",
+        "category": "Projects",
+        "question": "Tell me about GPT for BCA.",
+        "keywords": [
+            "gpt for bca",
+            "gpt",
+            "bca project",
+            "ai project",
+            "llm project"
+        ],
+        "answer": "<p><strong>GPT for BCA</strong> is a full-stack AI-powered learning platform built exclusively for BCA students. It was my 6th Semester academic project, completed in 2025.</p><p><strong>Core Features:</strong></p><ul><li>Semester-wise syllabus browser covering all 6 semesters with accordion navigation.</li><li>AI-driven chat workspace powered by a locally-hosted <strong>qwen3:8b LLM via Ollama</strong>.</li><li>Auth-gated chat — only authenticated users can access the AI assistant.</li><li>Three AI response verbosity tiers: Short, Medium, and Detailed.</li><li>Conversation history context injection (last 10 messages) for continuity.</li><li>Downloadable PDF resources per semester.</li><li>Google OAuth and Email/Password auth via <strong>Clerk</strong>.</li></ul><p><strong>Tech Stack:</strong> React 19, Vite, Node.js, Express.js, Ollama, qwen3:8b, Clerk, Vanilla CSS.</p><p><strong>My Role:</strong> Lead Developer — responsible for the entire backend, architecture, and business logic. Co-developer Vivek Yadav handled the Frontend UI.</p><p><em>To see the live demo, screenshots, and complete details, please explore the <strong>Projects</strong> section of this portfolio.</em></p>",
+        "relatedPages": [
+            "Projects/gpt-for-bca",
+            "tech-stack.tsx",
+            "experience.xml"
+        ],
+        "relatedQuestions": [
+            "Which project uses AI?",
+            "Which project uses React?",
+            "What backend technologies have you used?",
+            "How did you implement authentication?",
+            "Which project are you most proud of?"
+        ]
+    },
+    {
+        "id": "q_imgninja",
+        "category": "Projects",
+        "question": "Tell me about ImgNinja.",
+        "keywords": [
+            "imgninja",
+            "image ninja",
+            "image tool",
+            "image processing",
+            "canvas api"
+        ],
+        "answer": "<p><strong>ImgNinja</strong> is a comprehensive, privacy-first browser-based image processing suite — built entirely with Vanilla JavaScript and the HTML5 Canvas API. It was a solo project completed in 2025.</p><p><strong>Core Features:</strong></p><ul><li>Image Compressor — reduce file sizes by up to 90%.</li><li>Target Size Compression using a custom <strong>binary search algorithm</strong>.</li><li>Image Converter supporting <strong>15+ formats</strong> with quality control per format.</li><li>Batch processing of up to 10 images simultaneously.</li><li>Image Resizer and Cropper (powered by Cropper.js).</li><li><strong>Zero-server architecture</strong> — all processing happens locally in the user's browser. No data ever leaves the device.</li></ul><p><strong>Impact:</strong> The previous version received <strong>3,000–5,000 monthly users</strong> before going offline. I plan to relaunch it rebuilt with Next.js.</p><p><strong>Tech Stack:</strong> Vanilla JavaScript (ES6+), HTML5, CSS3, Canvas API, File API, Blob API, Cropper.js.</p>",
+        "relatedPages": [
+            "Projects/imgninja",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Which project uses Vanilla JavaScript?",
+            "What are browser APIs you have worked with?",
+            "Which project should I explore first?",
+            "Tell me about your experience."
+        ]
+    },
+    {
+        "id": "q_rozgarsetu",
+        "category": "Projects",
+        "question": "Tell me about RozgarSetu.",
+        "keywords": [
+            "rozgarsetu",
+            "job portal",
+            "hiring portal",
+            "workforce",
+            "php project",
+            "bilingual"
+        ],
+        "answer": "<p><strong>RozgarSetu (रोजगार सेतु)</strong> is a premium, bilingual (Hindi + English) workforce hiring portal built in PHP. It is a solo project currently in progress (frontend complete, backend architecture designed) as of 2026.</p><p><strong>Platform Architecture:</strong></p><ul><li><strong>Four user roles:</strong> Workers/Job Seekers, Businesses/Employers, Contractor Partners, and Admin.</li><li><strong>Worker KYC verification</strong> — Aadhaar, eShram, and PAN document workflows.</li><li><strong>Partner digital wallet system</strong> with Silver/Gold/Platinum commission tiers.</li><li>Bilingual UI in Hindi Devanagari and English throughout.</li><li>Fully designed MySQL database schema with ERD relationships.</li></ul><p><strong>Tech Stack:</strong> PHP 8, MySQL (schema designed), Bootstrap 5, Vanilla CSS, JavaScript, AOS animations.</p><p>Inspired by the <strong>Digital India and Skill India</strong> initiatives, it targets blue-collar and semi-skilled workers in India's employment market.</p>",
+        "relatedPages": [
+            "Projects/rozgarsetu",
+            "experience.xml",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "What backend technologies have you used?",
+            "What databases have you worked with?",
+            "Tell me about your experience.",
+            "Which project demonstrates your system design skills?"
+        ]
+    },
+    {
+        "id": "q_bitbot",
+        "category": "Projects",
+        "question": "Tell me about BitBot.",
+        "keywords": [
+            "bitbot",
+            "college chatbot",
+            "firebase project",
+            "chatbot",
+            "admin panel"
+        ],
+        "answer": "<p><strong>BitBot</strong> is a full-featured college management system built during my 5th Semester (2025) for Bhagwant Institute of Technology as an academic project.</p><p><strong>The project has two integrated parts:</strong></p><ul><li><strong>Public Chatbot Interface:</strong> Handles student queries about courses, faculty, admission, fees, and schedules using NLP-based response matching. Includes text-to-speech and speech-to-text voice support.</li><li><strong>Protected Admin Panel:</strong> Full CRUD operations for Courses, Faculty, Students, and Timetables, backed by Firebase Firestore. Supports bulk CSV import/export and includes an advanced search and filter system.</li></ul><p><strong>Key Technical Points:</strong></p><ul><li>Built an NLP-lite chatbot using keyword matching and pattern detection — no external AI API required.</li><li>Firebase Firestore for real-time database operations.</li><li>Firebase Authentication for admin security.</li><li>Advanced data tables powered by Tabulator.js.</li></ul><p><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript (ES6+), Firebase Firestore, Firebase Authentication, Tabulator.js, SweetAlert2, Toastify.js.</p>",
+        "relatedPages": [
+            "Projects/bitbot-college-chatbot",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Which projects use Firebase?",
+            "How does ECHO Bot work?",
+            "What backend technologies have you used?",
+            "Tell me about your experience."
+        ]
+    },
+    {
+        "id": "q_brandify",
+        "category": "Projects",
+        "question": "Tell me about Brandify Creator.",
+        "keywords": [
+            "brandify",
+            "brandify creator",
+            "agency website",
+            "gsap",
+            "influencer marketing"
+        ],
+        "answer": "<p><strong>Brandify Creator</strong> is a premium influencer marketing agency website built in 2025 — a solo project I designed and developed entirely from concept to deployment.</p><p>The platform serves as the digital identity and lead generation engine for an influencer marketing agency that connects brands with 500+ verified Instagram creators.</p><p><strong>Notable Technical Features:</strong></p><ul><li><strong>GSAP 3.12.5 animations</strong> with ScrollTrigger for premium scroll-based interactions.</li><li>Glassmorphism card design with backdrop-filter blur effects.</li><li>3D card tilt effects with magnetic hover behavior.</li><li>Floating particle ambient background animations.</li><li>Dual user journeys — separate pages for Brands and for Creators.</li><li>Three-tier pricing packages: Starter, Professional, and Enterprise.</li></ul><p><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript (ES6+), GSAP 3.12.5, ScrollTrigger.</p><p><em>To see the live demo, screenshots, and complete details, please explore the <strong>Projects</strong> section of this portfolio.</em></p>",
+        "relatedPages": [
+            "Projects/brandify-creator",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "What projects use GSAP animations?",
+            "Which project should I explore first?",
+            "What services do you offer?",
+            "Tell me about your experience."
+        ]
+    },
+    {
+        "id": "q_scaleiq",
+        "category": "Projects",
+        "question": "Tell me about ScaleIQ.",
+        "keywords": [
+            "scaleiq",
+            "typescript project",
+            "react typescript",
+            "saas",
+            "landing page"
+        ],
+        "answer": "<p><strong>ScaleIQ</strong> is a SaaS product landing page built in 2026 for a platform that helps businesses collect more Google reviews using smart QR Codes and AI-powered review suggestion prompts.</p><p>This project demonstrates a <strong>TypeScript-first React architecture</strong> — with a custom CSS design system, colocated component styles, TypeScript interfaces, custom hooks, and a modular routing setup.</p><p><strong>Pages Built:</strong> Home, Features, Pricing, Blog, Login, and Create Account.</p><p><strong>Architecture Highlights:</strong></p><ul><li>TypeScript interfaces in a dedicated <code>types/</code> directory for all props and data structures.</li><li>Colocated CSS — each component has its own stylesheet imported directly.</li><li>Custom CSS design token system in <code>styles/variables.css</code>.</li><li><strong>Oxlint</strong> as a Rust-based replacement for ESLint for fast linting.</li><li>Custom React hooks for scroll handling.</li></ul><p><strong>Tech Stack:</strong> React 19, TypeScript, Vite, React Router DOM, Vanilla CSS, Oxlint.</p>",
+        "relatedPages": [
+            "Projects/scaleiq",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Which project uses React?",
+            "What is your TypeScript experience?",
+            "Which project uses TypeScript?",
+            "What are your frontend skills?"
+        ]
+    },
+    {
+        "id": "q_total_solution",
+        "category": "Projects",
+        "question": "Tell me about Total Solution Digital Agency.",
+        "keywords": [
+            "total solution",
+            "digital agency",
+            "php website",
+            "bootstrap",
+            "swiper"
+        ],
+        "answer": "<p><strong>Total Solution</strong> is a premium dark-themed digital agency website built in PHP and Bootstrap 5 — a solo project completed in 2025.</p><p><strong>Core Services Showcased:</strong></p><ul><li>Website Design & Development</li><li>SEO & Digital Marketing</li><li>E-Commerce Solutions</li><li>Website Management</li></ul><p><strong>Notable Design & Technical Features:</strong></p><ul><li>Deep indigo gradient aesthetic (#060c1f to #091128).</li><li>Glassmorphism card components with frosted glass effects.</li><li>Animated GIF service icons.</li><li>AOS (Animate on Scroll) reveal animations.</li><li>Swiper.js carousel for client testimonials.</li><li>Direct <strong>WhatsApp integration</strong> for instant client contact.</li><li>Indian Rupee (₹) budget options for localized pricing.</li></ul><p><strong>Tech Stack:</strong> PHP 8, Bootstrap 5.3, JavaScript, AOS, Swiper.js, XAMPP.</p><p><strong>GitHub:</strong> <a href='https://github.com/akashprajapati1232/total-solution' class='echo-text-link' target='_blank'>github.com/akashprajapati1232/total-solution</a></p>",
+        "relatedPages": [
+            "Projects/total-solution",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "What backend technologies have you used?",
+            "What services do you offer?",
+            "Tell me about RozgarSetu.",
+            "Which project should I explore first?"
+        ]
+    },
+    {
+        "id": "q_portfolio_v2",
+        "category": "Portfolio",
+        "question": "How did you build this portfolio?",
+        "keywords": [
+            "portfolio",
+            "build portfolio",
+            "how is this built",
+            "this website",
+            "vs code design"
+        ],
+        "answer": "<p>This portfolio (v2.0) is a next-generation rebuild of my original portfolio — built entirely with <strong>HTML5, CSS3, and Vanilla JavaScript (ES6 Modules)</strong>. No frameworks, no backend, no AI API, completely offline.</p><p><strong>What makes it unique:</strong></p><ul><li>The entire UI is designed to mimic a <strong>VS Code editor</strong> environment — with a file explorer, tabs, terminal panel, and this ECHO Bot panel.</li><li><strong>JSON-driven architecture:</strong> All content (profile, projects, skills, certifications, education) is loaded dynamically from individual JSON files in the <code>data/</code> folder — no hardcoded content.</li><li>A fully functional <strong>interactive terminal</strong> where visitors can type commands to explore the portfolio.</li><li>A <strong>DataService</strong> singleton that fetches all JSON files on load and caches them in memory for fast rendering.</li><li>A modular <strong>component architecture</strong> without any framework — organized into services and component handlers.</li></ul><p><em>You are currently browsing it! Feel free to explore the <strong>Projects</strong> section for more details on its architecture.</em></p>",
+        "relatedPages": [
+            "README.md",
+            "portfolio-v2.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "Why did you choose Vanilla JavaScript?",
+            "How does ECHO Bot work?",
+            "How does the terminal work?",
+            "What technologies do you know?"
+        ]
+    },
+    {
+        "id": "q_why_vanilla_js",
+        "category": "Portfolio",
+        "question": "Why did you choose Vanilla JavaScript for this portfolio?",
+        "keywords": [
+            "vanilla js",
+            "why vanilla",
+            "no framework",
+            "no react",
+            "pure javascript"
+        ],
+        "answer": "<p>A deliberate choice with a clear reason: <strong>to demonstrate deep JavaScript fundamentals.</strong></p><p>Anyone can use React or Next.js to build a portfolio — but building the same result with Vanilla JavaScript proves that I understand the DOM, event delegation, module patterns, async data fetching, and state management at a fundamental level.</p><p>Specifically, this portfolio required:</p><ul><li>A custom <strong>DataService singleton</strong> for async JSON loading and caching.</li><li>A custom <strong>terminal emulator</strong> with command parsing, history, and formatted output.</li><li>A <strong>tab management system</strong> with state tracking across the file explorer.</li><li>A <strong>modular component architecture</strong> — all in Vanilla JS without any framework.</li></ul><p>It is the same reason I built ImgNinja entirely in Vanilla JS with Canvas API — because understanding the underlying platform makes me a better developer regardless of what framework I use next.</p>",
+        "relatedPages": [
+            "README.md",
+            "portfolio-v2.json",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "How did you build this portfolio?",
+            "What technologies do you know?",
+            "What is your problem-solving approach?",
+            "Tell me about ImgNinja."
+        ]
+    },
+    {
+        "id": "q_echo_bot",
+        "category": "Portfolio",
+        "question": "How does ECHO Bot work?",
+        "keywords": [
+            "echo bot",
+            "echo ai",
+            "how does this work",
+            "chatbot",
+            "portfolio ai"
+        ],
+        "answer": "<p><strong>ECHO Bot</strong> is a predefined Q&A assistant built specifically for this portfolio. It is <strong>not</strong> a general-purpose AI chatbot.</p><p><strong>How it works:</strong></p><ul><li>All questions and answers are stored in a JSON file: <code>data/ai/echo-qa.json</code>.</li><li>The <code>DataService.js</code> fetches this file on page load and makes the data available to the ECHO Bot component.</li><li>When you click a question, ECHO Bot looks up the corresponding answer from the JSON data and displays it with a typewriter animation.</li><li>There is no AI API, no backend, no network call after initial load — everything runs completely offline in the browser.</li></ul><p>It was built this way to serve as an intelligent <strong>portfolio navigator</strong> rather than a general chatbot — guiding visitors to the right information quickly and professionally.</p>",
+        "relatedPages": [
+            "data/ai/echo-qa.json",
+            "js/components/ai/EchoAI.js",
+            "README.md"
+        ],
+        "relatedQuestions": [
+            "How did you build this portfolio?",
+            "Why did you choose Vanilla JavaScript?",
+            "How does the terminal work?",
+            "Tell me about BitBot."
+        ]
+    },
+    {
+        "id": "q_terminal",
+        "category": "Portfolio",
+        "question": "How does the terminal work?",
+        "keywords": [
+            "terminal",
+            "command line",
+            "type commands",
+            "terminal interface"
+        ],
+        "answer": "<p>The interactive terminal in this portfolio is a custom-built <strong>terminal emulator</strong> written in pure Vanilla JavaScript.</p><p><strong>Features:</strong></p><ul><li>Type commands like <code>help</code>, <code>projects</code>, <code>skills</code>, or <code>contact</code> to explore the portfolio.</li><li>Supports <strong>command history</strong> (arrow keys to navigate previous commands).</li><li>Supports <strong>autocomplete</strong> for available commands.</li><li>Outputs formatted, rich-text responses with proper line breaks and structured data.</li></ul><p><strong>Technically</strong>, it is powered by a dedicated <code>TerminalCommands.js</code> module that maps command strings to handler functions. The base command parser supports arguments, flags, and multi-line formatted output — all without any terminal library.</p>",
+        "relatedPages": [
+            "README.md",
+            "portfolio-v2.json"
+        ],
+        "relatedQuestions": [
+            "How did you build this portfolio?",
+            "Why did you choose Vanilla JavaScript?",
+            "How does ECHO Bot work?"
+        ]
+    },
+    {
+        "id": "q_best_project",
+        "category": "Projects",
+        "question": "Which project are you most proud of?",
+        "keywords": [
+            "best project",
+            "most proud",
+            "favourite project",
+            "top project",
+            "impressive project"
+        ],
+        "answer": "<p>I am most proud of <strong>GPT for BCA</strong>.</p><p>It represents my most technically ambitious work — a full-stack AI platform where I was the lead architect and backend developer. The key challenges I am proud of solving:</p><ul><li>Integrating a locally-hosted <strong>qwen3:8b LLM via Ollama</strong> into a React + Node.js application with correct context management and verbosity tier control.</li><li>Implementing Clerk authentication with a <strong>popup modal UX</strong> — no standalone login pages — which required building a custom <code>AuthModalContext</code> and <code>ProtectedChatLink</code> system.</li><li>Implementing an LLM <strong>warm-up system</strong> on server startup to minimize first-user response latency.</li></ul><p>But <strong>ImgNinja</strong> has a special place too — it is the project that proved my work can reach real users organically, having served 3,000–5,000 monthly users before going offline.</p>",
+        "relatedPages": [
+            "Projects/gpt-for-bca",
+            "Projects/imgninja",
+            "experience.xml"
+        ],
+        "relatedQuestions": [
+            "Tell me about GPT for BCA.",
+            "Tell me about ImgNinja.",
+            "Which project uses AI?",
+            "Which project uses React?"
+        ]
+    },
+    {
+        "id": "q_ai_projects",
+        "category": "Projects",
+        "question": "Which project uses AI?",
+        "keywords": [
+            "ai project",
+            "artificial intelligence project",
+            "llm",
+            "machine learning",
+            "ollama"
+        ],
+        "answer": "<p>Two projects directly use AI:</p><ul><li><strong>GPT for BCA:</strong> A full-stack AI learning platform powered by a locally-hosted <strong>qwen3:8b LLM via Ollama</strong>. The Node.js backend routes inference requests to the Ollama server, with a React 19 frontend. Features include conversation history context injection, three response verbosity tiers, and multilingual AI responses in English and Hindi.</li><li><strong>BitBot (College Chatbot):</strong> An NLP-lite chatbot built without any external AI API — uses keyword matching and pattern detection for intelligent response generation. Includes text-to-speech and speech-to-text via the Web Speech API.</li></ul><p><strong>ECHO Bot</strong> (this assistant) is also a Q&A system built for this portfolio, though it uses pre-defined answers rather than a live AI model.</p>",
+        "relatedPages": [
+            "Projects/gpt-for-bca",
+            "Projects/bitbot-college-chatbot",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Tell me about GPT for BCA.",
+            "Tell me about BitBot.",
+            "What AI skills do you have?",
+            "Which project are you most proud of?"
+        ]
+    },
+    {
+        "id": "q_react_projects",
+        "category": "Projects",
+        "question": "Which project uses React?",
+        "keywords": [
+            "react project",
+            "react js",
+            "which uses react"
+        ],
+        "answer": "<p>Two production projects use React:</p><ul><li><strong>GPT for BCA:</strong> Built with <strong>React 19</strong>, Vite 8, React Router DOM v7. This is a full SPA with auth-gated routes, a semester browser, and an AI chat workspace.</li><li><strong>ScaleIQ:</strong> Built with <strong>React 19 + TypeScript</strong> and Vite. A SaaS landing page featuring a TypeScript-first component architecture, colocated CSS, custom React hooks, and Oxlint.</li></ul><p>I am comfortable with the React ecosystem including hooks, context, routing, and integrating third-party authentication providers like Clerk.</p>",
+        "relatedPages": [
+            "Projects/gpt-for-bca",
+            "Projects/scaleiq",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "What is your TypeScript experience?",
+            "Tell me about GPT for BCA.",
+            "Tell me about ScaleIQ.",
+            "What are your frontend skills?"
+        ]
+    },
+    {
+        "id": "q_first_explore",
+        "category": "Projects",
+        "question": "Which project should I explore first?",
+        "keywords": [
+            "which project",
+            "explore first",
+            "recommended project",
+            "start here",
+            "best to look at"
+        ],
+        "answer": "<p>It depends on what you are evaluating:</p><ul><li><strong>For AI & Full Stack capability:</strong> Start with <strong>GPT for BCA</strong>. It showcases React, Node.js, LLM integration, Clerk auth, and architectural thinking all in one project. (Check the Projects section for details).</li><li><strong>For frontend/Vanilla JS depth:</strong> Check <strong>ImgNinja</strong>. A tool that served thousands of real users, built with zero dependencies and deep Canvas API knowledge. (Check the Projects section for details).</li><li><strong>For animation & design quality:</strong> Visit <strong>Brandify Creator</strong>. The GSAP + glassmorphism design demonstrates frontend craft. (Check the Projects section for details).</li><li><strong>For system design / multi-role architecture:</strong> Review <strong>RozgarSetu</strong> in the Projects section — a complex multi-role platform with a fully designed MySQL schema.</li></ul>",
+        "relatedPages": [
+            "Projects/gpt-for-bca",
+            "Projects/imgninja",
+            "Projects/brandify-creator"
+        ],
+        "relatedQuestions": [
+            "Tell me about GPT for BCA.",
+            "Tell me about ImgNinja.",
+            "Tell me about Brandify Creator.",
+            "Which project are you most proud of?"
+        ]
+    },
+    {
+        "id": "q_php_projects",
+        "category": "Projects",
+        "question": "Which projects use PHP?",
+        "keywords": [
+            "php project",
+            "php",
+            "server side",
+            "backend php"
+        ],
+        "answer": "<p>Two production projects are built with PHP:</p><ul><li><strong>RozgarSetu:</strong> A bilingual workforce hiring portal using PHP 8 with a reusable template includes architecture, MySQL schema design, and Bootstrap 5 grid.</li><li><strong>Total Solution Digital Agency:</strong> A premium dark-themed digital agency website using PHP 8 for server-side page rendering with shared header/footer includes, Bootstrap 5, AOS, and Swiper.js.</li></ul><p>In both projects, I used PHP's server-side include pattern (<code>header.php</code>, <code>navbar.php</code>, <code>footer.php</code>) to maintain consistent layouts across multi-page websites without a backend framework.</p>",
+        "relatedPages": [
+            "Projects/rozgarsetu",
+            "Projects/total-solution",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "What backend technologies have you used?",
+            "What databases have you worked with?",
+            "Tell me about RozgarSetu.",
+            "Tell me about Total Solution Digital Agency."
+        ]
+    },
+    {
+        "id": "q_firebase_projects",
+        "category": "Projects",
+        "question": "Which projects use Firebase?",
+        "keywords": [
+            "firebase",
+            "firestore",
+            "firebase project",
+            "firebase auth"
+        ],
+        "answer": "<p>One production project uses Firebase as its primary backend:</p><ul><li><strong>BitBot — College Chatbot & Admin Panel:</strong> Uses <strong>Firebase Firestore</strong> as a NoSQL real-time database for all CRUD operations (Courses, Faculty, Students, Timetables, Notices, Fee Structures). Also uses <strong>Firebase Authentication</strong> to protect the admin panel.</li></ul><p>Additionally, Firebase Authentication and Firebase Firestore are listed in my skills as technologies I have worked with across projects.</p>",
+        "relatedPages": [
+            "Projects/bitbot-college-chatbot",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Tell me about BitBot.",
+            "What databases have you worked with?",
+            "What backend technologies have you used?"
+        ]
+    },
+    {
+        "id": "q_micro_projects",
+        "category": "Projects",
+        "question": "What are your micro or learning projects?",
+        "keywords": [
+            "micro projects",
+            "learning projects",
+            "small projects",
+            "side projects",
+            "mini projects"
+        ],
+        "answer": "<p>My micro projects are projects I built while learning HTML, CSS, and JavaScript fundamentals. Each one helped me understand core concepts through hands-on practice.</p><p><strong>Featured Micro Projects:</strong></p><ul><li><strong>Retro Snake Game (2024):</strong> A modern Snake game with Canvas API, multiple difficulty levels, LocalStorage high score, mobile touch controls, and sound effects.</li><li><strong>Professional Calculator (2024):</strong> A calculator that evaluates BODMAS expressions using a custom two-pass parser (no <code>eval()</code>), and converts results into Hindi Devanagari words.</li><li><strong>Advocate Atul Pal — Legal Website (2024):</strong> A 5-page modular website for a legal professional with gold-on-black design, scroll animations, and SEO-optimized HTML.</li><li><strong>Personal Portfolio v1 (2024):</strong> My first portfolio featuring Particles.js, LottieFiles jellyfish animation, VanillaTilt.js, certificate lightbox, and JSON-LD structured data for SEO.</li></ul>",
+        "relatedPages": [
+            "Projects/micro-projects",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Tell me about your production projects.",
+            "Which project should I explore first?",
+            "Tell me about your experience.",
+            "What technologies do you know?"
+        ]
+    },
+    {
+        "id": "q_hackathon",
+        "category": "Achievements",
+        "question": "Have you participated in any hackathons?",
+        "keywords": [
+            "hackathon",
+            "competition",
+            "achievement",
+            "innovate bijnor"
+        ],
+        "answer": "<p>Yes! I participated in the <strong>Innovate Bijnor Hackathon</strong> — a 2-day hackathon held in December 2024 in Bijnor, Uttar Pradesh.</p><p>Our team collaboratively developed <strong>E-Health</strong> — a mobile application designed to make medical records instantly accessible. The system enables doctors to scan a unique QR code generated on a patient's phone to instantly retrieve their complete medical history, lab reports, and prescriptions.</p><p><strong>Technologies involved:</strong> Mobile App Development, UI/UX Design, QR Code Integration, Authentication.</p><p>I participated as a <strong>Team Participant & Developer</strong>.</p>",
+        "relatedPages": [
+            "achievements.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What are your main achievements?",
+            "What are your certifications?",
+            "Tell me about yourself.",
+            "What are your career goals?"
+        ]
+    },
+    {
+        "id": "q_achievements",
+        "category": "Achievements",
+        "question": "What are your main achievements?",
+        "keywords": [
+            "achievements",
+            "accomplishments",
+            "proud of",
+            "recognition",
+            "milestones"
+        ],
+        "answer": "<p>Here are my key achievements so far:</p><ul><li><strong>Innovate Bijnor Hackathon (December 2024):</strong> Participated as a developer and built 'E-Health', a QR-code-based medical record retrieval app, in a 2-day competitive hackathon.</li><li><strong>Quiz Competition — 3rd Position:</strong> Secured 3rd position in the Logic Club Quiz Competition organized by Bhagwant Group of Institutions (October 2023).</li><li><strong>ImgNinja User Reach:</strong> Built an image processing tool that organically reached 3,000–5,000 monthly active users before going offline — without any marketing or paid promotion.</li><li><strong>Web Development Diploma — Grade A (95%):</strong> Completed a 12-month Web Development Diploma from STP Computer Education with a score of 95%.</li><li><strong>ADCA Diploma — 80.5%:</strong> Completed an Advanced Diploma in Computer Applications from Wizard-Tech Computer Academy with a 'Very Good' grade.</li></ul>",
+        "relatedPages": [
+            "achievements.json",
+            "certifications.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What are your certifications?",
+            "Have you participated in any hackathons?",
+            "Tell me about yourself.",
+            "Tell me about ImgNinja."
+        ]
+    },
+    {
+        "id": "q_certifications",
+        "category": "Certifications",
+        "question": "What are your certifications?",
+        "keywords": [
+            "certifications",
+            "certificates",
+            "diplomas",
+            "credentials",
+            "courses completed"
+        ],
+        "answer": "<p>I have earned the following certifications and diplomas:</p><ul><li><strong>Web Development Diploma</strong> — STP Computer Education | Grade A, 95% | 12 Months | 2024</li><li><strong>CSS Course</strong> — STP Computer Education | Grade A, 86% | 2023</li><li><strong>HTML YouTube Course</strong> — KnowledgeGate | 2023</li><li><strong>CSS Certification Test</strong> — KnowledgeGate</li><li><strong>30 Days Python Using AI</strong> — AI For Techies | 2025</li><li><strong>SCOA Data Entry Operator (DEO)</strong> — Supply Chain Operations Academy | 2025</li><li><strong>Emotional Intelligence</strong> — MindLuster | 2023</li><li><strong>ADCA Diploma</strong> — Wizard-Tech Computer Academy | Grade Very Good, 80.5% | 12 Months | 2022</li><li><strong>Quiz Competition — 3rd Position</strong> — Bhagwant Group of Institutions | 2023</li></ul><p>All certifications are verified and available for review in the Certifications section of this portfolio.</p>",
+        "relatedPages": [
+            "certifications.json",
+            "education.json"
+        ],
+        "relatedQuestions": [
+            "What is your educational background?",
+            "What are your main achievements?",
+            "What technologies do you know?",
+            "Tell me about yourself."
+        ]
+    },
+    {
+        "id": "q_education",
+        "category": "Education",
+        "question": "What is your educational background?",
+        "keywords": [
+            "education",
+            "degree",
+            "university",
+            "college",
+            "bca",
+            "qualification"
+        ],
+        "answer": "<p>My academic qualifications are:</p><ul><li><strong>Bachelor of Computer Applications (BCA)</strong><br>Maa Shakumbhari University, Saharanpur, Uttar Pradesh | 2023 – 2026</li><li><strong>Intermediate Education — 12th (Science, PCM)</strong><br>U.P. Board, Ghazipur, Uttar Pradesh | 2023</li><li><strong>High School — 10th (Science)</strong><br>U.P. Board, Ghazipur, Uttar Pradesh | 2021</li></ul><p>I supplement my formal education extensively with self-study, certifications, and building real-world projects — which I believe provides a deeper and more practical understanding of software development than coursework alone.</p>",
+        "relatedPages": [
+            "education.json",
+            "certifications.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What are your certifications?",
+            "Tell me about yourself.",
+            "What are your career goals?",
+            "Tell me about your experience."
+        ]
+    },
+    {
+        "id": "q_tech_stack",
+        "category": "Technical Skills",
+        "question": "What technologies do you know?",
+        "keywords": [
+            "technologies",
+            "tech stack",
+            "tools",
+            "skills",
+            "what do you know"
+        ],
+        "answer": "<p>My skill set spans the full development stack:</p><ul><li><strong>Frontend:</strong> React, TypeScript, JavaScript (ES6+), HTML5, CSS3, TailwindCSS, GSAP, React Router DOM, Responsive Design, CSS Flexbox/Grid, DOM Manipulation.</li><li><strong>Backend:</strong> Node.js, Express.js, PHP, REST APIs, JWT Authentication, CRUD Operations, Express Middleware.</li><li><strong>Databases:</strong> MySQL, MongoDB, Supabase, Firebase Firestore, SQL, Database Design.</li><li><strong>AI & Generative AI:</strong> Ollama, LLMs, Prompt Engineering, Structured Prompting, AI Integration, AI Response Processing.</li><li><strong>Data Analytics:</strong> Python, Pandas, NumPy, Data Analysis, Data Cleaning, CSV Processing, MS Excel.</li><li><strong>Authentication:</strong> Clerk, Firebase Auth, JWT, OAuth, OTP Verification, Protected Routes.</li><li><strong>DevOps & Tools:</strong> Git, GitHub, Vite, npm, Postman, Chrome DevTools, Docker, Vercel, VPS (Ubuntu Server).</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What are your frontend skills?",
+            "What backend technologies have you used?",
+            "What databases have you worked with?",
+            "What AI skills do you have?",
+            "What are you currently learning?"
+        ]
+    },
+    {
+        "id": "q_frontend_skills",
+        "category": "Technical Skills",
+        "question": "What are your frontend skills?",
+        "keywords": [
+            "frontend",
+            "ui",
+            "html css",
+            "react",
+            "design",
+            "styling"
+        ],
+        "answer": "<p>My frontend skill set:</p><ul><li><strong>Frameworks/Libraries:</strong> React, Next.js, GSAP (with ScrollTrigger)</li><li><strong>Languages:</strong> JavaScript (ES6+), TypeScript, HTML5, CSS3</li><li><strong>Styling:</strong> TailwindCSS, Bootstrap 5, Vanilla CSS custom design systems, CSS Flexbox, CSS Grid, Glassmorphism, Responsive Design</li><li><strong>APIs:</strong> Canvas API, File API, FileReader API, Blob API, LocalStorage API, Fetch API, Async/Await, Web Speech API</li><li><strong>React Ecosystem:</strong> React Router DOM, Clerk React, React hooks, Context API, Vite</li><li><strong>Animation:</strong> GSAP 3.12.5, ScrollTrigger, AOS (Animate on Scroll), CSS keyframe animations</li></ul><p>I have built everything from glassmorphism agency websites (Brandify Creator) to TypeScript-first SaaS apps (ScaleIQ) to zero-dependency image processing tools (ImgNinja) — all with production-quality frontend code.</p>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json"
+        ],
+        "relatedQuestions": [
+            "What backend technologies have you used?",
+            "What is your TypeScript experience?",
+            "Which project uses React?",
+            "Tell me about ImgNinja."
+        ]
+    },
+    {
+        "id": "q_backend_skills",
+        "category": "Technical Skills",
+        "question": "What backend technologies have you used?",
+        "keywords": [
+            "backend",
+            "server side",
+            "node js",
+            "express",
+            "php",
+            "api",
+            "server"
+        ],
+        "answer": "<p>My backend experience:</p><ul><li><strong>Node.js + Express.js:</strong> Built the backend for GPT for BCA — RESTful API, Ollama LLM proxy, CORS configuration for cross-origin requests, and an LLM warm-up system on startup.</li><li><strong>PHP 8:</strong> Used for RozgarSetu and Total Solution — multi-page server-rendered websites with reusable template include systems.</li><li><strong>REST API Design:</strong> Designed and implemented REST APIs with proper error handling, async/await patterns, and environment variable configuration.</li><li><strong>JWT Authentication:</strong> Listed as an active skill alongside other authentication methods.</li><li><strong>Firebase (BaaS):</strong> Used Firebase Firestore for real-time database in BitBot, handling CRUD operations, batch writes, and real-time listeners.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json",
+            "experience.xml"
+        ],
+        "relatedQuestions": [
+            "What databases have you worked with?",
+            "What are your frontend skills?",
+            "Tell me about GPT for BCA.",
+            "Tell me about RozgarSetu."
+        ]
+    },
+    {
+        "id": "q_databases",
+        "category": "Technical Skills",
+        "question": "What databases have you worked with?",
+        "keywords": [
+            "databases",
+            "sql",
+            "nosql",
+            "mysql",
+            "mongodb",
+            "firebase",
+            "supabase"
+        ],
+        "answer": "<p>I have hands-on experience with the following databases:</p><ul><li><strong>MySQL:</strong> Used in RozgarSetu — designed a comprehensive relational database schema with 7 entity groups, ERD relationships, audit tables, and double-entry balance tracking for a digital wallet system.</li><li><strong>Firebase Firestore:</strong> Used in BitBot — NoSQL real-time database for college management data (courses, faculty, students, timetables, notices).</li><li><strong>MongoDB:</strong> Listed as an active skill; used in backend development projects.</li><li><strong>Supabase:</strong> Listed as an active skill alongside Supabase Storage for deployment.</li><li><strong>SQL:</strong> Broadly applied for data analytics work with Python and for MySQL database queries.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json",
+            "Projects/rozgarsetu"
+        ],
+        "relatedQuestions": [
+            "What backend technologies have you used?",
+            "Tell me about RozgarSetu.",
+            "Tell me about BitBot.",
+            "What is your data analytics experience?"
+        ]
+    },
+    {
+        "id": "q_ai_skills",
+        "category": "Technical Skills",
+        "question": "What AI and Generative AI skills do you have?",
+        "keywords": [
+            "ai skills",
+            "generative ai",
+            "llm",
+            "prompt engineering",
+            "machine learning",
+            "ollama",
+            "openai"
+        ],
+        "answer": "<p>My AI and Generative AI skill set, grounded in real project work:</p><ul><li><strong>LLM Integration:</strong> Integrated the qwen3:8b model locally via Ollama into GPT for BCA — handling API routing, response streaming logic, conversation context injection, and warm-up management.</li><li><strong>Prompt Engineering:</strong> Designed custom AI personas, verbosity tier systems (Short/Medium/Detailed), multilingual detection prompts, and structured JSON prompting.</li><li><strong>Structured Prompting & RAG:</strong> Experience with retrieval-augmented generation patterns and structured prompting for predictable AI outputs.</li><li><strong>API Knowledge:</strong> Aware of and have experience with ChatGPT API, Hugging Face API, Gemini API, Anthropic Claude API, and OpenRouter.</li><li><strong>Tools:</strong> Ollama, LM Studio for local model management.</li><li><strong>NLP-lite Chatbot:</strong> Built BitBot's keyword-matching intent recognition system — no external AI API needed.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json",
+            "Projects/gpt-for-bca"
+        ],
+        "relatedQuestions": [
+            "Which project uses AI?",
+            "Tell me about GPT for BCA.",
+            "What are you currently learning?",
+            "What technologies do you know?"
+        ]
+    },
+    {
+        "id": "q_typescript",
+        "category": "Technical Skills",
+        "question": "What is your TypeScript experience?",
+        "keywords": [
+            "typescript",
+            "type safety",
+            "ts",
+            "typed javascript"
+        ],
+        "answer": "<p>My TypeScript experience is production-level, demonstrated through <strong>ScaleIQ</strong>.</p><p>In ScaleIQ, I built a TypeScript-first React 19 architecture from scratch including:</p><ul><li>TypeScript interfaces for all component props, data structures, and hook return types in a dedicated <code>types/</code> directory.</li><li>Strict mode TypeScript configuration for maximum type safety.</li><li>Generic types for reusable components.</li><li>Custom React hooks with properly typed return values.</li><li>Integration with <strong>Oxlint</strong> — a Rust-based modern linter configured for React TypeScript projects.</li></ul><p>TypeScript is also listed among my <strong>favorite technologies</strong>, alongside JavaScript, React, Next.js, Node.js, and Python.</p>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "Projects/scaleiq",
+            "skills.json"
+        ],
+        "relatedQuestions": [
+            "Tell me about ScaleIQ.",
+            "What are your frontend skills?",
+            "Which project uses React?",
+            "What technologies do you know?"
+        ]
+    },
+    {
+        "id": "q_authentication",
+        "category": "Technical Skills",
+        "question": "How have you implemented authentication in your projects?",
+        "keywords": [
+            "authentication",
+            "auth",
+            "login",
+            "clerk",
+            "firebase auth",
+            "jwt",
+            "oauth"
+        ],
+        "answer": "<p>I have implemented several forms of authentication across my projects:</p><ul><li><strong>Clerk (React):</strong> Used in GPT for BCA. The most complex implementation — popup modal UX instead of standalone login pages, using a custom <code>AuthModalContext</code> and <code>ProtectedChatLink</code> wrapper. Supports Google OAuth and Email/Password. Sessions are integrated with a user profile management page.</li><li><strong>Firebase Authentication:</strong> Used in BitBot to protect the admin panel with email/password auth.</li><li><strong>JWT Authentication:</strong> Listed as an active backend skill — used in REST API design for stateless token-based auth.</li><li><strong>General:</strong> Experience with OAuth, OTP Verification, Protected Routes, and Email & Password Auth across various projects.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "Projects/gpt-for-bca",
+            "Projects/bitbot-college-chatbot"
+        ],
+        "relatedQuestions": [
+            "Tell me about GPT for BCA.",
+            "What backend technologies have you used?",
+            "What databases have you worked with?"
+        ]
+    },
+    {
+        "id": "q_data_analytics",
+        "category": "Technical Skills",
+        "question": "What is your data analytics experience?",
+        "keywords": [
+            "data analytics",
+            "python",
+            "pandas",
+            "numpy",
+            "data analysis",
+            "excel"
+        ],
+        "answer": "<p>Data Analytics is one of my active focus areas. My skills in this domain include:</p><ul><li><strong>Python:</strong> Core language for data analysis work. I completed the '30 Days Python Using AI' program from AI For Techies in May 2025.</li><li><strong>Pandas & NumPy:</strong> For data manipulation, cleaning, and analysis.</li><li><strong>Data Cleaning & CSV Processing:</strong> Processing raw datasets and transforming them for analysis.</li><li><strong>MS Excel:</strong> For data management, reporting, and visualization.</li><li><strong>SQL:</strong> For querying and aggregating data from relational databases.</li></ul><p>I am currently deepening my Data Analytics skills as part of my ongoing learning focus — it is one of the areas I am actively exploring alongside Generative AI and Backend Architecture.</p>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What are you currently learning?",
+            "What AI skills do you have?",
+            "What technologies do you know?",
+            "What are your career goals?"
+        ]
+    },
+    {
+        "id": "q_currently_learning",
+        "category": "AI & Learning",
+        "question": "What are you currently learning?",
+        "keywords": [
+            "learning",
+            "currently learning",
+            "studying",
+            "improving",
+            "growth"
+        ],
+        "answer": "<p>I am currently focused on deepening my skills in the following areas:</p><ul><li><strong>Backend Development:</strong> Deepening my understanding of server-side architecture, API design patterns, and scalable backend systems.</li><li><strong>System Design:</strong> Learning how to architect scalable, high-availability distributed systems — a critical skill for senior engineering roles.</li><li><strong>Data Analytics (Advanced):</strong> Moving beyond basic Python/Pandas to more advanced analytical techniques and visualization.</li><li><strong>Generative AI (Advanced):</strong> Going deeper into RAG (Retrieval-Augmented Generation), structured prompting patterns, and building more sophisticated AI-powered applications.</li><li><strong>AI Integration:</strong> Exploring practical patterns for integrating AI capabilities into production web applications.</li></ul>",
+        "relatedPages": [
+            "profile.json",
+            "aboutme.json",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "What are your future career goals?",
+            "What AI skills do you have?",
+            "What is your data analytics experience?",
+            "Tell me about yourself."
+        ]
+    },
+    {
+        "id": "q_career_goals",
+        "category": "Career Goals",
+        "question": "What are your future career goals?",
+        "keywords": [
+            "career goals",
+            "future plans",
+            "aspirations",
+            "long term",
+            "short term goals"
+        ],
+        "answer": "<p>My goal is to <strong>build useful software by combining Web Development, Data Analytics, and Artificial Intelligence</strong> to solve real-world problems.</p><p><strong>Short-term:</strong> Join a fast-paced engineering team — through an internship or full-time role — where I can contribute to real products, learn from experienced engineers, and apply my skills in a professional environment.</p><p><strong>Long-term:</strong> Become a well-rounded engineer who can build full-stack AI-powered applications — combining modern web development with data-driven intelligence to create software that is genuinely useful.</p><p>I am also interested in contributing to open source and eventually building my own products that serve a real audience — as ImgNinja showed me that independent projects can reach thousands of users organically.</p>",
+        "relatedPages": [
+            "profile.json",
+            "aboutme.json"
+        ],
+        "relatedQuestions": [
+            "Are you open to internships or full-time roles?",
+            "What are you currently learning?",
+            "What makes you different from other developers?",
+            "How can I contact you?"
+        ]
+    },
+    {
+        "id": "q_services",
+        "category": "Freelance Services",
+        "question": "What services do you offer?",
+        "keywords": [
+            "services",
+            "freelance",
+            "what can you do for me",
+            "offer",
+            "hire for"
+        ],
+        "answer": "<p>I offer the following freelance and contract web development services:</p><ul><li><strong>Business Website Development:</strong> Professional, responsive, SEO-friendly websites for local businesses, startups, agencies, restaurants, clinics, coaching institutes, and service providers.</li><li><strong>Portfolio Website Development:</strong> Modern portfolio websites for freelancers, developers, designers, photographers, and professionals to showcase their work.</li><li><strong>Landing Page Development:</strong> High-converting landing pages for product launches, SaaS, marketing campaigns, and lead generation.</li><li><strong>Custom Web Application Development:</strong> Admin panels, dashboards, internal tools, booking systems, and workflow automation tailored to your business needs.</li><li><strong>AI Integration:</strong> Integrating AI capabilities into your existing or new applications — chatbots, content generation, automation, and intelligent workflows using modern LLMs.</li><li><strong>Data Analytics & Dashboard:</strong> Transforming raw business data into meaningful dashboards, reports, and visualizations for better decision-making.</li></ul>",
+        "relatedPages": [
+            "services.json",
+            "profile.json",
+            "socials.db"
+        ],
+        "relatedQuestions": [
+            "Can I hire you?",
+            "How can I contact you?",
+            "What technologies do you know?",
+            "Which project should I explore first?"
+        ]
+    },
+    {
+        "id": "q_can_hire",
+        "category": "Freelance Services",
+        "question": "Can I hire you?",
+        "keywords": [
+            "can I hire",
+            "hire",
+            "work with me",
+            "commission",
+            "available for work"
+        ],
+        "answer": "<p><strong>Yes, absolutely!</strong> I am open to freelance projects, contract work, and full-time opportunities.</p><p>I can help you with:</p><ul><li>Business or portfolio websites.</li><li>Custom web applications (admin panels, dashboards, booking systems).</li><li>AI chatbot integration or AI-powered features for your app.</li><li>Landing pages and SaaS frontends.</li><li>Data analytics dashboards.</li></ul><p>To discuss your project, the best way to reach me is via email or LinkedIn:</p><div class='echo-contact-list'><a href='mailto:akashprajapati1232@gmail.com' class='echo-contact-item'><span class='echo-contact-icon'>✉</span><span>akashprajapati1232@gmail.com</span></a><a href='https://www.linkedin.com/in/akash-prajapati1232/' target='_blank' rel='noopener noreferrer' class='echo-contact-item'><span class='echo-contact-icon'>in</span><span>LinkedIn — Akash Prajapati</span></a></div>",
+        "relatedPages": [
+            "services.json",
+            "socials.db",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What services do you offer?",
+            "How can I contact you?",
+            "Are you open to internships or full-time roles?"
+        ]
+    },
+    {
+        "id": "q_contact",
+        "category": "Contact",
+        "question": "How can I contact you?",
+        "keywords": [
+            "contact",
+            "reach you",
+            "email",
+            "phone",
+            "linkedin",
+            "get in touch",
+            "social media"
+        ],
+        "answer": "<p>I am always happy to connect. Here are the best ways to reach me:</p><div class='echo-contact-list'><a href='mailto:akashprajapati1232@gmail.com' class='echo-contact-item'><span class='echo-contact-icon'>✉</span><span>akashprajapati1232@gmail.com</span></a><a href='https://www.linkedin.com/in/akash-prajapati1232/' target='_blank' rel='noopener noreferrer' class='echo-contact-item'><span class='echo-contact-icon'>in</span><span>LinkedIn — Akash Prajapati</span></a><a href='https://github.com/akashprajapati1232' target='_blank' rel='noopener noreferrer' class='echo-contact-item'><span class='echo-contact-icon'>gh</span><span>GitHub — akashprajapati1232</span></a><a href='https://akashprajapati.rf.gd/' target='_blank' rel='noopener noreferrer' class='echo-contact-item'><span class='echo-contact-icon'>🌐</span><span>Website — akashprajapati.rf.gd</span></a></div><p>I typically respond within a few hours. I am based in IST (UTC+05:30).</p>",
+        "relatedPages": [
+            "socials.db",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "Can I hire you?",
+            "Are you open to internships or full-time roles?",
+            "What services do you offer?"
+        ]
+    },
+    {
+        "id": "q_github",
+        "category": "Contact",
+        "question": "Where can I find your code and GitHub?",
+        "keywords": [
+            "github",
+            "code",
+            "source code",
+            "repositories",
+            "open source"
+        ],
+        "answer": "<p>You can find my code and open source projects on GitHub:</p><div class='echo-contact-list'><a href='https://github.com/akashprajapati1232' target='_blank' rel='noopener noreferrer' class='echo-contact-item'><span class='echo-contact-icon'>gh</span><span>github.com/akashprajapati1232</span></a></div><p>Projects with public repositories include:</p><ul><li><strong>GPT for BCA:</strong> <a href='https://github.com/akashprajapati1232/GPT-for-BCA' class='echo-text-link' target='_blank'>github.com/akashprajapati1232/GPT-for-BCA</a></li><li><strong>ImgNinja:</strong> <a href='https://github.com/akashprajapati1232/ImgNinja' class='echo-text-link' target='_blank'>github.com/akashprajapati1232/ImgNinja</a></li><li><strong>Brandify Creator:</strong> <a href='https://github.com/akashprajapati1232/brandify-creator' class='echo-text-link' target='_blank'>github.com/akashprajapati1232/brandify-creator</a></li><li><strong>Total Solution:</strong> <a href='https://github.com/akashprajapati1232/total-solution' class='echo-text-link' target='_blank'>github.com/akashprajapati1232/total-solution</a></li><li><strong>This Portfolio (v2.0):</strong> <a href='https://github.com/akashprajapati1232/portfolio_V-2.1-' class='echo-text-link' target='_blank'>github.com/akashprajapati1232/portfolio_V-2.1-</a></li></ul>",
+        "relatedPages": [
+            "socials.db",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "How can I contact you?",
+            "Which project should I explore first?",
+            "How did you build this portfolio?"
+        ]
+    },
+    {
+        "id": "q_problem_solving",
+        "category": "Personal Workflow",
+        "question": "What is your problem-solving approach?",
+        "keywords": [
+            "problem solving",
+            "debugging",
+            "how do you solve",
+            "approach",
+            "methodology"
+        ],
+        "answer": "<p>My problem-solving approach is structured and iterative:</p><ul><li><strong>Break it down:</strong> I decompose the problem into its smallest components rather than trying to tackle the whole thing at once.</li><li><strong>Understand before fixing:</strong> I try to understand <em>why</em> the problem exists, not just apply a workaround. For example, when ImgNinja had memory issues with large files, I researched the full object URL lifecycle and canvas cleanup patterns rather than just limiting file size.</li><li><strong>Research deeply:</strong> Official documentation, GitHub issues, and existing solutions all inform my approach. I never copy-paste without understanding.</li><li><strong>Prototype and test:</strong> I write an isolated test case or proof-of-concept before integrating a solution. This is how I validated the binary search compression algorithm for ImgNinja before integrating it into the full tool.</li><li><strong>Refactor:</strong> After a solution works, I clean up the code, add comments, and ensure it is maintainable.</li></ul>",
+        "relatedPages": [
+            "aboutme.json",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "How do you debug problems?",
+            "How do you organize your projects?",
+            "What is your development workflow?",
+            "What is your learning philosophy?"
+        ]
+    },
+    {
+        "id": "q_debug",
+        "category": "Personal Workflow",
+        "question": "How do you debug problems?",
+        "keywords": [
+            "debug",
+            "debugging",
+            "fix bugs",
+            "troubleshoot",
+            "errors"
+        ],
+        "answer": "<p>My debugging workflow depends on the type of problem:</p><ul><li><strong>Browser issues:</strong> Chrome DevTools is my primary tool — Network tab for API calls, Console for JS errors, Sources for step-through debugging, and Performance tab for bottlenecks.</li><li><strong>Backend issues:</strong> Postman for API endpoint testing, <code>console.log</code> tracing, and environment variable verification.</li><li><strong>Logic bugs:</strong> I isolate the problem into the smallest possible reproduction case, then work outward. For example, the binary search compression algorithm in ImgNinja was developed and tested in isolation before integration.</li><li><strong>Cross-browser issues:</strong> I use feature detection and fallback patterns — learned from ImgNinja's challenge with Safari's WebP/AVIF support.</li><li><strong>Tools I use:</strong> VS Code, Chrome DevTools, Postman, and XAMPP for local PHP development.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What is your problem-solving approach?",
+            "How do you organize your projects?",
+            "What is your development workflow?"
+        ]
+    },
+    {
+        "id": "q_workflow",
+        "category": "Personal Workflow",
+        "question": "What is your development workflow?",
+        "keywords": [
+            "workflow",
+            "development process",
+            "how you work",
+            "project process",
+            "methodology"
+        ],
+        "answer": "<p>My typical project workflow:</p><ul><li><strong>1. Planning:</strong> Define the requirements, sketch the UI/UX layout, and design the database schema or data architecture before writing any code.</li><li><strong>2. Project Setup:</strong> Initialize the repository, configure tooling (ESLint/Oxlint, Vite, environment variables), and establish the folder structure and naming conventions.</li><li><strong>3. Design System First:</strong> Build the CSS design system — CSS custom properties, typography scale, spacing, and color tokens — before building components. This ensures visual consistency throughout.</li><li><strong>4. Component Development:</strong> Build UI components from the design system, then assemble pages from components.</li><li><strong>5. Backend & Integration:</strong> Develop APIs, connect databases, implement authentication, and integrate third-party services.</li><li><strong>6. Testing & Polish:</strong> Test edge cases, optimize for mobile, run Lighthouse audits, and clean up code before deployment.</li><li><strong>7. Deployment:</strong> Deploy to Vercel, GitHub Pages, or cPanel hosting depending on the project type.</li></ul>",
+        "relatedPages": [
+            "profile.json",
+            "aboutme.json"
+        ],
+        "relatedQuestions": [
+            "How do you organize your projects?",
+            "What is your problem-solving approach?",
+            "What tools and platforms do you use?",
+            "Tell me about your experience."
+        ]
+    },
+    {
+        "id": "q_organize_projects",
+        "category": "Personal Workflow",
+        "question": "How do you organize your projects?",
+        "keywords": [
+            "organize",
+            "file structure",
+            "project structure",
+            "architecture",
+            "folder"
+        ],
+        "answer": "<p>My project organization follows the principle of <strong>separation of concerns</strong> — each layer of the application has a clear, dedicated location.</p><p>For a <strong>React/TypeScript project</strong> (like ScaleIQ): <code>components/</code>, <code>pages/</code>, <code>hooks/</code>, <code>types/</code>, <code>styles/</code>, <code>constants/</code>, <code>data/</code>, <code>routes/</code>, <code>layouts/</code>.</p><p>For a <strong>Vanilla JS project</strong> (like this portfolio): <code>js/services/</code> for data fetching, <code>js/components/</code> for UI logic, <code>js/core/</code> for utilities, <code>styles/</code> with base/layout/component categories, and <code>data/</code> for all JSON data files.</p><p>For a <strong>PHP multi-page project</strong> (like RozgarSetu): shared <code>includes/</code> for header/navbar/footer, dedicated PHP files per page, and a <code>services/</code> subdirectory for service detail pages.</p><p>I use <strong>Git</strong> for version control on all projects.</p>",
+        "relatedPages": [
+            "README.md",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "What is your development workflow?",
+            "How did you build this portfolio?",
+            "Why did you choose Vanilla JavaScript?"
+        ]
+    },
+    {
+        "id": "q_deployment",
+        "category": "Personal Workflow",
+        "question": "How do you deploy your projects?",
+        "keywords": [
+            "deploy",
+            "deployment",
+            "hosting",
+            "vercel",
+            "vps",
+            "cpanel",
+            "production"
+        ],
+        "answer": "<p>My deployment experience across different project types:</p><ul><li><strong>Vercel:</strong> Used to host the GPT for BCA React frontend (with SPA routing rewrite rules in <code>vercel.json</code>) and this portfolio. Fast, Git-based deployment with automatic HTTPS.</li><li><strong>cPanel Hosting:</strong> Used for PHP-based projects and static websites on shared hosting providers.</li><li><strong>VPS (Ubuntu Server):</strong> Experience with self-hosted deployments on Ubuntu servers — used for projects requiring a persistent backend process (like the Ollama server in GPT for BCA).</li><li><strong>GitHub Pages:</strong> Used for static projects and early-stage learning projects.</li><li><strong>Docker:</strong> Listed as a tool in my deployment skill set for containerized deployments.</li><li><strong>Supabase Storage:</strong> Used for file storage in projects requiring cloud storage.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json",
+            "Projects/gpt-for-bca"
+        ],
+        "relatedQuestions": [
+            "What tools and platforms do you use?",
+            "Tell me about GPT for BCA.",
+            "What backend technologies have you used?"
+        ]
+    },
+    {
+        "id": "q_tools",
+        "category": "Technical Skills",
+        "question": "What tools and platforms do you use?",
+        "keywords": [
+            "tools",
+            "software",
+            "platforms",
+            "ide",
+            "vs code",
+            "postman",
+            "git"
+        ],
+        "answer": "<p>My daily development toolset:</p><ul><li><strong>Code Editor:</strong> VS Code (my primary IDE)</li><li><strong>Version Control:</strong> Git + GitHub</li><li><strong>Build Tool:</strong> Vite (for React/TypeScript projects)</li><li><strong>API Testing:</strong> Postman</li><li><strong>Browser Debugging:</strong> Chrome DevTools</li><li><strong>Package Manager:</strong> npm</li><li><strong>Local PHP Development:</strong> XAMPP</li><li><strong>Linting:</strong> Oxlint (for TypeScript/React) and ESLint</li><li><strong>AI Tools (Local):</strong> Ollama, LM Studio for running local LLMs</li><li><strong>Design:</strong> Adobe Photoshop, Canva</li><li><strong>Operating Systems:</strong> Windows (primary), Ubuntu, Kali Linux, macOS</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json"
+        ],
+        "relatedQuestions": [
+            "What is your development workflow?",
+            "How do you debug problems?",
+            "What technologies do you know?"
+        ]
+    },
+    {
+        "id": "q_gsap",
+        "category": "Technical Skills",
+        "question": "What projects use GSAP animations?",
+        "keywords": [
+            "gsap",
+            "animation",
+            "scroll animation",
+            "scrolltrigger",
+            "motion"
+        ],
+        "answer": "<p><strong>Brandify Creator</strong> is my most animation-heavy project, using <strong>GSAP 3.12.5</strong> with the <strong>ScrollTrigger</strong> plugin for premium scroll-based interactions.</p><p>GSAP features I used in that project:</p><ul><li>Animated title reveals on page load.</li><li>ScrollTrigger scroll-based section transitions and parallax effects.</li><li>3D card tilt effects using JavaScript <code>mousemove</code> listeners with CSS perspective transforms.</li><li>Floating particle ambient background animations.</li><li>Navbar glassmorphism effect on scroll.</li><li>GPU-composited animations (transform, opacity only) for consistent 60fps performance.</li></ul><p>I also use <strong>AOS (Animate on Scroll)</strong> in RozgarSetu and Total Solution for lightweight scroll-triggered reveals.</p>",
+        "relatedPages": [
+            "Projects/brandify-creator",
+            "tech-stack.tsx"
+        ],
+        "relatedQuestions": [
+            "Tell me about Brandify Creator.",
+            "What are your frontend skills?",
+            "Which project should I explore first?"
+        ]
+    },
+    {
+        "id": "q_design_skills",
+        "category": "Technical Skills",
+        "question": "What are your design skills?",
+        "keywords": [
+            "design",
+            "ui design",
+            "ux",
+            "photoshop",
+            "canva",
+            "css design",
+            "figma"
+        ],
+        "answer": "<p>I approach design as a core part of development — every project I build includes a complete custom design system rather than relying on pre-built UI kits.</p><p><strong>Design skills and tools:</strong></p><ul><li><strong>CSS Design Systems:</strong> I build custom design systems with CSS custom properties for colors, spacing, typography, and shadows — applied across GPT for BCA, ScaleIQ, Brandify Creator, and this portfolio.</li><li><strong>Glassmorphism & Dark Themes:</strong> Multiple projects feature glassmorphism card components, gradient layering, and premium dark-mode aesthetics.</li><li><strong>Adobe Photoshop:</strong> For photo editing, image optimization, banner design, and social media design.</li><li><strong>Canva:</strong> For quick design assets and social media content.</li><li><strong>Typography:</strong> Strong preference for Google Fonts — commonly use Inter, Poppins, Outfit, and Noto Sans Devanagari for bilingual projects.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json"
+        ],
+        "relatedQuestions": [
+            "What are your frontend skills?",
+            "Tell me about Brandify Creator.",
+            "Which project demonstrates your design quality?"
+        ]
+    },
+    {
+        "id": "q_languages_spoken",
+        "category": "About Me",
+        "question": "What languages do you speak?",
+        "keywords": [
+            "languages spoken",
+            "hindi",
+            "english",
+            "communication",
+            "language"
+        ],
+        "answer": "<p>I am fluent in two languages:</p><ul><li><strong>Hindi</strong> — Native language.</li><li><strong>English</strong> — Professional working proficiency.</li></ul><p>My bilingual background has also influenced my development work — for example, RozgarSetu features a full bilingual UI in Hindi Devanagari and English, and my Professional Calculator converts numeric results into Hindi Devanagari words (e.g., 5 → पाँच).</p>",
+        "relatedPages": [
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "Tell me about yourself.",
+            "Tell me about RozgarSetu.",
+            "What makes you different from other developers?"
+        ]
+    },
+    {
+        "id": "q_location",
+        "category": "About Me",
+        "question": "Where are you based?",
+        "keywords": [
+            "location",
+            "where",
+            "based",
+            "city",
+            "country",
+            "india",
+            "timezone",
+            "remote"
+        ],
+        "answer": "<p>I am based in <strong>Ghazipur, Uttar Pradesh, India</strong> and operate in the <strong>IST timezone (UTC+05:30)</strong>.</p><p>I am open to:</p><ul><li><strong>Remote work</strong> — fully comfortable working with distributed teams across time zones.</li><li><strong>On-site opportunities</strong> — open to relocating for the right full-time opportunity.</li></ul>",
+        "relatedPages": [
+            "profile.json",
+            "socials.db"
+        ],
+        "relatedQuestions": [
+            "Are you open to internships or full-time roles?",
+            "How can I contact you?",
+            "Tell me about yourself."
+        ]
+    },
+    {
+        "id": "q_interests",
+        "category": "About Me",
+        "question": "What are your interests and hobbies?",
+        "keywords": [
+            "interests",
+            "hobbies",
+            "passion",
+            "outside work",
+            "fun facts"
+        ],
+        "answer": "<p>Beyond coding, my core interests are:</p><ul><li><strong>Open Source:</strong> I enjoy exploring open-source projects to understand how real software is built and to improve my development skills.</li><li><strong>Problem Solving:</strong> I enjoy tackling logic challenges — evidenced by my 3rd place finish in a Logic Club Quiz Competition in 2023.</li><li><strong>Understanding how things work:</strong> My fun fact — I prefer understanding technologies behind the scenes rather than just learning how to use them on the surface.</li><li><strong>Software Engineering concepts:</strong> I actively read about system design, software architecture patterns, and engineering best practices.</li><li><strong>AI exploration:</strong> Experimenting with locally-hosted LLMs, prompt engineering, and building AI-integrated tools.</li></ul>",
+        "relatedPages": [
+            "profile.json",
+            "aboutme.json"
+        ],
+        "relatedQuestions": [
+            "Tell me about yourself.",
+            "What is your learning philosophy?",
+            "What are you currently learning?"
+        ]
+    },
+    {
+        "id": "q_open_source",
+        "category": "About Me",
+        "question": "Do you contribute to open source?",
+        "keywords": [
+            "open source",
+            "contribution",
+            "github contribution",
+            "community"
+        ],
+        "answer": "<p>Open source is one of my active interests. Currently, my primary open source contribution is through <strong>public repositories on GitHub</strong> — sharing my project code so others can learn from it, fork it, or build on it.</p><p>My public projects include GPT for BCA, ImgNinja, Brandify Creator, Total Solution, and this Portfolio (v2.0).</p><p>I am also actively looking for <strong>open source collaboration opportunities</strong> — it is one of the opportunity types I am explicitly seeking alongside internships, freelance work, and full-time roles.</p><p>My GitHub: <a href='https://github.com/akashprajapati1232' class='echo-text-link' target='_blank'>github.com/akashprajapati1232</a></p>",
+        "relatedPages": [
+            "profile.json",
+            "socials.db"
+        ],
+        "relatedQuestions": [
+            "Where can I find your code and GitHub?",
+            "Are you open to internships or full-time roles?",
+            "Tell me about yourself."
+        ]
+    },
+    {
+        "id": "q_how_system_design",
+        "category": "Technical Skills",
+        "question": "Which project demonstrates your system design skills?",
+        "keywords": [
+            "system design",
+            "architecture",
+            "database design",
+            "multi role",
+            "complex system"
+        ],
+        "answer": "<p><strong>RozgarSetu</strong> is the best demonstration of my system design skills.</p><p>As the sole developer and system architect, I designed:</p><ul><li>A <strong>four-role user architecture</strong> (Workers, Businesses, Partners, Admin) with distinct user journeys, KYC workflows, and shared admin oversight.</li><li>A complete <strong>MySQL relational database schema</strong> with 7 entity groups, full ERD relationships, audit tables, and a double-entry balance tracking pattern for the digital wallet system.</li><li>A <strong>7-stage worker status lifecycle</strong> (Registered → OTP Verified → Profile Pending → Under Review → Verified → Rejected → Suspended).</li><li>A <strong>Partner commission tier system</strong> (Silver/Gold/Platinum) with digital wallet balance management.</li><li>A roadmap for backend phases 2, 3, and 4 including OCR, Razorpay, and mobile app integration.</li></ul>",
+        "relatedPages": [
+            "Projects/rozgarsetu",
+            "experience.xml"
+        ],
+        "relatedQuestions": [
+            "Tell me about RozgarSetu.",
+            "What databases have you worked with?",
+            "Tell me about your experience.",
+            "What backend technologies have you used?"
+        ]
+    },
+    {
+        "id": "q_favorite_tech",
+        "category": "Technical Skills",
+        "question": "What are your favorite technologies?",
+        "keywords": [
+            "favourite",
+            "favorite",
+            "preferred",
+            "like to work with",
+            "enjoy using"
+        ],
+        "answer": "<p>My favorite technologies to work with are:</p><ul><li><strong>JavaScript</strong> — My most fluent language and the foundation of everything I build.</li><li><strong>TypeScript</strong> — The type safety makes large-scale React applications far more maintainable.</li><li><strong>React</strong> — My go-to for building complex, interactive user interfaces.</li><li><strong>Next.js</strong> — On my radar for production-scale React applications with SSR and optimal performance.</li><li><strong>Node.js</strong> — For building RESTful backends and AI-proxy servers.</li><li><strong>Python</strong> — For data analytics work and AI scripting.</li><li><strong>SQL</strong> — Nothing beats a well-designed relational database for structured data.</li></ul>",
+        "relatedPages": [
+            "profile.json",
+            "tech-stack.tsx",
+            "skills.json"
+        ],
+        "relatedQuestions": [
+            "What technologies do you know?",
+            "What are your frontend skills?",
+            "What are you currently learning?"
+        ]
+    },
+    {
+        "id": "q_imgninja_users",
+        "category": "Projects",
+        "question": "Which project reached real users?",
+        "keywords": [
+            "real users",
+            "traffic",
+            "monthly users",
+            "live users",
+            "audience"
+        ],
+        "answer": "<p><strong>ImgNinja</strong> is my project that reached the largest real-world audience — it received approximately <strong>3,000–5,000 monthly active users</strong> organically (without any paid marketing or promotion) before going offline.</p><p>The tool offered image compression, format conversion, resizing, and cropping — entirely within the browser with zero server communication. Its privacy-first approach (no data collection, GDPR compliant) resonated with users who needed a fast, trustworthy alternative to cloud-based image tools.</p><p>I plan to relaunch ImgNinja rebuilt with <strong>Next.js</strong> in the future.</p><p><em>For complete details and screenshots, please explore the <strong>Projects</strong> section of this portfolio.</em></p>",
+        "relatedPages": [
+            "Projects/imgninja",
+            "profile.json"
+        ],
+        "relatedQuestions": [
+            "Tell me about ImgNinja.",
+            "Which project are you most proud of?",
+            "What are your main achievements?"
+        ]
+    },
+    {
+        "id": "q_canvas_api",
+        "category": "Technical Skills",
+        "question": "What are the browser APIs you have worked with?",
+        "keywords": [
+            "browser api",
+            "canvas api",
+            "file api",
+            "web api",
+            "blob api",
+            "localstorage"
+        ],
+        "answer": "<p>I have significant hands-on experience with the following browser APIs:</p><ul><li><strong>Canvas API:</strong> Used extensively in ImgNinja for image rendering, format-specific encoding (JPEG, WebP, PNG), pixel manipulation, and memory-efficient cleanup. Also used in the Retro Snake Game for 2D game rendering.</li><li><strong>File API & FileReader API:</strong> For handling file uploads in ImgNinja — reading file contents, processing binary data, and drag-and-drop file selection.</li><li><strong>Blob API & URL.createObjectURL:</strong> For generating downloadable output files in ImgNinja with proper object URL lifecycle management to prevent memory leaks.</li><li><strong>LocalStorage API:</strong> Used in the Retro Snake Game for high score persistence and in other projects for client-side state.</li><li><strong>Web Speech API:</strong> Used in BitBot for text-to-speech and speech-to-text voice input/output in the chatbot interface.</li></ul>",
+        "relatedPages": [
+            "tech-stack.tsx",
+            "skills.json",
+            "Projects/imgninja"
+        ],
+        "relatedQuestions": [
+            "Tell me about ImgNinja.",
+            "What are your frontend skills?",
+            "Why did you choose Vanilla JavaScript?"
+        ]
+    }
+]

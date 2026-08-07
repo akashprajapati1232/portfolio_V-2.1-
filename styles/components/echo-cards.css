@@ -1,172 +1,426 @@
 /* =============================================================
-   echo-cards.css – Reusable cards inside ECHO AI Chat
-   Depends on: variables.css
+   echo-cards.css – ECHO AI Search Result Cards
+   Polished, professional card components for search results
    ============================================================= */
 
-/* ── AI Knowledge-base components ── */
+/* ── Shared Tags ─────────────────────────────────────────────── */
 
-/* Tags row */
-.ai-tags {
+.echo-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin: 6px 0;
+    gap: 4px;
+    margin: 5px 0 2px;
 }
 
-.ai-tag {
+.echo-tags--skills {
+    gap: 3px;
+    margin: 6px 0 0;
+}
+
+.echo-tag {
     display: inline-flex;
     align-items: center;
-    gap: 3px;
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: 3px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    font-size: 11px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    font-size: 10.5px;
     color: var(--text-secondary);
     font-family: var(--font-ui);
+    line-height: 1.4;
+    white-space: nowrap;
 }
 
-.ai-tag-tech {
-    background: rgba(0, 122, 204, 0.15);
-    border-color: rgba(0, 122, 204, 0.3);
+.echo-tag--tech {
+    background: rgba(14, 127, 212, 0.12);
+    border-color: rgba(14, 127, 212, 0.28);
     color: #4fc1ff;
 }
 
-.ai-tag-level {
-    color: var(--text-muted);
+.echo-tag--skill {
+    background: rgba(78, 201, 176, 0.08);
+    border-color: rgba(78, 201, 176, 0.2);
+    color: #4ec9b0;
     font-size: 10px;
 }
 
-/* ── Education / achievement items ── */
-.ai-edu-item {
+/* ── Search Summary Banner ───────────────────────────────────── */
+
+.echo-search-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 7px 10px;
+    background: rgba(14, 127, 212, 0.07);
+    border: 1px solid rgba(14, 127, 212, 0.2);
+    border-radius: 6px;
     margin-bottom: 10px;
-    padding: 10px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 4px;
-    border-left: 2px solid #007acc;
+    animation: echoFadeIn 0.2s ease forwards;
 }
 
-.ai-edu-degree {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-active);
-    margin-bottom: 3px;
+.echo-search-found {
+    font-size: 11.5px;
+    color: var(--text-primary);
 }
 
-.ai-edu-meta {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 5px;
-}
-
-.ai-edu-desc {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
-
-/* ── Skill group ── */
-.ai-skill-group {
-    margin-bottom: 10px;
-}
-
-.ai-skill-group-title {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
-}
-
-/* ── Project item ── */
-.ai-project-item {
-    margin-bottom: 12px;
-    padding: 10px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 4px;
-    transition: background var(--transition-fast);
-}
-.ai-project-item:hover       { background: rgba(255,255,255,0.06); }
-.ai-project-title            { font-size: 12px; font-weight: 600; color: var(--text-active); margin-bottom: 4px; }
-.ai-project-desc             { font-size: 11px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 6px; }
-.ai-project-meta             { display: flex; flex-direction: column; gap: 6px; }
-.ai-project-links            { display: flex; gap: 10px; }
-
-.ai-link {
-    font-size: 11px;
+.echo-search-found strong {
     color: #4fc1ff;
-    text-decoration: none;
-    transition: color var(--transition-fast);
 }
-.ai-link:hover { color: #7dd5ff; text-decoration: underline; }
 
-/* ── Contact list ── */
-.ai-contact-list {
+.echo-search-categories {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+}
+
+/* ── Result Group ────────────────────────────────────────────── */
+
+.echo-result-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin: 8px 0;
+    margin-bottom: 12px;
+    animation: echoFadeIn 0.25s ease forwards;
 }
-.ai-contact-item {
+
+.echo-result-group-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 10px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--text-primary);
+    gap: 6px;
+    padding: 0 0 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.echo-result-group-icon {
     font-size: 12px;
+    line-height: 1;
+}
+
+.echo-result-group-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    flex: 1;
+}
+
+.echo-result-group-count {
+    font-size: 10px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 1px 6px;
+    font-family: var(--font-code);
+}
+
+.echo-result-group-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ── Base Card ───────────────────────────────────────────────── */
+
+.echo-card {
+    padding: 9px 11px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
     transition: background var(--transition-fast), border-color var(--transition-fast);
-    cursor: pointer;
 }
-.ai-contact-item:hover {
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(0, 122, 204, 0.4);
-    text-decoration: none;
+
+.echo-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
 }
-.ai-contact-icon {
-    font-size: 15px;
+
+.echo-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.echo-card-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-active);
+    line-height: 1.4;
+    flex: 1;
+}
+
+.echo-card-subtitle {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.echo-card-meta {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin: 2px 0 5px;
+    line-height: 1.4;
+}
+
+.echo-card-meta-inline {
+    font-size: 10px;
+    color: var(--text-muted);
+    white-space: nowrap;
     flex-shrink: 0;
 }
 
-/* ── Suggestion chips ── */
-.ai-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
+.echo-card-desc {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 4px 0 5px;
 }
 
-.ai-chip {
+.echo-card-count {
+    font-size: 10px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 1px 6px;
+    font-family: var(--font-code);
+    flex-shrink: 0;
+}
+
+/* ── Badges ──────────────────────────────────────────────────── */
+
+.echo-card-badge {
+    font-size: 9.5px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.echo-card-badge--prod {
+    background: rgba(14, 127, 212, 0.15);
+    border: 1px solid rgba(14, 127, 212, 0.3);
+    color: #4fc1ff;
+}
+
+.echo-card-badge--micro {
+    background: rgba(78, 201, 176, 0.1);
+    border: 1px solid rgba(78, 201, 176, 0.25);
+    color: #4ec9b0;
+}
+
+.echo-card-badge--type {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+}
+
+/* ── Project Card ────────────────────────────────────────────── */
+
+.echo-card--project {
+    border-left: 2px solid rgba(14, 127, 212, 0.45);
+}
+
+.echo-card--project:hover {
+    border-left-color: rgba(14, 127, 212, 0.75);
+}
+
+.echo-card-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.echo-card-link {
     display: inline-flex;
     align-items: center;
-    padding: 4px 10px;
-    background: rgba(0, 122, 204, 0.12);
-    border: 1px solid rgba(0, 122, 204, 0.35);
-    border-radius: 12px;
-    font-size: 11px;
-    color: #4fc1ff;
-    cursor: pointer;
-    font-family: var(--font-ui);
+    gap: 4px;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 4px;
     transition: all var(--transition-fast);
-    user-select: none;
-}
-.ai-chip:hover {
-    background: rgba(0, 122, 204, 0.25);
-    border-color: rgba(0, 122, 204, 0.6);
-    color: #7dd5ff;
-    transform: translateY(-1px);
-}
-.ai-chip:active {
-    transform: translateY(0);
 }
 
-/* Autocomplete Suggestion Popup */
+.echo-card-link:hover {
+    background: rgba(14, 127, 212, 0.12);
+    border-color: rgba(14, 127, 212, 0.35);
+    color: #4fc1ff;
+    text-decoration: none;
+}
+
+.echo-card-link--live {
+    color: #4ec9b0;
+}
+
+.echo-card-link--live:hover {
+    background: rgba(78, 201, 176, 0.1);
+    border-color: rgba(78, 201, 176, 0.3);
+    color: #6edfc8;
+}
+
+/* ── Skill Card ──────────────────────────────────────────────── */
+
+.echo-card--skill {
+    border-left: 2px solid rgba(78, 201, 176, 0.4);
+}
+
+.echo-card--skill:hover {
+    border-left-color: rgba(78, 201, 176, 0.7);
+}
+
+/* ── Experience Card ─────────────────────────────────────────── */
+
+.echo-card--experience {
+    border-left: 2px solid rgba(206, 145, 120, 0.45);
+}
+
+.echo-card--experience:hover {
+    border-left-color: rgba(206, 145, 120, 0.75);
+}
+
+/* ── Education Card ──────────────────────────────────────────── */
+
+.echo-card--education {
+    border-left: 2px solid rgba(106, 153, 85, 0.45);
+}
+
+.echo-card--education:hover {
+    border-left-color: rgba(106, 153, 85, 0.75);
+}
+
+/* ── Certification Card ──────────────────────────────────────── */
+
+.echo-card--cert {
+    border-left: 2px solid rgba(220, 220, 170, 0.4);
+}
+
+/* ── Service Card ────────────────────────────────────────────── */
+
+.echo-card--service {
+    border-left: 2px solid rgba(156, 220, 254, 0.35);
+}
+
+/* ── Achievement Card ────────────────────────────────────────── */
+
+.echo-card--achievement {
+    border-left: 2px solid rgba(255, 200, 80, 0.4);
+}
+
+.echo-card--achievement:hover {
+    border-left-color: rgba(255, 200, 80, 0.7);
+}
+
+/* ── Profile Card ────────────────────────────────────────────── */
+
+.echo-card--profile {
+    border-left: 2px solid rgba(14, 127, 212, 0.45);
+}
+
+/* ── About Card ──────────────────────────────────────────────── */
+
+.echo-card--about {
+    border-left: 2px solid rgba(78, 201, 176, 0.4);
+}
+
+.echo-card-quote {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 5px 0;
+    padding-left: 8px;
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── Contact Card ────────────────────────────────────────────── */
+
+.echo-card--contact {
+    border-left: 2px solid rgba(14, 127, 212, 0.45);
+}
+
+.echo-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.echo-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 11.5px;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+}
+
+.echo-contact-item:hover {
+    background: rgba(14, 127, 212, 0.1);
+    border-color: rgba(14, 127, 212, 0.3);
+    text-decoration: none;
+}
+
+.echo-contact-icon {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    min-width: 14px;
+    text-align: center;
+    letter-spacing: -0.03em;
+}
+
+/* ── Empty state ─────────────────────────────────────────────── */
+
+.echo-search-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+    gap: 6px;
+    animation: echoFadeIn 0.3s ease forwards;
+}
+
+.echo-search-empty-icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+    opacity: 0.6;
+}
+
+.echo-search-empty-text {
+    font-size: 12.5px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.echo-search-empty-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.echo-search-empty-hint em {
+    color: #4fc1ff;
+    font-style: normal;
+}
+
+/* ── Terminal autocomplete (kept for compatibility) ──────────── */
+
 #term-autocomplete {
     position: absolute;
     bottom: 30px;

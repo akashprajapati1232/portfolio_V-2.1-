@@ -20,8 +20,8 @@ class LayoutController {
 
     initMobileSidebar() {
         const hamburger = document.getElementById('mobile-hamburger');
-        const overlay   = document.getElementById('mobile-overlay');
-        const sidebar   = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobile-overlay');
+        const sidebar = document.getElementById('sidebar');
 
         if (!hamburger) return;
 
@@ -41,8 +41,8 @@ class LayoutController {
         });
 
         overlay.addEventListener('click', () => {
-            if(sidebar) sidebar.classList.remove('mobile-open');
-            if(overlay) overlay.classList.remove('visible');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (overlay) overlay.classList.remove('visible');
             hamburger.setAttribute('aria-expanded', 'false');
             hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         });
@@ -53,7 +53,7 @@ class LayoutController {
         const layoutBottom = document.getElementById('layout-bottom');
         const layoutRight = document.getElementById('layout-right');
         const closeEcho = document.getElementById('close-echo');
-        
+
         const sidebar = document.getElementById('sidebar');
         const terminalPanel = document.getElementById('terminal-panel');
         const rightSidebar = document.getElementById('right-sidebar');
@@ -92,7 +92,7 @@ class LayoutController {
         if (layoutRight) {
             layoutRight.addEventListener('click', toggleRightSidebar);
         }
-        
+
         if (closeEcho) {
             closeEcho.addEventListener('click', () => {
                 rightSidebar.classList.add('hidden');
@@ -110,14 +110,14 @@ class LayoutController {
             if (e.ctrlKey && e.key === 'b') {
                 e.preventDefault();
                 const sidebar = document.getElementById('sidebar');
-                if(sidebar) sidebar.classList.toggle('collapsed');
+                if (sidebar) sidebar.classList.toggle('collapsed');
             }
             if (e.key === 'Escape') {
                 const sidebar = document.getElementById('sidebar');
                 const overlay = document.getElementById('mobile-overlay');
                 const hamburger = document.getElementById('mobile-hamburger');
-                if(sidebar) sidebar.classList.remove('mobile-open');
-                if(overlay) overlay.classList.remove('visible');
+                if (sidebar) sidebar.classList.remove('mobile-open');
+                if (overlay) overlay.classList.remove('visible');
                 if (hamburger) {
                     hamburger.setAttribute('aria-expanded', 'false');
                     hamburger.innerHTML = '<i class="fas fa-bars"></i>';

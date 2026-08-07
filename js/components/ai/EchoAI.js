@@ -651,8 +651,7 @@ ${this.chips(['About Akash', 'Show all projects', 'What technologies do you know
         });
 
         eventBus.on('echo:focus', this.focusInput.bind(this));
-        // Legacy compatibility
-        eventBus.on('jarvis:focus', this.focusInput.bind(this));
+
     }
 
     focusInput() {
@@ -661,5 +660,3 @@ ${this.chips(['About Akash', 'Show all projects', 'What technologies do you know
 }
 
 export const echoAI = new EchoAI();
-// Legacy alias so any code that imports jarvisAI still works
-export const jarvisAI = echoAI;

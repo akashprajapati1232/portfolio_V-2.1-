@@ -337,6 +337,3 @@
     text-align: center;
 }
 
-/* ── Legacy .jarvis-* aliases for backward compat ── */
-.jarvis-chat      { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
-.jarvis-messages  { display: flex; flex-direction: column; gap: 16px; }

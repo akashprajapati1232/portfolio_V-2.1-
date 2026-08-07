@@ -52,7 +52,7 @@ class LayoutController {
         const layoutLeft = document.getElementById('layout-left');
         const layoutBottom = document.getElementById('layout-bottom');
         const layoutRight = document.getElementById('layout-right');
-        const closeEcho = document.getElementById('close-echo') || document.getElementById('close-jarvis');
+        const closeEcho = document.getElementById('close-echo');
         
         const sidebar = document.getElementById('sidebar');
         const terminalPanel = document.getElementById('terminal-panel');
@@ -85,7 +85,7 @@ class LayoutController {
                 layoutRight.classList.remove('active');
             } else {
                 layoutRight.classList.add('active');
-                eventBus.emit('jarvis:focus');
+                eventBus.emit('echo:focus');
             }
         };
 
